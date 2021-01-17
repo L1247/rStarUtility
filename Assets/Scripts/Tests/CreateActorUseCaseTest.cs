@@ -6,50 +6,52 @@ namespace Tests
 {
     public class CreateActorUseCaseTest
     {
+    #region Test Methods
+
         // A Test behaves as an ordinary method
         [Test]
         public void Should_Succeed_When_Create_Actor()
         {
             var actorRepository    = new ActorRepository();
             var createActorUseCase = new CreateActorUseCase(actorRepository);
-            var input   = new CreateActorInput();
+            var input              = new CreateActorInput();
             input.PosId = "Pos 100";
             var output = new CreateActorOutput();
-            createActorUseCase.Execute(input,output);
-            Assert.AreEqual( "Pos 100" , actorRepository.FindById(output.ID).PosId );
+            createActorUseCase.Execute(input , output);
+            Assert.NotNull(output.ID);
+            Assert.AreEqual("Pos 100" , actorRepository.FindById(output.ID).PosId);
         }
+
+    #endregion
     }
 
     public class CreateActorOutput
     {
-        private string _id;
+    #region Public Variables
 
-        public string ID
-        {
-            get => _id;
-            set => _id = value;
-        }
+        public string ID { get; set; }
+
+    #endregion
     }
 
     public class CreateActorInput
     {
-        private string _posId;
+    #region Public Variables
 
-        public string PosId
-        {
-            get => _posId;
-            set => _posId = value;
-        }
+        public string PosId { get; set; }
+
+    #endregion
     }
 
     public class CreateActorUseCase
     {
-        private ActorRepository _repository;
+    #region Private Variables
 
-        public CreateActorUseCase(ActorRepository repository)
-        {
-            _repository = repository;
-        }
+        private readonly ActorRepository _repository;
+
+    #endregion
+
+    #region Public Methods
 
         public void Execute(CreateActorInput input , CreateActorOutput output)
         {
@@ -58,11 +60,24 @@ namespace Tests
             output.ID = actor.ID;
             _repository.Save(actor);
         }
+
+    #endregion
+
+        public CreateActorUseCase(ActorRepository repository)
+        {
+            _repository = repository;
+        }
     }
 
     public class ActorRepository
     {
-        private List<Actor> _actors = new List<Actor>();
+    #region Private Variables
+
+        private readonly List<Actor> _actors = new List<Actor>();
+
+    #endregion
+
+    #region Public Methods
 
         public Actor FindById(string id)
         {
@@ -73,32 +88,33 @@ namespace Tests
         {
             _actors.Add(actor);
         }
+
+    #endregion
     }
 
     public class Actor
     {
-        private string _id;
-        private string _posId;
+    #region Public Variables
 
-        public string PosId
+        public string ID { get; }
+
+        public string PosId { get; private set; }
+
+    #endregion
+
+    #region Public Methods
+
+        public void SetPositionId(string posId)
         {
-            get => _posId;
+            PosId = posId;
         }
 
-        public string ID
-        {
-            get => _id;
-        }
+    #endregion
 
 
         public Actor()
         {
-            _id = Guid.NewGuid().ToString();
-        }
-
-        public void SetPositionId(string posId)
-        {
-            _posId = posId;
+            ID = Guid.NewGuid().ToString();
         }
     }
 }
