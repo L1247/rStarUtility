@@ -4,7 +4,7 @@ public class ActorRepository
 {
 #region Private Variables
 
-    private readonly List<Actor> _actors = new List<Actor>();
+    private readonly List<Actor> actorList = new List<Actor>();
 
 #endregion
 
@@ -12,12 +12,12 @@ public class ActorRepository
 
     public Actor FindById(string id)
     {
-        return _actors.Find(actor => actor.ID.Equals(id));
+        return actorList.Find(actor => actor.ID.Equals(id));
     }
 
     public void Save(Actor actor)
     {
-        _actors.Add(actor);
+        actorList.Add(actor);
     }
 
 #endregion
