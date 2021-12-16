@@ -1,10 +1,12 @@
 {
-    "name": "Zenject-TestFramework",
+    "name": "ActorTests",
     "rootNamespace": "",
     "references": [
+        "UnityEditor.TestRunner",
+        "DDDTestFramework",
+        "DDDCore",
         "Zenject",
-        "UnityEngine.TestRunner",
-        "UnityEditor.TestRunner"
+        "Actor"
     ],
     "includePlatforms": [
         "Editor"
@@ -13,12 +15,10 @@
     "allowUnsafeCode": false,
     "overrideReferences": true,
     "precompiledReferences": [
-        "nunit.framework.dll"
+        "NSubstitute.dll"
     ],
     "autoReferenced": false,
-    "defineConstraints": [
-        "UNITY_INCLUDE_TESTS"
-    ],
+    "defineConstraints": [],
     "versionDefines": [],
     "noEngineReferences": false
 }

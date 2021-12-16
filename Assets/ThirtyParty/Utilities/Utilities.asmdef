@@ -1,9 +1,9 @@
 {
-    "name": "DDDCore",
+    "name": "Utilities",
     "rootNamespace": "",
     "references": [
-        "GUID:08b38f39e2d9e594389b7a4cf4c2c338",
-        "GUID:f51ebe6a0ceec4240a699833d6309b23"
+        "GUID:560b04d1a97f54a4e82edc0cbbb69285",
+        "GUID:15c098fb1e51e0d45bf9dc55344886e8"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

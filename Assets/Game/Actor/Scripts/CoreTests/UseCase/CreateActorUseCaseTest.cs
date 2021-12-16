@@ -1,24 +1,24 @@
-﻿using NUnit.Framework;
-using UseCase.Actor.Create;
+﻿using Actor.Scripts.Core.UseCase;
+using DDDCore.Event;
+using DDDTestFrameWork;
+using NUnit.Framework;
+using Zenject;
 
 namespace Tests
 {
-    public class CreateActorUseCaseTest
+    public class CreateActorUseCaseTest : ExntenjectUnitTestFixture
     {
     #region Test Methods
 
-        // A Test behaves as an ordinary method
         [Test]
-        public void Should_Succeed_When_Create_Actor()
+        public void SuccessCase()
         {
-            var actorRepository    = new ActorRepository();
-            var createActorUseCase = new CreateActorUseCase(actorRepository);
-            var input              = new CreateActorInput();
-            input.PosId = "Pos 100";
-            var output = new CreateActorOutput();
-            createActorUseCase.Execute(input , output);
-            Assert.NotNull(output.ID);
-            Assert.AreEqual("Pos 100" , actorRepository.FindById(output.ID).PosId);
+            Container.Bind<CreateActorUseCase>().AsSingle();
+            Container.Bind<IDomainEventBus>().FromSubstitute();
+            Container.Bind<IActorRepository>().FromSubstitute();
+            var createActorInput   = new CreateActorInput();
+            var createActorUseCase = Container.Resolve<CreateActorUseCase>();
+            createActorUseCase.Execute(createActorInput);
         }
 
     #endregion
