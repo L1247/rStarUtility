@@ -1,24 +1,24 @@
 {
-    "name": "ActorTests",
-    "rootNamespace": "",
-    "references": [
-        "UnityEditor.TestRunner",
-        "DDDTestFramework",
-        "DDDCore",
-        "Zenject",
-        "Actor"
-    ],
-    "includePlatforms": [
-        "Editor"
-    ],
-    "excludePlatforms": [],
-    "allowUnsafeCode": false,
-    "overrideReferences": true,
-    "precompiledReferences": [
-        "NSubstitute.dll"
-    ],
-    "autoReferenced": false,
-    "defineConstraints": [],
-    "versionDefines": [],
-    "noEngineReferences": false
+  "name": "ActorTests",
+  "rootNamespace": "Actor.Scripts.CoreTests",
+  "references": [
+    "UnityEditor.TestRunner",
+    "DDDTestFramework",
+    "DDDCore",
+    "Zenject",
+    "Actor"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": true,
+  "precompiledReferences": [
+    "NSubstitute.dll"
+  ],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
 }

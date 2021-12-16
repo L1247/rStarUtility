@@ -1,15 +1,30 @@
+#region
+
 using DDDCore.Implement;
-using ThirtyParty.Utilities;
+
+#endregion
 
 namespace Actor.Scripts.Core.Entity
 {
     public class ActorBuilder : AbstractBuilder<ActorBuilder , Actor>
     {
-    #region Overrides of AbstractBuilder<ActorBuilder,Actor>
+    #region Private Variables
+
+        private string id;
+
+    #endregion
+
+    #region Public Methods
 
         public override Actor Build()
         {
-            return new Actor(GUID.NewGUID());
+            return new Actor(id);
+        }
+
+        public ActorBuilder SetId(string id)
+        {
+            this.id = id;
+            return this;
         }
 
     #endregion

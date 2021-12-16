@@ -1,5 +1,6 @@
 #region
 
+using System;
 using NUnit.Framework;
 using Zenject;
 
@@ -27,6 +28,15 @@ namespace DDDTestFrameWork
         public virtual void Teardown()
         {
             StaticContext.Clear();
+        }
+
+    #endregion
+
+    #region Protected Methods
+
+        protected string NewGuid()
+        {
+            return Guid.NewGuid().ToString();
         }
 
     #endregion

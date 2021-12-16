@@ -24,7 +24,7 @@ namespace DDDCore.Implement
     #region Constructor
 
         [Inject]
-        public UseCase(IDomainEventBus domainEventBus , R repository)
+        protected UseCase(IDomainEventBus domainEventBus , R repository)
         {
             this.domainEventBus = domainEventBus;
             this.repository     = repository;
