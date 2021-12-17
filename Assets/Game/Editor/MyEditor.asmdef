@@ -1,11 +1,13 @@
 {
-  "name": "Actor",
-  "rootNamespace": "Actor.Scripts.Core",
+  "name": "MyEditor",
+  "rootNamespace": "",
   "references": [
-    "GUID:f22f718b9b174a74d89f976a69f9dd2a",
-    "GUID:b18a16a3dcf3d01428b99057a0d9b91e"
+    "GUID:d0acddb179989574c8355991596bd3e6",
+    "GUID:0d8beb7f090555447a6cf5ce9e54dbb4"
   ],
-  "includePlatforms": [],
+  "includePlatforms": [
+    "Editor"
+  ],
   "excludePlatforms": [],
   "allowUnsafeCode": false,
   "overrideReferences": false,
