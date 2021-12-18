@@ -2,9 +2,15 @@
 
 #endregion
 
+#region
+
+using DDDCore.Event;
+
+#endregion
+
 namespace DDDCore.Implement
 {
-    public class DomainEvent
+    public class DomainEvent : IDomainEvent
 
     {
     #region Constructor

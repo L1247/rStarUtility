@@ -35,6 +35,8 @@ namespace Actor.Scripts.Core.UseCase
                         .SetId(id)
                         .Build();
             repository.Save(actor);
+
+            domainEventBus.PostAll(actor);
         }
 
     #endregion

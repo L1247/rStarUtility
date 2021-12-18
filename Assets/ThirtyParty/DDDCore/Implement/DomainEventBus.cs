@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using DDDCore.Event;
+using DDDCore.Model;
 using MessagePipe;
 using Zenject;
 
@@ -37,6 +38,13 @@ namespace DDDCore.Implement
         public void Post(IDomainEvent domainEvent)
         {
             publisher.Publish(domainEvent);
+        }
+
+        public void PostAll(IAggregateRoot aggregateRoot)
+        {
+            foreach (var domainEvent in aggregateRoot.GetDomainEvents())
+                Post(domainEvent);
+            aggregateRoot.ClearDomainEvents();
         }
 
         public void Register<T>(Action<T> callBackAction) where T : IDomainEvent

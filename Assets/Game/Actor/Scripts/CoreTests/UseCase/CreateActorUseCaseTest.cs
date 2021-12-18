@@ -23,6 +23,7 @@ namespace Actor.Scripts.CoreTests.UseCase
             Container.Bind<IActorRepository>().FromSubstitute();
             var createActorUseCase = Container.Resolve<CreateActorUseCase>();
             var repository         = Container.Resolve<IActorRepository>();
+            var domainEventBus     = Container.Resolve<IDomainEventBus>();
 
             Core.Entity.Actor actor = null;
             repository.Save(Arg.Do<Core.Entity.Actor>(_ => actor = _));
@@ -32,9 +33,15 @@ namespace Actor.Scripts.CoreTests.UseCase
             createActorInput.Id = actorId;
             createActorUseCase.Execute(createActorInput);
 
+            // Assert Repository Save.
             repository.ReceivedWithAnyArgs(1).Save(null);
+
+            // Assert Actor's id is the same.
             Assert.NotNull(actor , "actor is null");
             Assert.AreEqual(actorId , actor.GetId() , "actorId is not equal");
+
+            // Assert Post Event.
+            domainEventBus.Received(1).PostAll(actor);
         }
 
     #endregion

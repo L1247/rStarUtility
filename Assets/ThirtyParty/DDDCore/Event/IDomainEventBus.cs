@@ -1,6 +1,7 @@
 #region
 
 using System;
+using DDDCore.Model;
 
 #endregion
 
@@ -10,8 +11,10 @@ namespace DDDCore.Event
     {
     #region Public Methods
 
-        void Post(IDomainEvent     domainEvent);
-        void Register<T>(Action<T> callBackAction) where T : IDomainEvent;
+        void Post(IDomainEvent domainEvent);
+
+        void PostAll(IAggregateRoot aggregateRoot);
+        void Register<T>(Action<T>  callBackAction) where T : IDomainEvent;
 
     #endregion
     }
