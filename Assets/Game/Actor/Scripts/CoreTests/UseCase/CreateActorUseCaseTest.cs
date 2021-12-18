@@ -16,7 +16,7 @@ namespace Actor.Scripts.CoreTests.UseCase
     #region Test Methods
 
         [Test]
-        public void SuccessCase()
+        public void Should_Success_When_Create_Actor()
         {
             Container.Bind<CreateActorUseCase>().AsSingle();
             Container.Bind<IDomainEventBus>().FromSubstitute();
