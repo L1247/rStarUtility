@@ -1,12 +1,13 @@
 #region
 
 using System.Collections.Generic;
+using DDDCore.Model;
 
 #endregion
 
 namespace DDDCore.Event.Usecase
 {
-    public interface IRepository<T>
+    public interface IRepository<T> where T : IAggregateRoot
     {
     #region Public Methods
 

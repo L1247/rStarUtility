@@ -3,18 +3,21 @@
 using Actor.Scripts.Core.Entity;
 using DDDCore.Event;
 using DDDCore.Implement;
+using DDDCore.Usecase.CQRS;
+using ThirtyParty.DDDCore.Usecase;
 using Utilities.Contract;
 
 #endregion
 
 namespace Actor.Scripts.Core.UseCase
 {
-    public struct CreateActorInput
+    public struct CreateActorInput : Input
     {
         public string Id;
     }
 
-    public class CreateActorUseCase : UseCase<CreateActorInput , IActorRepository>
+
+    public class CreateActorUseCase : UseCase<CreateActorInput , CqrsCommandOutput , IActorRepository>
     {
     #region Constructor
 
@@ -25,7 +28,7 @@ namespace Actor.Scripts.Core.UseCase
 
     #region Public Methods
 
-        public override void Execute(CreateActorInput input)
+        public override void Execute(CreateActorInput input , CqrsCommandOutput output)
         {
             var id = input.Id;
             Contract.RequireString(id , "id");
@@ -37,6 +40,9 @@ namespace Actor.Scripts.Core.UseCase
             repository.Save(actor);
 
             domainEventBus.PostAll(actor);
+
+            output.SetId(actor.GetId());
+            output.SetExitCode(ExitCode.SUCCESS);
         }
 
     #endregion

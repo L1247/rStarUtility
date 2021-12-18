@@ -10,13 +10,9 @@ namespace DDDCore.Implement
 {
     public abstract class AbstractRepository<T> : IRepository<T> where T : IAggregateRoot
     {
-    #region Protected Variables
-
-        protected Dictionary<string , T> idEntities = new Dictionary<string , T>();
-
-    #endregion
-
     #region Private Variables
+
+        private readonly Dictionary<string , T> idEntities = new Dictionary<string , T>();
 
         private readonly List<T> entities = new List<T>();
 
