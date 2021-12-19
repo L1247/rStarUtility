@@ -1,6 +1,7 @@
 #region
 
 using DDDCore.Implement;
+using Stat.Entity.Event;
 
 #endregion
 
@@ -10,7 +11,11 @@ namespace Stat.Entity
     {
     #region Constructor
 
-        public Stat(string id) : base(id) { }
+        public Stat(string id) : base(id)
+        {
+            var statCreated = new StatCreated(id);
+            AddDomainEvent(statCreated);
+        }
 
     #endregion
     }

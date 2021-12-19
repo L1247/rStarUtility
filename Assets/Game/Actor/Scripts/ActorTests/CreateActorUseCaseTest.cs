@@ -34,7 +34,7 @@ namespace Actor.UseCaseTests
             var          repository         = Container.Resolve<IActorRepository>();
             var          publisher          = Container.Resolve<IPublisher<DomainEvent>>();
             Entity.Actor actor              = null;
-            repository.Save(Arg.Do<Entity.Actor>(_ => actor = _));
+            repository.Save(Arg.Do<Entity.Actor>(a => actor = a));
             ActorCreated actorCreated = null;
             publisher.Publish(Arg.Do<ActorCreated>(e => actorCreated = e));
 
