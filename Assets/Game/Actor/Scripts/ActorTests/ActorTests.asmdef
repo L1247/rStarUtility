@@ -6,8 +6,9 @@
     "DDDTestFramework",
     "DDDCore",
     "Zenject",
-    "Actor",
-    "MessagePipe"
+    "MessagePipe",
+    "ActorEntity",
+    "ActorUseCase"
   ],
   "includePlatforms": [
     "Editor"
