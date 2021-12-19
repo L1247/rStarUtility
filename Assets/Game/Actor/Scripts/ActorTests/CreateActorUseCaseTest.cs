@@ -2,11 +2,9 @@
 
 using Actor.Scripts.Core.DomainEvent;
 using Actor.Scripts.Core.UseCase;
-using DDDCore.Event;
 using DDDCore.Implement;
 using DDDCore.Usecase.CQRS;
 using DDDTestFrameWork;
-using MessagePipe;
 using NSubstitute;
 using NUnit.Framework;
 using ThirtyParty.DDDCore.DDDTestFramwork;
@@ -18,7 +16,7 @@ using Zenject;
 namespace Actor.UseCaseTests
 {
     [TestFixture]
-    public class CreateActorUseCaseTest : ExtenjectUnitTestFixture
+    public class CreateActorUseCaseTest : DDDUnitTestFixture
     {
     #region Test Methods
 
@@ -28,13 +26,9 @@ namespace Actor.UseCaseTests
         public void Should_Success_When_Create_Actor(string inputId)
         {
             Container.Bind<CreateActorUseCase>().AsSingle();
-            Container.Bind<ISubscriber<DomainEvent>>().FromSubstitute();
-            Container.Bind<IPublisher<DomainEvent>>().FromSubstitute();
-            Container.Bind<IDomainEventBus>().To<DomainEventBus>().AsSingle();
             Container.Bind<IActorRepository>().FromSubstitute();
             var          createActorUseCase = Container.Resolve<CreateActorUseCase>();
             var          repository         = Container.Resolve<IActorRepository>();
-            var          publisher          = Container.Resolve<IPublisher<DomainEvent>>();
             Entity.Actor actor              = null;
             repository.Save(Arg.Do<Entity.Actor>(a => actor = a));
             ActorCreated actorCreated = null;

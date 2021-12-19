@@ -1,6 +1,5 @@
 #region
 
-using System;
 using NUnit.Framework;
 using Zenject;
 
@@ -8,7 +7,7 @@ using Zenject;
 
 namespace DDDTestFrameWork
 {
-    public abstract class ExtenjectUnitTestFixture
+    public class UnitTestFixture
     {
     #region Protected Variables
 
@@ -28,20 +27,6 @@ namespace DDDTestFrameWork
         public virtual void Teardown()
         {
             StaticContext.Clear();
-        }
-
-    #endregion
-
-    #region Protected Methods
-
-        protected string NewGuid()
-        {
-            return Guid.NewGuid().ToString();
-        }
-
-        protected Scenario Scenario(string annotation)
-        {
-            return new Scenario();
         }
 
     #endregion

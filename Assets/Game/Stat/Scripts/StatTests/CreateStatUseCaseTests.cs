@@ -1,11 +1,9 @@
 #region
 
-using DDDCore.Event;
 using DDDCore.Implement;
 using DDDCore.Usecase.CQRS;
 using DDDTestFrameWork;
 using Game.Stat.Scripts.UseCase;
-using MessagePipe;
 using NSubstitute;
 using NUnit.Framework;
 using Stat.Entity.Event;
@@ -17,7 +15,7 @@ using Zenject;
 
 namespace Stat.UseCaseTests
 {
-    public class CreateStatUseCaseTests : ExtenjectUnitTestFixture
+    public class CreateStatUseCaseTests : DDDUnitTestFixture
     {
     #region Test Methods
 
@@ -25,16 +23,12 @@ namespace Stat.UseCaseTests
         public void Should_Success_When_Create_Stat()
         {
             Container.Bind<CreateStatUseCase>().AsSingle();
-            Container.Bind<ISubscriber<DomainEvent>>().FromSubstitute();
-            Container.Bind<IPublisher<DomainEvent>>().FromSubstitute();
-            Container.Bind<IDomainEventBus>().To<DomainEventBus>().AsSingle();
             Container.Bind<IStatRepository>().FromSubstitute();
 
             var createStatUseCase = Container.Resolve<CreateStatUseCase>();
             var input             = new CreateStatInput();
             var output            = CqrsCommandPresenter.NewInstance();
             var repository        = Container.Resolve<IStatRepository>();
-            var publisher         = Container.Resolve<IPublisher<DomainEvent>>();
 
             Entity.Stat stat = null;
             repository.Save(Arg.Do<Entity.Stat>(s => stat = s));
