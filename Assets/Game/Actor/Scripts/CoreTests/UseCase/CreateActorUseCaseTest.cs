@@ -1,9 +1,12 @@
 ﻿#region
 
+using Actor.Scripts.Core.DomainEvent;
 using Actor.Scripts.Core.UseCase;
 using DDDCore.Event;
+using DDDCore.Implement;
 using DDDCore.Usecase.CQRS;
 using DDDTestFrameWork;
+using MessagePipe;
 using NSubstitute;
 using NUnit.Framework;
 using ThirtyParty.DDDCore.Implement.CQRS;
@@ -21,14 +24,18 @@ namespace Actor.Scripts.CoreTests.UseCase
         public void Should_Success_When_Create_Actor()
         {
             Container.Bind<CreateActorUseCase>().AsSingle();
-            Container.Bind<IDomainEventBus>().FromSubstitute();
+            Container.Bind<ISubscriber<IDomainEvent>>().FromSubstitute();
+            Container.Bind<IPublisher<IDomainEvent>>().FromSubstitute();
+            Container.Bind<IDomainEventBus>().To<DomainEventBus>().AsSingle();
             Container.Bind<IActorRepository>().FromSubstitute();
             var createActorUseCase = Container.Resolve<CreateActorUseCase>();
             var repository         = Container.Resolve<IActorRepository>();
-            var domainEventBus     = Container.Resolve<IDomainEventBus>();
+            var publisher          = Container.Resolve<IPublisher<IDomainEvent>>();
 
             Core.Entity.Actor actor = null;
             repository.Save(Arg.Do<Core.Entity.Actor>(_ => actor = _));
+            ActorCreated actorCreated = null;
+            publisher.Publish(Arg.Do<ActorCreated>(e => actorCreated = e));
 
             var createActorInput = new CreateActorInput();
             var output           = CqrsCommandPresenter.NewInstance();
@@ -36,7 +43,7 @@ namespace Actor.Scripts.CoreTests.UseCase
             createActorInput.Id = actorId;
             createActorUseCase.Execute(createActorInput , output);
 
-            // Assert output id
+            // the result is success
             Assert.AreEqual(actorId ,          output.GetId() ,       "id is not equal");
             Assert.AreEqual(ExitCode.SUCCESS , output.GetExitCode() , "ExitCode is not equal");
 
@@ -47,8 +54,9 @@ namespace Actor.Scripts.CoreTests.UseCase
             Assert.NotNull(actor , "actor is null");
             Assert.AreEqual(actorId , actor.GetId() , "actorId is not equal");
 
-            // Assert Post Event.
-            domainEventBus.Received(1).PostAll(actor);
+            // a ActorCreated event is published.
+            publisher.Received(1).Publish(Arg.Is<IDomainEvent>(i => i.GetType() == typeof(ActorCreated)));
+            Assert.AreEqual(actorId , actorCreated.ActorId , "ActorId is not equal");
         }
 
     #endregion
