@@ -11,9 +11,13 @@ using Utilities.Contract;
 
 namespace Actor.Scripts.Core.UseCase
 {
-    public struct CreateActorInput : Input
+    public class CreateActorInput : Input
     {
+    #region Public Variables
+
         public string Id;
+
+    #endregion
     }
 
 
