@@ -1,15 +1,15 @@
 {
-  "name": "ActorFramework",
-  "rootNamespace": "",
-  "references": [
-    "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
-    "GUID:1b9dc54723266be48a6e405ee900f0cc",
-    "GUID:08b38f39e2d9e594389b7a4cf4c2c338",
-    "GUID:b061a8094acaa444a90087c499c32e6e",
-    "GUID:f51ebe6a0ceec4240a699833d6309b23",
-    "GUID:b18a16a3dcf3d01428b99057a0d9b91e",
-    "GUID:b0c3ad48deadb2345b02f5d730fa3d4b"
-  ],
+    "name": "ActorApplication",
+    "rootNamespace": "",
+    "references": [
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
+        "GUID:b18a16a3dcf3d01428b99057a0d9b91e",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:08b38f39e2d9e594389b7a4cf4c2c338",
+        "GUID:b061a8094acaa444a90087c499c32e6e",
+        "GUID:1b9dc54723266be48a6e405ee900f0cc",
+        "GUID:b0c3ad48deadb2345b02f5d730fa3d4b"
+    ],
   "includePlatforms": [],
   "excludePlatforms": [],
   "allowUnsafeCode": false,

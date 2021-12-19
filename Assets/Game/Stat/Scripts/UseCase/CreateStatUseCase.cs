@@ -5,10 +5,11 @@ using DDDCore.Implement;
 using DDDCore.Usecase.CQRS;
 using Stat.Entity;
 using ThirtyParty.DDDCore.Usecase;
+using Utilities.Contract;
 
 #endregion
 
-namespace Game.Stat.Scripts.UseCase
+namespace Stat.UseCase
 {
     public class CreateStatUseCase : UseCase<CreateStatInput , CqrsCommandOutput , IStatRepository>
     {
@@ -23,7 +24,8 @@ namespace Game.Stat.Scripts.UseCase
         public override void Execute(CreateStatInput input , CqrsCommandOutput output)
         {
             var actorId = input.ActorId;
-            var stat    = StatBuilder.NewInstance().SetActorId(actorId).Build();
+            Contract.RequireString(actorId , "actorId");
+            var stat = StatBuilder.NewInstance().SetActorId(actorId).Build();
             repository.Save(stat);
 
             domainEventBus.PostAll(stat);

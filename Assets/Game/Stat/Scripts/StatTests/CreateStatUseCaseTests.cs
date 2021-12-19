@@ -3,10 +3,10 @@
 using DDDCore.Implement;
 using DDDCore.Usecase.CQRS;
 using DDDTestFrameWork;
-using Game.Stat.Scripts.UseCase;
 using NSubstitute;
 using NUnit.Framework;
 using Stat.Entity.Event;
+using Stat.UseCase;
 using ThirtyParty.DDDCore.DDDTestFramwork;
 using ThirtyParty.DDDCore.Implement.CQRS;
 using Zenject;

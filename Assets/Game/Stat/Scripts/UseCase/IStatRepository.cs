@@ -1,10 +1,11 @@
 #region
 
 using DDDCore.Event.Usecase;
+using Stat.Entity;
 
 #endregion
 
-namespace Game.Stat.Scripts.UseCase
+namespace Stat.UseCase
 {
-    public interface IStatRepository : IRepository<global::Stat.Entity.Stat> { }
+    public interface IStatRepository : IRepository<IStat> { }
 }
