@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 997
   m_ShowMode: 4
-  m_Title: Inspector
+  m_Title: Project
   m_RootView: {fileID: 5}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -39,9 +39,9 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1700
+    x: 1593
     y: 0
-    width: 430
+    width: 537
     height: 947
   m_MinSize: {x: 277, y: 121}
   m_MaxSize: {x: 4002, y: 4021}
@@ -65,10 +65,10 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 548
+    x: 570
     y: 0
-    width: 601
-    height: 382
+    width: 623
+    height: 510
   m_MinSize: {x: 102, y: 121}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 18}
@@ -95,12 +95,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1149
-    height: 382
+    width: 1193
+    height: 510
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 183
+  controlID: 148
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_MinSize: {x: 500, y: 200}
   m_MaxSize: {x: 40480, y: 16192}
   vertical: 1
-  controlID: 118
+  controlID: 54
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -222,7 +222,7 @@ MonoBehaviour:
   m_MinSize: {x: 500, y: 200}
   m_MaxSize: {x: 40480, y: 16192}
   vertical: 0
-  controlID: 119
+  controlID: 55
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -242,12 +242,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1149
+    width: 1193
     height: 947
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 146
+  controlID: 19
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -265,8 +265,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 548
-    height: 382
+    width: 570
+    height: 510
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 20}
@@ -291,9 +291,9 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 382
-    width: 1149
-    height: 565
+    y: 510
+    width: 1193
+    height: 437
   m_MinSize: {x: 101, y: 121}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 22}
@@ -319,14 +319,14 @@ MonoBehaviour:
   - {fileID: 15}
   m_Position:
     serializedVersion: 2
-    x: 1149
+    x: 1193
     y: 0
-    width: 551
+    width: 400
     height: 947
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 99
+  controlID: 56
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -344,7 +344,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 551
+    width: 400
     height: 425
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
@@ -370,7 +370,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 425
-    width: 551
+    width: 400
     height: 522
   m_MinSize: {x: 232, y: 271}
   m_MaxSize: {x: 10002, y: 10021}
@@ -434,7 +434,7 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_Spl:
-    ID: 216
+    ID: 212
     splitterInitialOffset: 0
     currentActiveSplitter: -1
     realSizes:
@@ -518,7 +518,7 @@ MonoBehaviour:
       name: DDD Practice
       fullName: DDD Practice
       resultStatus: 1
-      duration: 0.9676914
+      duration: 0.4599646
       messages: 
       output: 
       stacktrace: 
@@ -534,7 +534,7 @@ MonoBehaviour:
       name: ActorTests.dll
       fullName: C:/GitProject/SideProject/DDD-Practice/Library/ScriptAssemblies/ActorTests.dll
       resultStatus: 1
-      duration: 0.9432841
+      duration: 0.4217444
       messages: 
       output: 
       stacktrace: 
@@ -550,7 +550,7 @@ MonoBehaviour:
       name: Actor
       fullName: Actor
       resultStatus: 1
-      duration: 0.8535819
+      duration: 0.4199476
       messages: 
       output: 
       stacktrace: 
@@ -566,7 +566,7 @@ MonoBehaviour:
       name: Scripts
       fullName: Actor.Scripts
       resultStatus: 1
-      duration: 0.7536732
+      duration: 0.4196601
       messages: 
       output: 
       stacktrace: 
@@ -582,7 +582,7 @@ MonoBehaviour:
       name: CoreTests
       fullName: Actor.Scripts.CoreTests
       resultStatus: 1
-      duration: 0.6541912
+      duration: 0.4170828
       messages: 
       output: 
       stacktrace: 
@@ -598,7 +598,7 @@ MonoBehaviour:
       name: UseCase
       fullName: Actor.Scripts.CoreTests.UseCase
       resultStatus: 1
-      duration: 0.5547925
+      duration: 0.4129019
       messages: 
       output: 
       stacktrace: 
@@ -614,7 +614,7 @@ MonoBehaviour:
       name: CreateActorUseCaseTest
       fullName: Actor.Scripts.CoreTests.UseCase.CreateActorUseCaseTest
       resultStatus: 1
-      duration: 0.4526509
+      duration: 0.4106449
       messages: 
       output: 
       stacktrace: 
@@ -630,7 +630,7 @@ MonoBehaviour:
       name: Should_Success_When_Create_Actor
       fullName: Actor.Scripts.CoreTests.UseCase.CreateActorUseCaseTest.Should_Success_When_Create_Actor
       resultStatus: 1
-      duration: 0.3432524
+      duration: 0.3896688
       messages: 
       output: 
       stacktrace: 
@@ -642,7 +642,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1003
       parentUniqueId: ActorTests.dll/Actor/Scripts/CoreTests/UseCase/[ActorTests][Actor.Scripts.CoreTests.UseCase.CreateActorUseCaseTest][suite]
-    m_ResultText: DDD Practice (0.968s)
+    m_ResultText: DDD Practice (0.460s)
     m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
@@ -694,10 +694,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 548
+    x: 570
     y: 73
-    width: 599
-    height: 361
+    width: 621
+    height: 489
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -732,7 +732,7 @@ MonoBehaviour:
     m_VAllowExceedBaseRangeMin: 1
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
-    m_HSlider: 0
+    m_HSlider: 1
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
     m_EnableMouseInput: 1
@@ -744,23 +744,23 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 599
-      height: 340
-    m_Scale: {x: 0.31197917, y: 0.31197917}
-    m_Translation: {x: 299.5, y: 170}
+      width: 621
+      height: 468
+    m_Scale: {x: 0.3234375, y: 0.3234375}
+    m_Translation: {x: 310.49997, y: 233.99998}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -960
-      y: -544.90814
-      width: 1920
-      height: 1089.8163
+      x: -959.9999
+      y: -723.4782
+      width: 1919.9999
+      height: 1446.9564
     m_MinimalGUI: 1
-  m_defaultScale: 0.31197917
-  m_LastWindowPixelSize: {x: 599, y: 361}
+  m_defaultScale: 0.3234375
+  m_LastWindowPixelSize: {x: 621, y: 489}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -816,8 +816,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 73
-    width: 547
-    height: 361
+    width: 569
+    height: 489
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1019,9 +1019,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 472.9785, y: 609.23456, z: -105.19391}
+    m_Target: {x: 990.3051, y: 736.46826, z: -6.538087}
     speed: 2
-    m_Value: {x: 472.9785, y: 609.23456, z: -105.19391}
+    m_Value: {x: 990.3051, y: 736.46826, z: -6.538087}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1072,9 +1072,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 972.51575
+    m_Target: 735.2032
     speed: 2
-    m_Value: 972.51575
+    m_Value: 735.2032
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1184,9 +1184,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 455
-    width: 1148
-    height: 544
+    y: 583
+    width: 1192
+    height: 416
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1211,9 +1211,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1149
+    x: 1193
     y: 73
-    width: 549
+    width: 398
     height: 404
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -1222,9 +1222,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: dc4f0000
       m_LastClickedID: 0
-      m_ExpandedIDs: 2cdcffff88dcffff5adfffffb6dfffff88e1ffffe4e1ffff58e9ffffb4e9ffffcaeaffff26ebffff3cecffff96ecffffeaedffff46eeffff58efffffb4efffffb0f1ffff0cf2ffff1ef3ffff7af3ffff54f6ffffb0f6ffffc4f7ffff22f8ffff28fbffff
+      m_ExpandedIDs: e2c3ffffe2cfffff3ce4fffff2edffff1afaffff26fbffffbc500000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1268,9 +1268,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1149
+    x: 1193
     y: 498
-    width: 549
+    width: 398
     height: 501
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -1289,22 +1289,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Game/Actor/Scripts/CoreTests
+    - Assets/Game/Actor/Scripts/Application
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Game/Actor/Scripts/CoreTests
+  - Assets/Game/Actor/Scripts/Application
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\GitProject\SideProject\DDD-Practice
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 9a4e0000
-    m_LastClickedID: 20122
-    m_ExpandedIDs: 000000007a4e00007c4e00007e4e0000804e0000824e0000844e0000864e0000884e00008a4e00008c4e00008e4e0000904e0000924e0000944e0000964e0000984e00009a4e00009e4e0000a24e0000ae4e000000ca9a3b
+    m_SelectedIDs: d84f0000
+    m_LastClickedID: 20440
+    m_ExpandedIDs: 00000000824e0000844e0000864e0000884e00008a4e00008c4e00008e4e0000904e0000924e0000944e0000964e0000984e00009a4e00009c4e00009e4e0000a64e0000aa4e000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1332,7 +1332,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000007a4e00007c4e00007e4e0000804e0000824e0000844e0000864e0000884e00008a4e00008c4e00008e4e0000904e0000924e0000944e0000964e0000984e00009a4e0000
+    m_ExpandedIDs: 00000000824e0000844e0000864e0000884e00008a4e00008c4e00008e4e0000904e0000924e0000944e0000964e0000984e00009a4e00009c4e00009e4e0000a04e0000a24e0000a44e0000a64e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1363,18 +1363,18 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: c6230000444600004245000060530000d25000003251000030510000c8450000d64d0000644500002446000098470000c83e0000b23c0000964200002c5b0000703f00007a410000083d000000570000bc3e0000fa410000e23c0000de3c000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: DiContainerExtensions
-      m_OriginalName: DiContainerExtensions
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 2126
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 15}
     m_CreateAssetUtility:
@@ -1387,7 +1387,7 @@ MonoBehaviour:
     m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 16
   m_SkipHiddenPackages: 0
-  m_DirectoriesAreaWidth: 280
+  m_DirectoriesAreaWidth: 207
 --- !u!114 &25
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1408,9 +1408,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1700
+    x: 1593
     y: 73
-    width: 428
+    width: 535
     height: 926
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:

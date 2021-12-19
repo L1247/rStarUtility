@@ -1,12 +1,10 @@
 #region
 
-using DDDCore.Event;
-
 #endregion
 
 namespace Actor.Scripts.Core.DomainEvent
 {
-    public class ActorCreated : IDomainEvent
+    public class ActorCreated : DDDCore.Implement.DomainEvent
     {
     #region Public Variables
 

@@ -1,7 +1,6 @@
 #region
 
 using System.Collections.Generic;
-using DDDCore.Event;
 using DDDCore.Model;
 
 #endregion
@@ -18,7 +17,7 @@ namespace DDDCore.Implement
 
     #region Private Variables
 
-        private readonly List<IDomainEvent> domainEvents = new List<IDomainEvent>();
+        private readonly List<DomainEvent> domainEvents = new List<DomainEvent>();
 
     #endregion
 
@@ -33,7 +32,7 @@ namespace DDDCore.Implement
 
     #region Public Methods
 
-        public void AddDomainEvent(IDomainEvent domainEvent)
+        public void AddDomainEvent(DomainEvent domainEvent)
         {
             domainEvents.Add(domainEvent);
         }
@@ -43,13 +42,13 @@ namespace DDDCore.Implement
             domainEvents.Clear();
         }
 
-        public T FindDomainEvent<T>() where T : IDomainEvent
+        public T FindDomainEvent<T>() where T : DomainEvent
         {
             var tEvent = domainEvents.Find(domainEvent => domainEvent is T);
             return (T)tEvent;
         }
 
-        public List<IDomainEvent> GetDomainEvents()
+        public List<DomainEvent> GetDomainEvents()
         {
             return domainEvents;
         }

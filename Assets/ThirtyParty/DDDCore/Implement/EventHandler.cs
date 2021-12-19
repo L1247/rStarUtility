@@ -28,7 +28,7 @@ namespace DDDCore.Implement
 
     #region Protected Methods
 
-        protected void Register<T>(Action<T> callBackAction) where T : IDomainEvent
+        protected void Register<T>(Action<T> callBackAction) where T : DomainEvent
         {
             domainEventBus.Register(callBackAction);
         }

@@ -5,7 +5,7 @@
 #region
 
 using System.Collections.Generic;
-using DDDCore.Event;
+using DDDCore.Implement;
 
 #endregion
 
@@ -15,10 +15,10 @@ namespace DDDCore.Model
     {
     #region Public Methods
 
-        void               AddDomainEvent(IDomainEvent domainEvent);
-        void               ClearDomainEvents();
-        T                  FindDomainEvent<T>() where T : IDomainEvent;
-        List<IDomainEvent> GetDomainEvents();
+        void              AddDomainEvent(DomainEvent domainEvent);
+        void              ClearDomainEvents();
+        T                 FindDomainEvent<T>() where T : DomainEvent;
+        List<DomainEvent> GetDomainEvents();
 
     #endregion
     }

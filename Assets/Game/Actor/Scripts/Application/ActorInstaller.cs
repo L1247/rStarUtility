@@ -18,7 +18,7 @@ namespace Game.Actor.Scripts.Framework
         public override void InstallBindings()
         {
             var option = Container.BindMessagePipe();
-            Container.BindMessageBroker<IDomainEvent>(option);
+            Container.BindMessageBroker<DomainEvent>(option);
             Container.BindInterfacesTo<ActorSamplePresenter>().AsSingle();
             Container.Bind<ActorController>().AsSingle();
             Container.Bind<CreateActorUseCase>().AsSingle();

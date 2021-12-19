@@ -25,13 +25,13 @@ namespace Actor.Scripts.CoreTests.UseCase
         public void Should_Success_When_Create_Actor()
         {
             Container.Bind<CreateActorUseCase>().AsSingle();
-            Container.Bind<ISubscriber<IDomainEvent>>().FromSubstitute();
-            Container.Bind<IPublisher<IDomainEvent>>().FromSubstitute();
+            Container.Bind<ISubscriber<DomainEvent>>().FromSubstitute();
+            Container.Bind<IPublisher<DomainEvent>>().FromSubstitute();
             Container.Bind<IDomainEventBus>().To<DomainEventBus>().AsSingle();
             Container.Bind<IActorRepository>().FromSubstitute();
             var               createActorUseCase = Container.Resolve<CreateActorUseCase>();
             var               repository         = Container.Resolve<IActorRepository>();
-            var               publisher          = Container.Resolve<IPublisher<IDomainEvent>>();
+            var               publisher          = Container.Resolve<IPublisher<DomainEvent>>();
             Core.Entity.Actor actor              = null;
             repository.Save(Arg.Do<Core.Entity.Actor>(_ => actor = _));
             ActorCreated actorCreated = null;
@@ -57,7 +57,7 @@ namespace Actor.Scripts.CoreTests.UseCase
                 })
                 .And("a ActorCreated event is published , and id equals" , () =>
                 {
-                    publisher.Received(1).Publish(Arg.Is<IDomainEvent>(domainEvent => domainEvent.GetType() == typeof(ActorCreated)));
+                    publisher.Received(1).Publish(Arg.Is<DomainEvent>(domainEvent => domainEvent.GetType() == typeof(ActorCreated)));
                     Assert.AreEqual(actorId , actorCreated.ActorId , "ActorId is not equal");
                 });
         }

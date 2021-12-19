@@ -15,17 +15,17 @@ namespace DDDCore.Implement
     {
     #region Private Variables
 
-        private readonly Dictionary<Type , List<Action<IDomainEvent>>> callBacks
-            = new Dictionary<Type , List<Action<IDomainEvent>>>();
+        private readonly Dictionary<Type , List<Action<DomainEvent>>> callBacks
+            = new Dictionary<Type , List<Action<DomainEvent>>>();
 
-        private readonly IPublisher<IDomainEvent> publisher;
+        private readonly IPublisher<DomainEvent> publisher;
 
     #endregion
 
     #region Constructor
 
         [Inject]
-        public DomainEventBus(ISubscriber<IDomainEvent> subscriber , IPublisher<IDomainEvent> publisher)
+        public DomainEventBus(ISubscriber<DomainEvent> subscriber , IPublisher<DomainEvent> publisher)
         {
             this.publisher = publisher;
             subscriber.Subscribe(HandleEvent);
@@ -35,7 +35,7 @@ namespace DDDCore.Implement
 
     #region Public Methods
 
-        public void Post(IDomainEvent domainEvent)
+        public void Post(DomainEvent domainEvent)
         {
             publisher.Publish(domainEvent);
         }
@@ -47,18 +47,18 @@ namespace DDDCore.Implement
             aggregateRoot.ClearDomainEvents();
         }
 
-        public void Register<T>(Action<T> callBackAction) where T : IDomainEvent
+        public void Register<T>(Action<T> callBackAction) where T : DomainEvent
         {
-            var                        type        = typeof(T);
-            var                        containsKey = callBacks.ContainsKey(type);
-            List<Action<IDomainEvent>> actions;
+            var                       type        = typeof(T);
+            var                       containsKey = callBacks.ContainsKey(type);
+            List<Action<DomainEvent>> actions;
             if (containsKey)
             {
                 actions = callBacks[type];
             }
             else
             {
-                actions = new List<Action<IDomainEvent>>();
+                actions = new List<Action<DomainEvent>>();
                 callBacks.Add(type , actions);
             }
 
@@ -69,7 +69,7 @@ namespace DDDCore.Implement
 
     #region Private Methods
 
-        private void HandleEvent(IDomainEvent domainEvent)
+        private void HandleEvent(DomainEvent domainEvent)
         {
             var type        = domainEvent.GetType();
             var containsKey = callBacks.ContainsKey(type);
