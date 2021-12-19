@@ -8,7 +8,7 @@ using Zenject;
 
 namespace DDDTestFrameWork
 {
-    public abstract class ExntenjectUnitTestFixture
+    public abstract class ExtenjectUnitTestFixture
     {
     #region Protected Variables
 
@@ -37,6 +37,11 @@ namespace DDDTestFrameWork
         protected string NewGuid()
         {
             return Guid.NewGuid().ToString();
+        }
+
+        protected Scenario Scenario(string annotation)
+        {
+            return new Scenario();
         }
 
     #endregion

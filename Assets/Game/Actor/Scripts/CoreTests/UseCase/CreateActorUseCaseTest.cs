@@ -9,6 +9,7 @@ using DDDTestFrameWork;
 using MessagePipe;
 using NSubstitute;
 using NUnit.Framework;
+using ThirtyParty.DDDCore.DDDTestFramwork;
 using ThirtyParty.DDDCore.Implement.CQRS;
 using Zenject;
 
@@ -16,7 +17,7 @@ using Zenject;
 
 namespace Actor.Scripts.CoreTests.UseCase
 {
-    public class CreateActorUseCaseTest : ExntenjectUnitTestFixture
+    public class CreateActorUseCaseTest : ExtenjectUnitTestFixture
     {
     #region Test Methods
 
@@ -28,35 +29,37 @@ namespace Actor.Scripts.CoreTests.UseCase
             Container.Bind<IPublisher<IDomainEvent>>().FromSubstitute();
             Container.Bind<IDomainEventBus>().To<DomainEventBus>().AsSingle();
             Container.Bind<IActorRepository>().FromSubstitute();
-            var createActorUseCase = Container.Resolve<CreateActorUseCase>();
-            var repository         = Container.Resolve<IActorRepository>();
-            var publisher          = Container.Resolve<IPublisher<IDomainEvent>>();
-
-            Core.Entity.Actor actor = null;
+            var               createActorUseCase = Container.Resolve<CreateActorUseCase>();
+            var               repository         = Container.Resolve<IActorRepository>();
+            var               publisher          = Container.Resolve<IPublisher<IDomainEvent>>();
+            Core.Entity.Actor actor              = null;
             repository.Save(Arg.Do<Core.Entity.Actor>(_ => actor = _));
             ActorCreated actorCreated = null;
             publisher.Publish(Arg.Do<ActorCreated>(e => actorCreated = e));
 
-            var createActorInput = new CreateActorInput();
-            var output           = CqrsCommandPresenter.NewInstance();
-            var actorId          = NewGuid();
-            createActorInput.Id = actorId;
-            createActorUseCase.Execute(createActorInput , output);
+            var input   = new CreateActorInput();
+            var output  = CqrsCommandPresenter.NewInstance();
+            var actorId = NewGuid();
 
-            // the result is success
-            Assert.AreEqual(actorId ,          output.GetId() ,       "id is not equal");
-            Assert.AreEqual(ExitCode.SUCCESS , output.GetExitCode() , "ExitCode is not equal");
-
-            // Assert Repository Save.
-            repository.ReceivedWithAnyArgs(1).Save(null);
-
-            // Assert Actor's id is the same.
-            Assert.NotNull(actor , "actor is null");
-            Assert.AreEqual(actorId , actor.GetId() , "actorId is not equal");
-
-            // a ActorCreated event is published.
-            publisher.Received(1).Publish(Arg.Is<IDomainEvent>(i => i.GetType() == typeof(ActorCreated)));
-            Assert.AreEqual(actorId , actorCreated.ActorId , "ActorId is not equal");
+            Scenario("Create a actor with valid actor id")
+                .Given("a valid actor id" , () => { input.Id = actorId; })
+                .When("create a actor" , () => { createActorUseCase.Execute(input , output); })
+                .Then("the result is success" , () =>
+                {
+                    Assert.AreEqual(actorId ,          output.GetId() ,       "id is not equal");
+                    Assert.AreEqual(ExitCode.SUCCESS , output.GetExitCode() , "ExitCode is not equal");
+                })
+                .And("the repository should save actor , and id equals" , () =>
+                {
+                    repository.ReceivedWithAnyArgs(1).Save(null);
+                    Assert.NotNull(actor , "actor is null");
+                    Assert.AreEqual(actorId , actor.GetId() , "actorId is not equal");
+                })
+                .And("a ActorCreated event is Publish , and id equals" , () =>
+                {
+                    publisher.Received(1).Publish(Arg.Is<IDomainEvent>(domainEvent => domainEvent.GetType() == typeof(ActorCreated)));
+                    Assert.AreEqual(actorId , actorCreated.ActorId , "ActorId is not equal");
+                });
         }
 
     #endregion
