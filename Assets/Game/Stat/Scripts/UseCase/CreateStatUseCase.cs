@@ -22,7 +22,8 @@ namespace Game.Stat.Scripts.UseCase
 
         public override void Execute(CreateStatInput input , CqrsCommandOutput output)
         {
-            var stat = StatBuilder.NewInstance().Build();
+            var actorId = input.ActorId;
+            var stat    = StatBuilder.NewInstance().SetActorId(actorId).Build();
             repository.Save(stat);
 
             domainEventBus.PostAll(stat);
@@ -34,5 +35,12 @@ namespace Game.Stat.Scripts.UseCase
     #endregion
     }
 
-    public class CreateStatInput : Input { }
+    public class CreateStatInput : Input
+    {
+    #region Public Variables
+
+        public string ActorId;
+
+    #endregion
+    }
 }

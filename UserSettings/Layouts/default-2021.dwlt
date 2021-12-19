@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 997
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Inspector
   m_RootView: {fileID: 5}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -45,9 +45,9 @@ MonoBehaviour:
     height: 947
   m_MinSize: {x: 277, y: 121}
   m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 25}
+  m_ActualView: {fileID: 26}
   m_Panes:
-  - {fileID: 25}
+  - {fileID: 26}
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &3
@@ -68,12 +68,12 @@ MonoBehaviour:
     x: 570
     y: 0
     width: 623
-    height: 510
-  m_MinSize: {x: 102, y: 121}
-  m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 18}
+    height: 548
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 19}
   m_Panes:
-  - {fileID: 18}
+  - {fileID: 19}
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &4
@@ -96,11 +96,11 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 1193
-    height: 510
+    height: 548
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 148
+  controlID: 199
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_MinSize: {x: 500, y: 200}
   m_MaxSize: {x: 40480, y: 16192}
   vertical: 1
-  controlID: 54
+  controlID: 196
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -222,7 +222,7 @@ MonoBehaviour:
   m_MinSize: {x: 500, y: 200}
   m_MaxSize: {x: 40480, y: 16192}
   vertical: 0
-  controlID: 55
+  controlID: 197
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -247,7 +247,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 19
+  controlID: 198
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -266,13 +266,13 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 570
-    height: 510
+    height: 548
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 20}
+  m_ActualView: {fileID: 21}
   m_Panes:
-  - {fileID: 19}
   - {fileID: 20}
+  - {fileID: 21}
   m_Selected: 1
   m_LastSelected: 1
 --- !u!114 &12
@@ -291,15 +291,15 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 510
+    y: 548
     width: 1193
-    height: 437
+    height: 399
   m_MinSize: {x: 101, y: 121}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 22}
+  m_ActualView: {fileID: 23}
   m_Panes:
-  - {fileID: 21}
   - {fileID: 22}
+  - {fileID: 23}
   m_Selected: 1
   m_LastSelected: 1
 --- !u!114 &13
@@ -326,7 +326,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 56
+  controlID: 116
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -348,9 +348,9 @@ MonoBehaviour:
     height: 425
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 23}
+  m_ActualView: {fileID: 24}
   m_Panes:
-  - {fileID: 23}
+  - {fileID: 24}
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &15
@@ -374,9 +374,9 @@ MonoBehaviour:
     height: 522
   m_MinSize: {x: 232, y: 271}
   m_MaxSize: {x: 10002, y: 10021}
-  m_ActualView: {fileID: 24}
+  m_ActualView: {fileID: 25}
   m_Panes:
-  - {fileID: 24}
+  - {fileID: 25}
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &16
@@ -389,7 +389,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: TestRunnerWindow
+  m_Name: InspectorWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -398,14 +398,57 @@ MonoBehaviour:
     y: 0
     width: 430
     height: 947
-  m_MinSize: {x: 101, y: 121}
+  m_MinSize: {x: 276, y: 121}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 17}
   m_Panes:
+  - {fileID: 18}
   - {fileID: 17}
-  m_Selected: 0
+  m_Selected: 1
   m_LastSelected: 0
 --- !u!114 &17
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 12019, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 275, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: Inspector
+    m_Image: {fileID: -2667387946076563598, guid: 0000000000000000d000000000000000, type: 0}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+    x: 2130
+    y: 73
+    width: 429
+    height: 926
+  m_ViewDataDictionary: {fileID: 0}
+  m_OverlayCanvas:
+    m_LastAppliedPresetName: Default
+    m_SaveData: []
+  m_ObjectsLockedBeforeSerialization:
+  - {fileID: 5897886265953266890, guid: fa41d2d340a340842acbd761d2009ae7, type: 3}
+  m_InstanceIDsLockedBeforeSerialization: 
+  m_PreviewResizer:
+    m_CachedPref: -342
+    m_ControlHash: 1412526313
+    m_PrefName: Preview_InspectorPreview
+  m_LastInspectedObjectInstanceID: -1
+  m_LastVerticalScrollValue: 0
+  m_GlobalObjectId: 
+  m_InspectorMode: 0
+  m_LockTracker:
+    m_IsLocked: 1
+  m_PreviewWindow: {fileID: 0}
+--- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -434,7 +477,7 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_Spl:
-    ID: 212
+    ID: -1
     splitterInitialOffset: 0
     currentActiveSplitter: -1
     realSizes:
@@ -459,7 +502,7 @@ MonoBehaviour:
     oldSplitSize: 0
   m_TestTypeToolbarIndex: 1
   m_PlayModeTestListGUI:
-    m_Window: {fileID: 17}
+    m_Window: {fileID: 18}
     m_NewResultList:
     - id: 1551
       uniqueId: '[DDD Practice][suite]'
@@ -511,14 +554,14 @@ MonoBehaviour:
       - Uncategorized
     m_SelectedOption: 0
   m_EditModeTestListGUI:
-    m_Window: {fileID: 17}
+    m_Window: {fileID: 18}
     m_NewResultList:
     - id: 1000
       uniqueId: '[DDD Practice][suite]'
       name: DDD Practice
       fullName: DDD Practice
       resultStatus: 1
-      duration: 0.4599646
+      duration: 0.9355601
       messages: 
       output: 
       stacktrace: 
@@ -534,7 +577,7 @@ MonoBehaviour:
       name: ActorTests.dll
       fullName: C:/GitProject/SideProject/DDD-Practice/Library/ScriptAssemblies/ActorTests.dll
       resultStatus: 1
-      duration: 0.4217444
+      duration: 0.8993873
       messages: 
       output: 
       stacktrace: 
@@ -550,7 +593,7 @@ MonoBehaviour:
       name: Actor
       fullName: Actor
       resultStatus: 1
-      duration: 0.4199476
+      duration: 0.8085099
       messages: 
       output: 
       stacktrace: 
@@ -566,7 +609,7 @@ MonoBehaviour:
       name: Scripts
       fullName: Actor.Scripts
       resultStatus: 1
-      duration: 0.4196601
+      duration: 0.707222
       messages: 
       output: 
       stacktrace: 
@@ -582,7 +625,7 @@ MonoBehaviour:
       name: CoreTests
       fullName: Actor.Scripts.CoreTests
       resultStatus: 1
-      duration: 0.4170828
+      duration: 0.6086444
       messages: 
       output: 
       stacktrace: 
@@ -598,7 +641,7 @@ MonoBehaviour:
       name: UseCase
       fullName: Actor.Scripts.CoreTests.UseCase
       resultStatus: 1
-      duration: 0.4129019
+      duration: 0.5087881
       messages: 
       output: 
       stacktrace: 
@@ -614,7 +657,7 @@ MonoBehaviour:
       name: CreateActorUseCaseTest
       fullName: Actor.Scripts.CoreTests.UseCase.CreateActorUseCaseTest
       resultStatus: 1
-      duration: 0.4106449
+      duration: 0.4076404
       messages: 
       output: 
       stacktrace: 
@@ -630,7 +673,7 @@ MonoBehaviour:
       name: Should_Success_When_Create_Actor
       fullName: Actor.Scripts.CoreTests.UseCase.CreateActorUseCaseTest.Should_Success_When_Create_Actor
       resultStatus: 1
-      duration: 0.3896688
+      duration: 0.2962117
       messages: 
       output: 
       stacktrace: 
@@ -642,7 +685,120 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1003
       parentUniqueId: ActorTests.dll/Actor/Scripts/CoreTests/UseCase/[ActorTests][Actor.Scripts.CoreTests.UseCase.CreateActorUseCaseTest][suite]
-    m_ResultText: DDD Practice (0.460s)
+    - id: 1013
+      uniqueId: '[StatTests.dll][suite]'
+      name: StatTests.dll
+      fullName: C:/GitProject/SideProject/DDD-Practice/Library/ScriptAssemblies/StatTests.dll
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1000
+      parentUniqueId: '[DDD Practice][suite]'
+    - id: 1014
+      uniqueId: StatTests.dll/[Game][suite]
+      name: Game
+      fullName: Game
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1013
+      parentUniqueId: '[StatTests.dll][suite]'
+    - id: 1015
+      uniqueId: StatTests.dll/Game/[Stat][suite]
+      name: Stat
+      fullName: Game.Stat
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1014
+      parentUniqueId: StatTests.dll/[Game][suite]
+    - id: 1016
+      uniqueId: StatTests.dll/Game/Stat/[Scripts][suite]
+      name: Scripts
+      fullName: Game.Stat.Scripts
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1015
+      parentUniqueId: StatTests.dll/Game/[Stat][suite]
+    - id: 1017
+      uniqueId: StatTests.dll/Game/Stat/Scripts/[StatTests][suite]
+      name: StatTests
+      fullName: Game.Stat.Scripts.StatTests
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1016
+      parentUniqueId: StatTests.dll/Game/Stat/[Scripts][suite]
+    - id: 1011
+      uniqueId: StatTests.dll/Game/Stat/Scripts/StatTests/[StatTests][Game.Stat.Scripts.StatTests.CreateStatUseCaseTests][suite]
+      name: CreateStatUseCaseTests
+      fullName: Game.Stat.Scripts.StatTests.CreateStatUseCaseTests
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1017
+      parentUniqueId: StatTests.dll/Game/Stat/Scripts/[StatTests][suite]
+    - id: 1012
+      uniqueId: StatTests.dll/Game/Stat/Scripts/StatTests/CreateStatUseCaseTests/[StatTests][Game.Stat.Scripts.StatTests.CreateStatUseCaseTests.Should_Success_When_Create_Stat]
+      name: Should_Success_When_Create_Stat
+      fullName: Game.Stat.Scripts.StatTests.CreateStatUseCaseTests.Should_Success_When_Create_Stat
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1011
+      parentUniqueId: StatTests.dll/Game/Stat/Scripts/StatTests/[StatTests][Game.Stat.Scripts.StatTests.CreateStatUseCaseTests][suite]
+    m_ResultText: DDD Practice (0.936s)
     m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
@@ -674,7 +830,7 @@ MonoBehaviour:
       selectedCategoryMask: 0
       availableCategories:
       - Uncategorized
---- !u!114 &18
+--- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -697,7 +853,7 @@ MonoBehaviour:
     x: 570
     y: 73
     width: 621
-    height: 489
+    height: 527
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -745,28 +901,28 @@ MonoBehaviour:
       x: 0
       y: 21
       width: 621
-      height: 468
-    m_Scale: {x: 0.3234375, y: 0.3234375}
-    m_Translation: {x: 310.49997, y: 233.99998}
+      height: 506
+    m_Scale: {x: 0.33314064, y: 0.33314064}
+    m_Translation: {x: 306.88498, y: 253}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -959.9999
-      y: -723.4782
-      width: 1919.9999
-      height: 1446.9564
+      x: -921.18744
+      y: -759.439
+      width: 1864.0776
+      height: 1518.878
     m_MinimalGUI: 1
   m_defaultScale: 0.3234375
-  m_LastWindowPixelSize: {x: 621, y: 489}
+  m_LastWindowPixelSize: {x: 621, y: 527}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
   m_XRRenderMode: 0
   m_RenderTexture: {fileID: 0}
---- !u!114 &19
+--- !u!114 &20
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -794,7 +950,7 @@ MonoBehaviour:
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
---- !u!114 &20
+--- !u!114 &21
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -817,7 +973,7 @@ MonoBehaviour:
     x: 0
     y: 73
     width: 569
-    height: 489
+    height: 527
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1019,9 +1175,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 990.3051, y: 736.46826, z: -6.538087}
+    m_Target: {x: 498.23416, y: 987.85895, z: -11.405756}
     speed: 2
-    m_Value: {x: 990.3051, y: 736.46826, z: -6.538087}
+    m_Value: {x: 498.23416, y: 987.85895, z: -11.405756}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1072,9 +1228,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 735.2032
+    m_Target: 1000.51
     speed: 2
-    m_Value: 735.2032
+    m_Value: 1000.51
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1099,7 +1255,7 @@ MonoBehaviour:
   m_SceneVisActive: 1
   m_LastLockedObject: {fileID: 0}
   m_ViewIsLockedToObject: 0
---- !u!114 &21
+--- !u!114 &22
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1163,7 +1319,7 @@ MonoBehaviour:
   m_CurrentEditor: 1
   m_LayerEditor:
     m_SelectedLayerIndex: 0
---- !u!114 &22
+--- !u!114 &23
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1184,14 +1340,14 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 583
+    y: 621
     width: 1192
-    height: 416
+    height: 378
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
---- !u!114 &23
+--- !u!114 &24
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1222,9 +1378,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: dc4f0000
+      m_SelectedIDs: 5a4f0000
       m_LastClickedID: 0
-      m_ExpandedIDs: e2c3ffffe2cfffff3ce4fffff2edffff1afaffff26fbffffbc500000
+      m_ExpandedIDs: c8b6ffff40b7ffff9eb8ffff16b9ffff6cbcffffeabcfffffebfffff5ec1ffffbec2ffff1ec4ffff36c7ffff72c9ffffb0cbffff94d1fffff0d2ffff28d5fffff6f7ffff28fbffff7a4e0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1248,7 +1404,7 @@ MonoBehaviour:
       m_IsLocked: 0
     m_CurrentSortingName: TransformSorting
   m_WindowGUID: 8ba31d86f65c5a64b96c1582c5425ccd
---- !u!114 &24
+--- !u!114 &25
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1289,36 +1445,36 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Game/Actor/Scripts/Application
+    - Assets/ThirtyParty/DDDCore/DDDTestFramwork
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Game/Actor/Scripts/Application
+  - Assets/ThirtyParty/DDDCore/DDDTestFramwork
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\GitProject\SideProject\DDD-Practice
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: d84f0000
-    m_LastClickedID: 20440
-    m_ExpandedIDs: 00000000824e0000844e0000864e0000884e00008a4e00008c4e00008e4e0000904e0000924e0000944e0000964e0000984e00009a4e00009c4e00009e4e0000a64e0000aa4e000000ca9a3b
+    m_SelectedIDs: 4c530000
+    m_LastClickedID: 21324
+    m_ExpandedIDs: 00000000d04e0000d24e0000d44e0000d64e0000d84e0000da4e0000dc4e0000de4e0000e04e0000e24e0000e44e0000e64e0000e84e0000ea4e0000ec4e0000ee4e0000f84e0000044f00000c4f0000045000008455000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: UseCase
+      m_OriginalName: UseCase
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 20230
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 4
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 15}
     m_SearchString: 
@@ -1332,7 +1488,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000824e0000844e0000864e0000884e00008a4e00008c4e00008e4e0000904e0000924e0000944e0000964e0000984e00009a4e00009c4e00009e4e0000a04e0000a24e0000a44e0000a64e0000
+    m_ExpandedIDs: 00000000d04e0000d24e0000d44e0000d64e0000d84e0000da4e0000dc4e0000de4e0000e04e0000e24e0000e44e0000e64e0000e84e0000ea4e0000ec4e0000ee4e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1388,7 +1544,7 @@ MonoBehaviour:
     m_GridSize: 16
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 207
---- !u!114 &25
+--- !u!114 &26
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}

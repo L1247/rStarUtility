@@ -35,15 +35,19 @@ namespace Stat.UseCaseTests
             StatCreated statCreated = null;
             publisher.Publish(Arg.Do<StatCreated>(e => statCreated = e));
 
-            string statId = null;
+            string statId  = null;
+            var    actorId = NewGuid();
             Scenario("Create a stat with valid stat id")
+                .Given("a valid actor id" , () => input.ActorId = actorId)
                 .When("create a stat" , () => { createStatUseCase.Execute(input , output); })
                 .Then("the repository should save stat , and id not null" , () =>
                 {
                     repository.ReceivedWithAnyArgs(1).Save(null);
                     Assert.NotNull(stat , "actor is null");
                     statId = stat.GetId();
-                    Assert.NotNull(statId , "stat id is null");
+                    Assert.NotNull(statId ,       "stat id is null");
+                    Assert.NotNull(stat.ActorId , "stat.ActorId is null");
+                    Assert.AreEqual(actorId , stat.ActorId , "ActorId is not equal");
                 })
                 .And("a StatCreated event is published , and id equals" , () =>
                 {
