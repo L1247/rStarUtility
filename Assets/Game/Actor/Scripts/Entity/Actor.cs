@@ -1,11 +1,12 @@
 #region
 
+using Actor.Scripts;
 using Actor.Scripts.Core.DomainEvent;
 using DDDCore.Implement;
 
 #endregion
 
-namespace Actor.Scripts.Core.Entity
+namespace Actor.Entity
 {
     public class Actor : AggregateRoot , IActor
     {

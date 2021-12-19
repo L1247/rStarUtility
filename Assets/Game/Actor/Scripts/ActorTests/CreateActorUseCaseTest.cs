@@ -15,8 +15,9 @@ using Zenject;
 
 #endregion
 
-namespace Actor.Scripts.CoreTests.UseCase
+namespace Actor.UseCaseTests
 {
+    [TestFixture]
     public class CreateActorUseCaseTest : ExtenjectUnitTestFixture
     {
     #region Test Methods
@@ -29,11 +30,11 @@ namespace Actor.Scripts.CoreTests.UseCase
             Container.Bind<IPublisher<DomainEvent>>().FromSubstitute();
             Container.Bind<IDomainEventBus>().To<DomainEventBus>().AsSingle();
             Container.Bind<IActorRepository>().FromSubstitute();
-            var               createActorUseCase = Container.Resolve<CreateActorUseCase>();
-            var               repository         = Container.Resolve<IActorRepository>();
-            var               publisher          = Container.Resolve<IPublisher<DomainEvent>>();
-            Core.Entity.Actor actor              = null;
-            repository.Save(Arg.Do<Core.Entity.Actor>(_ => actor = _));
+            var          createActorUseCase = Container.Resolve<CreateActorUseCase>();
+            var          repository         = Container.Resolve<IActorRepository>();
+            var          publisher          = Container.Resolve<IPublisher<DomainEvent>>();
+            Entity.Actor actor              = null;
+            repository.Save(Arg.Do<Entity.Actor>(_ => actor = _));
             ActorCreated actorCreated = null;
             publisher.Publish(Arg.Do<ActorCreated>(e => actorCreated = e));
 

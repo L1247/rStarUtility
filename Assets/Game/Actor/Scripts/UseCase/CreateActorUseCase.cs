@@ -1,6 +1,6 @@
 #region
 
-using Actor.Scripts.Core.Entity;
+using Actor.Entity;
 using DDDCore.Event;
 using DDDCore.Implement;
 using DDDCore.Usecase.CQRS;

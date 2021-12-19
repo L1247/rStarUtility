@@ -1,6 +1,5 @@
 #region
 
-using Actor.Scripts.Core.Entity;
 using DDDCore.Implement;
 
 #endregion

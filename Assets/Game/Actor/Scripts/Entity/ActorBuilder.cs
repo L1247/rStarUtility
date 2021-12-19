@@ -4,7 +4,7 @@ using DDDCore.Implement;
 
 #endregion
 
-namespace Actor.Scripts.Core.Entity
+namespace Actor.Entity
 {
     public class ActorBuilder : AbstractBuilder<ActorBuilder , Actor>
     {
