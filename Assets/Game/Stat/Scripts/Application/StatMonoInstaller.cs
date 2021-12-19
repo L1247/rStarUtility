@@ -11,7 +11,7 @@ using Zenject;
 
 namespace Game.Stat.Scripts.Application
 {
-    public class StatInstaller : MonoInstaller
+    public class StatMonoInstaller : MonoInstaller
     {
     #region Public Methods
 
