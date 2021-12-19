@@ -1,8 +1,7 @@
 {
-  "name": "ActorUseCase",
+  "name": "StatEntity",
   "rootNamespace": "",
   "references": [
-    "GUID:f741fb6ebe72a8f459a77236ae837e2f",
     "GUID:b18a16a3dcf3d01428b99057a0d9b91e",
     "GUID:f22f718b9b174a74d89f976a69f9dd2a"
   ],

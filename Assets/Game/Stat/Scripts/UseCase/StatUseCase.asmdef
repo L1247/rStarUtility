@@ -1,10 +1,10 @@
 {
-  "name": "ActorUseCase",
+  "name": "StatUseCase",
   "rootNamespace": "",
   "references": [
-    "GUID:f741fb6ebe72a8f459a77236ae837e2f",
     "GUID:b18a16a3dcf3d01428b99057a0d9b91e",
-    "GUID:f22f718b9b174a74d89f976a69f9dd2a"
+    "GUID:f22f718b9b174a74d89f976a69f9dd2a",
+    "GUID:b0c40557d82fed64e8c3b206c8bab30c"
   ],
   "includePlatforms": [],
   "excludePlatforms": [],
