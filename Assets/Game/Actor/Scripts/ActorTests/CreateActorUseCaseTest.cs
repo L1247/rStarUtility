@@ -23,7 +23,9 @@ namespace Actor.UseCaseTests
     #region Test Methods
 
         [Test]
-        public void Should_Success_When_Create_Actor()
+        [TestCase("123")]
+        [TestCase(null)]
+        public void Should_Success_When_Create_Actor(string inputId)
         {
             Container.Bind<CreateActorUseCase>().AsSingle();
             Container.Bind<ISubscriber<DomainEvent>>().FromSubstitute();
@@ -38,28 +40,29 @@ namespace Actor.UseCaseTests
             ActorCreated actorCreated = null;
             publisher.Publish(Arg.Do<ActorCreated>(e => actorCreated = e));
 
-            var input   = new CreateActorInput();
-            var output  = CqrsCommandPresenter.NewInstance();
-            var actorId = NewGuid();
+            var input  = new CreateActorInput();
+            var output = CqrsCommandPresenter.NewInstance();
 
+            string actorId = null;
             Scenario("Create a actor with valid actor id")
-                .Given("a valid actor id" , () => { input.Id = actorId; })
+                .Given("a valid actor id" , () => { input.Id = inputId; })
                 .When("create a actor" , () => { createActorUseCase.Execute(input , output); })
-                .Then("the result is success" , () =>
-                {
-                    Assert.AreEqual(actorId ,          output.GetId() ,       "id is not equal");
-                    Assert.AreEqual(ExitCode.SUCCESS , output.GetExitCode() , "ExitCode is not equal");
-                })
-                .And("the repository should save actor , and id equals" , () =>
+                .Then("the repository should save actor , and id equals" , () =>
                 {
                     repository.ReceivedWithAnyArgs(1).Save(null);
-                    Assert.NotNull(actor , "actor is null");
-                    Assert.AreEqual(actorId , actor.GetId() , "actorId is not equal");
+                    Assert.NotNull(actor ,         "actor is null");
+                    Assert.NotNull(actor.GetId() , "id is null");
+                    actorId = actor.GetId();
                 })
                 .And("a ActorCreated event is published , and id equals" , () =>
                 {
                     publisher.Received(1).Publish(Arg.Is<DomainEvent>(domainEvent => domainEvent.GetType() == typeof(ActorCreated)));
                     Assert.AreEqual(actorId , actorCreated.ActorId , "ActorId is not equal");
+                })
+                .And("the result is success" , () =>
+                {
+                    Assert.AreEqual(actorId ,          output.GetId() ,       "id is not equal");
+                    Assert.AreEqual(ExitCode.SUCCESS , output.GetExitCode() , "ExitCode is not equal");
                 });
         }
 

@@ -1,6 +1,7 @@
 #region
 
 using DDDCore.Implement;
+using ThirtyParty.Utilities;
 
 #endregion
 
@@ -18,7 +19,9 @@ namespace Actor.Entity
 
         public override Actor Build()
         {
-            return new Actor(id);
+            if (string.IsNullOrEmpty(id)) id = GUID.NewGUID();
+            var actor                        = new Actor(id);
+            return actor;
         }
 
         public ActorBuilder SetId(string id)

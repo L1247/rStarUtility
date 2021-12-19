@@ -5,7 +5,6 @@ using DDDCore.Event;
 using DDDCore.Implement;
 using DDDCore.Usecase.CQRS;
 using ThirtyParty.DDDCore.Usecase;
-using Utilities.Contract;
 
 #endregion
 
@@ -35,7 +34,6 @@ namespace Actor.Scripts.Core.UseCase
         public override void Execute(CreateActorInput input , CqrsCommandOutput output)
         {
             var id = input.Id;
-            Contract.RequireString(id , "id");
 
             var actor = ActorBuilder
                         .NewInstance()
