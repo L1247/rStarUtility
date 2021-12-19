@@ -55,7 +55,7 @@ namespace Actor.Scripts.CoreTests.UseCase
                     Assert.NotNull(actor , "actor is null");
                     Assert.AreEqual(actorId , actor.GetId() , "actorId is not equal");
                 })
-                .And("a ActorCreated event is Publish , and id equals" , () =>
+                .And("a ActorCreated event is published , and id equals" , () =>
                 {
                     publisher.Received(1).Publish(Arg.Is<IDomainEvent>(domainEvent => domainEvent.GetType() == typeof(ActorCreated)));
                     Assert.AreEqual(actorId , actorCreated.ActorId , "ActorId is not equal");
