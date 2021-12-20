@@ -10,7 +10,7 @@ using Zenject;
 
 namespace Game.Battle.Application
 {
-    public class BattleInstaller : MonoInstaller
+    public class BattleMonoInstaller : MonoInstaller
     {
     #region Public Methods
 
