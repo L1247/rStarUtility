@@ -6,7 +6,7 @@ using Zenject;
 
 #endregion
 
-namespace Game.Actor.Scripts.Framework
+namespace Actor.Application
 {
     public class ActorInstaller : Installer
     {

@@ -1,6 +1,5 @@
 #region
 
-using Actor.Scripts.Core.UseCase;
 using DDDCore.Event;
 using DDDCore.Implement;
 using Game.Actor.Scripts.Adapter;
@@ -9,7 +8,7 @@ using Zenject;
 
 #endregion
 
-namespace Game.Actor.Scripts.Framework
+namespace Actor.Application
 {
     public class ActorMonoInstaller : MonoInstaller
     {
@@ -22,10 +21,7 @@ namespace Game.Actor.Scripts.Framework
             Container.Bind<IDomainEventBus>().To<DomainEventBus>().AsSingle();
 
             Container.BindInterfacesTo<ActorSamplePresenter>().AsSingle();
-
-            Container.Bind<ActorController>().AsSingle();
-            Container.Bind<CreateActorUseCase>().AsSingle();
-            Container.Bind<IActorRepository>().To<ActorRepository>().AsSingle();
+            Container.Bind<ActorController>().FromSubContainerResolve().ByInstaller<ActorInstaller>().AsSingle();
         }
 
     #endregion

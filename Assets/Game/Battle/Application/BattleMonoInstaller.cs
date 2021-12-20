@@ -1,7 +1,9 @@
 #region
 
+using Actor.Application;
 using DDDCore.Event;
 using DDDCore.Implement;
+using Game.Actor.Scripts.Adapter;
 using Game.Battle.Adapter.Presenter;
 using MessagePipe;
 using Zenject;
@@ -20,6 +22,7 @@ namespace Game.Battle.Application
             Container.BindMessageBroker<DomainEvent>(option);
             Container.Bind<IDomainEventBus>().To<DomainEventBus>().AsSingle();
             Container.BindInterfacesTo<BattlePresenter>().AsSingle();
+            Container.Bind<ActorController>().FromSubContainerResolve().ByInstaller<ActorInstaller>().AsSingle();
         }
 
     #endregion
