@@ -4,12 +4,11 @@ using DDDCore.Event;
 using DDDCore.Implement;
 using Game.Stat.Scripts.Adapter;
 using MessagePipe;
-using Stat.UseCase;
 using Zenject;
 
 #endregion
 
-namespace Game.Stat.Scripts.Application
+namespace Stat.Application
 {
     public class StatMonoInstaller : MonoInstaller
     {
@@ -23,9 +22,8 @@ namespace Game.Stat.Scripts.Application
 
             Container.BindInterfacesTo<StatPresenter>().AsSingle();
 
-            Container.Bind<StatController>().AsSingle();
-            Container.Bind<CreateStatUseCase>().AsSingle();
-            Container.Bind<IStatRepository>().To<StatRepository>().AsSingle();
+            Container.Bind<StatController>().FromSubContainerResolve().ByInstaller<StatInstaller>()
+                     .AsSingle();
         }
 
     #endregion
