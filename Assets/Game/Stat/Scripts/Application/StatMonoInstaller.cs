@@ -19,10 +19,12 @@ namespace Game.Stat.Scripts.Application
         {
             var option = Container.BindMessagePipe();
             Container.BindMessageBroker<DomainEvent>(option);
+            Container.Bind<IDomainEventBus>().To<DomainEventBus>().AsSingle();
+
             Container.BindInterfacesTo<StatPresenter>().AsSingle();
+
             Container.Bind<StatController>().AsSingle();
             Container.Bind<CreateStatUseCase>().AsSingle();
-            Container.Bind<IDomainEventBus>().To<DomainEventBus>().AsSingle();
             Container.Bind<IStatRepository>().To<StatRepository>().AsSingle();
         }
 
