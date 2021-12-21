@@ -17,13 +17,19 @@ namespace Game.Stat.Scripts.Adapter
 
         private readonly CreateStatInput createStatInput;
 
+        [Inject]
+        private GetStatContentUseCase getStatContentUseCase;
+
+        private readonly GetStatContentInput getStatContentInput;
+
     #endregion
 
     #region Constructor
 
         public StatController()
         {
-            createStatInput = new CreateStatInput();
+            createStatInput     = new CreateStatInput();
+            getStatContentInput = new GetStatContentInput();
         }
 
     #endregion
@@ -35,6 +41,13 @@ namespace Game.Stat.Scripts.Adapter
             var createStatOutput = CqrsCommandPresenter.NewInstance();
             createStatInput.ActorId = actorId;
             createStatUseCase.Execute(createStatInput , createStatOutput);
+        }
+
+        public StatContentViewModel GetStats(string actorId)
+        {
+            var getStatContentPresenter = new GetStatContentPresenter();
+            getStatContentUseCase.Execute(getStatContentInput , getStatContentPresenter);
+            return getStatContentPresenter.BuildViewModel();
         }
 
     #endregion

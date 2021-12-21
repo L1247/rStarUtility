@@ -16,6 +16,7 @@ namespace Stat.Application
         {
             Container.Bind<StatController>().AsSingle();
             Container.Bind<CreateStatUseCase>().AsSingle();
+            Container.Bind<GetStatContentUseCase>().AsSingle();
             Container.Bind<IStatRepository>().To<StatRepository>().AsSingle();
         }
 
