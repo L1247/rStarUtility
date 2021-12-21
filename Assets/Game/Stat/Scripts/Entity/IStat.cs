@@ -6,5 +6,12 @@ using DDDCore.Model;
 
 namespace Stat.Entity
 {
-    public interface IStat : IAggregateRoot { }
+    public interface IStat : IAggregateRoot
+    {
+    #region Public Variables
+
+        string ActorId { get; }
+
+    #endregion
+    }
 }
