@@ -8,7 +8,7 @@ using Zenject;
 
 namespace DDDCore.Implement
 {
-    public abstract class EventHandler
+    public abstract class DomainEventHandler
     {
     #region Private Variables
 
@@ -19,7 +19,7 @@ namespace DDDCore.Implement
     #region Constructor
 
         [Inject]
-        protected EventHandler(IDomainEventBus domainEventBus)
+        protected DomainEventHandler(IDomainEventBus domainEventBus)
         {
             this.domainEventBus = domainEventBus;
         }
