@@ -43,6 +43,9 @@ namespace Game.Battle.Adapter.EventHandler
             Debug.Log($"OnActorCreated: {actorId}");
             statController.CreateStat(actorId);
             statController.CreateStat(actorId);
+            var statContentViewModel = statController.GetStats(actorId);
+            foreach (var statDto in statContentViewModel.Stats)
+                Debug.Log($"stat: {statDto.ActorId} , {statDto.Id}");
         }
 
     #endregion

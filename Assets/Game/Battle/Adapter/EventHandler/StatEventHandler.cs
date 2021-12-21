@@ -3,7 +3,6 @@
 using DDDCore.Event;
 using DDDCore.Implement;
 using Stat.Entity.Event;
-using UnityEngine;
 using Zenject;
 
 #endregion
@@ -29,11 +28,7 @@ namespace Game.Battle.Adapter.EventHandler
 
     #region Private Methods
 
-        private void OnStatCreated(StatCreated created)
-        {
-            var statId = created.StatId;
-            Debug.Log($"OnStatCreated: {statId}");
-        }
+        private void OnStatCreated(StatCreated created) { }
 
     #endregion
     }
