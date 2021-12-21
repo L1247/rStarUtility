@@ -4,6 +4,7 @@ using Actor.Scripts.Core.DomainEvent;
 using DDDCore.Event;
 using DDDCore.Implement;
 using Game.Stat.Scripts.Adapter;
+using UnityEngine;
 using Zenject;
 
 #endregion
@@ -39,6 +40,7 @@ namespace Game.Battle.Adapter.EventHandler
         private void OnActorCreated(ActorCreated created)
         {
             var actorId = created.ActorId;
+            Debug.Log($"OnActorCreated: {actorId}");
             statController.CreateStat(actorId);
             statController.CreateStat(actorId);
         }

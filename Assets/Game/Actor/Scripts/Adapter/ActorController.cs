@@ -3,7 +3,6 @@
 using System;
 using Actor.Scripts.Core.UseCase;
 using ThirtyParty.DDDCore.Implement.CQRS;
-using UnityEngine;
 using Zenject;
 
 #endregion
@@ -38,8 +37,6 @@ namespace Game.Actor.Scripts.Adapter
         {
             createActorInput.Id = Guid.NewGuid().ToString();
             createActorUseCase.Execute(createActorInput , createActorOutput);
-            var id = createActorOutput.GetId();
-            Debug.Log($"actorId: {id}");
         }
 
     #endregion

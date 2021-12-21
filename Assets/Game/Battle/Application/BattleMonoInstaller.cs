@@ -32,7 +32,7 @@ namespace Game.Battle.Application
             Container.Bind<StatController>().FromSubContainerResolve().ByInstaller<StatInstaller>().AsSingle();
             // event handler
             Container.BindInterfacesTo<ActorEventHandler>().AsSingle();
-            Container.BindExecutionOrder<ActorEventHandler>(-20);
+            Container.BindInterfacesTo<StatEventHandler>().AsSingle();
         }
 
     #endregion
