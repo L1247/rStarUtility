@@ -20,7 +20,8 @@ namespace Game.Stat.Scripts.Adapter
         [Inject]
         private GetStatContentUseCase getStatContentUseCase;
 
-        private readonly GetStatContentInput getStatContentInput;
+        private readonly GetStatContentInput     getStatContentInput;
+        private readonly GetStatContentPresenter getStatContentPresenter;
 
     #endregion
 
@@ -28,8 +29,9 @@ namespace Game.Stat.Scripts.Adapter
 
         public StatController()
         {
-            createStatInput     = new CreateStatInput();
-            getStatContentInput = new GetStatContentInput();
+            createStatInput         = new CreateStatInput();
+            getStatContentInput     = new GetStatContentInput();
+            getStatContentPresenter = new GetStatContentPresenter();
         }
 
     #endregion
@@ -45,7 +47,7 @@ namespace Game.Stat.Scripts.Adapter
 
         public StatContentViewModel GetStats(string actorId)
         {
-            var getStatContentPresenter = new GetStatContentPresenter();
+            getStatContentInput.ActorId = actorId;
             getStatContentUseCase.Execute(getStatContentInput , getStatContentPresenter);
             return getStatContentPresenter.BuildViewModel();
         }

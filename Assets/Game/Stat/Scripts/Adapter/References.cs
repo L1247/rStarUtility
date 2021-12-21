@@ -14,6 +14,9 @@ namespace Game.Stat.Scripts.Adapter
         [SerializeField]
         public Button CreateStatButton;
 
+        [SerializeField]
+        public Button GetStatsButton;
+
     #endregion
     }
 }
