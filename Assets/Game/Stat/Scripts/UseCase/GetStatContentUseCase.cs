@@ -29,7 +29,13 @@ namespace Stat.UseCase
             var actorId = input.ActorId;
             Contract.RequireString(actorId , "actorId");
             var stats = repository.GetStatsByActorId(actorId);
-            Contract.RequireNotNull(stats , "stats is null");
+            if (stats.Count == 0)
+            {
+                output.SetExitCode(ExitCode.FAILURE)
+                      .SetMessage($"Get Stat Fail : actor id not found , actor id = {actorId}");
+                return;
+            }
+
             var statDtos = ConvertStatToDto.Transform(stats);
             output.SetActorId(actorId)
                   .SetStats(statDtos)
