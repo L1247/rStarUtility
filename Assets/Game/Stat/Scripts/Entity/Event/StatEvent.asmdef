@@ -1,18 +1,16 @@
 {
-  "name": "ActorEntity",
+  "name": "StatEvent",
   "rootNamespace": "",
   "references": [
-    "GUID:b18a16a3dcf3d01428b99057a0d9b91e",
-    "GUID:f22f718b9b174a74d89f976a69f9dd2a",
-    "GUID:5356f01328628be4a98c8778b41a4e2e"
+    "GUID:b18a16a3dcf3d01428b99057a0d9b91e"
   ],
   "includePlatforms": [],
   "excludePlatforms": [],
   "allowUnsafeCode": false,
-  "overrideReferences": false,
+  "overrideReferences": true,
   "precompiledReferences": [],
   "autoReferenced": false,
   "defineConstraints": [],
   "versionDefines": [],
-  "noEngineReferences": true
+  "noEngineReferences": false
 }

@@ -8,19 +8,20 @@
         "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
         "GUID:08b38f39e2d9e594389b7a4cf4c2c338",
         "GUID:f741fb6ebe72a8f459a77236ae837e2f",
-        "GUID:b0c3ad48deadb2345b02f5d730fa3d4b"
+        "GUID:b0c3ad48deadb2345b02f5d730fa3d4b",
+        "GUID:5356f01328628be4a98c8778b41a4e2e"
     ],
     "includePlatforms": [
-    "Editor"
-  ],
-  "excludePlatforms": [],
-  "allowUnsafeCode": false,
-  "overrideReferences": true,
-  "precompiledReferences": [
-    "NSubstitute.dll"
-  ],
-  "autoReferenced": false,
-  "defineConstraints": [],
-  "versionDefines": [],
-  "noEngineReferences": false
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "NSubstitute.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
