@@ -1,14 +1,14 @@
 #region
 
 using Actor.Scripts.Core.UseCase;
-using Game.Actor.Scripts.Adapter;
+using Actor.Adapter;
 using Zenject;
 
 #endregion
 
 namespace Actor.Application
 {
-    public class ActorInstaller : Installer
+    public class ActorInstaller : Installer<ActorInstaller>
     {
     #region Public Methods
 

@@ -1,9 +1,6 @@
 #region
 
-using DDDCore.Event;
-using DDDCore.Implement;
-using Game.Actor.Scripts.Adapter;
-using MessagePipe;
+using Actor.Adapter;
 using Zenject;
 
 #endregion
@@ -16,12 +13,8 @@ namespace Actor.Application
 
         public override void InstallBindings()
         {
-            var option = Container.BindMessagePipe();
-            Container.BindMessageBroker<DomainEvent>(option);
-            Container.Bind<IDomainEventBus>().To<DomainEventBus>().AsSingle();
-
+            ActorInstaller.Install(Container);
             Container.BindInterfacesTo<ActorSamplePresenter>().AsSingle();
-            Container.Bind<ActorController>().FromSubContainerResolve().ByInstaller<ActorInstaller>().AsSingle();
         }
 
     #endregion

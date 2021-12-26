@@ -7,7 +7,7 @@ using Zenject;
 
 #endregion
 
-namespace Game.Actor.Scripts.Adapter
+namespace Actor.Adapter
 {
     public class ActorController
     {

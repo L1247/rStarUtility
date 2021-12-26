@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 #endregion
 
-namespace Game.Stat.Scripts.Adapter
+namespace Stat.Adapter
 {
     internal class References : MonoBehaviour
     {

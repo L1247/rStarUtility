@@ -1,9 +1,6 @@
 #region
 
-using DDDCore.Event;
-using DDDCore.Implement;
-using Game.Stat.Scripts.Adapter;
-using MessagePipe;
+using Stat.Adapter;
 using Zenject;
 
 #endregion
@@ -16,14 +13,8 @@ namespace Stat.Application
 
         public override void InstallBindings()
         {
-            var option = Container.BindMessagePipe();
-            Container.BindMessageBroker<DomainEvent>(option);
-            Container.Bind<IDomainEventBus>().To<DomainEventBus>().AsSingle();
-
+            StatInstaller.Install(Container);
             Container.BindInterfacesTo<StatPresenter>().AsSingle();
-
-            Container.Bind<StatController>().FromSubContainerResolve().ByInstaller<StatInstaller>()
-                     .AsSingle();
         }
 
     #endregion

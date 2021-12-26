@@ -1,13 +1,13 @@
 #region
 
+using Actor.Adapter;
 using Actor.Application;
 using DDDCore.Event;
 using DDDCore.Implement;
-using Game.Actor.Scripts.Adapter;
 using Game.Battle.Adapter.EventHandler;
 using Game.Battle.Adapter.Presenter;
-using Game.Stat.Scripts.Adapter;
 using MessagePipe;
+using Stat.Adapter;
 using Stat.Application;
 using Zenject;
 

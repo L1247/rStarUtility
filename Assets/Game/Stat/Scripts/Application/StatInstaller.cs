@@ -1,6 +1,6 @@
 #region
 
-using Game.Stat.Scripts.Adapter;
+using Stat.Adapter;
 using Stat.UseCase;
 using Zenject;
 
@@ -8,7 +8,7 @@ using Zenject;
 
 namespace Stat.Application
 {
-    public class StatInstaller : Installer
+    public class StatInstaller : Installer<StatInstaller>
     {
     #region Public Methods
 

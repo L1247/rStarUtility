@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using DDDCore.Event;
 using DDDCore.Model;
 using MessagePipe;
-using Zenject;
 
 #endregion
 
@@ -24,7 +23,6 @@ namespace DDDCore.Implement
 
     #region Constructor
 
-        [Inject]
         public DomainEventBus(ISubscriber<DomainEvent> subscriber , IPublisher<DomainEvent> publisher)
         {
             this.publisher = publisher;

@@ -6,7 +6,7 @@ using Zenject;
 
 #endregion
 
-namespace Game.Stat.Scripts.Adapter
+namespace Stat.Adapter
 {
     public class StatController
     {
