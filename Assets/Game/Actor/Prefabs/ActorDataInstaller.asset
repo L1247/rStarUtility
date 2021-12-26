@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f8f28d97ca649c3aa6000a48e20edf2, type: 3}
+  m_Name: ActorDataInstaller
+  m_EditorClassIdentifier: 
+  actorSamplePresenter:
+    actorData: {fileID: 11400000, guid: 5284eacddbd450943977fb41229fa29a, type: 2}
