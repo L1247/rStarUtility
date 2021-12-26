@@ -33,10 +33,11 @@ namespace Game.Actor.Scripts.Adapter
 
     #region Public Methods
 
-        public void CreateActor()
+        public CqrsCommandPresenter CreateActor()
         {
             createActorInput.Id = Guid.NewGuid().ToString();
             createActorUseCase.Execute(createActorInput , createActorOutput);
+            return createActorOutput;
         }
 
     #endregion

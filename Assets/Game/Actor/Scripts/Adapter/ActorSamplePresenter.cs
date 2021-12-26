@@ -34,8 +34,9 @@ namespace Game.Actor.Scripts.Adapter
 
         private void CreateActor()
         {
-            Debug.Log("CreateActor");
-            actorController.CreateActor();
+            var actorOutput = actorController.CreateActor();
+            Debug.Log($"CreateActor Result = {actorOutput.GetExitCode()} , id: {actorOutput.GetId()}");
+
         }
 
     #endregion
