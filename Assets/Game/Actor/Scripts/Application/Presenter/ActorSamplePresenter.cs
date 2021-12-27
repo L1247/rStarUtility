@@ -1,6 +1,7 @@
 #region
 
 using System;
+using Actor.Adapter;
 using Game.Actor.Scripts.Data;
 using UniRx;
 using UnityEngine;
@@ -10,7 +11,7 @@ using Random = UnityEngine.Random;
 
 #endregion
 
-namespace Actor.Adapter
+namespace Game.Actor.Scripts.Application.Presenter
 {
     public class ActorSamplePresenter : IInitializable
     {

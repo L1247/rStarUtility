@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 #endregion
 
-namespace Actor.Adapter
+namespace Game.Actor.Scripts.Application.Presenter
 {
     public class References : MonoBehaviour
     {

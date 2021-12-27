@@ -1,11 +1,11 @@
 #region
 
-using Actor.Adapter;
+using Game.Actor.Scripts.Application.Presenter;
 using Zenject;
 
 #endregion
 
-namespace Actor.Application
+namespace Game.Actor.Scripts.Application.Installer
 {
     public class ActorMonoInstaller : MonoInstaller
     {
