@@ -20,7 +20,7 @@ namespace DDDCore.Implement
 
     #region Public Methods
 
-        public bool ContainsId(string id)
+        public virtual bool ContainsId(string id)
         {
             return idEntities.ContainsKey(id);
         }
