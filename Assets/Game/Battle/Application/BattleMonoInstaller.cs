@@ -1,8 +1,9 @@
 #region
 
+using Actor.Adapter;
 using Game.Actor.Scripts.Application.Installer;
 using Game.Battle.Adapter.EventHandler;
-using Game.Battle.Adapter.Presenter;
+using Game.Battle.Application.Presenter;
 using Stat.Application;
 using Zenject;
 
@@ -16,16 +17,16 @@ namespace Game.Battle.Application
 
         public override void InstallBindings()
         {
+            // event handler
+            Container.Bind<ActorEventHandler>().To<BattleActorEventHandler>().AsSingle().NonLazy();
+            Container.BindInterfacesTo<StatEventHandler>().AsSingle();
+
             // Aggregate installers
             ActorInstaller.Install(Container);
             StatInstaller.Install(Container);
 
             // Adapter layer
             Container.BindInterfacesTo<BattlePresenter>().AsSingle();
-
-            // event handler
-            Container.BindInterfacesTo<ActorEventHandler>().AsSingle();
-            Container.BindInterfacesTo<StatEventHandler>().AsSingle();
         }
 
     #endregion

@@ -16,6 +16,7 @@ namespace Game.Actor.Scripts.Application.Installer
         {
             Container.Bind<ActorController>().AsSingle();
             Container.Bind<CreateActorUseCase>().AsSingle();
+            Container.Bind<ActorEventHandler>().AsSingle().NonLazy().IfNotBound();
             Container.Bind<IActorRepository>().To<ActorRepository>().AsSingle();
         }
 

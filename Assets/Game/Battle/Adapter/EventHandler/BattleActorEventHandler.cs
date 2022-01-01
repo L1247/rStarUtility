@@ -1,8 +1,8 @@
 #region
 
+using Actor.Adapter;
 using Actor.Scripts.Core.DomainEvent;
 using DDDCore.Event;
-using DDDCore.Implement;
 using Stat.Adapter;
 using UnityEngine;
 using Zenject;
@@ -11,7 +11,7 @@ using Zenject;
 
 namespace Game.Battle.Adapter.EventHandler
 {
-    public class ActorEventHandler : DomainEventHandler , IInitializable
+    public class BattleActorEventHandler : ActorEventHandler
     {
     #region Private Variables
 
@@ -22,22 +22,13 @@ namespace Game.Battle.Adapter.EventHandler
 
     #region Constructor
 
-        public ActorEventHandler(IDomainEventBus domainEventBus) : base(domainEventBus) { }
+        protected BattleActorEventHandler(IDomainEventBus domainEventBus) : base(domainEventBus) { }
 
     #endregion
 
-    #region Public Methods
+    #region Protected Methods
 
-        public void Initialize()
-        {
-            Register<ActorCreated>(OnActorCreated);
-        }
-
-    #endregion
-
-    #region Private Methods
-
-        private void OnActorCreated(ActorCreated created)
+        protected override void OnActorCreated(ActorCreated created)
         {
             var actorId = created.ActorId;
             Debug.Log($"OnActorCreated: {actorId}");

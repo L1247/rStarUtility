@@ -6,7 +6,7 @@ using Zenject;
 
 #endregion
 
-namespace Game.Battle.Adapter.Presenter
+namespace Game.Battle.Application.Presenter
 {
     public class BattlePresenter : IInitializable
     {

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Game.Battle.Adapter.Presenter
+namespace Game.Battle.Application.Presenter
 {
     public class Reference : MonoBehaviour
     {
