@@ -2,6 +2,7 @@
 
 using System;
 using Actor.Adapter;
+using Actor.Adapter.Interfaces;
 using Game.Actor.Scripts.Data;
 using UniRx;
 using UnityEngine;
@@ -13,7 +14,7 @@ using Random = UnityEngine.Random;
 
 namespace Game.Actor.Scripts.Application.Presenter
 {
-    public class ActorSamplePresenter : IInitializable
+    public class ActorSamplePresenter : IInitializable , IActorPresenter
     {
     #region Private Variables
 
@@ -30,23 +31,17 @@ namespace Game.Actor.Scripts.Application.Presenter
 
     #region Public Methods
 
-        public void Initialize()
+        public void CreateActor()
         {
-            references.CreateActorButton.OnClickAsObservable()
-                      .Subscribe(_ => { CreateActor(); }).AddTo(references);
-        }
-
-    #endregion
-
-    #region Private Methods
-
-        private void CreateActor()
-        {
-            var actorOutput = actorController.CreateActor();
-            Debug.Log($"CreateActor Result = {actorOutput.GetExitCode()} , id: {actorOutput.GetId()}");
             var actorPrefab = settings.actorData.actorPrefab;
             var unitCircle  = Random.onUnitSphere * 3;
             Object.Instantiate(actorPrefab , unitCircle , Quaternion.identity);
+        }
+
+        public void Initialize()
+        {
+            references.CreateActorButton.OnClickAsObservable()
+                      .Subscribe(_ => actorController.CreateActor()).AddTo(references);
         }
 
     #endregion
