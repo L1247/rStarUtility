@@ -35,7 +35,7 @@ namespace Game.Actor.Scripts.Application.Installer
             Container.BindMemoryPool<ActorComponent , ActorComponent.Pool>()
                      .WithInitialSize(30)
                      .FromComponentInNewPrefab(settings.actorPrefab)
-                     .UnderTransformGroup("ViewObjs");
+                     .UnderTransformGroup("Actors");
         }
 
     #endregion
