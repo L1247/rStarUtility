@@ -1,14 +1,10 @@
 #region
 
-using System;
 using Actor.Adapter.Interfaces;
 using Game.Actor.Scripts.Adapter.Controller;
-using Game.Actor.Scripts.Data;
 using UniRx;
 using UnityEngine;
 using Zenject;
-using Object = UnityEngine.Object;
-using Random = UnityEngine.Random;
 
 #endregion
 
@@ -25,7 +21,7 @@ namespace Game.Actor.Scripts.Application.Presenter
         private ActorController actorController;
 
         [Inject]
-        private Settings settings;
+        private ActorFactory actorFactory;
 
     #endregion
 
@@ -33,29 +29,14 @@ namespace Game.Actor.Scripts.Application.Presenter
 
         public void CreateActor()
         {
-            var actorPrefab = settings.actorData.actorPrefab;
-            var unitCircle  = Random.onUnitSphere * 3;
-            Object.Instantiate(actorPrefab , unitCircle , Quaternion.identity);
+            var actorComponent = actorFactory.Create();
+            actorComponent.SetPosition(Random.onUnitSphere * 3);
         }
 
         public void Initialize()
         {
             references.CreateActorButton.OnClickAsObservable()
                       .Subscribe(_ => actorController.CreateActor()).AddTo(references);
-        }
-
-    #endregion
-
-    #region Nested Types
-
-        [Serializable]
-        public class Settings
-        {
-        #region Public Variables
-
-            public ActorData actorData;
-
-        #endregion
         }
 
     #endregion

@@ -1,6 +1,5 @@
 #region
 
-using Game.Actor.Scripts.Application.Presenter;
 using UnityEngine;
 using Zenject;
 
@@ -13,7 +12,7 @@ namespace Game.Actor.Scripts.Application.Installer
     #region Private Variables
 
         [SerializeField]
-        private ActorSamplePresenter.Settings actorSamplePresenter;
+        private ActorInstaller.Settings actorInstaller;
 
     #endregion
 
@@ -21,7 +20,7 @@ namespace Game.Actor.Scripts.Application.Installer
 
         public override void InstallBindings()
         {
-            Container.BindInstance(actorSamplePresenter);
+            Container.BindInstance(actorInstaller);
         }
 
     #endregion
