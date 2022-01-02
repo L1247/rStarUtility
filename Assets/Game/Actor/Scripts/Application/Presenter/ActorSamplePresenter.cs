@@ -1,8 +1,8 @@
 #region
 
 using System;
-using Actor.Adapter;
 using Actor.Adapter.Interfaces;
+using Game.Actor.Scripts.Adapter.Controller;
 using Game.Actor.Scripts.Data;
 using UniRx;
 using UnityEngine;

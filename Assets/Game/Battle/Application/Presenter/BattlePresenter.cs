@@ -1,6 +1,6 @@
 #region
 
-using Actor.Adapter;
+using Game.Actor.Scripts.Adapter.Controller;
 using UniRx;
 using Zenject;
 

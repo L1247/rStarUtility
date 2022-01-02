@@ -1,6 +1,6 @@
 #region
 
-using Actor.Adapter;
+using Game.Actor.Scripts.Adapter.Gateway.Eventbus;
 using Game.Actor.Scripts.Application.Installer;
 using Game.Battle.Adapter.EventHandler;
 using Game.Battle.Application.Presenter;

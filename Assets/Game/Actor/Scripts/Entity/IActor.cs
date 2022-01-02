@@ -4,7 +4,7 @@ using DDDCore.Model;
 
 #endregion
 
-namespace Actor.Scripts
+namespace Actor.Entity
 {
     public interface IActor : IAggregateRoot { }
 }

@@ -1,7 +1,9 @@
 #region
 
-using Actor.Adapter;
 using Actor.Scripts.Core.UseCase;
+using Game.Actor.Scripts.Adapter.Controller;
+using Game.Actor.Scripts.Adapter.Gateway.Eventbus;
+using Game.Actor.Scripts.Adapter.Gateway.Repository;
 using Zenject;
 
 #endregion

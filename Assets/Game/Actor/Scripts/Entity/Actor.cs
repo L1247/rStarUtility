@@ -1,6 +1,5 @@
 #region
 
-using Actor.Scripts;
 using Actor.Scripts.Core.DomainEvent;
 using DDDCore.Implement;
 

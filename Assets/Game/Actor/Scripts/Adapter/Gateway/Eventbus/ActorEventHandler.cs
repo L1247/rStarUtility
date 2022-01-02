@@ -8,7 +8,7 @@ using Zenject;
 
 #endregion
 
-namespace Actor.Adapter
+namespace Game.Actor.Scripts.Adapter.Gateway.Eventbus
 {
     public class ActorEventHandler : DomainEventHandler
     {

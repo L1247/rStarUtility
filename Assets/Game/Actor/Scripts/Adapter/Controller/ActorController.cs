@@ -9,7 +9,7 @@ using Zenject;
 
 #endregion
 
-namespace Actor.Adapter
+namespace Game.Actor.Scripts.Adapter.Controller
 {
     public class ActorController
     {

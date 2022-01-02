@@ -1,5 +1,6 @@
 #region
 
+using Actor.Entity;
 using DDDCore.Event.Usecase;
 
 #endregion

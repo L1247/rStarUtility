@@ -1,8 +1,8 @@
 #region
 
-using Actor.Adapter;
 using Actor.Scripts.Core.DomainEvent;
 using DDDCore.Event;
+using Game.Actor.Scripts.Adapter.Gateway.Eventbus;
 using Stat.Adapter;
 using UnityEngine;
 using Zenject;
