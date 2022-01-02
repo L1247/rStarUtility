@@ -14,7 +14,7 @@ namespace Game.Actor.Scripts.Adapter.Gateway.Eventbus
     {
     #region Private Variables
 
-        [Inject]
+        [Inject(Optional = true)]
         private IActorPresenter actorPresenter;
 
     #endregion
