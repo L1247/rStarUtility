@@ -2,7 +2,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using Actor.Entity;
+using Actor.ExposedActor.Interfaces;
 using Actor.Scripts.Core.UseCase;
 using UnityEngine;
 

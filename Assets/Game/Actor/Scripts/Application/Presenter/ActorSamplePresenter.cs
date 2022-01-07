@@ -1,14 +1,14 @@
 #region
 
+using Actor.Adapter.Controller;
 using Actor.Adapter.Interfaces;
-using Game.Actor.Scripts.Adapter.Controller;
 using UniRx;
 using UnityEngine;
 using Zenject;
 
 #endregion
 
-namespace Game.Actor.Scripts.Application.Presenter
+namespace Actor.Application.Presenter
 {
     public class ActorSamplePresenter : IInitializable , IActorPresenter
     {

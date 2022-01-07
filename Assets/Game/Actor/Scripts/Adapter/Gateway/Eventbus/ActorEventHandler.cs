@@ -1,9 +1,9 @@
 #region
 
 using Actor.Adapter.Interfaces;
-using Actor.Scripts.Core.DomainEvent;
 using DDDCore.Event;
 using DDDCore.Implement;
+using Game.Actor.Scripts.Entity.Actor.ExposedActor.Event;
 using Zenject;
 
 #endregion

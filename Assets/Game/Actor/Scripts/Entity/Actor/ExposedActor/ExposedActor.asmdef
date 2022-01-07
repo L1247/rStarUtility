@@ -1,5 +1,5 @@
 {
-  "name": "ActorEvent",
+  "name": "ExposedActor",
   "rootNamespace": "",
   "references": [
     "GUID:b18a16a3dcf3d01428b99057a0d9b91e"

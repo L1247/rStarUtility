@@ -1,7 +1,8 @@
 #region
 
-using Actor.Scripts.Core.DomainEvent;
+using Actor.ExposedActor.Interfaces;
 using DDDCore.Implement;
+using Game.Actor.Scripts.Entity.Actor.ExposedActor.Event;
 
 #endregion
 

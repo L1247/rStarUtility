@@ -2,7 +2,7 @@
 
 using System;
 using System.Collections.Generic;
-using Actor.Entity;
+using Actor.ExposedActor.Interfaces;
 using Actor.Scripts.Core.UseCase;
 using DDDCore.Usecase.CQRS;
 using ThirtyParty.DDDCore.Implement.CQRS;
@@ -11,7 +11,7 @@ using Zenject;
 
 #endregion
 
-namespace Game.Actor.Scripts.Adapter.Controller
+namespace Actor.Adapter.Controller
 {
     public class ActorController
     {

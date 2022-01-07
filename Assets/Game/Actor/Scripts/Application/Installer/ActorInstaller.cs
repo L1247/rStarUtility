@@ -1,12 +1,12 @@
 #region
 
 using System;
+using Actor.Adapter.Controller;
+using Actor.Application.Presenter;
 using Actor.Scripts.Core.UseCase;
-using Game.Actor.Scripts.Adapter.Controller;
 using Game.Actor.Scripts.Adapter.Gateway.Eventbus;
 using Game.Actor.Scripts.Adapter.Gateway.Repository;
 using Game.Actor.Scripts.Application.Components;
-using Game.Actor.Scripts.Application.Presenter;
 using UnityEngine;
 using Zenject;
 

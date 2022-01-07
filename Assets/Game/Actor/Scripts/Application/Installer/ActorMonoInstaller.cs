@@ -1,6 +1,6 @@
 #region
 
-using Game.Actor.Scripts.Application.Presenter;
+using Actor.Application.Presenter;
 using Zenject;
 
 #endregion

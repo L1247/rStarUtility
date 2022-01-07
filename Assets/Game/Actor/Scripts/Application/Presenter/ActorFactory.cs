@@ -4,7 +4,7 @@ using Game.Actor.Scripts.Application.Components;
 
 #endregion
 
-namespace Game.Actor.Scripts.Application.Presenter
+namespace Actor.Application.Presenter
 {
     public class ActorFactory
     {

@@ -1,11 +1,11 @@
 ﻿#region
 
-using Actor.Entity;
-using Actor.Scripts.Core.DomainEvent;
+using Actor.ExposedActor.Interfaces;
 using Actor.Scripts.Core.UseCase;
 using DDDCore.Implement;
 using DDDCore.Usecase.CQRS;
 using DDDTestFrameWork;
+using Game.Actor.Scripts.Entity.Actor.ExposedActor.Event;
 using NSubstitute;
 using NUnit.Framework;
 using ThirtyParty.DDDCore.DDDTestFramwork;

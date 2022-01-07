@@ -2,9 +2,15 @@
 
 #endregion
 
-namespace Actor.Scripts.Core.DomainEvent
+#region
+
+using DDDCore.Implement;
+
+#endregion
+
+namespace Game.Actor.Scripts.Entity.Actor.ExposedActor.Event
 {
-    public class ActorCreated : DDDCore.Implement.DomainEvent
+    public class ActorCreated : DomainEvent
     {
     #region Public Variables
 
