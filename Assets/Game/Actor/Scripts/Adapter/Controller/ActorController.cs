@@ -40,9 +40,10 @@ namespace Game.Actor.Scripts.Adapter.Controller
 
     #region Public Methods
 
-        public CqrsCommandPresenter CreateActor()
+        public CqrsCommandPresenter CreateActor(string dataId)
         {
-            createActorInput.Id = Guid.NewGuid().ToString();
+            createActorInput.Id     = Guid.NewGuid().ToString();
+            createActorInput.DataId = dataId;
             createActorUseCase.Execute(createActorInput , createActorOutput);
             var exitCode = createActorOutput.GetExitCode();
             Contract.Ensure(exitCode != ExitCode.FAILURE , "ExitCode is FAILURE");

@@ -25,7 +25,8 @@ namespace Game.Battle.Application.Presenter
         public void Initialize()
         {
             reference.createActorButton.OnClickAsObservable()
-                     .Subscribe(_ => { actorController.CreateActor(); }).AddTo(reference);
+                     .Subscribe(_ => actorController.CreateActor("123"))
+                     .AddTo(reference);
         }
 
     #endregion

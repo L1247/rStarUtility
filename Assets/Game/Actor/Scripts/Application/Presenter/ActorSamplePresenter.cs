@@ -40,10 +40,16 @@ namespace Game.Actor.Scripts.Application.Presenter
                       {
                           var allActor = actorController.GetAllActor();
                           Debug.Log($"{allActor.Count}");
-                          foreach (var actor in allActor) Debug.Log($"{actor.GetId()}");
-                      }).AddTo(references);
+                          foreach (var actor in allActor)
+                          {
+                              Debug.Log($"{actor.GetId()}");
+                              Debug.Log($"{actor.DataId}");
+                          }
+                      })
+                      .AddTo(references);
             references.CreateActorButton.OnClickAsObservable()
-                      .Subscribe(_ => actorController.CreateActor()).AddTo(references);
+                      .Subscribe(_ => actorController.CreateActor("123"))
+                      .AddTo(references);
         }
 
     #endregion
