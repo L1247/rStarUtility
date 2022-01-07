@@ -7,7 +7,7 @@ using DDDCore.Implement;
 
 namespace Actor.Entity
 {
-    public class Actor : AggregateRoot , IActor
+    public class Actor : AggregateRoot , IActorReadModel , IActorCommand
     {
     #region Constructor
 

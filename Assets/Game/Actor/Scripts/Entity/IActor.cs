@@ -6,5 +6,7 @@ using DDDCore.Model;
 
 namespace Actor.Entity
 {
-    public interface IActor : IEntity<string> { }
+    public interface IActorReadModel : IEntity<string> { }
+
+    public interface IActorCommand { }
 }

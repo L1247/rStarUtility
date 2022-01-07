@@ -49,7 +49,7 @@ namespace Game.Actor.Scripts.Adapter.Controller
             return createActorOutput;
         }
 
-        public List<IActor> GetAllActor()
+        public List<IActorReadModel> GetAllActor()
         {
             return actorRepository.GetAll();
         }

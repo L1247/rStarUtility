@@ -14,7 +14,7 @@ namespace Game.Actor.Scripts.Adapter.Gateway.Repository
     {
     #region Private Variables
 
-        private readonly Dictionary<string , IActor> entities = new Dictionary<string , IActor>();
+        private readonly Dictionary<string , IActorReadModel> entities = new Dictionary<string , IActorReadModel>();
 
     #endregion
 
@@ -30,18 +30,18 @@ namespace Game.Actor.Scripts.Adapter.Gateway.Repository
             if (ContainsId(id)) entities.Remove(id);
         }
 
-        public IActor FindById(string id)
+        public IActorReadModel FindById(string id)
         {
             if (ContainsId(id)) return entities[id];
             return null;
         }
 
-        public List<IActor> GetAll()
+        public List<IActorReadModel> GetAll()
         {
             return entities.Values.ToList();
         }
 
-        public void Save(IActor entity)
+        public void Save(IActorReadModel entity)
         {
             var id = entity.GetId();
             if (ContainsId(id) == false) entities.Add(id , entity);

@@ -7,5 +7,5 @@ using DDDCore.Event.Usecase;
 
 namespace Actor.Scripts.Core.UseCase
 {
-    public interface IActorRepository : IRepository<IActor> { }
+    public interface IActorRepository : IRepository<IActorReadModel> { }
 }
