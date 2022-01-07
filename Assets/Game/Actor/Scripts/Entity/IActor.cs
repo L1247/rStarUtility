@@ -6,7 +6,14 @@ using DDDCore.Model;
 
 namespace Actor.Entity
 {
-    public interface IActorReadModel : IEntity<string> { }
+    public interface IActorReadModel : IEntity<string>
+    {
+    #region Public Variables
+
+        string DataId { get; }
+
+    #endregion
+    }
 
     public interface IActorCommand { }
 }

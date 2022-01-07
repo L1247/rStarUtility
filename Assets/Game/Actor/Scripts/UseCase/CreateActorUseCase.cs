@@ -14,6 +14,8 @@ namespace Actor.Scripts.Core.UseCase
     {
     #region Public Variables
 
+        public string DataId;
+
         public string Id;
 
     #endregion
@@ -38,6 +40,7 @@ namespace Actor.Scripts.Core.UseCase
             var actor = ActorBuilder
                         .NewInstance()
                         .SetId(id)
+                        .SetDataId(input.DataId)
                         .Build();
             repository.Save(actor);
 

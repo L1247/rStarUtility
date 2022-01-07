@@ -12,6 +12,7 @@ namespace Actor.Entity
     #region Private Variables
 
         private string id;
+        private string dataId;
 
     #endregion
 
@@ -20,8 +21,14 @@ namespace Actor.Entity
         public override Actor Build()
         {
             if (string.IsNullOrEmpty(id)) id = GUID.NewGUID();
-            var actor                        = new Actor(id);
+            var actor                        = new Actor(id , dataId);
             return actor;
+        }
+
+        public ActorBuilder SetDataId(string dataId)
+        {
+            this.dataId = dataId;
+            return this;
         }
 
         public ActorBuilder SetId(string id)

@@ -49,6 +49,7 @@ namespace DDDCore.Implement
             return domainEvents;
         }
 
+
         public string GetId()
         {
             return id;

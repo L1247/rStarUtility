@@ -1,5 +1,6 @@
 ﻿#region
 
+using Actor.Entity;
 using Actor.Scripts.Core.DomainEvent;
 using Actor.Scripts.Core.UseCase;
 using DDDCore.Implement;
@@ -38,14 +39,23 @@ namespace Actor.UseCaseTests
             var output = CqrsCommandPresenter.NewInstance();
 
             string actorId = null;
+            var    dataId  = NewGuid();
             Scenario("Create a actor with valid actor id")
-                .Given("a valid actor id" , () => { input.Id = inputId; })
+                .Given("a valid actor id" , () =>
+                {
+                    input.Id     = inputId;
+                    input.DataId = dataId;
+                })
                 .When("create a actor" , () => { createActorUseCase.Execute(input , output); })
                 .Then("the repository should save actor , and id equals" , () =>
                 {
                     repository.ReceivedWithAnyArgs(1).Save(null);
                     Assert.NotNull(actor ,         "actor is null");
                     Assert.NotNull(actor.GetId() , "id is null");
+                    var actorReadModel = (IActorReadModel)actor;
+                    Assert.NotNull(actorReadModel.DataId , "actor is null");
+                    Assert.AreEqual(dataId , actorReadModel.DataId , "dataId is not equal");
+
                     actorId = actor.GetId();
                 })
                 .And("a ActorCreated event is published , and id equals" , () =>
