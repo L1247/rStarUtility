@@ -6,5 +6,5 @@ using DDDCore.Model;
 
 namespace Actor.Entity
 {
-    public interface IActor : IAggregateRoot { }
+    public interface IActor : IEntity<string> { }
 }

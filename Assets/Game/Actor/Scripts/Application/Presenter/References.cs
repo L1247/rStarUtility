@@ -12,6 +12,7 @@ namespace Game.Actor.Scripts.Application.Presenter
     #region Public Variables
 
         public Button CreateActorButton;
+        public Button ShowActorCountButton;
 
     #endregion
     }

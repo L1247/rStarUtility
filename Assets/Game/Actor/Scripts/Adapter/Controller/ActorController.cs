@@ -1,6 +1,8 @@
 #region
 
 using System;
+using System.Collections.Generic;
+using Actor.Entity;
 using Actor.Scripts.Core.UseCase;
 using DDDCore.Usecase.CQRS;
 using ThirtyParty.DDDCore.Implement.CQRS;
@@ -20,6 +22,9 @@ namespace Game.Actor.Scripts.Adapter.Controller
 
         private readonly CreateActorInput     createActorInput;
         private readonly CqrsCommandPresenter createActorOutput;
+
+        [Inject]
+        private IActorRepository actorRepository;
 
     #endregion
 
@@ -42,6 +47,11 @@ namespace Game.Actor.Scripts.Adapter.Controller
             var exitCode = createActorOutput.GetExitCode();
             Contract.Ensure(exitCode != ExitCode.FAILURE , "ExitCode is FAILURE");
             return createActorOutput;
+        }
+
+        public List<IActor> GetAllActor()
+        {
+            return actorRepository.GetAll();
         }
 
     #endregion

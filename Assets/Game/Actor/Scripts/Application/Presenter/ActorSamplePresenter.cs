@@ -35,6 +35,12 @@ namespace Game.Actor.Scripts.Application.Presenter
 
         public void Initialize()
         {
+            references.ShowActorCountButton.OnClickAsObservable()
+                      .Subscribe(_ =>
+                      {
+                          Debug.Log($"{actorController.GetAllActor().Count}");
+                          foreach (var actor in actorController.GetAllActor()) Debug.Log($"{actor.GetId()}");
+                      }).AddTo(references);
             references.CreateActorButton.OnClickAsObservable()
                       .Subscribe(_ => actorController.CreateActor()).AddTo(references);
         }
