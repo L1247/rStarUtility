@@ -8,7 +8,7 @@ using Game.Actor.Scripts.Entity.Actor.ExposedActor.Event;
 
 namespace Actor.Entity
 {
-    public class Actor : AggregateRoot , IActorReadModel , IActorCommand
+    public class Actor : AggregateRoot , IActorReadModel , IActor
     {
     #region Public Variables
 

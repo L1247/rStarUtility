@@ -1,6 +1,6 @@
 namespace Actor.Adapter.Interfaces
 {
-    public interface IActorPresenter
+    public interface IActorFlow
     {
     #region Public Methods
 

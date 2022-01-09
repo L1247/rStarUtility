@@ -1,5 +1,6 @@
 #region
 
+using Actor.Adapter.Interfaces;
 using Actor.Application.Presenter;
 using Zenject;
 
@@ -14,7 +15,8 @@ namespace Game.Actor.Scripts.Application.Installer
         public override void InstallBindings()
         {
             ActorInstaller.Install(Container);
-            Container.BindInterfacesTo<ActorSamplePresenter>().AsSingle();
+            Container.BindInterfacesAndSelfTo<ActorSamplePresenter>().AsSingle();
+            Container.Bind<IActorFlow>().To<ActorFlow>().AsSingle();
         }
 
     #endregion

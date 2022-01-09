@@ -1,7 +1,7 @@
 #region
 
 using Actor.Adapter.Controller;
-using Actor.Adapter.Interfaces;
+using Game.Actor.Scripts.Application.Components;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -10,7 +10,7 @@ using Zenject;
 
 namespace Actor.Application.Presenter
 {
-    public class ActorSamplePresenter : IInitializable , IActorPresenter
+    public class ActorSamplePresenter : IInitializable
     {
     #region Private Variables
 
@@ -20,16 +20,12 @@ namespace Actor.Application.Presenter
         [Inject]
         private ActorController actorController;
 
-        [Inject]
-        private ActorFactory actorFactory;
-
     #endregion
 
     #region Public Methods
 
-        public void CreateActor()
+        public void CreateActor(ActorComponent actorComponent)
         {
-            var actorComponent = actorFactory.Create();
             actorComponent.SetPosition(Random.onUnitSphere * 3);
         }
 

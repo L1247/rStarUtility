@@ -4,5 +4,5 @@
 
 namespace Actor.Entity
 {
-    public interface IActorCommand { }
+    public interface IActor { }
 }

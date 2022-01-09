@@ -14,8 +14,8 @@ namespace Game.Actor.Scripts.Adapter.Gateway.Eventbus
     {
     #region Private Variables
 
-        [Inject(Optional = true)]
-        private IActorPresenter actorPresenter;
+        [Inject]
+        private IActorFlow actorFlow;
 
     #endregion
 
@@ -32,7 +32,7 @@ namespace Game.Actor.Scripts.Adapter.Gateway.Eventbus
 
         protected virtual void OnActorCreated(ActorCreated created)
         {
-            actorPresenter.CreateActor();
+            actorFlow.CreateActor();
         }
 
     #endregion
