@@ -21,7 +21,7 @@ namespace Actor.Application.Presenter
 
     #region Public Methods
 
-        public void CreateActor()
+        public void WhenActorCreated()
         {
             var actorComponent = actorFactory.Create();
             actorPresenter.CreateActor(actorComponent);

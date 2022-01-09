@@ -32,7 +32,7 @@ namespace Game.Actor.Scripts.Adapter.Gateway.Eventbus
 
         protected virtual void OnActorCreated(ActorCreated created)
         {
-            actorFlow.CreateActor();
+            actorFlow.WhenActorCreated();
         }
 
     #endregion

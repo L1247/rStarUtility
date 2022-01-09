@@ -4,7 +4,7 @@ namespace Actor.Adapter.Interfaces
     {
     #region Public Methods
 
-        void CreateActor();
+        void WhenActorCreated();
 
     #endregion
     }
