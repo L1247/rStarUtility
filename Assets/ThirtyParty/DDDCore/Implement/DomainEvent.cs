@@ -9,7 +9,6 @@
 namespace DDDCore.Implement
 {
     public class DomainEvent
-
     {
     #region Constructor
 
