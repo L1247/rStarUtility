@@ -108,7 +108,33 @@ namespace ThirtyParty.DDDCore.Tests
         [Test]
         public void FindById_With_Empty_Repository()
         {
-            Assert.IsNull(repository.FindById(id) , "return is null");
+            Assert.IsNull(repository.FindById(id) , "return is not null");
+        }
+
+        [Test]
+        public void FindById_With_Success()
+        {
+            var aggregate = GetNewAggregate();
+            repository.Save(aggregate);
+            Assert.AreEqual(aggregate , repository.FindById(id) , "aggregate is not equal");
+        }
+
+        [Test]
+        public void GetEntity_With_Exist()
+        {
+            var aggregate = GetNewAggregate();
+            repository.Save(aggregate);
+            (var exist , var aggregateRoot) = repository.GetEntity(id);
+            Assert.AreEqual(true ,      exist ,         "exist is not equal");
+            Assert.AreEqual(aggregate , aggregateRoot , "aggregate is not equal");
+        }
+
+        [Test]
+        public void GetEntity_With_NoExist()
+        {
+            (var exist , var aggregateRoot) = repository.GetEntity(id);
+            Assert.AreEqual(false , exist ,         "exist is not equal");
+            Assert.AreEqual(null ,  aggregateRoot , "aggregate is not equal");
         }
 
     #endregion

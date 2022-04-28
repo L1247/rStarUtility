@@ -56,6 +56,13 @@ namespace DDDCore.Implement
             return entities.Count;
         }
 
+        public (bool exist , T aggregateRoot) GetEntity(string id)
+        {
+            var containsId    = ContainsId(id);
+            var aggregateRoot = FindById(id);
+            return (containsId , aggregateRoot);
+        }
+
         public virtual void Save(T entity)
         {
             var key        = entity.GetId();

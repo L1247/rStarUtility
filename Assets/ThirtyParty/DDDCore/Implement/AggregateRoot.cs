@@ -10,13 +10,9 @@ namespace DDDCore.Implement
 {
     public abstract class AggregateRoot : IAggregateRoot
     {
-    #region Protected Variables
-
-        protected readonly string id;
-
-    #endregion
-
     #region Private Variables
+
+        private readonly string id;
 
         private readonly List<DomainEvent> domainEvents = new List<DomainEvent>();
 
