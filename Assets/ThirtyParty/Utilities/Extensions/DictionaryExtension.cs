@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 #endregion
 
-namespace AutoBot.Scripts.Utilities.Extensions
+namespace AutoBot.Utilities.Extensions
 {
     public static class DictionaryExtension
     {
-    #region Public Methods
+    #region Public Variables
 
         public static void AddIfNotContainsKey<TKey , TValue>(this Dictionary<TKey , TValue> dictionary ,
                                                               TKey                           key , TValue value)
@@ -34,18 +34,18 @@ namespace AutoBot.Scripts.Utilities.Extensions
     /// </summary>
     public static class NAryDictionaryExtensions
     {
-    #region Public Methods
-
-        public static NAryDictionary<TKey2 , TValue> New<TKey1 , TKey2 , TValue>(
-            this NAryDictionary<TKey1 , TKey2 , TValue> dictionary)
-        {
-            return new NAryDictionary<TKey2 , TValue>();
-        }
+    #region Public Variables
 
         public static NAryDictionary<TKey2 , TKey3 , TValue> New<TKey1 , TKey2 , TKey3 , TValue>(
             this NAryDictionary<TKey1 , TKey2 , TKey3 , TValue> dictionary)
         {
             return new NAryDictionary<TKey2 , TKey3 , TValue>();
+        }
+
+        public static NAryDictionary<TKey2 , TValue> New<TKey1 , TKey2 , TValue>(
+            this NAryDictionary<TKey1 , TKey2 , TValue> dictionary)
+        {
+            return new NAryDictionary<TKey2 , TValue>();
         }
 
     #endregion

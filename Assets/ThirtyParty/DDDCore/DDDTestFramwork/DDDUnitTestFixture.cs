@@ -2,8 +2,6 @@
 
 using System;
 using DDDCore.Event;
-using DDDCore.Implement;
-using MessagePipe;
 using Zenject;
 
 #endregion
@@ -14,7 +12,7 @@ namespace DDDTestFrameWork
     {
     #region Protected Variables
 
-        protected IPublisher<DomainEvent> publisher;
+        protected IDomainEventBus domainEventBus;
 
     #endregion
 
@@ -23,19 +21,32 @@ namespace DDDTestFrameWork
         public override void Setup()
         {
             base.Setup();
-            Container.Bind<ISubscriber<DomainEvent>>().FromSubstitute();
-            Container.Bind<IPublisher<DomainEvent>>().FromSubstitute();
-            Container.Bind<IDomainEventBus>().To<DomainEventBus>().AsSingle();
-            publisher = Container.Resolve<IPublisher<DomainEvent>>();
+            BindFromSubstitute<IDomainEventBus>();
+            domainEventBus = Resolve<IDomainEventBus>();
         }
 
     #endregion
 
     #region Protected Methods
 
+        protected void BindAsSingle<T>()
+        {
+            Container.Bind<T>().AsSingle();
+        }
+
+        protected void BindFromSubstitute<T>() where T : class
+        {
+            Container.Bind<T>().FromSubstitute();
+        }
+
         protected string NewGuid()
         {
             return Guid.NewGuid().ToString();
+        }
+
+        protected T Resolve<T>()
+        {
+            return Container.Resolve<T>();
         }
 
         protected Scenario Scenario(string annotation)

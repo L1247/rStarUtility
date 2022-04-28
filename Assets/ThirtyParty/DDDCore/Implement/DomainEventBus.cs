@@ -40,7 +40,10 @@ namespace DDDCore.Implement
 
         public void PostAll(IAggregateRoot aggregateRoot)
         {
-            foreach (var domainEvent in aggregateRoot.GetDomainEvents())
+            var domainEvents = aggregateRoot.GetDomainEvents();
+            // interface don't have domainEvents , this for UnitTest
+            if (domainEvents == null) return;
+            foreach (var domainEvent in domainEvents)
                 Post(domainEvent);
             aggregateRoot.ClearDomainEvents();
         }

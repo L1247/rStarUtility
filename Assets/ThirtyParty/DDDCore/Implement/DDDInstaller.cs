@@ -10,7 +10,7 @@ namespace DDDCore.Implement
 {
     public class DDDInstaller : Installer<DDDInstaller>
     {
-    #region Overrides of InstallerBase
+    #region Public Methods
 
         public override void InstallBindings()
         {

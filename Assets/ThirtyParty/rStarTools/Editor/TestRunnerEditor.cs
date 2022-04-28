@@ -6,14 +6,14 @@ using UnityEngine;
 
 #endregion
 
-namespace rStar.Tools.Editor
+namespace OOOne.Tools.Editor
 {
     public class TestRunnerEditor
     {
     #region Private Methods
 
         [MenuItem("Tools/RunUnitTestAll _F1")]
-        static void RunUnitTestAll()
+        private static void RunUnitTestAll()
         {
             var testRunnerApi  = ScriptableObject.CreateInstance<TestRunnerApi>();
             var filterEditMode = new Filter();

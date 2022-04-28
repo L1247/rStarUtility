@@ -1,6 +1,7 @@
 #region
 
 using System.Collections.Generic;
+using System.Linq;
 using DDDCore.Model;
 
 #endregion
@@ -9,9 +10,13 @@ namespace DDDCore.Implement
 {
     public abstract class AggregateRoot : IAggregateRoot
     {
-    #region Private Variables
+    #region Protected Variables
 
-        private readonly string id;
+        protected readonly string id;
+
+    #endregion
+
+    #region Private Variables
 
         private readonly List<DomainEvent> domainEvents = new List<DomainEvent>();
 
@@ -44,11 +49,16 @@ namespace DDDCore.Implement
             return (T)tEvent;
         }
 
+        public IEnumerable<T> FindDomainEvents<T>() where T : DomainEvent
+        {
+            var events = domainEvents.FindAll(domainEvent => domainEvent is T).Cast<T>();
+            return events;
+        }
+
         public List<DomainEvent> GetDomainEvents()
         {
             return domainEvents;
         }
-
 
         public string GetId()
         {

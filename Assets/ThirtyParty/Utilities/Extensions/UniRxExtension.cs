@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 #endregion
 
-namespace AutoBot.Scripts.Utilities.Extensions
+namespace AutoBot.Utilities.Extensions
 {
     public static class UniRxExtension
     {

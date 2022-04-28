@@ -1,20 +1,20 @@
 #region
 
 using System.Collections.Generic;
+using System.Linq;
 using DDDCore.Event.Usecase;
 using DDDCore.Model;
+using UnityEngine.Assertions;
 
 #endregion
 
 namespace DDDCore.Implement
 {
-    public abstract class AbstractRepository<T> : IRepository<T> where T : IAggregateRoot
+    public abstract class AbstractRepository<T> : IRepository<T> where T : class , IAggregateRoot
     {
     #region Private Variables
 
-        private readonly Dictionary<string , T> idEntities = new Dictionary<string , T>();
-
-        private readonly List<T> entities = new List<T>();
+        private readonly Dictionary<string , T> entities = new Dictionary<string , T>();
 
     #endregion
 
@@ -22,36 +22,42 @@ namespace DDDCore.Implement
 
         public virtual bool ContainsId(string id)
         {
-            return idEntities.ContainsKey(id);
+            Assert.IsNotNull(id , "id is null.");
+            Assert.IsFalse(string.IsNullOrEmpty(id) , "id is NullOrEmpty");
+            return entities.ContainsKey(id);
         }
 
         public virtual void DeleteAll()
         {
-            idEntities.Clear();
             entities.Clear();
         }
 
-        public virtual void DeleteById(string id)
+        public virtual bool DeleteById(string id)
         {
-            idEntities.Remove(id);
-            entities.Remove(FindById(id));
+            if (!ContainsId(id)) return false;
+            entities.Remove(id);
+            var success = ContainsId(id) == false;
+            return success;
         }
 
         public virtual T FindById(string id)
         {
-            if (ContainsId(id)) return idEntities[id];
-            return default;
+            return ContainsId(id) ? entities[id] : null;
         }
 
         public virtual List<T> GetAll()
         {
-            return entities;
+            return entities.Values.ToList();
+        }
+
+        public int GetCount()
+        {
+            return entities.Count;
         }
 
         public virtual void Save(T entity)
         {
-            idEntities.Add(entity.GetId() , entity);
-            entities.Add(entity);
+            entities.Add(entity.GetId() , entity);
         }
 
     #endregion
