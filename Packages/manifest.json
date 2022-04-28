@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.cysharp.zstring": "https://github.com/Cysharp/ZString.git?path=src/ZString.Unity/Assets/Scripts/ZString",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.ide.rider": "3.0.14",
     "com.unity.test-framework": "1.1.31",

@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.cysharp.zstring": {
+      "version": "https://github.com/Cysharp/ZString.git?path=src/ZString.Unity/Assets/Scripts/ZString",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "634ed94bdd67aac0cf044a0375e5c88cd48478a3"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
