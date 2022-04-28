@@ -1,5 +1,6 @@
 #region
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using DDDCore.Event.Usecase;
@@ -34,7 +35,7 @@ namespace DDDCore.Implement
 
         public virtual bool DeleteById(string id)
         {
-            if (!ContainsId(id)) return false;
+            if (ContainsId(id) == false) return false;
             entities.Remove(id);
             var success = ContainsId(id) == false;
             return success;
@@ -57,7 +58,10 @@ namespace DDDCore.Implement
 
         public virtual void Save(T entity)
         {
-            entities.Add(entity.GetId() , entity);
+            var key        = entity.GetId();
+            var containsId = ContainsId(key);
+            if (containsId) throw new ArgumentException($"the same key has already been added. key: {key}");
+            entities.Add(key , entity);
         }
 
     #endregion

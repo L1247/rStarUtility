@@ -1,35 +1,123 @@
 #region
 
+using System;
 using DDDCore.Implement;
-using DDDTestFrameWork;
+using DDDTestFramework;
 using NUnit.Framework;
 
 #endregion
 
 namespace ThirtyParty.DDDCore.Tests
 {
-    public class RepositoryTests : DDDUnitTestFixture
+    public class RepositoryTests : SimpleTest
     {
+    #region Private Variables
+
+        private RepositoryImpl<AggregateRoot> repository;
+
+    #endregion
+
+    #region Setup/Teardown Methods
+
+        [SetUp]
+        public void SetUp()
+        {
+            repository = new RepositoryImpl<AggregateRoot>();
+        }
+
+    #endregion
+
     #region Test Methods
 
         [Test]
-        public void GetAll_When_Delete()
+        public void DeleteAll()
         {
-            var id             = NewGuid();
-            var repositoryImpl = new RepositoryImpl<AggregateRoot>();
-            repositoryImpl.Save(new AggregateRootImpl(id));
-
-            Assert.AreEqual(1 , repositoryImpl.GetAll().Count , "count is not equal");
-            repositoryImpl.DeleteById(id);
-            Assert.AreEqual(false , repositoryImpl.ContainsId(id) , "contains is not equal");
-            Assert.AreEqual(0 ,     repositoryImpl.GetAll().Count , "count is not equal");
+            repository.Save(GetNewAggregate());
+            repository.DeleteAll();
+            Assert.AreEqual(0 , repository.GetCount() , "count is not equal");
         }
+
+        [Test]
+        public void GetAll()
+        {
+            var aggregate1 = GetNewAggregate();
+            var aggregate2 = new AggregateRootImpl(GetGuid());
+            repository.Save(aggregate1);
+            repository.Save(aggregate2);
+            Assert.AreEqual(2 , repository.GetCount() , "count is not equal");
+            var aggregateRoots = repository.GetAll();
+            Assert.AreEqual(aggregate1 , aggregateRoots[0] , "aggregate1 is not equal");
+            Assert.AreEqual(aggregate2 , aggregateRoots[1] , "aggregate2 is not equal");
+        }
+
+        [Test]
+        public void GetCount()
+        {
+            Assert.AreEqual(0 , repository.GetCount() , "GetCount is not equal");
+            repository.Save(GetNewAggregate());
+            Assert.AreEqual(1 , repository.GetCount() , "GetCount is not equal");
+        }
+
+        [Test]
+        public void Save_With_Success()
+        {
+            repository.Save(GetNewAggregate());
+            Assert.AreEqual(true , repository.ContainsId(id) , "ContainsId is not equal");
+        }
+
+        [Test]
+        public void Save_With_Fail()
+        {
+            repository.Save(GetNewAggregate());
+            var exception = Assert.Throws<ArgumentException>(() => repository.Save(GetNewAggregate()));
+            var message   = exception.Message;
+            Assert.AreEqual($"the same key has already been added. key: {id}" , message , "message is not equal");
+        }
+
+        [Test]
+        public void DeleteById_With_Success()
+        {
+            repository.Save(GetNewAggregate());
+            var success = repository.DeleteById(id);
+            Assert.AreEqual(true ,  success ,                   "success is not equal");
+            Assert.AreEqual(false , repository.ContainsId(id) , "contains is not equal");
+        }
+
+        [Test]
+        public void DeleteById_With_Fail()
+        {
+            var success = repository.DeleteById(id);
+            Assert.AreEqual(false , success ,                   "success is not equal");
+            Assert.AreEqual(false , repository.ContainsId(id) , "contains is not equal");
+        }
+
+        [Test]
+        public void Contain_With_Success()
+        {
+            repository.Save(GetNewAggregate());
+            Assert.AreEqual(true , repository.ContainsId(id) , "id is not equal");
+        }
+
+        [Test]
+        public void Contain_With_Fail()
+        {
+            Assert.AreEqual(false , repository.ContainsId(id) , "id is not equal");
+        }
+
 
         [Test]
         public void FindById_With_Empty_Repository()
         {
-            var repositoryImpl = new RepositoryImpl<AggregateRoot>();
-            Assert.IsNull(repositoryImpl.FindById(NewGuid()) , "return is null");
+            Assert.IsNull(repository.FindById(id) , "return is null");
+        }
+
+    #endregion
+
+    #region Private Methods
+
+        private AggregateRootImpl GetNewAggregate()
+        {
+            return new AggregateRootImpl(id);
         }
 
     #endregion
