@@ -1,1 +1,1 @@
-相依Zenject、UniRx、MessagePipe、UniTask、
+相依Zenject、UniRx、MessagePipe、UniTask
