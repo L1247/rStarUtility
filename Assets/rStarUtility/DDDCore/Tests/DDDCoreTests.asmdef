@@ -1,0 +1,19 @@
+{
+  "name": "DDDCoreTests",
+  "rootNamespace": "",
+  "references": [
+    "GUID:b18a16a3dcf3d01428b99057a0d9b91e",
+    "GUID:6bb5f159d8a1c6940a4bc99f2a1fe7f3"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}
