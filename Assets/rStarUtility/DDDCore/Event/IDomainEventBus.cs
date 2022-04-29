@@ -12,8 +12,7 @@ namespace rStarUtility.DDDCore.Event
     {
     #region Public Methods
 
-        void Post(DomainEvent domainEvent);
-
+        void Post(DomainEvent       domainEvent);
         void PostAll(IAggregateRoot aggregateRoot);
         void Register<T>(Action<T>  callBackAction) where T : DomainEvent;
 

@@ -1,7 +1,7 @@
 #region
 
 using System.Collections.Generic;
-using DDDTestFramework;
+using DDDTestFrameWork;
 using MessagePipe;
 using NSubstitute;
 using NUnit.Framework;
@@ -14,25 +14,13 @@ using rStarUtility.DDDCore.Model;
 namespace rStartUtility.DDDCore.Tests
 {
     [TestFixture]
-    public class DomainEventBusTests : SimpleTest
+    public class DomainEventBusTests : DIUnitTestFixture
     {
     #region Private Variables
 
         private ISubscriber<DomainEvent> subscriber;
         private IPublisher<DomainEvent>  publisher;
         private DomainEventBus           domainEventBus;
-
-    #endregion
-
-    #region Setup/Teardown Methods
-
-        [SetUp]
-        public void SetUp()
-        {
-            subscriber     = Substitute.For<ISubscriber<DomainEvent>>();
-            publisher      = Substitute.For<IPublisher<DomainEvent>>();
-            domainEventBus = new DomainEventBus(subscriber , publisher);
-        }
 
     #endregion
 
@@ -66,8 +54,17 @@ namespace rStartUtility.DDDCore.Tests
             publisher.Received(1).Publish(domainEventImpl);
         }
 
-        [Test]
-        public void Register() { }
+    #endregion
+
+    #region Public Methods
+
+        public override void Setup()
+        {
+            base.Setup();
+            subscriber     = Substitute.For<ISubscriber<DomainEvent>>();
+            publisher      = Substitute.For<IPublisher<DomainEvent>>();
+            domainEventBus = new DomainEventBus(subscriber , publisher);
+        }
 
     #endregion
     }
