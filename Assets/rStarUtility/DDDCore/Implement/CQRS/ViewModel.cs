@@ -1,4 +1,4 @@
-namespace ThirtyParty.DDDCore.Implement.CQRS
+namespace rStartUtility.DDDCore.Implement.CQRS
 {
     public interface ViewModel { }
 }

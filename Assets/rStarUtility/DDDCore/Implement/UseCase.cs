@@ -1,12 +1,12 @@
 #region
 
-using DDDCore.Event;
-using DDDCore.Usecase;
-using ThirtyParty.DDDCore.Usecase;
+using rStartUtility.DDDCore.Usecase;
+using rStarUtility.DDDCore.Event;
+using rStarUtility.DDDCore.Usecase;
 
 #endregion
 
-namespace DDDCore.Implement
+namespace rStarUtility.DDDCore.Implement
 {
     /// <summary>
     /// </summary>

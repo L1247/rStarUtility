@@ -1,11 +1,11 @@
 #region
 
-using DDDCore.Usecase;
-using DDDCore.Usecase.CQRS;
+using rStarUtility.DDDCore.Usecase;
+using rStarUtility.DDDCore.Usecase.CQRS;
 
 #endregion
 
-namespace ThirtyParty.DDDCore.Implement.CQRS
+namespace rStartUtility.DDDCore.Implement.CQRS
 {
     public class CqrsCommandPresenter : Result , CqrsCommandOutput , Presenter<CqrsCommandViewModel>
     {

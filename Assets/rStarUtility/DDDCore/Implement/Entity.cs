@@ -1,10 +1,10 @@
 #region
 
-using DDDCore.Model;
+using rStarUtility.DDDCore.Model;
 
 #endregion
 
-namespace DDDCore.Implement
+namespace rStarUtility.DDDCore.Implement
 {
     public abstract class Entity<T> : IEntity<T>
     {

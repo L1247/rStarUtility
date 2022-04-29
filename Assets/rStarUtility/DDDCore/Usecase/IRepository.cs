@@ -1,11 +1,11 @@
 #region
 
 using System.Collections.Generic;
-using DDDCore.Model;
+using rStarUtility.DDDCore.Model;
 
 #endregion
 
-namespace DDDCore.Event.Usecase
+namespace rStarUtility.DDDCore.Event.Usecase
 {
     /// <summary>
     ///     未來可實作Peer儲存用

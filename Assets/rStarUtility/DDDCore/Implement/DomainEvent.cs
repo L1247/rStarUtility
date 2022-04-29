@@ -1,12 +1,4 @@
-#region
-
-#endregion
-
-#region
-
-#endregion
-
-namespace DDDCore.Implement
+namespace rStarUtility.DDDCore.Implement
 {
     public class DomainEvent
     {

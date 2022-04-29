@@ -2,13 +2,13 @@
 
 using System;
 using System.Collections.Generic;
-using DDDCore.Event;
-using DDDCore.Model;
 using MessagePipe;
+using rStarUtility.DDDCore.Event;
+using rStarUtility.DDDCore.Model;
 
 #endregion
 
-namespace DDDCore.Implement
+namespace rStarUtility.DDDCore.Implement
 {
     public sealed class DomainEventBus : IDomainEventBus
     {

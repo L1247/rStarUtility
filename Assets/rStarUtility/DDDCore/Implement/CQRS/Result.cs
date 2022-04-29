@@ -1,10 +1,10 @@
 #region
 
-using DDDCore.Usecase.CQRS;
+using rStarUtility.DDDCore.Usecase.CQRS;
 
 #endregion
 
-namespace DDDCore.Usecase
+namespace rStarUtility.DDDCore.Usecase
 {
     public class Result : Output
     {

@@ -1,12 +1,12 @@
 #region
 
 using System;
-using DDDCore.Event;
+using rStarUtility.DDDCore.Event;
 using Zenject;
 
 #endregion
 
-namespace DDDCore.Implement
+namespace rStarUtility.DDDCore.Implement
 {
     public abstract class DomainEventHandler
     {

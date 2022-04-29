@@ -1,7 +1,7 @@
 #region
 
 using System;
-using DDDCore.Event;
+using rStarUtility.DDDCore.Event;
 using Zenject;
 
 #endregion

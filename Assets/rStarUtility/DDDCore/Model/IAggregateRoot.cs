@@ -1,15 +1,11 @@
 #region
 
-#endregion
-
-#region
-
 using System.Collections.Generic;
-using DDDCore.Implement;
+using rStarUtility.DDDCore.Implement;
 
 #endregion
 
-namespace DDDCore.Model
+namespace rStarUtility.DDDCore.Model
 {
     public interface IAggregateRoot : IEntity<string>
     {

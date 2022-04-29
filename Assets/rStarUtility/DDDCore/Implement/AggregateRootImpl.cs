@@ -1,4 +1,4 @@
-namespace DDDCore.Implement
+namespace rStarUtility.DDDCore.Implement
 {
     public class AggregateRootImpl : AggregateRoot
     {

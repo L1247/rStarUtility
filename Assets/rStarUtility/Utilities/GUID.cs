@@ -4,7 +4,7 @@ using System;
 
 #endregion
 
-namespace ThirtyParty.Utilities
+namespace rStartUtility.Utilities
 {
     public class GUID
     {

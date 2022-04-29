@@ -1,4 +1,4 @@
-namespace DDDCore.Model
+namespace rStarUtility.DDDCore.Model
 {
     public interface IEntity<T>
     {

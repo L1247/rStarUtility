@@ -1,12 +1,12 @@
 #region
 
-using DDDCore.Event;
 using MessagePipe;
+using rStarUtility.DDDCore.Event;
 using Zenject;
 
 #endregion
 
-namespace DDDCore.Implement
+namespace rStarUtility.DDDCore.Implement
 {
     public class DDDInstaller : Installer<DDDInstaller>
     {

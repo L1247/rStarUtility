@@ -1,4 +1,4 @@
-namespace DDDCore.Usecase.CQRS
+namespace rStarUtility.DDDCore.Usecase.CQRS
 {
     public enum ExitCode
     {

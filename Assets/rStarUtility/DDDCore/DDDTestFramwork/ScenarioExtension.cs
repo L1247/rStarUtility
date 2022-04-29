@@ -5,7 +5,7 @@ using DDDTestFrameWork;
 
 #endregion
 
-namespace ThirtyParty.DDDCore.DDDTestFramwork
+namespace rStartUtility.DDDCore.DDDTestFrameWork
 {
     public static class ScenarioExtension
     {

@@ -2,11 +2,11 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using DDDCore.Model;
+using rStarUtility.DDDCore.Model;
 
 #endregion
 
-namespace DDDCore.Implement
+namespace rStarUtility.DDDCore.Implement
 {
     public abstract class AggregateRoot : IAggregateRoot
     {

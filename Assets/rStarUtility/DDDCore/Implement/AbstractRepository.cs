@@ -3,13 +3,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using DDDCore.Event.Usecase;
-using DDDCore.Model;
+using rStarUtility.DDDCore.Event.Usecase;
+using rStarUtility.DDDCore.Model;
 using UnityEngine.Assertions;
 
 #endregion
 
-namespace DDDCore.Implement
+namespace rStarUtility.DDDCore.Implement
 {
     public abstract class AbstractRepository<T> : IRepository<T> where T : class , IAggregateRoot
     {

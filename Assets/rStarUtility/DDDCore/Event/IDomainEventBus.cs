@@ -1,12 +1,12 @@
 #region
 
 using System;
-using DDDCore.Implement;
-using DDDCore.Model;
+using rStarUtility.DDDCore.Implement;
+using rStarUtility.DDDCore.Model;
 
 #endregion
 
-namespace DDDCore.Event
+namespace rStarUtility.DDDCore.Event
 {
     public interface IDomainEventBus
     {
