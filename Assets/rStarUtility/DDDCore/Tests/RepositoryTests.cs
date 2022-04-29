@@ -3,7 +3,8 @@
 using System;
 using DDDTestFramework;
 using NUnit.Framework;
-using rStarUtility.DDDCore.Implement;
+using rStarUtility.DDDCore.Implement.Core;
+using rStarUtility.DDDCore.Implement.Derived;
 
 #endregion
 

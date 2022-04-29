@@ -4,7 +4,7 @@ using rStarUtility.DDDCore.Model;
 
 #endregion
 
-namespace rStarUtility.DDDCore.Implement
+namespace rStarUtility.DDDCore.Implement.Core
 {
     public abstract class Entity<T> : IEntity<T>
     {

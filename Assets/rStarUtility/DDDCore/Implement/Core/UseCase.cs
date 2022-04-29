@@ -6,7 +6,7 @@ using rStarUtility.DDDCore.Usecase;
 
 #endregion
 
-namespace rStarUtility.DDDCore.Implement
+namespace rStarUtility.DDDCore.Implement.Core
 {
     /// <summary>
     /// </summary>

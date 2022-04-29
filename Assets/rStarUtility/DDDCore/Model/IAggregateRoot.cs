@@ -1,7 +1,7 @@
 #region
 
 using System.Collections.Generic;
-using rStarUtility.DDDCore.Implement;
+using rStarUtility.DDDCore.Implement.Core;
 
 #endregion
 

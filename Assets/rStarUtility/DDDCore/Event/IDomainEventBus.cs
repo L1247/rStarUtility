@@ -1,7 +1,7 @@
 #region
 
 using System;
-using rStarUtility.DDDCore.Implement;
+using rStarUtility.DDDCore.Implement.Core;
 using rStarUtility.DDDCore.Model;
 
 #endregion

@@ -9,7 +9,7 @@ using UnityEngine.Assertions;
 
 #endregion
 
-namespace rStarUtility.DDDCore.Implement
+namespace rStarUtility.DDDCore.Implement.Abstract
 {
     public abstract class AbstractRepository<T> : IRepository<T> where T : class , IAggregateRoot
     {

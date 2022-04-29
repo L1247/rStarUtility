@@ -1,4 +1,10 @@
-namespace rStarUtility.DDDCore.Implement
+#region
+
+using rStarUtility.DDDCore.Implement.Core;
+
+#endregion
+
+namespace rStarUtility.DDDCore.Implement.Abstract
 {
     /// <summary>
     /// </summary>

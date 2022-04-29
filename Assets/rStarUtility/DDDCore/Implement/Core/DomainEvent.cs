@@ -1,4 +1,4 @@
-namespace rStarUtility.DDDCore.Implement
+namespace rStarUtility.DDDCore.Implement.Core
 {
     public class DomainEvent
     {

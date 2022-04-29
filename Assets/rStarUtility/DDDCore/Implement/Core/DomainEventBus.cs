@@ -8,7 +8,7 @@ using rStarUtility.DDDCore.Model;
 
 #endregion
 
-namespace rStarUtility.DDDCore.Implement
+namespace rStarUtility.DDDCore.Implement.Core
 {
     public sealed class DomainEventBus : IDomainEventBus
     {

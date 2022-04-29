@@ -6,7 +6,7 @@ using Zenject;
 
 #endregion
 
-namespace rStarUtility.DDDCore.Implement
+namespace rStarUtility.DDDCore.Implement.Core
 {
     public class DDDInstaller : Installer<DDDInstaller>
     {
