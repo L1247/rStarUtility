@@ -8,7 +8,7 @@ using Zenject;
 
 namespace DDDTestFrameWork
 {
-    public class DDDUnitTestFixture : UnitTestFixture
+    public class DDDUnitTestFixture : DIUnitTestFixture
     {
     #region Protected Variables
 
