@@ -14,6 +14,9 @@ import from PackageManager [see here](https://github.com/L1247/rStarUtility#from
 
 ## from Package Manager 
 
+### Quick overview gif
+![image](https://github.com/L1247/rStarUtility/blob/master/ScreenShots/rStarUtility.gif?raw=true)
+
 ### Please follow the instrustions:
 * open Edit/Project Settings/Package Manager
 * add a new Scoped Registry (or edit the existing OpenUPM entry)
