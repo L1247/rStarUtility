@@ -34,6 +34,7 @@ MonoBehaviour:
     - com.svermeulen.extenject
     - com.cysharp.messagepipe
     - com.cysharp.messagepipe.zenject
+    - com.neuecc.unirx
     m_IsDefault: 0
     m_Capabilities: 0
   m_UserSelectedRegistryName: package.openupm.com

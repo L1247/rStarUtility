@@ -3,6 +3,7 @@
     "com.cysharp.messagepipe": "1.7.2",
     "com.cysharp.messagepipe.zenject": "1.7.2",
     "com.cysharp.unitask.compatible": "2.3.1",
+    "com.neuecc.unirx": "7.1.0",
     "com.svermeulen.extenject": "9.2.0-stcf3",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.ide.rider": "3.0.14",
@@ -38,7 +39,8 @@
         "com.openupm",
         "com.svermeulen.extenject",
         "com.cysharp.messagepipe",
-        "com.cysharp.messagepipe.zenject"
+        "com.cysharp.messagepipe.zenject",
+        "com.neuecc.unirx"
       ]
     }
   ]
