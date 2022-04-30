@@ -10,5 +10,12 @@
       "name": "rStar",
       "email": "starlove124760@gmail.com",
       "url": "https://starloveunity.wordpress.com/"
-    }
+    },
+    "samples": [
+      {
+        "displayName": "rStar MenuItems",
+        "description": "Some useful MenuItems",
+        "path": "Samples~/rStar MenuItems"
+      }
+    ]
 }
