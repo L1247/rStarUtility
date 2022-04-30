@@ -3,3 +3,5 @@
 包含一些常用的工具庫
 
 相依Zenject、UniRx、MessagePipe、UniTask
+
+Unity Package : https://github.com/L1247/rStarUtility/releases
