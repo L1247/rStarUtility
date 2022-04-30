@@ -6,7 +6,8 @@
     "unity": "2021.3",
     "unityRelease": "1f1",
     "dependencies": {
-      "com.svermeulen.extenject": "9.2.0-stcf3"
+      "com.svermeulen.extenject": "9.2.0-stcf3",
+      "com.cysharp.unitask": "2.3.1"
     },
     "author": {
       "name": "rStar",

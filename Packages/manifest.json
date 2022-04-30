@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.cysharp.unitask": "2.3.1",
     "com.svermeulen.extenject": "9.2.0-stcf3",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.ide.rider": "3.0.14",
@@ -31,6 +32,8 @@
       "name": "package.openupm.com",
       "url": "https://package.openupm.com",
       "scopes": [
+        "com.cysharp.unitask",
+        "com.openupm",
         "com.svermeulen.extenject"
       ]
     }
