@@ -4,4 +4,13 @@
 
 相依Zenject、UniRx、MessagePipe、UniTask
 
-Unity Package : https://github.com/L1247/rStarUtility/releases
+# Import
+
+## from Unity Package : https://github.com/L1247/rStarUtility/releases
+
+## from Package Manager - add package from git URL
+![](https://github.com/L1247/rStarUtility/blob/master/ScreenShots/Unity_AAGNckA5JX.png?raw=true)
+
+## 導入後，若需要更新到最新版只需要點Package的Update按鈕即可
+![](https://github.com/L1247/rStarUtility/blob/master/ScreenShots/Unity_fn8bcHBPed.png?raw=true)
+
