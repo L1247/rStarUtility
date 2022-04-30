@@ -23,8 +23,8 @@
     },
     "samples": [
       {
-        "displayName": "Sample",
-        "description": "Sample for test",
+        "displayName": "Sample1",
+        "description": "Sample1 for test",
         "path": "Samples~/Sample1"
       }
     ]
