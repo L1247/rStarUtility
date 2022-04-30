@@ -13,9 +13,9 @@
     },
     "samples": [
       {
-        "displayName": "rStar MenuItems",
-        "description": "Some useful MenuItems",
-        "path": "Samples~/rStar MenuItems"
+        "displayName": "UniRxExtension",
+        "description": "Extension for UniRx",
+        "path": "Samples~/UniRxExtension"
       }
     ]
 }

@@ -1,0 +1,26 @@
+{
+    "name": "DDD.Tests",
+    "rootNamespace": "",
+    "references": [
+        "DDD",
+        "DDDTestFramework",
+        "Zenject",
+        "MessagePipe",
+        "MessagePipe.Zenject"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "NSubstitute.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

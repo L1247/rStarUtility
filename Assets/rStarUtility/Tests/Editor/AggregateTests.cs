@@ -9,7 +9,7 @@ using rStarUtility.DDD.Implement.Derived;
 
 namespace rStarUtility.DDD.Tests
 {
-    public class AggregateTests : SimpleTest
+    class AggregateTests : SimpleTest
     {
     #region Private Variables
 

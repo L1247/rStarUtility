@@ -14,7 +14,7 @@ using rStarUtility.DDD.Model;
 namespace rStarUtility.DDD.Tests
 {
     [TestFixture]
-    public class DomainEventBusTests : DIUnitTestFixture
+    class DomainEventBusTests : DIUnitTestFixture
     {
     #region Private Variables
 
