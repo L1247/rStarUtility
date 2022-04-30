@@ -5,7 +5,9 @@
     "version": "1.0.1",
     "unity": "2021.3",
     "unityRelease": "1f1",
-    "dependencies": {},
+    "dependencies": {
+      "com.svermeulen.extenject": "9.2.0-stcf3"
+    },
     "author": {
       "name": "rStar",
       "email": "starlove124760@gmail.com",
