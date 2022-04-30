@@ -1,6 +1,20 @@
 {
   "dependencies": {
-    "com.cysharp.unitask": {
+    "com.cysharp.messagepipe": {
+      "version": "1.7.2",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
+    },
+    "com.cysharp.messagepipe.zenject": {
+      "version": "1.7.2",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
+    },
+    "com.cysharp.unitask.compatible": {
       "version": "2.3.1",
       "depth": 0,
       "source": "registry",

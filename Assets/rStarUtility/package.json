@@ -7,7 +7,9 @@
     "unityRelease": "1f1",
     "dependencies": {
       "com.svermeulen.extenject": "9.2.0-stcf3",
-      "com.cysharp.unitask": "2.3.1"
+      "com.cysharp.unitask": "2.3.1",
+      "com.cysharp.messagepipe": "1.7.2",
+      "com.cysharp.messagepipe.zenject": "1.7.2"
     },
     "author": {
       "name": "rStar",
