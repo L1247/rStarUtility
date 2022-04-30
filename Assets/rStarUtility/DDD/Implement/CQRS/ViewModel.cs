@@ -1,4 +1,4 @@
-namespace rStartUtility.DDD.Implement.CQRS
+namespace rStarUtility.DDD.Implement.CQRS
 {
     public interface ViewModel { }
 }

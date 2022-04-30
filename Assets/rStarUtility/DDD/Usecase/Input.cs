@@ -1,4 +1,4 @@
-namespace rStartUtility.DDD.Usecase
+namespace rStarUtility.DDD.Usecase
 {
     public interface Input { }
 }

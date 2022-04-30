@@ -1,11 +1,10 @@
 #region
 
 using System;
-using DDDTestFrameWork;
 
 #endregion
 
-namespace rStartUtility.DDD.DDDTestFrameWork
+namespace rStarUtility.DDD.DDDTestFrameWork
 {
     public static class ScenarioExtension
     {

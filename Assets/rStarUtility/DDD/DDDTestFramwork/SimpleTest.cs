@@ -4,7 +4,7 @@ using System;
 
 #endregion
 
-namespace DDDTestFramework
+namespace rStarUtility.DDD.DDDTestFrameWork
 {
     public class SimpleTest
     {

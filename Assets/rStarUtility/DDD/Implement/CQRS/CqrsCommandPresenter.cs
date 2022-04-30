@@ -5,7 +5,7 @@ using rStarUtility.DDD.Usecase.CQRS;
 
 #endregion
 
-namespace rStartUtility.DDD.Implement.CQRS
+namespace rStarUtility.DDD.Implement.CQRS
 {
     public class CqrsCommandPresenter : Result , CqrsCommandOutput , Presenter<CqrsCommandViewModel>
     {

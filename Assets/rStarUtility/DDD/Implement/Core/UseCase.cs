@@ -1,6 +1,6 @@
 #region
 
-using rStartUtility.DDD.Usecase;
+using rStarUtility.DDD.Usecase;
 using rStarUtility.DDD.Event;
 using rStarUtility.DDD.Usecase;
 

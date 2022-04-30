@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 #endregion
 
-namespace DDDTestFrameWork
+namespace rStarUtility.DDD.DDDTestFrameWork
 {
     public class Scenario
     {

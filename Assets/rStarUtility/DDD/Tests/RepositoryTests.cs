@@ -1,14 +1,14 @@
 #region
 
 using System;
-using DDDTestFramework;
 using NUnit.Framework;
+using rStarUtility.DDD.DDDTestFrameWork;
 using rStarUtility.DDD.Implement.Core;
 using rStarUtility.DDD.Implement.Derived;
 
 #endregion
 
-namespace rStartUtility.DDD.Tests
+namespace rStarUtility.DDD.Tests
 {
     public class RepositoryTests : SimpleTest
     {

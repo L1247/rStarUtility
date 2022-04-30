@@ -1,13 +1,13 @@
 #region
 
 using System.Linq;
-using DDDTestFramework;
 using NUnit.Framework;
+using rStarUtility.DDD.DDDTestFrameWork;
 using rStarUtility.DDD.Implement.Derived;
 
 #endregion
 
-namespace rStartUtility.DDD.Tests
+namespace rStarUtility.DDD.Tests
 {
     public class AggregateTests : SimpleTest
     {

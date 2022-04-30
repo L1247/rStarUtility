@@ -1,17 +1,17 @@
 #region
 
 using System.Collections.Generic;
-using DDDTestFrameWork;
 using MessagePipe;
 using NSubstitute;
 using NUnit.Framework;
+using rStarUtility.DDD.DDDTestFrameWork;
 using rStarUtility.DDD.Implement.Core;
 using rStarUtility.DDD.Implement.Derived;
 using rStarUtility.DDD.Model;
 
 #endregion
 
-namespace rStartUtility.DDD.Tests
+namespace rStarUtility.DDD.Tests
 {
     [TestFixture]
     public class DomainEventBusTests : DIUnitTestFixture

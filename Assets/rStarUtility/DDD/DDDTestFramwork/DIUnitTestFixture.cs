@@ -5,7 +5,7 @@ using Zenject;
 
 #endregion
 
-namespace DDDTestFrameWork
+namespace rStarUtility.DDD.DDDTestFrameWork
 {
     public class DIUnitTestFixture
     {

@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 #endregion
 
-namespace rStartUtility.DDD.DDDTestFrameWork
+namespace rStarUtility.DDD.DDDTestFrameWork
 {
     public sealed class AssertEx
     {
