@@ -1,0 +1,2 @@
+1.0.0 相依Zenject、UniRx、MessagePipe、UniTask
+1.0.1 add samples - UniRxExtension
