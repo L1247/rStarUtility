@@ -1,3 +1,5 @@
+## 說明
+
 包含DDD框架的實作以及相關的測試
 
 包含一些常用的工具庫
@@ -7,6 +9,11 @@
 如果採用 PackageManager則不需要自己Import其他相依插件，會自動安裝
 
 import from PackageManager [see here](https://github.com/L1247/rStarUtility#from-package-manager)
+
+## 環境
+
+Unity 版本: `2021.3.1f1`
+
 
 # Import
 
