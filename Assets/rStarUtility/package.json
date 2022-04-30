@@ -23,9 +23,9 @@
     },
     "samples": [
       {
-        "displayName": "UniRxExtension",
-        "description": "Extension for UniRx , depend on UniRx.",
-        "path": "Samples~/UniRxExtension"
+        "displayName": "Sample",
+        "description": "Sample for test",
+        "path": "Samples~/Sample1"
       }
     ]
 }
