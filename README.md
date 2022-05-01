@@ -19,7 +19,7 @@ Unity 版本: `2021.3.1f1`
 
 ## from Unity Package : https://github.com/L1247/rStarUtility/releases
 
-## from Package Manager 
+## from Package Manager
 
 ### Quick overview gif
 ![image](https://github.com/L1247/rStarUtility/blob/master/ScreenShots/rStarUtility.gif?raw=true)
@@ -56,3 +56,28 @@ Scope(s): com.svermeulen.extenject
 ### 導入後，若需要更新到最新版只需要點Package的Update按鈕即可
 ![](https://github.com/L1247/rStarUtility/blob/master/ScreenShots/Unity_UpdateToNewVersion.png?raw=true)
 
+## from Package Manager (using project manifest)
+
+For example, modify `Packages/manifest.json` as the following:
+
+```json
+{
+  "scopedRegistries": [
+    {
+      "name": "package.openupm.com",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "com.cysharp.messagepipe",
+        "com.cysharp.messagepipe.zenject",
+        "com.cysharp.unitask",
+        "com.openupm",
+        "com.neuecc.unirx",
+        "com.svermeulen.extenject"
+      ]
+    }
+  ],
+  "dependencies": {
+    "com.rstar.rstarutility": "https://github.com/L1247/rStarUtility.git?path=Assets/rStarUtility"
+  }
+}
+```
