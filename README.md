@@ -32,7 +32,6 @@ Name: package.openupm.com
 URL: https://package.openupm.com
 Scope(s): com.svermeulen.extenject
          com.cysharp.unitask
-         com.svermeulen.extenject
          com.cysharp.messagepipe
          com.cysharp.messagepipe.zenject
          com.neuecc.unirx
