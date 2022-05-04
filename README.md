@@ -44,7 +44,9 @@ Scope(s):
 ![](https://github.com/L1247/rStarUtility/blob/master/ScreenShots/Unity_Package.Openupm.png?raw=true)
 
 ### add package from git URL
-```https://github.com/L1247/rStarUtility.git?path=Assets/rStarUtility```
+```
+https://github.com/L1247/rStarUtility.git?path=Assets/rStarUtility
+```
 
 ![](https://github.com/L1247/rStarUtility/blob/master/ScreenShots/Unity_AddPackageFromGitURL_New.png?raw=true)
 
