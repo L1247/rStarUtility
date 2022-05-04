@@ -30,7 +30,8 @@ Unity 版本: `2021.3.1f1`
 ```
 Name: package.openupm.com
 URL: https://package.openupm.com
-Scope(s): com.svermeulen.extenject
+Scope(s): 
+         com.svermeulen.extenject
          com.cysharp.unitask
          com.cysharp.messagepipe
          com.cysharp.messagepipe.zenject
@@ -43,7 +44,7 @@ Scope(s): com.svermeulen.extenject
 ![](https://github.com/L1247/rStarUtility/blob/master/ScreenShots/Unity_Package.Openupm.png?raw=true)
 
 ### add package from git URL
-`https://github.com/L1247/rStarUtility.git?path=Assets/rStarUtility`
+```https://github.com/L1247/rStarUtility.git?path=Assets/rStarUtility```
 
 ![](https://github.com/L1247/rStarUtility/blob/master/ScreenShots/Unity_AddPackageFromGitURL_New.png?raw=true)
 
