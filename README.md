@@ -14,6 +14,9 @@ import from PackageManager [see here](https://github.com/L1247/rStarUtility#from
 
 Unity 版本: `2021.3.1f1`
 
+## 相關可選用的模組
+RPG Module： https://github.com/L1247/RPG-Module
+
 
 # Import
 
