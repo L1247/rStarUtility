@@ -10,6 +10,10 @@ using UnityEngine.UI;
 
 namespace rStarUtility.Util.Extensions
 {
+#region
+
+#endregion
+
     public static class UniRxExtension
     {
     #region Public Variables

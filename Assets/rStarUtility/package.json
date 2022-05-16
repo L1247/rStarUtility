@@ -1,28 +1,28 @@
 {
-    "name": "com.rstar.rstarutility",
-    "displayName": "rStar Utility",
-    "description": "包含DDD框架的實作以及相關的測試\n包含一些常用的工具庫\n相依Zenject、UniRx、MessagePipe、UniTask",
-    "version": "1.0.2",
-    "unity": "2021.3",
-    "unityRelease": "1f1",
-    "dependencies": {
-      "com.svermeulen.extenject": "9.2.0-stcf3",
-      "com.cysharp.unitask": "2.3.1",
-      "com.cysharp.messagepipe": "1.7.2",
-      "com.cysharp.messagepipe.zenject": "1.7.2",
-      "com.neuecc.unirx": "7.1.0"
-    },
-    "author": {
-      "name": "rStar",
-      "email": "starlove124760@gmail.com",
-      "url": "https://www.youtube.com/c/rStarStudio"
-    },
-    "repository": {
-      "type": "git",
-      "url": "https://github.com/L1247/rStarUtility.git"
-    },
-    "samples": [
-      {
+  "name": "com.rstar.rstarutility",
+  "displayName": "rStar Utility",
+  "description": "包含DDD框架的實作以及相關的測試\n包含一些常用的工具庫\n相依Zenject、UniRx、MessagePipe、UniTask",
+  "version": "1.0.3",
+  "unity": "2021.3",
+  "unityRelease": "1f1",
+  "dependencies": {
+    "com.svermeulen.extenject": "9.2.0-stcf3",
+    "com.cysharp.unitask": "2.3.1",
+    "com.cysharp.messagepipe": "1.7.2",
+    "com.cysharp.messagepipe.zenject": "1.7.2",
+    "com.neuecc.unirx": "7.1.0"
+  },
+  "author": {
+    "name": "rStar",
+    "email": "starlove124760@gmail.com",
+    "url": "https://www.youtube.com/c/rStarStudio"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/L1247/rStarUtility.git"
+  },
+  "samples": [
+    {
         "displayName": "Sample1",
         "description": "Sample1 for test",
         "path": "Samples~/Sample1"
