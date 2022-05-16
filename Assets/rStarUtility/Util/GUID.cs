@@ -4,7 +4,7 @@ using System;
 
 #endregion
 
-namespace rStarUtility.Utilities
+namespace rStarUtility.Util
 {
     public class GUID
     {

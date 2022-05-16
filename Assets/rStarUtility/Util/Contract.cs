@@ -4,7 +4,7 @@ using System;
 
 #endregion
 
-namespace Utilities.Contract
+namespace rStarUtility.Util
 {
     public static class Contract
     {

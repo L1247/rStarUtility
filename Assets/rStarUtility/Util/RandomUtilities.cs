@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 
 #endregion
 
-namespace AutoBot.Utilities
+namespace rStarUtility.Util
 {
     public static class RandomUtilities
     {

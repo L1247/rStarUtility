@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 #endregion
 
-namespace AutoBot.Utilities.Extensions
+namespace rStarUtility.Util.Extensions
 {
     public static class DictionaryExtension
     {

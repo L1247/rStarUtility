@@ -4,7 +4,7 @@ using UnityEngine;
 
 #endregion
 
-namespace AutoBot.Utilities.Extensions
+namespace rStarUtility.Util.Extensions
 {
     public static class UnityExtension
     {

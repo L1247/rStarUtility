@@ -4,11 +4,26 @@ using UnityEngine;
 
 #endregion
 
-namespace Main.Utility
+namespace rStarUtility.Util
 {
     public static class UnityUtility
     {
     #region Public Variables
+
+        public static bool ToggleActive(this MonoBehaviour monoBehaviour)
+        {
+            var gameObject   = monoBehaviour.gameObject;
+            var toggleActive = !gameObject.activeInHierarchy;
+            gameObject.SetActive(toggleActive);
+            return toggleActive;
+        }
+
+        public static bool ToggleActive(this GameObject gameObject)
+        {
+            var toggleActive = !gameObject.activeInHierarchy;
+            gameObject.SetActive(toggleActive);
+            return toggleActive;
+        }
 
         public static Sprite CreateSprite()
         {
@@ -16,6 +31,11 @@ namespace Main.Utility
             var sprite = Sprite.Create(texture , new Rect(0 , 0 , 32 , 32)
                                        , new Vector2(16 , 16));
             return sprite;
+        }
+
+        public static void SetActive(this MonoBehaviour monoBehaviour , bool value)
+        {
+            monoBehaviour.gameObject.SetActive(value);
         }
 
     #endregion
