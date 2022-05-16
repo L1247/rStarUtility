@@ -14,7 +14,7 @@ namespace rStarUtility.Util.Extensions
     {
     #region Public Variables
 
-        public static void Binding(this Button button , Action action)
+        public static void BindClick(this Button button , Action action)
         {
             button.OnClickAsObservable().Subscribe(_ => action.Invoke())
                   .AddTo(button.gameObject);
