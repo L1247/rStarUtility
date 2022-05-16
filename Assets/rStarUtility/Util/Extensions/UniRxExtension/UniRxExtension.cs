@@ -1,7 +1,6 @@
 #region
 
 using System;
-using UniRx;
 using UniRx.Triggers;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -11,6 +10,8 @@ using UnityEngine.UI;
 namespace rStarUtility.Util.Extensions
 {
 #region
+
+    using UniRx;
 
 #endregion
 
