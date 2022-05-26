@@ -1,0 +1,46 @@
+name: Test runner
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  test-runner:
+    name: ${{ matrix.testMode }} Tests
+    runs-on: ubuntu-latest
+    permissions: write-all
+    strategy:
+      fail-fast: false
+      matrix:
+        testMode:
+          - PlayMode
+          - EditMode
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Cache library
+        uses: actions/cache@v2
+        with:
+          path: Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
+
+      - name: Run tests
+        id: tests
+        uses: game-ci/unity-test-runner@v2
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          testMode: ${{ matrix.testMode }}
+          artifactsPath: ${{ matrix.testMode }}-artifacts
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          checkName: ${{ matrix.testMode }} Tests Result
+
+      - name: Upload results
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: ${{ matrix.testMode }} Tests Result
+          path: ${{ steps.tests.outputs.artifactsPath }}
