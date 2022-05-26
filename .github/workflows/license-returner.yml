@@ -1,0 +1,13 @@
+name: License returner
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  return-license:
+    name: Return license
+    runs-on: ubuntu-latest
+    steps:
+      - name: Return license
+        uses: game-ci/unity-return-license@v2
+        if: always()
