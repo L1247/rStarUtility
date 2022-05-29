@@ -10,7 +10,7 @@
 
 import from PackageManager [see here](https://github.com/L1247/rStarUtility#from-package-manager)
 
-#### Tests and Build Status
+## Tests and Build Status
 
 | Description             | Status |
 |-------------------------|--------|
