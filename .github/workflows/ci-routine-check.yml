@@ -1,23 +1,14 @@
 name: CI Routine Check
 
-on:
-  - push
-  - pull_request
+#on:
+#  - push
+#  - pull_request
 
 jobs:
-  Checkout:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+#  Checkout:
+#    runs-on: ubuntu-latest
+#    steps:
 
-      - name: Cache library
-        uses: actions/cache@v2
-        with:
-          path: Library
-          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
-          restore-keys: |
-            Library-
 
   Run-Tests:
     needs: [Checkout]
@@ -31,6 +22,15 @@ jobs:
           - PlayMode
           - EditMode
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Cache library
+        uses: actions/cache@v2
+        with:
+            path: Library
+            key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+            restore-keys: |
+              Library-
       - name: Run tests
         id: tests
         uses: game-ci/unity-test-runner@v2
