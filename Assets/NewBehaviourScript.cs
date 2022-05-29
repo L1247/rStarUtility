@@ -9,7 +9,7 @@ public class NewBehaviourScript : MonoBehaviour
     void Start()
     {
     #if UNITY_EDITOR
-             EditorApplication.Beep();
     #endif
+             EditorApplication.Beep();
     }
 }
