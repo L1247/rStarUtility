@@ -1,14 +1,14 @@
 name: CI Routine Check
 
-#on:
+on:
 #  - push
 #  - pull_request
+  workflow_dispatch: { }
 
 jobs:
-#  Checkout:
-#    runs-on: ubuntu-latest
-#    steps:
-
+  #  Checkout:
+  #    runs-on: ubuntu-latest
+  #    steps:
 
   Run-Tests:
     needs: [Checkout]
