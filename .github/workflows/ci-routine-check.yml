@@ -5,6 +5,9 @@ on:
 #  - pull_request
   workflow_dispatch: { }
 
+env:
+    UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+
 jobs:
   Run-Tests:
     name: ${{ matrix.testMode }} Tests
@@ -29,8 +32,6 @@ jobs:
       - name: Run tests
         id: tests
         uses: game-ci/unity-test-runner@v2
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
           testMode: ${{ matrix.testMode }}
           artifactsPath: ${{ matrix.testMode }}-artifacts
