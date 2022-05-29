@@ -8,23 +8,16 @@ jobs:
   Checkout:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      with:
-        clean: false
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-#  Cache:
-#    needs: [Checkout]
-#    runs-on: ubuntu-latest
-#    steps:
-#    - name: Cache library
-#      uses: actions/cache@v2
-#      with:
-#          path: Library
-#          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
-#          restore-keys: |
-#            Library-
-#          clean: false
+      - name: Cache library
+        uses: actions/cache@v2
+        with:
+          path: Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
 
   Run-Tests:
     needs: [Checkout]
