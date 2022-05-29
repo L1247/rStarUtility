@@ -1,9 +1,9 @@
 name: CI Routine Check 🎮
 
 on:
-#  - push
-#  - pull_request
-  workflow_dispatch: { }
+  - push
+  - pull_request
+#  workflow_dispatch: { }
 
 env:
     UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
