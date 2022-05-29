@@ -18,7 +18,7 @@ import from PackageManager [see here](https://github.com/L1247/rStarUtility#from
 
 ## 環境
 
-Unity 版本: `2021.3.1f1`
+Unity 版本: `2021.3.f1`
 
 ## 相關可選用的模組
 RPG Module： https://github.com/L1247/RPG-Module
