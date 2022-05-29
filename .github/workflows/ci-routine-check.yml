@@ -68,3 +68,4 @@ jobs:
         with:
           name: build-StandaloneWindows64
           path: build/StandaloneWindows64
+          retention-days: 7
