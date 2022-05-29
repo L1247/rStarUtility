@@ -10,6 +10,12 @@
 
 import from PackageManager [see here](https://github.com/L1247/rStarUtility#from-package-manager)
 
+#### Tests and Build Status
+
+| Description             | Status |
+|-------------------------|--------|
+| [Tests and Build](https://github.com/marketplace/actions/unity-test-runner) | ![CI routine workflow]([https://github.com/<OWNER>/<REPOSITORY>](https://github.com/L1247/rStarUtility/actions/workflows/ci-routine-check.yml/badge.svg)
+
 ## 環境
 
 Unity 版本: `2021.3.1f1`
