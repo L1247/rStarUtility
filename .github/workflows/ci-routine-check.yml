@@ -1,4 +1,4 @@
-name: CI Routine Check
+name: CI Routine Check 🎮
 
 on:
 #  - push
@@ -6,12 +6,7 @@ on:
   workflow_dispatch: { }
 
 jobs:
-  #  Checkout:
-  #    runs-on: ubuntu-latest
-  #    steps:
-
   Run-Tests:
-#    needs: [Checkout]
     name: ${{ matrix.testMode }} Tests
     runs-on: ubuntu-latest
     permissions: write-all
@@ -41,11 +36,6 @@ jobs:
           artifactsPath: ${{ matrix.testMode }}-artifacts
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           checkName: ${{ matrix.testMode }} Tests Result
-
-  UploadResults:
-    needs: [Run-Tests]
-    runs-on: ubuntu-latest
-    steps:
       - name: Upload results
         uses: actions/upload-artifact@v2
         if: always()
