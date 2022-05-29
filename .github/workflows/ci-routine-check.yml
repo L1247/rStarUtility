@@ -13,20 +13,21 @@ jobs:
       with:
         clean: false
 
-  Cache:
-    needs: [Checkout]
-    runs-on: ubuntu-latest
-    steps:
-    - name: Cache library
-      uses: actions/cache@v2
-      with:
-          path: Library
-          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
-          restore-keys: |
-            Library-
+#  Cache:
+#    needs: [Checkout]
+#    runs-on: ubuntu-latest
+#    steps:
+#    - name: Cache library
+#      uses: actions/cache@v2
+#      with:
+#          path: Library
+#          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+#          restore-keys: |
+#            Library-
+#          clean: false
 
   Run-Tests:
-    needs: [Cache]
+    needs: [Checkout]
     name: ${{ matrix.testMode }} Tests
     runs-on: ubuntu-latest
     permissions: write-all
