@@ -11,7 +11,7 @@ jobs:
   #    steps:
 
   Run-Tests:
-    needs: [Checkout]
+#    needs: [Checkout]
     name: ${{ matrix.testMode }} Tests
     runs-on: ubuntu-latest
     permissions: write-all
