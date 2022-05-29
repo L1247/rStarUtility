@@ -14,6 +14,7 @@ jobs:
         clean: false
 
   Cache:
+    needs: [Checkout]
     runs-on: ubuntu-latest
     steps:
     - name: Cache library
@@ -25,6 +26,7 @@ jobs:
             Library-
 
   Run-Tests:
+    needs: [Cache]
     name: ${{ matrix.testMode }} Tests
     runs-on: ubuntu-latest
     permissions: write-all
@@ -47,6 +49,7 @@ jobs:
           checkName: ${{ matrix.testMode }} Tests Result
 
   UploadResults:
+    needs: [Run-Tests]
     runs-on: ubuntu-latest
     steps:
       - name: Upload results
