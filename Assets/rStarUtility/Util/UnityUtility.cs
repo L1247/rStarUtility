@@ -33,11 +33,6 @@ namespace rStarUtility.Util
             return sprite;
         }
 
-        public static void SetActive(this MonoBehaviour monoBehaviour , bool value)
-        {
-            monoBehaviour.gameObject.SetActive(value);
-        }
-
     #endregion
     }
 }
