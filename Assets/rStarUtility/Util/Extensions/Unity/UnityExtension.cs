@@ -4,7 +4,7 @@ using UnityEngine;
 
 #endregion
 
-namespace rStarUtility.Util.Extensions
+namespace rStarUtility.Util.Extensions.Unity
 {
     public static class UnityExtension
     {

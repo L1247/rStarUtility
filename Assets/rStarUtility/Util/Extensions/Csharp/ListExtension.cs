@@ -6,7 +6,7 @@ using UnityEngine;
 
 #endregion
 
-namespace rStarUtility.Util.Extensions
+namespace rStarUtility.Util.Extensions.Csharp
 {
     public static class ListExtension
     {
