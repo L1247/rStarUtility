@@ -11,7 +11,7 @@ using rStarUtility.DDD.Model;
 
 #endregion
 
-namespace rStarUtility.DDD.Tests
+namespace rStarUtility.Tests.DDD
 {
     [TestFixture]
     class DomainEventBusTests : DIUnitTestFixture

@@ -8,7 +8,7 @@ using rStarUtility.DDD.Implement.Derived;
 
 #endregion
 
-namespace rStarUtility.DDD.Tests
+namespace rStarUtility.Tests.DDD
 {
     class RepositoryTests : SimpleTest
     {
