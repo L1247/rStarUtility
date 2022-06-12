@@ -12,6 +12,7 @@ namespace rStarUtility.Util.Helper
 
         /// <summary>
         ///     判斷兩點接不接近，可調整magnitude數值去判斷兩者距離多近才算
+        /// https://www.cnblogs.com/MrZivChu/p/normalclass.html
         /// </summary>
         /// <param name="point1"></param>
         /// <param name="point2"></param>
