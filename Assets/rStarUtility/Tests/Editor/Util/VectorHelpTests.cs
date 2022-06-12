@@ -17,7 +17,7 @@ namespace rStarUtility.Tests.Editor.Util
         {
             var point1            = new Vector2(2 , 1);
             var point2            = new Vector2(1 , 1);
-            var isCloseThePointV2 = VectorHelper.IsCloseThePointV2(point1 , point2 , 1f);
+            var isCloseThePointV2 = VectorHelper.IsCloseThePoint(point1 , point2 , 1f);
             Assert.AreEqual(true , isCloseThePointV2 , "isCloseThePointV2 is not equal");
         }
 
