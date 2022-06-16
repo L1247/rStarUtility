@@ -11,7 +11,7 @@ using UnityEngine.Assertions;
 
 namespace rStarUtility.DDD.Implement.Abstract
 {
-    public abstract class AbstractRepository<T> : IRepository<T> where T : class , IAggregateRoot
+    public abstract class AbstractRepository<T> : IRepository<T> where T : class , IEntity<string>
     {
     #region Private Variables
 
