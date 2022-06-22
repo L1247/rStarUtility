@@ -20,8 +20,14 @@ namespace rStarUtility.Util.Helper
         /// <returns></returns>
         public static bool IsCloseThePoint(Vector2 point1 , Vector2 point2 , float magnitude)
         {
-            var distance = (point1 - point2).sqrMagnitude;
+            var distance = Distance(point1 , point2);
             return distance <= magnitude;
+        }
+
+        public static float Distance(this Vector2 point1 , Vector2 point2)
+        {
+            var distance = (point1 - point2).sqrMagnitude;
+            return distance;
         }
 
     #endregion
