@@ -34,14 +34,17 @@ namespace rStarUtility.Util.Component
         private _2D_Collider_Type Collider_Type = _2D_Collider_Type.Box;
 
         [SerializeField]
-        private Color static_color = new Color(0 , 1 , 0 , 0.3f);
+        private Color static_color = new Color(0 , 1 , 0 , 1f);
+
+        [SerializeField]
+        private float thickness = 1;
 
         [Space(20)]
         [SerializeField]
-        private bool color_in_collision = true;
+        private bool color_in_collision;
 
         [SerializeField]
-        private Color collision_color = new Color(1 , 0 , 0 , 0.3f);
+        private Color collision_color = new Color(1 , 0 , 0 , 1f);
 
 
         [SerializeField]
@@ -161,6 +164,7 @@ namespace rStarUtility.Util.Component
             if (in_collision && color_in_collision)
                 c = collision_color;
 
+            var a = volume ? c.a / 4 : c.a;
 
             switch (Collider_Type)
             {
@@ -183,11 +187,20 @@ namespace rStarUtility.Util.Component
                     vb2[3] = vb1[3] = trans.TransformPoint(
                                  new Vector3(b2D.offset.x - b2D.size.x / 2 , b2D.offset.y + b2D.size.y / 2 ,
                                              trans.position.z));
-                    Handles.color = /*Color.green*/c;
-                    Handles.DrawPolyLine(vb2);
-                    Handles.color = c;
+                    Handles.color = new Color(c.r , c.g , c.b , a);
+                    // Handles.DrawPolyLine(vb2);
                     if (volume)
+                    {
                         Handles.DrawAAConvexPolygon(vb1);
+                    }
+                    else
+                    {
+                        Handles.DrawLine(vb2[0] , vb2[1] , thickness);
+                        Handles.DrawLine(vb2[1] , vb2[2] , thickness);
+                        Handles.DrawLine(vb2[2] , vb2[3] , thickness);
+                        Handles.DrawLine(vb2[3] , vb2[0] , thickness);
+                    }
+
                     break;
 
                 // Draw Circle
@@ -197,11 +210,9 @@ namespace rStarUtility.Util.Component
                         return;
                     var c_radius = c2D.radius * transform.lossyScale.x;
                     var c_offset = transform.TransformPoint(c2D.offset);
-                    Handles.color = Color.green;
-                    Handles.DrawWireDisc(c_offset , Vector3.forward , c_radius);
-                    Handles.color = new Color(c.r , c.g , c.b , c.a / 2.5f);
-                    if (volume)
-                        Handles.DrawSolidDisc(c_offset , Vector3.forward , c_radius);
+                    Handles.color = new Color(c.r , c.g , c.b , a);
+                    if (volume) Handles.DrawSolidDisc(c_offset , Vector3.forward , c_radius);
+                    else Handles.DrawWireDisc(c_offset , Vector3.forward , c_radius , thickness);
                     break;
 
                 // Draw Edge
@@ -212,7 +223,7 @@ namespace rStarUtility.Util.Component
                     var ve = new Vector3[e2D.points.Length];
                     for (var i = 0 ; i < ve.Length ; i++)
                         ve[i] = trans.TransformPoint(e2D.points[i]);
-                    Handles.color = new Color(c.r , c.g , c.b , 1);
+                    Handles.color = new Color(c.r , c.g , c.b , a);
                     Handles.DrawPolyLine(ve);
                     break;
 
@@ -226,11 +237,9 @@ namespace rStarUtility.Util.Component
                     for (var i = 0 ; i < vp1.Length ; i++)
                         vp2[i] = vp1[i] = trans.TransformPoint(p2D.points[i]);
                     vp2[vp1.Length] = vp2[0];
-                    Handles.color   = Color.green;
-                    Handles.DrawPolyLine(vp2);
-                    Handles.color = c;
-                    if (volume)
-                        Handles.DrawAAConvexPolygon(vp1);
+                    Handles.color   = new Color(c.r , c.g , c.b , a);
+                    if (volume) Handles.DrawAAConvexPolygon(vp1);
+                    else Handles.DrawPolyLine(vp2);
                     break;
             }
         }
