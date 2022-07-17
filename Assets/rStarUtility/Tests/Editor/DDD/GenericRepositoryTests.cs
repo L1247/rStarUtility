@@ -14,7 +14,7 @@ namespace rStarUtility.Tests.DDD
     {
     #region Private Variables
 
-        private class TestObj { }
+        private class TestObj {}
 
         private GenericRepository<TestObj> repository;
 
@@ -76,7 +76,7 @@ namespace rStarUtility.Tests.DDD
         }
 
         [Test]
-        public void Save_With_Id_Exist()
+        public void Save_Error_With_Id_Exist()
         {
             SaveWithNewTestObj();
             var exception = Assert.Throws<ArgumentException>(() => SaveWithNewTestObj());
@@ -124,7 +124,7 @@ namespace rStarUtility.Tests.DDD
         [Test]
         [TestCase(null)]
         [TestCase("")]
-        public void Contain_With_Invalid_Id(string id)
+        public void Contain_Error_With_Invalid_Id(string id)
         {
             var exception = Assert.Throws<ArgumentException>(() => repository.ContainsId(id));
             var message   = exception.Message;
