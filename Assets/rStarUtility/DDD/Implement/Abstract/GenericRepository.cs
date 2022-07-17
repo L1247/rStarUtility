@@ -3,7 +3,6 @@
 using System;
 using System.Collections.Generic;
 using rStarUtility.DDD.Event.Usecase;
-using UnityEngine.Assertions;
 
 #endregion
 
@@ -27,8 +26,8 @@ namespace rStarUtility.DDD.Implement.Abstract
 
         public virtual bool ContainsId(string id)
         {
-            Assert.IsNotNull(id , "id is null.");
-            Assert.IsFalse(string.IsNullOrEmpty(id) , "id is NullOrEmpty");
+            var isNullOrEmpty = string.IsNullOrEmpty(id);
+            if (isNullOrEmpty) throw new ArgumentException("id is NullOrEmpty.");
             return entities.ContainsKey(id);
         }
 

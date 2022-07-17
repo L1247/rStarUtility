@@ -122,6 +122,16 @@ namespace rStarUtility.Tests.DDD
         }
 
         [Test]
+        [TestCase(null)]
+        [TestCase("")]
+        public void Contain_With_Invalid_Id(string id)
+        {
+            var exception = Assert.Throws<ArgumentException>(() => repository.ContainsId(id));
+            var message   = exception.Message;
+            Assert.AreEqual("id is NullOrEmpty." , message , "message is not equal");
+        }
+
+        [Test]
         public void FindById_With_Empty_Repository()
         {
             Assert.IsNull(FindById() , "return is not null");
