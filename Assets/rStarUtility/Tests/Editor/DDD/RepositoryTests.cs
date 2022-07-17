@@ -3,7 +3,7 @@
 using System;
 using NUnit.Framework;
 using rStarUtility.DDD.DDDTestFrameWork;
-using rStarUtility.DDD.Implement.Derived;
+using rStarUtility.DDD.Implement.Abstract;
 
 #endregion
 
@@ -13,7 +13,9 @@ namespace rStarUtility.Tests.DDD
     {
     #region Private Variables
 
-        private RepositoryImpl repository;
+        private class TestObj { }
+
+        private GenericRepository<TestObj> repository;
 
     #endregion
 
@@ -22,7 +24,7 @@ namespace rStarUtility.Tests.DDD
         [SetUp]
         public void SetUp()
         {
-            repository = new RepositoryImpl();
+            repository = new GenericRepository<TestObj>();
         }
 
     #endregion
@@ -32,7 +34,7 @@ namespace rStarUtility.Tests.DDD
         [Test]
         public void DeleteAll()
         {
-            repository.Save(GetNewAggregate());
+            SaveWithNewTestObj();
             repository.DeleteAll();
             Assert.AreEqual(0 , repository.GetCount() , "count is not equal");
         }
@@ -40,36 +42,36 @@ namespace rStarUtility.Tests.DDD
         [Test]
         public void GetAll()
         {
-            var aggregate1 = GetNewAggregate();
-            var aggregate2 = new AggregateRootImpl(GetGuid());
-            repository.Save(aggregate1);
-            repository.Save(aggregate2);
+            var obj1 = new TestObj();
+            var obj2 = new TestObj();
+            repository.Save(GetGuid() , obj1);
+            repository.Save(GetGuid() , obj2);
             Assert.AreEqual(2 , repository.GetCount() , "count is not equal");
             var aggregateRoots = repository.GetAll();
-            Assert.AreEqual(aggregate1 , aggregateRoots[0] , "aggregate1 is not equal");
-            Assert.AreEqual(aggregate2 , aggregateRoots[1] , "aggregate2 is not equal");
+            Assert.AreEqual(obj1 , aggregateRoots[0] , "aggregate1 is not equal");
+            Assert.AreEqual(obj2 , aggregateRoots[1] , "aggregate2 is not equal");
         }
 
         [Test]
         public void GetCount()
         {
             Assert.AreEqual(0 , repository.GetCount() , "GetCount is not equal");
-            repository.Save(GetNewAggregate());
+            SaveWithNewTestObj();
             Assert.AreEqual(1 , repository.GetCount() , "GetCount is not equal");
         }
 
         [Test]
         public void Save_With_Success()
         {
-            repository.Save(GetNewAggregate());
+            SaveWithNewTestObj();
             Assert.AreEqual(true , repository.ContainsId(id) , "ContainsId is not equal");
         }
 
         [Test]
         public void Save_With_Fail()
         {
-            repository.Save(GetNewAggregate());
-            var exception = Assert.Throws<ArgumentException>(() => repository.Save(GetNewAggregate()));
+            SaveWithNewTestObj();
+            var exception = Assert.Throws<ArgumentException>(() => SaveWithNewTestObj());
             var message   = exception.Message;
             Assert.AreEqual($"the same key has already been added. key: {id}" , message , "message is not equal");
         }
@@ -77,7 +79,7 @@ namespace rStarUtility.Tests.DDD
         [Test]
         public void DeleteById_With_Success()
         {
-            repository.Save(GetNewAggregate());
+            SaveWithNewTestObj();
             var success = repository.DeleteById(id);
             Assert.AreEqual(true ,  success ,                   "success is not equal");
             Assert.AreEqual(false , repository.ContainsId(id) , "contains is not equal");
@@ -94,7 +96,7 @@ namespace rStarUtility.Tests.DDD
         [Test]
         public void Contain_With_Success()
         {
-            repository.Save(GetNewAggregate());
+            SaveWithNewTestObj();
             Assert.AreEqual(true , repository.ContainsId(id) , "id is not equal");
         }
 
@@ -114,19 +116,19 @@ namespace rStarUtility.Tests.DDD
         [Test]
         public void FindById_With_Success()
         {
-            var aggregate = GetNewAggregate();
-            repository.Save(aggregate);
-            Assert.AreEqual(aggregate , repository.FindById(id) , "aggregate is not equal");
+            var testObj  = SaveWithNewTestObj();
+            var foundObj = repository.FindById(id);
+            Assert.NotNull(foundObj , "entity is null");
+            Assert.AreEqual(testObj , foundObj , "obj is not equal");
         }
 
         [Test]
         public void GetEntity_With_Exist()
         {
-            var aggregate = GetNewAggregate();
-            repository.Save(aggregate);
+            var testObj = SaveWithNewTestObj();
             var (exist , aggregateRoot) = repository.GetEntity(id);
-            Assert.AreEqual(true ,      exist ,         "exist is not equal");
-            Assert.AreEqual(aggregate , aggregateRoot , "aggregate is not equal");
+            Assert.AreEqual(true ,    exist ,         "exist is not equal");
+            Assert.AreEqual(testObj , aggregateRoot , "aggregate is not equal");
         }
 
         [Test]
@@ -141,9 +143,11 @@ namespace rStarUtility.Tests.DDD
 
     #region Private Methods
 
-        private AggregateRootImpl GetNewAggregate()
+        private TestObj SaveWithNewTestObj()
         {
-            return new AggregateRootImpl(id);
+            var testObj = new TestObj();
+            repository.Save(id , testObj);
+            return testObj;
         }
 
     #endregion
