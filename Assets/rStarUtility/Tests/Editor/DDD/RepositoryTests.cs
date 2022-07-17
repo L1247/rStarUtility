@@ -3,7 +3,6 @@
 using System;
 using NUnit.Framework;
 using rStarUtility.DDD.DDDTestFrameWork;
-using rStarUtility.DDD.Implement.Core;
 using rStarUtility.DDD.Implement.Derived;
 
 #endregion
@@ -14,7 +13,7 @@ namespace rStarUtility.Tests.DDD
     {
     #region Private Variables
 
-        private RepositoryImpl<AggregateRoot> repository;
+        private RepositoryImpl repository;
 
     #endregion
 
@@ -23,7 +22,7 @@ namespace rStarUtility.Tests.DDD
         [SetUp]
         public void SetUp()
         {
-            repository = new RepositoryImpl<AggregateRoot>();
+            repository = new RepositoryImpl();
         }
 
     #endregion
