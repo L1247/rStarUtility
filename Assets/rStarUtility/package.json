@@ -20,12 +20,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/L1247/rStarUtility.git"
-  },
-  "samples": [
-    {
-        "displayName": "Sample1",
-        "description": "Sample1 for test",
-        "path": "Samples~/Sample1"
-      }
-    ]
+  }
 }
