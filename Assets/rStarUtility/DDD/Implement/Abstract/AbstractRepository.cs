@@ -11,10 +11,10 @@ namespace rStarUtility.DDD.Implement.Abstract
     {
     #region Public Methods
 
-        public void Save(T t)
+        public bool Save(T t)
         {
             var id = t.GetId();
-            Save(id , t);
+            return Save(id , t);
         }
 
     #endregion

@@ -27,7 +27,7 @@ namespace rStarUtility.DDD.Event.Usecase
         T                       FindById(string   id);
         IEnumerable<T>          GetAll();
         (bool exist , T entity) GetEntity(string id);
-        void                    Save(string      id , T entity);
+        bool                    Save(string      id , T entity);
 
     #endregion
     }

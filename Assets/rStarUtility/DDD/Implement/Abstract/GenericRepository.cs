@@ -61,11 +61,12 @@ namespace rStarUtility.DDD.Implement.Abstract
             return (containsId , aggregateRoot);
         }
 
-        public virtual void Save(string id , T entity)
+        public virtual bool Save(string id , T entity)
         {
             var containsId = ContainsId(id);
             if (containsId) throw new ArgumentException($"the same key has already been added. key: {id}");
             entities.Add(id , entity);
+            return ContainsId(id);
         }
 
     #endregion
