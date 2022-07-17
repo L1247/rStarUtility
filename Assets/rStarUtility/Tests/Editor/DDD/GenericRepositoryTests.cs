@@ -14,7 +14,7 @@ namespace rStarUtility.Tests.DDD
     {
     #region Private Variables
 
-        private class TestObj {}
+        private class TestObj { }
 
         private GenericRepository<TestObj> repository;
 
@@ -79,9 +79,7 @@ namespace rStarUtility.Tests.DDD
         public void Save_Error_With_Id_Exist()
         {
             SaveWithNewTestObj();
-            var exception = Assert.Throws<ArgumentException>(() => SaveWithNewTestObj());
-            var message   = exception.Message;
-            Assert.AreEqual($"the same key has already been added. key: {id}" , message , "message is not equal");
+            AssetException<ArgumentException>(() => SaveWithNewTestObj() , $"the same key has already been added. key: {id}");
         }
 
         [Test]
@@ -126,9 +124,8 @@ namespace rStarUtility.Tests.DDD
         [TestCase("")]
         public void Contain_Error_With_Invalid_Id(string id)
         {
-            var exception = Assert.Throws<ArgumentException>(() => repository.ContainsId(id));
-            var message   = exception.Message;
-            Assert.AreEqual("id is NullOrEmpty." , message , "message is not equal");
+            var exceptionMessage = "id is NullOrEmpty.";
+            AssetException<ArgumentException>(() => repository.ContainsId(id) , exceptionMessage);
         }
 
         [Test]
