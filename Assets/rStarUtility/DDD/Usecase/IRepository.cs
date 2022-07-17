@@ -13,17 +13,21 @@ namespace rStarUtility.DDD.Event.Usecase
     /// <typeparam name="T"></typeparam>
     public interface IRepository<T> where T : class
     {
+    #region Public Variables
+
+        int Count { get; }
+
+    #endregion
+
     #region Public Methods
 
-        bool ContainsId(string id);
-
-        void                           DeleteAll();
-        bool                           DeleteById(string id);
-        T                              FindById(string   id);
-        List<T>                        GetAll();
-        int                            GetCount();
-        (bool exist , T aggregateRoot) GetEntity(string id);
-        void                           Save(string      id , T entity);
+        bool                    ContainsId(string id);
+        void                    DeleteAll();
+        bool                    DeleteById(string id);
+        T                       FindById(string   id);
+        IEnumerable<T>          GetAll();
+        (bool exist , T entity) GetEntity(string id);
+        void                    Save(string      id , T entity);
 
     #endregion
     }

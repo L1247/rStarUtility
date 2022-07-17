@@ -1,6 +1,7 @@
 #region
 
 using System;
+using System.Linq;
 using NUnit.Framework;
 using rStarUtility.DDD.DDDTestFrameWork;
 using rStarUtility.DDD.Implement.Abstract;
@@ -9,7 +10,7 @@ using rStarUtility.DDD.Implement.Abstract;
 
 namespace rStarUtility.Tests.DDD
 {
-    class RepositoryTests : SimpleTest
+    internal class GenericRepositoryTests : SimpleTest
     {
     #region Private Variables
 
@@ -35,8 +36,11 @@ namespace rStarUtility.Tests.DDD
         public void DeleteAll()
         {
             SaveWithNewTestObj();
+            ShouldCount(1);
+
             repository.DeleteAll();
-            Assert.AreEqual(0 , repository.GetCount() , "count is not equal");
+
+            ShouldCount(0);
         }
 
         [Test]
@@ -46,8 +50,10 @@ namespace rStarUtility.Tests.DDD
             var obj2 = new TestObj();
             repository.Save(GetGuid() , obj1);
             repository.Save(GetGuid() , obj2);
-            Assert.AreEqual(2 , repository.GetCount() , "count is not equal");
-            var aggregateRoots = repository.GetAll();
+            ShouldCount(2);
+
+            var aggregateRoots = repository.GetAll().ToList();
+
             Assert.AreEqual(obj1 , aggregateRoots[0] , "aggregate1 is not equal");
             Assert.AreEqual(obj2 , aggregateRoots[1] , "aggregate2 is not equal");
         }
@@ -55,20 +61,22 @@ namespace rStarUtility.Tests.DDD
         [Test]
         public void GetCount()
         {
-            Assert.AreEqual(0 , repository.GetCount() , "GetCount is not equal");
+            ShouldCount(0);
+
             SaveWithNewTestObj();
-            Assert.AreEqual(1 , repository.GetCount() , "GetCount is not equal");
+
+            ShouldCount(1);
         }
 
         [Test]
         public void Save_With_Success()
         {
             SaveWithNewTestObj();
-            Assert.AreEqual(true , repository.ContainsId(id) , "ContainsId is not equal");
+            ShouldContainIs(true);
         }
 
         [Test]
-        public void Save_With_Fail()
+        public void Save_With_Id_Exist()
         {
             SaveWithNewTestObj();
             var exception = Assert.Throws<ArgumentException>(() => SaveWithNewTestObj());
@@ -80,44 +88,53 @@ namespace rStarUtility.Tests.DDD
         public void DeleteById_With_Success()
         {
             SaveWithNewTestObj();
+            ShouldContainIs(true);
+
             var success = repository.DeleteById(id);
-            Assert.AreEqual(true ,  success ,                   "success is not equal");
-            Assert.AreEqual(false , repository.ContainsId(id) , "contains is not equal");
+
+            Assert.AreEqual(true , success , "success is not equal");
+            ShouldContainIs(false);
         }
 
         [Test]
         public void DeleteById_With_Fail()
         {
             var success = repository.DeleteById(id);
-            Assert.AreEqual(false , success ,                   "success is not equal");
-            Assert.AreEqual(false , repository.ContainsId(id) , "contains is not equal");
+
+            Assert.AreEqual(false , success , "success is not equal");
+            ShouldContainIs(false);
         }
 
         [Test]
         public void Contain_With_Success()
         {
+            ShouldContainIs(false);
+
             SaveWithNewTestObj();
-            Assert.AreEqual(true , repository.ContainsId(id) , "id is not equal");
+
+            ShouldContainIs(true);
         }
 
         [Test]
-        public void Contain_With_Fail()
+        public void Contain_With_No_Exist()
         {
-            Assert.AreEqual(false , repository.ContainsId(id) , "id is not equal");
+            ShouldContainIs(false);
         }
-
 
         [Test]
         public void FindById_With_Empty_Repository()
         {
-            Assert.IsNull(repository.FindById(id) , "return is not null");
+            Assert.IsNull(FindById() , "return is not null");
         }
 
         [Test]
         public void FindById_With_Success()
         {
-            var testObj  = SaveWithNewTestObj();
-            var foundObj = repository.FindById(id);
+            ShouldContainIs(false);
+            var testObj = SaveWithNewTestObj();
+
+            var foundObj = FindById();
+
             Assert.NotNull(foundObj , "entity is null");
             Assert.AreEqual(testObj , foundObj , "obj is not equal");
         }
@@ -125,8 +142,11 @@ namespace rStarUtility.Tests.DDD
         [Test]
         public void GetEntity_With_Exist()
         {
+            ShouldContainIs(false);
             var testObj = SaveWithNewTestObj();
+
             var (exist , aggregateRoot) = repository.GetEntity(id);
+
             Assert.AreEqual(true ,    exist ,         "exist is not equal");
             Assert.AreEqual(testObj , aggregateRoot , "aggregate is not equal");
         }
@@ -134,7 +154,10 @@ namespace rStarUtility.Tests.DDD
         [Test]
         public void GetEntity_With_NoExist()
         {
+            ShouldContainIs(false);
+
             var (exist , aggregateRoot) = repository.GetEntity(id);
+
             Assert.AreEqual(false , exist ,         "exist is not equal");
             Assert.AreEqual(null ,  aggregateRoot , "aggregate is not equal");
         }
@@ -143,11 +166,26 @@ namespace rStarUtility.Tests.DDD
 
     #region Private Methods
 
+        private TestObj FindById()
+        {
+            return repository.FindById(id);
+        }
+
         private TestObj SaveWithNewTestObj()
         {
             var testObj = new TestObj();
             repository.Save(id , testObj);
             return testObj;
+        }
+
+        private void ShouldContainIs(bool expectedContain)
+        {
+            Assert.AreEqual(expectedContain , repository.ContainsId(id) , "contain is not equal");
+        }
+
+        private void ShouldCount(int expectedCount)
+        {
+            Assert.AreEqual(expectedCount , repository.Count , "GetCount is not equal");
         }
 
     #endregion

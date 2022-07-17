@@ -2,9 +2,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using rStarUtility.DDD.Event.Usecase;
-using rStarUtility.Util;
 using UnityEngine.Assertions;
 
 #endregion
@@ -13,6 +11,12 @@ namespace rStarUtility.DDD.Implement.Abstract
 {
     public class GenericRepository<T> : IRepository<T> where T : class
     {
+    #region Public Variables
+
+        public int Count => entities.Count;
+
+    #endregion
+
     #region Private Variables
 
         private readonly Dictionary<string , T> entities = new Dictionary<string , T>();
@@ -46,17 +50,12 @@ namespace rStarUtility.DDD.Implement.Abstract
             return ContainsId(id) ? entities[id] : null;
         }
 
-        public virtual List<T> GetAll()
+        public IEnumerable<T> GetAll()
         {
-            return entities.Values.ToList();
+            return entities.Values;
         }
 
-        public int GetCount()
-        {
-            return entities.Count;
-        }
-
-        public (bool exist , T aggregateRoot) GetEntity(string id)
+        public (bool exist , T entity) GetEntity(string id)
         {
             var containsId    = ContainsId(id);
             var aggregateRoot = FindById(id);
@@ -65,7 +64,6 @@ namespace rStarUtility.DDD.Implement.Abstract
 
         public virtual void Save(string id , T entity)
         {
-            Contract.RequireString(id , "id");
             var containsId = ContainsId(id);
             if (containsId) throw new ArgumentException($"the same key has already been added. key: {id}");
             entities.Add(id , entity);
