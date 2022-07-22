@@ -76,6 +76,19 @@ namespace rStarUtility.Tests.DDD
         }
 
         [Test]
+        public void Save_With_Same_Id_And_Another_Entity()
+        {
+            SaveWithNewTestObj();
+            var testObj = new TestObj();
+            repository.Save(id , testObj);
+            ShouldContainIs(true);
+            var foundObj = FindById();
+            Assert.AreEqual(testObj , foundObj , "obj is not equal");
+        }
+
+
+        [Test]
+        [Ignore("allow same id")]
         public void Save_Error_With_Id_Exist()
         {
             SaveWithNewTestObj();

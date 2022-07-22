@@ -64,8 +64,10 @@ namespace rStarUtility.DDD.Implement.Abstract
         public virtual bool Save(string id , T entity)
         {
             var containsId = ContainsId(id);
-            if (containsId) throw new ArgumentException($"the same key has already been added. key: {id}");
-            entities.Add(id , entity);
+            // if (containsId) throw new ArgumentException($"the same key has already been added. key: {id}");
+            if (containsId) entities[id] = entity;
+            else entities.Add(id , entity);
+
             return ContainsId(id);
         }
 
