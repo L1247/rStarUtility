@@ -11,7 +11,7 @@ namespace rStarUtility.DDD.Event.Usecase
     ///     http://teddy-chen-tw.blogspot.com/2020/08/10repository.html
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public interface IRepository<T> where T : class
+    public interface IRepository<T>
     {
     #region Public Variables
 

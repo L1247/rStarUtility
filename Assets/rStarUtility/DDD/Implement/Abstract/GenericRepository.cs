@@ -8,7 +8,7 @@ using rStarUtility.DDD.Event.Usecase;
 
 namespace rStarUtility.DDD.Implement.Abstract
 {
-    public class GenericRepository<T> : IRepository<T> where T : class
+    public class GenericRepository<T> : IRepository<T>
     {
     #region Public Variables
 
@@ -46,7 +46,7 @@ namespace rStarUtility.DDD.Implement.Abstract
 
         public virtual T FindById(string id)
         {
-            return ContainsId(id) ? entities[id] : null;
+            return ContainsId(id) ? entities[id] : default;
         }
 
         public IEnumerable<T> GetAll()
