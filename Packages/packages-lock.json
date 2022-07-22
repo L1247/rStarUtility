@@ -1,14 +1,14 @@
 {
   "dependencies": {
     "com.cysharp.messagepipe": {
-      "version": "1.7.2",
+      "version": "1.7.4",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
       "url": "https://package.openupm.com"
     },
     "com.cysharp.messagepipe.zenject": {
-      "version": "1.7.2",
+      "version": "1.7.4",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
