@@ -1,18 +1,19 @@
 {
-  "name": "rStarUtility.Generic",
-  "rootNamespace": "rStarUtility.Generic",
+  "name": "rStatUtility.TestFramework",
+  "rootNamespace": "rStatUtility.TestFramework",
   "references": [
+    "GUID:aa7bb26fb297ee944a4249ceb695c159",
     "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
-    "GUID:f51ebe6a0ceec4240a699833d6309b23",
-    "GUID:b061a8094acaa444a90087c499c32e6e",
     "GUID:08b38f39e2d9e594389b7a4cf4c2c338"
   ],
-  "includePlatforms": [],
+  "includePlatforms": [
+    "Editor"
+  ],
   "excludePlatforms": [],
   "allowUnsafeCode": false,
   "overrideReferences": true,
   "precompiledReferences": [
-    "Zenject-usage.dll"
+    "NSubstitute.dll"
   ],
   "autoReferenced": false,
   "defineConstraints": [],

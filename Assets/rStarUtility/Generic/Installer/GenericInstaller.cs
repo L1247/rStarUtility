@@ -1,6 +1,6 @@
 #region
 
-using rStarUtility.Generic.Implement;
+using rStarUtility.Generic.Implement.Derived;
 using rStarUtility.Generic.Interfaces;
 using Zenject;
 
