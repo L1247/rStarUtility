@@ -1,4 +1,12 @@
 namespace rStarUtility.Generic.Interfaces
 {
-    public interface ITimeSystem { }
+    public interface ITimeSystem
+    {
+    #region Public Methods
+
+        float GetDeltaTime();
+        float GetTotalTime();
+
+    #endregion
+    }
 }
