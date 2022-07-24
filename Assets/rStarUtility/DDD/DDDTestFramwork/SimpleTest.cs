@@ -25,7 +25,7 @@ namespace rStarUtility.DDD.DDDTestFrameWork
             Assert.AreEqual(expectedMessage , message , "message is not equal");
         }
 
-        protected string GetGuid()
+        protected string NewGuid()
         {
             return Guid.NewGuid().ToString();
         }

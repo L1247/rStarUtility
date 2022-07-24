@@ -1,6 +1,5 @@
 #region
 
-using System;
 using rStarUtility.DDD.Event;
 using Zenject;
 
@@ -8,7 +7,7 @@ using Zenject;
 
 namespace rStarUtility.DDD.DDDTestFrameWork
 {
-    public class DDDUnitTestFixture : DIUnitTestFixture
+    public class DIUnitTestFixture_With_EventBus : DIUnitTestFixture
     {
     #region Protected Variables
 
@@ -37,11 +36,6 @@ namespace rStarUtility.DDD.DDDTestFrameWork
         protected void BindFromSubstitute<T>() where T : class
         {
             Container.Bind<T>().FromSubstitute();
-        }
-
-        protected string NewGuid()
-        {
-            return Guid.NewGuid().ToString();
         }
 
         protected T Resolve<T>()

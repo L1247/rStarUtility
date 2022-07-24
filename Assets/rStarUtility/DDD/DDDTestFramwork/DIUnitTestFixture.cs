@@ -7,7 +7,7 @@ using Zenject;
 
 namespace rStarUtility.DDD.DDDTestFrameWork
 {
-    public class DIUnitTestFixture
+    public class DIUnitTestFixture : SimpleTest
     {
     #region Protected Variables
 

@@ -48,8 +48,8 @@ namespace rStarUtility.Tests.DDD
         {
             var obj1 = new TestObj();
             var obj2 = new TestObj();
-            repository.Save(GetGuid() , obj1);
-            repository.Save(GetGuid() , obj2);
+            repository.Save(NewGuid() , obj1);
+            repository.Save(NewGuid() , obj2);
             ShouldCount(2);
 
             var aggregateRoots = repository.GetAll().ToList();
