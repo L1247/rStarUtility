@@ -30,5 +30,24 @@ namespace rStarUtility.Generic.TestFrameWork
         }
 
     #endregion
+
+    #region Protected Methods
+
+        protected void BindAsSingle<T>()
+        {
+            Container.Bind<T>().AsSingle();
+        }
+
+        protected void BindFromSubstitute<T>() where T : class
+        {
+            Container.Bind<T>().FromSubstitute();
+        }
+
+        protected T Resolve<T>()
+        {
+            return Container.Resolve<T>();
+        }
+
+    #endregion
     }
 }

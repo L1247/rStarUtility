@@ -18,7 +18,7 @@ namespace rStarUtility.Generic.TestFrameWork
 
     #region Protected Methods
 
-        protected static void AssetException<T>(Action action , string expectedMessage) where T : Exception
+        protected void AssetException<T>(Action action , string expectedMessage) where T : Exception
         {
             var exception = Assert.Throws<T>(() => action());
             var message   = exception.Message;
@@ -28,6 +28,11 @@ namespace rStarUtility.Generic.TestFrameWork
         protected string NewGuid()
         {
             return Guid.NewGuid().ToString();
+        }
+
+        protected Scenario Scenario(string annotation)
+        {
+            return new Scenario();
         }
 
     #endregion
