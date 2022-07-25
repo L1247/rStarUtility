@@ -36,7 +36,7 @@ internal class GenericRepositoryTests : SimpleTest
         var repo = new GenericRepository<float>();
         repo.AddOrSet(id , 1f , 10f);
         var value = repo.FindById(id);
-        Assert.AreEqual(10 , value , "value is not equal");
+        Assert.AreEqual(10f , value , "value is not equal");
 
         repo.AddOrSet(id , 1f , 10f);
         value = repo.FindById(id);

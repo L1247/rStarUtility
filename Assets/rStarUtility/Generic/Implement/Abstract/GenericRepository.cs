@@ -24,6 +24,40 @@ namespace rStarUtility.Generic.Implement.Abstract
 
     #region Public Methods
 
+        public void AddOrSet(string id , T add , T set)
+        {
+            var isInt   = typeof(T) == typeof(int);
+            var isFloat = typeof(T) == typeof(float);
+            if (isInt || isFloat)
+            {
+                if (ContainsId(id))
+                {
+                    var entity = FindById(id);
+                    T   value;
+                    if (isFloat)
+                    {
+                        var addValue    = Convert.ToSingle(add);
+                        var entityValue = Convert.ToSingle(entity);
+                        entityValue += addValue;
+                        value       =  (T)(object)entityValue;
+                    }
+                    else
+                    {
+                        var addValue    = Convert.ToInt32(add);
+                        var entityValue = Convert.ToInt32(entity);
+                        entityValue += addValue;
+                        value       =  (T)(object)entityValue;
+                    }
+
+                    Save(id , value);
+                }
+                else
+                {
+                    Save(id , set);
+                }
+            }
+        }
+
         public virtual bool ContainsId(string id)
         {
             var isNullOrEmpty = string.IsNullOrEmpty(id);
