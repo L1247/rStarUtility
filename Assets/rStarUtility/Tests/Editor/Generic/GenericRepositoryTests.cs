@@ -31,6 +31,32 @@ internal class GenericRepositoryTests : SimpleTest
 #region Test Methods
 
     [Test]
+    public void AddOrSet_Flot()
+    {
+        var repo = new GenericRepository<float>();
+        repo.AddOrSet(id , 1f , 10f);
+        var value = repo.FindById(id);
+        Assert.AreEqual(10 , value , "value is not equal");
+
+        repo.AddOrSet(id , 1f , 10f);
+        value = repo.FindById(id);
+        Assert.AreEqual(11f , value , "value is not equal");
+    }
+
+    [Test]
+    public void AddOrSet_Int()
+    {
+        var repo = new GenericRepository<int>();
+        repo.AddOrSet(id , 1 , 10);
+        var value = repo.FindById(id);
+        Assert.AreEqual(10 , value , "value is not equal");
+
+        repo.AddOrSet(id , 1 , 10);
+        value = repo.FindById(id);
+        Assert.AreEqual(11 , value , "value is not equal");
+    }
+
+    [Test]
     public void DeleteAll()
     {
         SaveWithNewTestObj();
