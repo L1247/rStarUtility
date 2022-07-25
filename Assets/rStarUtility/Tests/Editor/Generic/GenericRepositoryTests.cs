@@ -33,27 +33,31 @@ internal class GenericRepositoryTests : SimpleTest
     [Test]
     public void AddOrSet_Flot()
     {
-        var repo = new GenericRepository<float>();
-        repo.AddOrSet(id , 1f , 10f);
-        var value = repo.FindById(id);
-        Assert.AreEqual(10f , value , "value is not equal");
+        var repo   = new GenericRepository<float>();
+        var result = repo.AddOrSet(id , 1f , 10f);
+        var value  = repo.FindById(id);
+        Assert.AreEqual(10f , value ,  "value is not equal");
+        Assert.AreEqual(10f , result , "result is not equal");
 
-        repo.AddOrSet(id , 1f , 10f);
-        value = repo.FindById(id);
-        Assert.AreEqual(11f , value , "value is not equal");
+        result = repo.AddOrSet(id , -1f , 10f);
+        value  = repo.FindById(id);
+        Assert.AreEqual(9f , value ,  "value is not equal");
+        Assert.AreEqual(9f , result , "result is not equal");
     }
 
     [Test]
     public void AddOrSet_Int()
     {
-        var repo = new GenericRepository<int>();
-        repo.AddOrSet(id , 1 , 10);
-        var value = repo.FindById(id);
-        Assert.AreEqual(10 , value , "value is not equal");
+        var repo   = new GenericRepository<int>();
+        var result = repo.AddOrSet(id , 1 , 10);
+        var value  = repo.FindById(id);
+        Assert.AreEqual(10 , value ,  "value is not equal");
+        Assert.AreEqual(10 , result , "result is not equal");
 
-        repo.AddOrSet(id , 1 , 10);
-        value = repo.FindById(id);
-        Assert.AreEqual(11 , value , "value is not equal");
+        result = repo.AddOrSet(id , 1 , 10);
+        value  = repo.FindById(id);
+        Assert.AreEqual(11 , value ,  "value is not equal");
+        Assert.AreEqual(11 , result , "result is not equal");
     }
 
     [Test]

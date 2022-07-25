@@ -24,7 +24,7 @@ namespace rStarUtility.Generic.Implement.Abstract
 
     #region Public Methods
 
-        public void AddOrSet(string id , T add , T set)
+        public T AddOrSet(string id , T add , T set)
         {
             var isInt   = typeof(T) == typeof(int);
             var isFloat = typeof(T) == typeof(float);
@@ -50,12 +50,14 @@ namespace rStarUtility.Generic.Implement.Abstract
                     }
 
                     Save(id , value);
+                    return value;
                 }
-                else
-                {
-                    Save(id , set);
-                }
+
+                Save(id , set);
+                return set;
             }
+
+            return default;
         }
 
         public virtual bool ContainsId(string id)
