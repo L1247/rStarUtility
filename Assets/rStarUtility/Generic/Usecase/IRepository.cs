@@ -21,6 +21,7 @@ namespace rStarUtility.Generic.Usecase
 
     #region Public Methods
 
+        T                       AddOrSet(string   id , T add , T set);
         bool                    ContainsId(string id);
         void                    DeleteAll();
         bool                    DeleteById(string id);
