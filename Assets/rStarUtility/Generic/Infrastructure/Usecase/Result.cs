@@ -6,6 +6,7 @@ namespace rStarUtility.Generic.Infrastructure
 
         private ExitCode exitCode;
         private string   message;
+        private string   id;
 
     #endregion
 
@@ -14,6 +15,11 @@ namespace rStarUtility.Generic.Infrastructure
         public ExitCode GetExitCode()
         {
             return exitCode;
+        }
+
+        public string GetId()
+        {
+            return id;
         }
 
         public string GetMessage()
@@ -25,6 +31,11 @@ namespace rStarUtility.Generic.Infrastructure
         {
             this.exitCode = exitCode;
             return this;
+        }
+
+        public void SetId(string id)
+        {
+            this.id = id;
         }
 
         public virtual Output SetMessage(string message)
