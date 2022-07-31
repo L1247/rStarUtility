@@ -5,7 +5,7 @@ namespace rStarUtility.Generic.Infrastructure
     /// <typeparam name="I">Input</typeparam>
     /// <typeparam name="O">CQRS Output</typeparam>
     /// <typeparam name="R">Repository</typeparam>
-    public abstract class UseCase<I , O , R> where I : Input where O : Output where R : IRepository<IAggregateRoot>
+    public abstract class UseCase<I , O , R> where I : Input where O : Output
     {
     #region Protected Variables
 
