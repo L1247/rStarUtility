@@ -201,6 +201,48 @@ internal class GenericRepositoryTests : SimpleTest
         Assert.AreEqual(null ,  aggregateRoot , "aggregate is not equal");
     }
 
+    [Test]
+    public void GetValueByKey()
+    {
+        var testObj = SaveWithNewTestObj();
+        var obj     = repository[id];
+
+        Assert.NotNull(obj , "obj is null");
+        Assert.AreEqual(obj , testObj , "obj is not equal");
+    }
+
+    [Test]
+    public void SetValueByKey()
+    {
+        SaveWithNewTestObj();
+        var testObj1 = new TestObj();
+        repository[id] = testObj1;
+        var obj = repository[id];
+
+        Assert.NotNull(obj , "obj is null");
+        Assert.AreEqual(obj , testObj1 , "obj is not equal");
+    }
+
+    [Test]
+    public void GetKeys()
+    {
+        SaveWithNewTestObj();
+        var keys  = repository.Keys.ToList();
+        var count = keys.Count;
+        Assert.AreEqual(1 ,  count ,   "count is not equal");
+        Assert.AreEqual(id , keys[0] , "key is not equal");
+    }
+
+    [Test]
+    public void GetValues()
+    {
+        SaveWithNewTestObj();
+        repository["sadsa"] = new TestObj();
+        var keys  = repository.Values.ToList();
+        var count = keys.Count;
+        Assert.AreEqual(2 , count , "count is not equal");
+    }
+
 #endregion
 
 #region Private Methods

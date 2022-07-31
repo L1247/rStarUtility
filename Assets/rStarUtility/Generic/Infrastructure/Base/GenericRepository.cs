@@ -11,13 +11,23 @@ namespace rStarUtility.Generic.Infrastructure
     {
     #region Public Variables
 
+        public T this[string key]
+        {
+            get => entities[key];
+            set => entities[key] = value;
+        }
+
+        public IEnumerable<string> Keys => entities.Keys;
+
+        public IEnumerable<T> Values => GetAll();
+
         public int Count => entities.Count;
 
     #endregion
 
-    #region Private Variables
+    #region Protected Variables
 
-        private readonly Dictionary<string , T> entities = new Dictionary<string , T>();
+        protected readonly Dictionary<string , T> entities = new Dictionary<string , T>();
 
     #endregion
 
@@ -88,6 +98,7 @@ namespace rStarUtility.Generic.Infrastructure
         {
             return entities.Values;
         }
+
 
         public (bool exist , T entity) GetEntity(string id)
         {

@@ -15,6 +15,10 @@ namespace rStarUtility.Generic.Infrastructure
     {
     #region Public Variables
 
+        T this[string key] { get; set; }
+        IEnumerable<string> Keys   { get; }
+        IEnumerable<T>      Values { get; }
+
         int Count { get; }
 
     #endregion
