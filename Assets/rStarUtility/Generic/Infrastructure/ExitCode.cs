@@ -1,4 +1,4 @@
-namespace rStarUtility.Generic.Usecase.CQRS
+namespace rStarUtility.Generic.Infrastructure
 {
     public enum ExitCode
     {

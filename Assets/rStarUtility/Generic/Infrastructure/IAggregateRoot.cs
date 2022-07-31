@@ -1,11 +1,10 @@
 #region
 
 using System.Collections.Generic;
-using rStarUtility.Generic.Implement.Core;
 
 #endregion
 
-namespace rStarUtility.Generic.Model
+namespace rStarUtility.Generic.Infrastructure
 {
     public interface IAggregateRoot : IEntity<string>
     {

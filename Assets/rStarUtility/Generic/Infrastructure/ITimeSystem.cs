@@ -1,4 +1,4 @@
-namespace rStarUtility.Generic.Interfaces
+namespace rStarUtility.Generic.Infrastructure
 {
     public interface ITimeSystem
     {

@@ -1,7 +1,7 @@
 #region
 
 using rStarUtility.Generic.Implement.Derived;
-using rStarUtility.Generic.Interfaces;
+using rStarUtility.Generic.Infrastructure;
 using Zenject;
 
 #endregion

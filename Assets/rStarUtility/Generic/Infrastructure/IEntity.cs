@@ -1,4 +1,4 @@
-namespace rStarUtility.Generic.Model
+namespace rStarUtility.Generic.Infrastructure
 {
     public interface IEntity<T>
     {

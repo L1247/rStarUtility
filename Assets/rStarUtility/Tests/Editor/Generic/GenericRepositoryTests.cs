@@ -3,7 +3,7 @@
 using System;
 using System.Linq;
 using NUnit.Framework;
-using rStarUtility.Generic.Implement.Abstract;
+using rStarUtility.Generic.Infrastructure;
 using rStarUtility.Generic.TestFrameWork;
 
 #endregion

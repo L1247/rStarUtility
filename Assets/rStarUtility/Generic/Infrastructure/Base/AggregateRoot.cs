@@ -2,11 +2,10 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using rStarUtility.Generic.Model;
 
 #endregion
 
-namespace rStarUtility.Generic.Implement.Core
+namespace rStarUtility.Generic.Infrastructure
 {
     public abstract class AggregateRoot : IAggregateRoot
     {

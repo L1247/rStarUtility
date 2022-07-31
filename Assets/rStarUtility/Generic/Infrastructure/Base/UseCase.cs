@@ -1,11 +1,4 @@
-#region
-
-using rStarUtility.Generic.Interfaces;
-using rStarUtility.Generic.Usecase;
-
-#endregion
-
-namespace rStarUtility.Generic.Implement.Core
+namespace rStarUtility.Generic.Infrastructure
 {
     /// <summary>
     /// </summary>

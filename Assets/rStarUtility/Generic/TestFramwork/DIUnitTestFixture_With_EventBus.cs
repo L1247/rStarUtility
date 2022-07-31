@@ -1,6 +1,10 @@
 #region
 
-using rStarUtility.Generic.Interfaces;
+#endregion
+
+#region
+
+using rStarUtility.Generic.Infrastructure;
 
 #endregion
 

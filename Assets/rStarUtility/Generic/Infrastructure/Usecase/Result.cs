@@ -1,10 +1,4 @@
-#region
-
-using rStarUtility.Generic.Usecase.CQRS;
-
-#endregion
-
-namespace rStarUtility.Generic.Usecase
+namespace rStarUtility.Generic.Infrastructure
 {
     public class Result : Output
     {

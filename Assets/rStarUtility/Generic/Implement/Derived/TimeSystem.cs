@@ -1,13 +1,13 @@
 #region
 
-using rStarUtility.Generic.Interfaces;
+using rStarUtility.Generic.Infrastructure;
 using UnityEngine;
 
 #endregion
 
 namespace rStarUtility.Generic.Implement.Derived
 {
-    internal class TimeSystem : ITimeSystem
+    public class TimeSystem : ITimeSystem
     {
     #region Public Methods
 

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 #endregion
 
-namespace rStarUtility.Generic.Usecase
+namespace rStarUtility.Generic.Infrastructure
 {
     /// <summary>
     ///     未來可實作Peer儲存用

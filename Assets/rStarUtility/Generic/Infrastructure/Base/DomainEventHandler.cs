@@ -1,12 +1,11 @@
 #region
 
 using System;
-using rStarUtility.Generic.Interfaces;
 using Zenject;
 
 #endregion
 
-namespace rStarUtility.Generic.Implement.Core
+namespace rStarUtility.Generic.Infrastructure
 {
     public abstract class DomainEventHandler
     {

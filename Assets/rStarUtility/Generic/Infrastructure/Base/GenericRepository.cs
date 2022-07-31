@@ -2,11 +2,10 @@
 
 using System;
 using System.Collections.Generic;
-using rStarUtility.Generic.Usecase;
 
 #endregion
 
-namespace rStarUtility.Generic.Implement.Abstract
+namespace rStarUtility.Generic.Infrastructure
 {
     public class GenericRepository<T> : IRepository<T>
     {

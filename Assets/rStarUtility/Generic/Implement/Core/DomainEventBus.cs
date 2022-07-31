@@ -3,8 +3,7 @@
 using System;
 using System.Collections.Generic;
 using MessagePipe;
-using rStarUtility.Generic.Interfaces;
-using rStarUtility.Generic.Model;
+using rStarUtility.Generic.Infrastructure;
 
 #endregion
 

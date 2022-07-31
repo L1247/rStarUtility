@@ -1,4 +1,4 @@
-namespace rStarUtility.Generic.Implement.Core
+namespace rStarUtility.Generic.Infrastructure
 {
     public class DomainEvent
     {

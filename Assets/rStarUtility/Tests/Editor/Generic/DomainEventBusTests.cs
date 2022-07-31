@@ -6,7 +6,7 @@ using NSubstitute;
 using NUnit.Framework;
 using rStarUtility.Generic.Implement.Core;
 using rStarUtility.Generic.Implement.Derived;
-using rStarUtility.Generic.Model;
+using rStarUtility.Generic.Infrastructure;
 using rStarUtility.Generic.TestFrameWork;
 
 #endregion

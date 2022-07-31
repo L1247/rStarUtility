@@ -1,12 +1,10 @@
 #region
 
 using System;
-using rStarUtility.Generic.Implement.Core;
-using rStarUtility.Generic.Model;
 
 #endregion
 
-namespace rStarUtility.Generic.Interfaces
+namespace rStarUtility.Generic.Infrastructure
 {
     public interface IDomainEventBus
     {

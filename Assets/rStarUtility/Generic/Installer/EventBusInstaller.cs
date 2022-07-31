@@ -1,12 +1,13 @@
 #region
 
 using MessagePipe;
-using rStarUtility.Generic.Interfaces;
+using rStarUtility.Generic.Implement.Core;
+using rStarUtility.Generic.Infrastructure;
 using Zenject;
 
 #endregion
 
-namespace rStarUtility.Generic.Implement.Core
+namespace rStarUtility.Generic.Installer
 {
     public class EventBusInstaller : Installer<EventBusInstaller>
     {
