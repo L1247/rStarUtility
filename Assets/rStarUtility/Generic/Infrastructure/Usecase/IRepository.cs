@@ -25,6 +25,13 @@ namespace rStarUtility.Generic.Infrastructure
 
     #region Public Methods
 
+        /// <summary>
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="add"></param>
+        /// <returns>is add succeed.</returns>
+        bool Add(string id , T add);
+
         T                       AddOrSet(string   id , T add , T set);
         bool                    ContainsId(string id);
         void                    DeleteAll();

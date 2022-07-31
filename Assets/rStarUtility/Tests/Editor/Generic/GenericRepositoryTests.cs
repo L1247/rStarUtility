@@ -61,6 +61,19 @@ internal class GenericRepositoryTests : SimpleTest
     }
 
     [Test]
+    public void Add()
+    {
+        var repo = new GenericRepository<int>();
+        repo.Save(id , 10);
+
+        var succeed = repo.Add(id , 1);
+        Assert.AreEqual(true , succeed , "succeed is not equal");
+        var value = repo.FindById(id);
+        Assert.AreEqual(11 , value , "value is not equal");
+    }
+
+
+    [Test]
     public void DeleteAll()
     {
         SaveWithNewTestObj();

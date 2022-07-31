@@ -33,6 +33,35 @@ namespace rStarUtility.Generic.Infrastructure
 
     #region Public Methods
 
+        public bool Add(string id , T add)
+        {
+            var containsId = ContainsId(id);
+            if (containsId == false) return false;
+            var isInt   = typeof(T) == typeof(int);
+            var isFloat = typeof(T) == typeof(float);
+            if (!isInt && !isFloat) return true;
+            var entity = FindById(id);
+            T   value;
+            if (isFloat)
+            {
+                var addValue    = Convert.ToSingle(add);
+                var entityValue = Convert.ToSingle(entity);
+                entityValue += addValue;
+                value       =  (T)(object)entityValue;
+            }
+            else
+            {
+                var addValue    = Convert.ToInt32(add);
+                var entityValue = Convert.ToInt32(entity);
+                entityValue += addValue;
+                value       =  (T)(object)entityValue;
+            }
+
+            Save(id , value);
+
+            return true;
+        }
+
         public T AddOrSet(string id , T add , T set)
         {
             var isInt   = typeof(T) == typeof(int);
