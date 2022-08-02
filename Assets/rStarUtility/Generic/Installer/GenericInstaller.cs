@@ -16,6 +16,8 @@ namespace rStarUtility.Generic.Installer
         {
             Container.Bind<ITimeProvider>().To<TimeProvider>().AsSingle().IfNotBound();
             Container.Bind<ITimer>().To<Timer>().AsSingle().IfNotBound();
+
+            Container.BindTickableExecutionOrder<Timer>(-100);
         }
 
     #endregion
