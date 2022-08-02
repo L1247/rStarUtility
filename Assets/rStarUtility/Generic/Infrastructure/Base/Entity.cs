@@ -1,3 +1,7 @@
+#region
+
+#endregion
+
 namespace rStarUtility.Generic.Infrastructure
 {
     public abstract class Entity<T> : IEntity<T>
