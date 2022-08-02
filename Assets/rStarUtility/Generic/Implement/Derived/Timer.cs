@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using rStarUtility.Generic.Infrastructure;
+using UnityEngine;
 using Zenject;
 
 #endregion
@@ -38,6 +39,7 @@ namespace rStarUtility.Generic.Implement.Derived
         public void Tick()
         {
             var deltaTime = timeProvider.GetDeltaTime();
+            Debug.Log($"{deltaTime}");
             for (var i = timerStates.Count - 1 ; i >= 0 ; i--)
             {
                 var complete = timerStates[i].TickTime(deltaTime);

@@ -1,6 +1,5 @@
 #region
 
-using rStarUtility.Generic.Infrastructure;
 using rStarUtility.Generic.Installer;
 using Zenject;
 
@@ -15,7 +14,6 @@ namespace Sample
         public override void InstallBindings()
         {
             GenericInstaller.Install(Container);
-            Container.Unbind<ITimeProvider>();
         }
 
     #endregion
