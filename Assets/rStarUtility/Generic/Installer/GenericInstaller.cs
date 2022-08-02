@@ -14,7 +14,7 @@ namespace rStarUtility.Generic.Installer
 
         public override void InstallBindings()
         {
-            Container.Bind<ITimeSystem>().To<TimeSystem>().AsSingle().IfNotBound();
+            Container.Bind<ITimeProvider>().To<TimeProvider>().AsSingle().IfNotBound();
         }
 
     #endregion

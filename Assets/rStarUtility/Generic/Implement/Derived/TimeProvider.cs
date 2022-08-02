@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace rStarUtility.Generic.Implement.Derived
 {
-    public class TimeSystem : ITimeSystem
+    public class TimeProvider : ITimeProvider
     {
     #region Public Methods
 

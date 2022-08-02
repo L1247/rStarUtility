@@ -1,6 +1,6 @@
 namespace rStarUtility.Generic.Infrastructure
 {
-    public interface ITimeSystem
+    public interface ITimeProvider
     {
     #region Public Methods
 

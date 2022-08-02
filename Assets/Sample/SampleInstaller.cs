@@ -15,7 +15,7 @@ namespace Sample
         public override void InstallBindings()
         {
             GenericInstaller.Install(Container);
-            Container.Unbind<ITimeSystem>();
+            Container.Unbind<ITimeProvider>();
         }
 
     #endregion
