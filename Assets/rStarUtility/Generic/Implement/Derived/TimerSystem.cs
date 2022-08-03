@@ -22,7 +22,7 @@ namespace rStarUtility.Generic.Implement.Derived
         [Inject]
         private ITimeProvider timeProvider;
 
-        private readonly List<Timer> timers = new List<Timer>();
+        private readonly GenericRepository<Timer> timers = new GenericRepository<Timer>();
 
     #endregion
 
@@ -32,23 +32,32 @@ namespace rStarUtility.Generic.Implement.Derived
         {
             if (time <= 0) callback.Invoke();
             var timer = new Timer(time , callback);
-            timers.Add(timer);
+            timers.Save(id , timer);
         }
 
 
         public void Tick()
         {
-            var deltaTime = timeProvider.GetDeltaTime();
-            for (var i = timers.Count - 1 ; i >= 0 ; i--)
+            var deltaTime     = timeProvider.GetDeltaTime();
+            var ids           = timers.Keys;
+            var waitForRemove = new List<string>();
+            foreach (var id in ids)
             {
-                var complete = timers[i].TickTime(deltaTime);
-                if (complete) timers.RemoveAt(i);
+                var complete = timers[id].TickTime(deltaTime);
+                if (complete) waitForRemove.Add(id);
             }
+
+            foreach (var id in waitForRemove) timers.DeleteById(id);
         }
 
-        public void UnRegisterOnceCallBack(string id) { }
+        public void UnRegisterOnceCallBack(string id)
+        {
+            timers.DeleteById(id);
+        }
 
     #endregion
+
+        // private readonly List<Timer>              timers = new List<Timer>();
     }
 
     public class Timer

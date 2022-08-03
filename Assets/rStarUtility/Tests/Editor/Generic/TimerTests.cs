@@ -13,7 +13,7 @@ public class TimerTests : DIUnitTestFixture
 #region Private Variables
 
     private ITimeProvider timeProvider;
-    private TimerSystem   timer;
+    private TimerSystem   timerSystem;
 
 #endregion
 
@@ -24,15 +24,24 @@ public class TimerTests : DIUnitTestFixture
     {
         timeProvider.GetDeltaTime().Returns(1);
         var result = false;
-        timer.RegisterOnceCallBack(id , 1 , () => result = true);
-        timer.Tick();
-        Assert.AreEqual(true , result ,      "result is not equal");
-        Assert.AreEqual(0 ,    timer.Count , "Count is not equal");
+        timerSystem.RegisterOnceCallBack(id , 1 , () => result = true);
+        timerSystem.Tick();
+        Assert.AreEqual(true , result ,            "result is not equal");
+        Assert.AreEqual(0 ,    timerSystem.Count , "Count is not equal");
     }
 
 
     [Test]
-    public void UnRegisterTimer() { }
+    public void UnRegisterTimer()
+    {
+        timeProvider.GetDeltaTime().Returns(1);
+        var result = false;
+        timerSystem.RegisterOnceCallBack(id , 1 , () => result = true);
+        timerSystem.UnRegisterOnceCallBack(id);
+        Assert.AreEqual(0 , timerSystem.Count , "count is not equal");
+        timerSystem.Tick();
+        Assert.AreEqual(false , result , "result is not equal");
+    }
 
 #endregion
 
@@ -44,7 +53,7 @@ public class TimerTests : DIUnitTestFixture
         BindFromSubstitute<ITimeProvider>();
         BindAsSingle<TimerSystem>();
         timeProvider = Resolve<ITimeProvider>();
-        timer        = Resolve<TimerSystem>();
+        timerSystem  = Resolve<TimerSystem>();
     }
 
 #endregion
