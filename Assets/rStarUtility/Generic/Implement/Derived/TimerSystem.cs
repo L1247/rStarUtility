@@ -1,7 +1,6 @@
 #region
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using rStarUtility.Generic.Infrastructure;
 using Zenject;
@@ -39,16 +38,18 @@ namespace rStarUtility.Generic.Implement.Derived
 
         public void Tick()
         {
-            var deltaTime     = timeProvider.GetDeltaTime();
-            var ids           = timers.Keys.ToList();
-            var waitForRemove = new List<string>();
+            var deltaTime = timeProvider.GetDeltaTime();
+            var ids       = timers.Keys.ToList();
             foreach (var id in ids)
             {
-                var complete = timers[id].TickTime(deltaTime);
-                if (complete) waitForRemove.Add(id);
+                var timer = timers[id];
+                timer.TickTime(deltaTime);
+                if (timer.Time <= 0)
+                {
+                    UnRegisterOnceCallBack(id);
+                    timer.Callback.Invoke();
+                }
             }
-
-            foreach (var id in waitForRemove) UnRegisterOnceCallBack(id);
         }
 
         public void UnRegisterOnceCallBack(string id)
@@ -61,10 +62,11 @@ namespace rStarUtility.Generic.Implement.Derived
 
     public class Timer
     {
-    #region Private Variables
+    #region Public Variables
 
-        private          float  time;
-        private readonly Action callback;
+        public Action Callback { get; }
+
+        public float Time { get; private set; }
 
     #endregion
 
@@ -72,20 +74,17 @@ namespace rStarUtility.Generic.Implement.Derived
 
         public Timer(float time , Action callback)
         {
-            this.time     = time;
-            this.callback = callback;
+            this.Time     = time;
+            this.Callback = callback;
         }
 
     #endregion
 
     #region Public Methods
 
-        public bool TickTime(float deltaTime)
+        public void TickTime(float deltaTime)
         {
-            time -= deltaTime;
-            var complete = time <= 0;
-            if (complete) callback.Invoke();
-            return complete;
+            Time = Time - deltaTime;
         }
 
     #endregion
