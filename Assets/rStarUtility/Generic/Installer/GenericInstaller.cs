@@ -15,9 +15,9 @@ namespace rStarUtility.Generic.Installer
         public override void InstallBindings()
         {
             Container.Bind<ITimeProvider>().To<TimeProvider>().AsSingle();
-            Container.Bind(typeof(ITimer) , typeof(ITickable)).To<Timer>().AsSingle().IfNotBound();
+            Container.Bind(typeof(ITimerSystem) , typeof(ITickable)).To<TimerSystem>().AsSingle().IfNotBound();
 
-            Container.BindTickableExecutionOrder<Timer>(-100);
+            Container.BindTickableExecutionOrder<TimerSystem>(-100);
         }
 
     #endregion

@@ -9,11 +9,11 @@ using Zenject;
 
 namespace rStarUtility.Generic.Implement.Derived
 {
-    public class Timer : ITimer , ITickable
+    public class TimerSystem : ITimerSystem , ITickable
     {
     #region Public Variables
 
-        public int Count => timerStates.Count;
+        public int Count => timers.Count;
 
     #endregion
 
@@ -22,33 +22,36 @@ namespace rStarUtility.Generic.Implement.Derived
         [Inject]
         private ITimeProvider timeProvider;
 
-        private readonly List<TimerState> timerStates = new List<TimerState>();
+        private readonly List<Timer> timers = new List<Timer>();
 
     #endregion
 
     #region Public Methods
 
-        public void RegisterOnceCallBack(float time , Action callback)
+        public void RegisterOnceCallBack(string id , float time , Action callback)
         {
             if (time <= 0) callback.Invoke();
-            var timerState = new TimerState(time , callback);
-            timerStates.Add(timerState);
+            var timer = new Timer(time , callback);
+            timers.Add(timer);
         }
+
 
         public void Tick()
         {
             var deltaTime = timeProvider.GetDeltaTime();
-            for (var i = timerStates.Count - 1 ; i >= 0 ; i--)
+            for (var i = timers.Count - 1 ; i >= 0 ; i--)
             {
-                var complete = timerStates[i].TickTime(deltaTime);
-                if (complete) timerStates.RemoveAt(i);
+                var complete = timers[i].TickTime(deltaTime);
+                if (complete) timers.RemoveAt(i);
             }
         }
+
+        public void UnRegisterOnceCallBack(string id) { }
 
     #endregion
     }
 
-    public class TimerState
+    public class Timer
     {
     #region Private Variables
 
@@ -59,7 +62,7 @@ namespace rStarUtility.Generic.Implement.Derived
 
     #region Constructor
 
-        public TimerState(float time , Action callback)
+        public Timer(float time , Action callback)
         {
             this.time     = time;
             this.callback = callback;
