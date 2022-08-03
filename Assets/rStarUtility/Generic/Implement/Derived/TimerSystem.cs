@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using rStarUtility.Generic.Infrastructure;
 using Zenject;
 
@@ -39,7 +40,7 @@ namespace rStarUtility.Generic.Implement.Derived
         public void Tick()
         {
             var deltaTime     = timeProvider.GetDeltaTime();
-            var ids           = timers.Keys;
+            var ids           = timers.Keys.ToList();
             var waitForRemove = new List<string>();
             foreach (var id in ids)
             {
@@ -47,7 +48,7 @@ namespace rStarUtility.Generic.Implement.Derived
                 if (complete) waitForRemove.Add(id);
             }
 
-            foreach (var id in waitForRemove) timers.DeleteById(id);
+            foreach (var id in waitForRemove) UnRegisterOnceCallBack(id);
         }
 
         public void UnRegisterOnceCallBack(string id)
@@ -56,8 +57,6 @@ namespace rStarUtility.Generic.Implement.Derived
         }
 
     #endregion
-
-        // private readonly List<Timer>              timers = new List<Timer>();
     }
 
     public class Timer

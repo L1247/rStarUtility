@@ -170,7 +170,7 @@ internal class GenericRepositoryTests : SimpleTest
     public void Contain_Error_With_Invalid_Id(string id)
     {
         var exceptionMessage = "id is NullOrEmpty.";
-        AssetException<ArgumentException>(() => repository.ContainsId(id) , exceptionMessage);
+        ShouldExceptionThrown<ArgumentException>(() => repository.ContainsId(id) , exceptionMessage);
     }
 
     [Test]

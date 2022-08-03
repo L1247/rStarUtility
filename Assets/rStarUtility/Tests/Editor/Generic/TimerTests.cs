@@ -1,5 +1,6 @@
 #region
 
+using System;
 using NSubstitute;
 using NUnit.Framework;
 using rStarUtility.Generic.Implement.Derived;
@@ -28,6 +29,14 @@ public class TimerTests : DIUnitTestFixture
         timerSystem.Tick();
         Assert.AreEqual(true , result ,            "result is not equal");
         Assert.AreEqual(0 ,    timerSystem.Count , "Count is not equal");
+    }
+
+    [Test]
+    public void RegisterTimer_Again_When_Callback()
+    {
+        timeProvider.GetDeltaTime().Returns(1);
+        timerSystem.RegisterOnceCallBack(id , 1 , () => timerSystem.RegisterOnceCallBack(id , 1 , () => { }));
+        ShouldNoExceptionThrown<Exception>(() => { timerSystem.Tick(); });
     }
 
 

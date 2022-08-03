@@ -18,13 +18,6 @@ namespace rStarUtility.Generic.TestFrameWork
 
     #region Protected Methods
 
-        protected void AssetException<T>(Action action , string expectedMessage) where T : Exception
-        {
-            var exception = Assert.Throws<T>(() => action());
-            var message   = exception.Message;
-            Assert.AreEqual(expectedMessage , message , "message is not equal");
-        }
-
         protected string NewGuid()
         {
             return Guid.NewGuid().ToString();
@@ -33,6 +26,18 @@ namespace rStarUtility.Generic.TestFrameWork
         protected Scenario Scenario(string annotation)
         {
             return new Scenario();
+        }
+
+        protected void ShouldExceptionThrown<T>(Action action , string expectedMessage) where T : Exception
+        {
+            var exception = Assert.Throws<T>(() => action());
+            var message   = exception.Message;
+            Assert.AreEqual(expectedMessage , message , "message is not equal");
+        }
+
+        protected void ShouldNoExceptionThrown<T>(Action action) where T : Exception
+        {
+            AssertEx.NoExceptionThrown<T>(action.Invoke);
         }
 
     #endregion
