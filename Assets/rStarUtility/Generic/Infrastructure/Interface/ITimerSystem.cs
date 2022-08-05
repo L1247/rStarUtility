@@ -10,6 +10,8 @@ namespace rStarUtility.Generic.Infrastructure
     {
     #region Public Methods
 
+        float GetElapsedTime(string id);
+
         float GetRemainingTime(string id);
         bool  IsTimerExist(string     id);
 
