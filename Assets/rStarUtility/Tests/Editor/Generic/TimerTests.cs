@@ -64,7 +64,14 @@ public class TimerTests : DIUnitTestFixture
     }
 
     [Test]
-    public void GetElapsedTime() { }
+    public void GetElapsedTime()
+    {
+        timeProvider.GetDeltaTime().Returns(0.5f);
+        timerSystem.RegisterOnceCallBack(id , 1 , () => { });
+        timerSystem.Tick();
+        var elapsedTime = timerSystem.GetElapsedTime(id);
+        Assert.AreEqual(0.5f , elapsedTime , "elapsedTime is not equal");
+    }
 
     [Test]
     public void UnRegisterTimer()

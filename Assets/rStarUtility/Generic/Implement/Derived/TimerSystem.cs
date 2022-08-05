@@ -28,6 +28,12 @@ namespace rStarUtility.Generic.Implement.Derived
 
     #region Public Methods
 
+        public float GetElapsedTime(string id)
+        {
+            var timer = timers.FindById(id);
+            return timer.ElapsedTime;
+        }
+
         public float GetRemainingTime(string id)
         {
             var timer = timers.FindById(id);
@@ -75,7 +81,8 @@ namespace rStarUtility.Generic.Implement.Derived
     {
     #region Public Variables
 
-        public Action Callback { get; }
+        public Action Callback    { get; }
+        public float  ElapsedTime { get; private set; }
 
         public float Time { get; private set; }
 
@@ -95,7 +102,8 @@ namespace rStarUtility.Generic.Implement.Derived
 
         public void TickTime(float deltaTime)
         {
-            Time -= deltaTime;
+            Time        -= deltaTime;
+            ElapsedTime += deltaTime;
         }
 
     #endregion
