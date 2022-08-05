@@ -2,7 +2,7 @@
   "name": "com.rstar.rstarutility",
   "displayName": "rStar Utility",
   "description": "包含DDD框架的實作以及相關的測試\n包含一些常用的工具庫\n相依Zenject、UniRx、MessagePipe、UniTask",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "unity": "2021.3",
   "unityRelease": "1f1",
   "dependencies": {
