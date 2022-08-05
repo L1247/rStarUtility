@@ -6,6 +6,8 @@
 
 相依Zenject、UniRx、MessagePipe、UniTask
 
+更多資訊 See [Wiki](https://github.com/L1247/rStarUtility/wiki)
+
 如果採用 PackageManager則不需要自己Import其他相依插件，會自動安裝
 
 import from PackageManager [see here](https://github.com/L1247/rStarUtility#from-package-manager)
