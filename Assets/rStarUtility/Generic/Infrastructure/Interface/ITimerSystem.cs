@@ -10,6 +10,9 @@ namespace rStarUtility.Generic.Infrastructure
     {
     #region Public Methods
 
+        float GetRemainingTime(string id);
+        bool  IsTimerExist(string     id);
+
         void RegisterOnceCallBack(string id , float time , Action callback);
 
         void UnRegisterOnceCallBack(string id);

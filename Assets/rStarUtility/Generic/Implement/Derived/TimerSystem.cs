@@ -28,6 +28,17 @@ namespace rStarUtility.Generic.Implement.Derived
 
     #region Public Methods
 
+        public float GetRemainingTime(string id)
+        {
+            var timer = timers.FindById(id);
+            return timer.Time;
+        }
+
+        public bool IsTimerExist(string id)
+        {
+            return timers.ContainsId(id);
+        }
+
         public void RegisterOnceCallBack(string id , float time , Action callback)
         {
             if (time <= 0) callback.Invoke();
@@ -74,8 +85,8 @@ namespace rStarUtility.Generic.Implement.Derived
 
         public Timer(float time , Action callback)
         {
-            this.Time     = time;
-            this.Callback = callback;
+            Time     = time;
+            Callback = callback;
         }
 
     #endregion
@@ -84,7 +95,7 @@ namespace rStarUtility.Generic.Implement.Derived
 
         public void TickTime(float deltaTime)
         {
-            Time = Time - deltaTime;
+            Time -= deltaTime;
         }
 
     #endregion

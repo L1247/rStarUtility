@@ -48,6 +48,25 @@ public class TimerTests : DIUnitTestFixture
 
 
     [Test]
+    public void GetRemainingTime()
+    {
+        timerSystem.RegisterOnceCallBack(id , 1 , () => { });
+        var remainingTime = timerSystem.GetRemainingTime(id);
+        Assert.AreEqual(1 , remainingTime , "remainingTime is not equal");
+    }
+
+    [Test]
+    public void IsTimerExist()
+    {
+        timerSystem.RegisterOnceCallBack(id , 1 , () => { });
+        var exist = timerSystem.IsTimerExist(id);
+        Assert.AreEqual(true , exist , "exist is not equal");
+    }
+
+    [Test]
+    public void GetElapsedTime() { }
+
+    [Test]
     public void UnRegisterTimer()
     {
         timeProvider.GetDeltaTime().Returns(1);
