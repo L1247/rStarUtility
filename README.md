@@ -75,23 +75,17 @@ https://github.com/L1247/rStarUtility.git?path=Assets/rStarUtility
 For example, modify `Packages/manifest.json` as the following:
 
 ```json
-{
-  "scopedRegistries": [
+"scopedRegistries": [
     {
       "name": "package.openupm.com",
       "url": "https://package.openupm.com",
       "scopes": [
+        "com.svermeulen.extenject",
+        "com.cysharp.unitask",
         "com.cysharp.messagepipe",
         "com.cysharp.messagepipe.zenject",
-        "com.cysharp.unitask",
-        "com.openupm",
-        "com.neuecc.unirx",
-        "com.svermeulen.extenject"
+        "com.neuecc.unirx"
       ]
     }
-  ],
-  "dependencies": {
-    "com.rstar.rstarutility": "https://github.com/L1247/rStarUtility.git?path=Assets/rStarUtility"
-  }
-}
+  ]
 ```
