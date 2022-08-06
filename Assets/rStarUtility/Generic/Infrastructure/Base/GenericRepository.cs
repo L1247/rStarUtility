@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using rStarUtility.Util;
 
 #endregion
 
@@ -109,6 +110,7 @@ namespace rStarUtility.Generic.Infrastructure
 
         public virtual bool Save(string id , T entity)
         {
+            Contract.RequireString(id , $"id: {id}");
             var containsId = ContainsId(id);
             // if (containsId) throw new ArgumentException($"the same key has already been added. key: {id}");
             if (containsId) entities[id] = entity;
