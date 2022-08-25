@@ -1,6 +1,6 @@
 {
-  "name": "rStarUtility.Util",
-  "rootNamespace": "rStarUtility.Util",
+  "name": "rStarUtility.Util.Runtime",
+  "rootNamespace": "rStarUtility.rStarUtility.Util.Runtimetil",
   "references": [],
   "includePlatforms": [],
   "excludePlatforms": [],
