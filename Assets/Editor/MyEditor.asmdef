@@ -1,19 +1,19 @@
 {
-  "name": "MyEditor",
-  "rootNamespace": "",
-  "references": [
-    "GUID:d0acddb179989574c8355991596bd3e6",
-    "GUID:0d8beb7f090555447a6cf5ce9e54dbb4"
-  ],
-  "includePlatforms": [
-    "Editor"
-  ],
-  "excludePlatforms": [],
-  "allowUnsafeCode": false,
-  "overrideReferences": false,
-  "precompiledReferences": [],
-  "autoReferenced": false,
-  "defineConstraints": [],
-  "versionDefines": [],
-  "noEngineReferences": false
+    "name": "MyEditor",
+    "rootNamespace": "",
+    "references": [
+        "Zenject-Editor",
+        "Zenject"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

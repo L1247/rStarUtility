@@ -1,19 +1,19 @@
 {
-  "name": "Sample",
-  "rootNamespace": "",
-  "references": [
-      "GUID:f22f718b9b174a74d89f976a69f9dd2a",
-      "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
-      "GUID:f1b3f9df7defa8343bef5fde421cb1d7",
-      "GUID:ace74969ab64aa74ba1296499c7747dc"
-  ],
-  "includePlatforms": [],
-  "excludePlatforms": [],
-  "allowUnsafeCode": false,
-  "overrideReferences": false,
-  "precompiledReferences": [],
-  "autoReferenced": false,
-  "defineConstraints": [],
-  "versionDefines": [],
-  "noEngineReferences": false
+    "name": "Sample",
+    "rootNamespace": "",
+    "references": [
+        "rStarUtility.Util.Runtime",
+        "Zenject",
+        "rStarUtility.Generic.Installer",
+        "rStarUtility.Generic.Infrastructure"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

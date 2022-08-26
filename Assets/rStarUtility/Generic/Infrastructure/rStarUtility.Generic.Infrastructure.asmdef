@@ -1,16 +1,16 @@
 {
-  "name": "rStarUtility.Generic.Infrastructure",
-  "rootNamespace": "rStarUtility.Generic.Infrastructure",
-  "references": [
-    "GUID:f22f718b9b174a74d89f976a69f9dd2a"
-  ],
-  "includePlatforms": [],
-  "excludePlatforms": [],
-  "allowUnsafeCode": false,
-  "overrideReferences": false,
-  "precompiledReferences": [],
-  "autoReferenced": false,
-  "defineConstraints": [],
-  "versionDefines": [],
-  "noEngineReferences": false
+    "name": "rStarUtility.Generic.Infrastructure",
+    "rootNamespace": "rStarUtility.Generic.Infrastructure",
+    "references": [
+        "rStarUtility.Util.Runtime"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
