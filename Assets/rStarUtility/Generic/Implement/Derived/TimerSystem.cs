@@ -3,6 +3,7 @@
 using System;
 using System.Linq;
 using rStarUtility.Generic.Infrastructure;
+using rStarUtility.Util;
 using Zenject;
 
 #endregion
@@ -50,6 +51,13 @@ namespace rStarUtility.Generic.Implement.Derived
             if (time <= 0) callback.Invoke();
             var timer = new Timer(time , callback);
             timers.Save(id , timer);
+        }
+
+        public string RegisterOnceCallBack(float time , Action callback)
+        {
+            var guid = GUID.NewGUID();
+            RegisterOnceCallBack(guid , time , callback);
+            return guid;
         }
 
 

@@ -2,10 +2,11 @@
     "name": "rStarUtility.Generic.Implement",
     "rootNamespace": "rStarUtility.Generic.Implement",
     "references": [
-        "Zenject",
-        "MessagePipe",
-        "UniTask",
-        "rStarUtility.Generic.Infrastructure"
+      "Zenject",
+      "MessagePipe",
+      "UniTask",
+      "rStarUtility.Generic.Infrastructure",
+      "rStarUtility.Util.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

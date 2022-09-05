@@ -15,7 +15,8 @@ namespace rStarUtility.Generic.Infrastructure
         float GetRemainingTime(string id);
         bool  IsTimerExist(string     id);
 
-        void RegisterOnceCallBack(string id , float time , Action callback);
+        void   RegisterOnceCallBack(string id ,   float  time , Action callback);
+        string RegisterOnceCallBack(float  time , Action callback);
 
         void UnRegisterOnceCallBack(string id);
 
