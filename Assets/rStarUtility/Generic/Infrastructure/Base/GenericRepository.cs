@@ -115,7 +115,6 @@ namespace rStarUtility.Generic.Infrastructure
             // if (containsId) throw new ArgumentException($"the same key has already been added. key: {id}");
             if (containsId) entities[id] = entity;
             else entities.Add(id , entity);
-
             return ContainsId(id);
         }
 

@@ -38,7 +38,7 @@ namespace rStarUtility.Generic.Implement.Derived
         public float GetRemainingTime(string id)
         {
             var timer = timers.FindById(id);
-            return timer.Time;
+            return timer.RemainingTime;
         }
 
         public bool IsTimerExist(string id)
@@ -48,8 +48,14 @@ namespace rStarUtility.Generic.Implement.Derived
 
         public void RegisterOnceCallBack(string id , float time , Action callback)
         {
-            if (time <= 0) callback.Invoke();
-            var timer = new Timer(time , callback);
+            if (time <= 0)
+            {
+                callback.Invoke();
+                return;
+            }
+
+            var timer      = new Timer(time , true , callback);
+            var containsId = timers.ContainsId(id);
             timers.Save(id , timer);
         }
 
@@ -69,11 +75,9 @@ namespace rStarUtility.Generic.Implement.Derived
             {
                 var timer = timers[id];
                 timer.TickTime(deltaTime);
-                if (timer.Time <= 0)
-                {
-                    UnRegisterOnceCallBack(id);
-                    timer.Callback.Invoke();
-                }
+                if (timer.End == false) continue;
+                if (timer.CountOnce) UnRegisterOnceCallBack(id);
+                timer.Callback.Invoke();
             }
         }
 
@@ -89,19 +93,21 @@ namespace rStarUtility.Generic.Implement.Derived
     {
     #region Public Variables
 
-        public Action Callback    { get; }
-        public float  ElapsedTime { get; private set; }
-
-        public float Time { get; private set; }
+        public Action Callback      { get; }
+        public bool   CountOnce     { get; }
+        public bool   End           { get; private set; }
+        public float  ElapsedTime   { get; private set; }
+        public float  RemainingTime { get; private set; }
 
     #endregion
 
     #region Constructor
 
-        public Timer(float time , Action callback)
+        public Timer(float duration , bool countOnce , Action callback)
         {
-            Time     = time;
-            Callback = callback;
+            CountOnce     = countOnce;
+            RemainingTime = duration;
+            Callback      = callback;
         }
 
     #endregion
@@ -110,8 +116,9 @@ namespace rStarUtility.Generic.Implement.Derived
 
         public void TickTime(float deltaTime)
         {
-            Time        -= deltaTime;
-            ElapsedTime += deltaTime;
+            RemainingTime -= deltaTime;
+            ElapsedTime   += deltaTime;
+            if (RemainingTime <= 0) End = true;
         }
 
     #endregion

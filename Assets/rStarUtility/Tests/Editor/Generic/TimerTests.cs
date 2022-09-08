@@ -36,7 +36,7 @@ public class TimerTests : DIUnitTestFixture
     {
         var result = false;
         timeProvider.GetDeltaTime().Returns(1);
-        timerSystem.RegisterOnceCallBack(id , 1 , () => timerSystem.RegisterOnceCallBack(id , 1 , () => { result = true; }));
+        timerSystem.RegisterOnceCallBack(id , 1 , () => timerSystem.RegisterOnceCallBack(id , 1 , () => result = true));
         ShouldNoExceptionThrown<Exception>(() =>
         {
             timerSystem.Tick();
@@ -45,7 +45,6 @@ public class TimerTests : DIUnitTestFixture
         Assert.AreEqual(true , result ,            "result is not equal");
         Assert.AreEqual(0 ,    timerSystem.Count , "Count is not equal");
     }
-
 
     [Test]
     public void GetRemainingTime()
