@@ -14,16 +14,18 @@ namespace rStarUtility.Generic.Infrastructure
         public bool   CountOnce { get; }
         public bool   End       { get; private set; }
 
-        public float Duration      { get; }
-        public float ElapsedTime   { get; private set; }
-        public float RemainingTime { get; private set; }
+        public float  Duration      { get; }
+        public float  ElapsedTime   { get; private set; }
+        public float  RemainingTime { get; private set; }
+        public string Id            { get; }
 
     #endregion
 
     #region Constructor
 
-        public Timer(float duration , bool countOnce , Action callback)
+        public Timer(string id , float duration , bool countOnce , Action callback)
         {
+            Id            = id;
             CountOnce     = countOnce;
             RemainingTime = duration;
             Callback      = callback;

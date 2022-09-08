@@ -55,7 +55,7 @@ namespace rStarUtility.Generic.Implement.Derived
             }
 
             var guid  = GUID.NewGUID();
-            var timer = new Timer(duration , false , callback);
+            var timer = new Timer(guid , duration , false , callback);
             timers.Save(guid , timer);
             return timer;
         }
@@ -68,7 +68,7 @@ namespace rStarUtility.Generic.Implement.Derived
                 return;
             }
 
-            var timer = new Timer(duration , true , callback);
+            var timer = new Timer(id , duration , true , callback);
             timers.Save(id , timer);
         }
 
@@ -89,12 +89,12 @@ namespace rStarUtility.Generic.Implement.Derived
                 var timer = timers[id];
                 timer.TickTime(deltaTime);
                 if (timer.End == false) continue;
-                if (timer.CountOnce) UnRegisterOnceCallBack(id);
+                if (timer.CountOnce) UnRegisterOnceTimer(id);
                 timer.Callback?.Invoke();
             }
         }
 
-        public void UnRegisterOnceCallBack(string id)
+        public void UnRegisterOnceTimer(string id)
         {
             timers.DeleteById(id);
         }

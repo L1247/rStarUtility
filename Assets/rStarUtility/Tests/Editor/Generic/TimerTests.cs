@@ -51,16 +51,28 @@ public class TimerTests : DIUnitTestFixture
     {
         var timer = timerSystem.RegisterLoopTimer(1 , null);
         timeProvider.GetDeltaTime().Returns(0.5f);
-        timerSystem.Tick();
-        Assert.AreEqual(false , timer.End , "end is not equal");
-        timerSystem.Tick();
-        Assert.AreEqual(true , timer.End , "end is not equal");
-        timerSystem.Tick();
-        Assert.AreEqual(false , timer.End , "end is not equal");
-        timerSystem.Tick();
-        Assert.AreEqual(true , timer.End , "end is not equal");
-        ShouldNoExceptionThrown<Exception>(() => { });
+        ShouldNoExceptionThrown<Exception>(() =>
+        {
+            timerSystem.Tick();
+            Assert.AreEqual(false , timer.End , "end is not equal");
+            timerSystem.Tick();
+            Assert.AreEqual(true , timer.End , "end is not equal");
+            timerSystem.Tick();
+            Assert.AreEqual(false , timer.End , "end is not equal");
+            timerSystem.Tick();
+            Assert.AreEqual(true , timer.End , "end is not equal");
+        });
         Assert.AreEqual(1 , timerSystem.Count , "Count is not equal");
+    }
+
+    [Test]
+    public void UnRegisterLoopTimer()
+    {
+        var timer = timerSystem.RegisterLoopTimer(1 , null);
+        timeProvider.GetDeltaTime().Returns(0.5f);
+        Assert.AreEqual(1 , timerSystem.Count , "Count is not equal");
+        timerSystem.UnRegisterOnceTimer(timer.Id);
+        Assert.AreEqual(0 , timerSystem.Count , "Count is not equal");
     }
 
 
@@ -96,7 +108,7 @@ public class TimerTests : DIUnitTestFixture
         timeProvider.GetDeltaTime().Returns(1);
         var result = false;
         timerSystem.RegisterOnceTimer(id , 1 , () => result = true);
-        timerSystem.UnRegisterOnceCallBack(id);
+        timerSystem.UnRegisterOnceTimer(id);
         Assert.AreEqual(0 , timerSystem.Count , "count is not equal");
         timerSystem.Tick();
         Assert.AreEqual(false , result , "result is not equal");
