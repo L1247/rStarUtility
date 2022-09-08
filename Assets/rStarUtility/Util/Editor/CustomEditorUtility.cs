@@ -17,6 +17,15 @@ namespace rStarUtility.Util.Editor
     {
     #region Public Variables
 
+        public static IEnumerable<AnimationClip> GetAnimationClipByPath(string path , string containKeyWord)
+        {
+            var assets = AssetDatabase.FindAssets("t:AnimationClip " , new[] { path });
+            var animationClipByPath = assets
+                                      .Select(guid => LoadAssetAtPath<AnimationClip>(AssetDatabase.GUIDToAssetPath(guid)))
+                                      .Where(clip => clip.name.Contains(containKeyWord));
+            return animationClipByPath;
+        }
+
     #if UNITY_EDITOR
         public static IEnumerable<string> GetAllStateNameByAnimator(AnimatorController animator)
         {
