@@ -46,23 +46,36 @@ namespace rStarUtility.Generic.Implement.Derived
             return timers.ContainsId(id);
         }
 
-        public void RegisterOnceCallBack(string id , float time , Action callback)
+        public Timer RegisterLoopTimer(float duration , Action callback)
         {
-            if (time <= 0)
+            if (duration <= 0)
             {
-                callback.Invoke();
+                callback?.Invoke();
+                return null;
+            }
+
+            var guid  = GUID.NewGUID();
+            var timer = new Timer(duration , false , callback);
+            timers.Save(guid , timer);
+            return timer;
+        }
+
+        public void RegisterOnceTimer(string id , float duration , Action callback)
+        {
+            if (duration <= 0)
+            {
+                callback?.Invoke();
                 return;
             }
 
-            var timer      = new Timer(time , true , callback);
-            var containsId = timers.ContainsId(id);
+            var timer = new Timer(duration , true , callback);
             timers.Save(id , timer);
         }
 
-        public string RegisterOnceCallBack(float time , Action callback)
+        public string RegisterOnceTimer(float duration , Action callback)
         {
             var guid = GUID.NewGUID();
-            RegisterOnceCallBack(guid , time , callback);
+            RegisterOnceTimer(guid , duration , callback);
             return guid;
         }
 
@@ -77,48 +90,13 @@ namespace rStarUtility.Generic.Implement.Derived
                 timer.TickTime(deltaTime);
                 if (timer.End == false) continue;
                 if (timer.CountOnce) UnRegisterOnceCallBack(id);
-                timer.Callback.Invoke();
+                timer.Callback?.Invoke();
             }
         }
 
         public void UnRegisterOnceCallBack(string id)
         {
             timers.DeleteById(id);
-        }
-
-    #endregion
-    }
-
-    public class Timer
-    {
-    #region Public Variables
-
-        public Action Callback      { get; }
-        public bool   CountOnce     { get; }
-        public bool   End           { get; private set; }
-        public float  ElapsedTime   { get; private set; }
-        public float  RemainingTime { get; private set; }
-
-    #endregion
-
-    #region Constructor
-
-        public Timer(float duration , bool countOnce , Action callback)
-        {
-            CountOnce     = countOnce;
-            RemainingTime = duration;
-            Callback      = callback;
-        }
-
-    #endregion
-
-    #region Public Methods
-
-        public void TickTime(float deltaTime)
-        {
-            RemainingTime -= deltaTime;
-            ElapsedTime   += deltaTime;
-            if (RemainingTime <= 0) End = true;
         }
 
     #endregion
