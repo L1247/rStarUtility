@@ -53,6 +53,15 @@ namespace rStarUtility.Util.Component
 
     #endregion
 
+    #region Public Methods
+
+        public void SetThickness(int value)
+        {
+            thickness = Mathf.Clamp(value , 0.1f , int.MaxValue);
+        }
+
+    #endregion
+
 
     #if UNITY_EDITOR
 
@@ -177,16 +186,16 @@ namespace rStarUtility.Util.Component
                     var vb2 = new Vector3[5];
                     vb2[0] = vb2[4] = vb1[0] = trans.TransformPoint(
                                           new Vector3(b2D.offset.x - b2D.size.x / 2 , b2D.offset.y - b2D.size.y / 2 ,
-                                                      trans.position.z));
+                                              trans.position.z));
                     vb2[1] = vb1[1] = trans.TransformPoint(
                                  new Vector3(b2D.offset.x + b2D.size.x / 2 , b2D.offset.y - b2D.size.y / 2 ,
-                                             trans.position.z));
+                                     trans.position.z));
                     vb2[2] = vb1[2] = trans.TransformPoint(
                                  new Vector3(b2D.offset.x + b2D.size.x / 2 , b2D.offset.y + b2D.size.y / 2 ,
-                                             trans.position.z));
+                                     trans.position.z));
                     vb2[3] = vb1[3] = trans.TransformPoint(
                                  new Vector3(b2D.offset.x - b2D.size.x / 2 , b2D.offset.y + b2D.size.y / 2 ,
-                                             trans.position.z));
+                                     trans.position.z));
                     Handles.color = new Color(c.r , c.g , c.b , a);
                     // Handles.DrawPolyLine(vb2);
                     if (volume)
