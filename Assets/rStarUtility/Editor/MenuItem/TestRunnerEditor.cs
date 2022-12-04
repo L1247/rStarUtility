@@ -12,15 +12,23 @@ namespace OOOne.Tools.Editor
     {
     #region Private Methods
 
-        [MenuItem("Tools/RunUnitTestAll _F1")]
-        private static void RunUnitTestAll()
+        [MenuItem("Tools/RunEditModeTest _F1")]
+        private static void RunEditorModeTestAll()
         {
             var testRunnerApi  = ScriptableObject.CreateInstance<TestRunnerApi>();
             var filterEditMode = new Filter();
             filterEditMode.testMode = TestMode.EditMode;
-            var filterPlayMode = new Filter();
-            filterPlayMode.testMode = TestMode.PlayMode;
-            Filter[] apiFilter = { filterEditMode , filterPlayMode };
+            Filter[] apiFilter = { filterEditMode };
+            testRunnerApi.Execute(new ExecutionSettings(apiFilter));
+        }
+
+        [MenuItem("Tools/RunPlayModeTest _F2")]
+        private static void RunPlayModeTestAll()
+        {
+            var testRunnerApi  = ScriptableObject.CreateInstance<TestRunnerApi>();
+            var filterEditMode = new Filter();
+            filterEditMode.testMode = TestMode.PlayMode;
+            Filter[] apiFilter = { filterEditMode };
             testRunnerApi.Execute(new ExecutionSettings(apiFilter));
         }
 
