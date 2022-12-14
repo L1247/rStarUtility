@@ -46,7 +46,6 @@ namespace rStarUtility.Util.Component
         [SerializeField]
         private Color collision_color = new Color(1 , 0 , 0 , 1f);
 
-
         [SerializeField]
         [HideInInspector]
         private Transform trans;
@@ -62,7 +61,6 @@ namespace rStarUtility.Util.Component
 
     #endregion
 
-
     #if UNITY_EDITOR
 
         private void OnEnable()
@@ -70,7 +68,6 @@ namespace rStarUtility.Util.Component
             if (trans == null)
                 trans = transform;
         }
-
 
         // triggers
         private void OnTriggerEnter2D()
@@ -103,7 +100,6 @@ namespace rStarUtility.Util.Component
         {
             in_collision = false;
         }
-
 
         [MenuItem("Tools/2DColliderPRO/Show 2D Collider" , false , 0)]
         private static void Add_Show_Collider()
@@ -162,11 +158,9 @@ namespace rStarUtility.Util.Component
             }
         }
 
-
         private void OnDrawGizmos()
         {
-            if (!show)
-                return;
+            if (!show || !enabled) return;
 
             // color region
             var c = static_color;
@@ -185,17 +179,17 @@ namespace rStarUtility.Util.Component
                     var vb1 = new Vector3[4];
                     var vb2 = new Vector3[5];
                     vb2[0] = vb2[4] = vb1[0] = trans.TransformPoint(
-                                          new Vector3(b2D.offset.x - b2D.size.x / 2 , b2D.offset.y - b2D.size.y / 2 ,
-                                              trans.position.z));
+                            new Vector3(b2D.offset.x - b2D.size.x / 2 , b2D.offset.y - b2D.size.y / 2 ,
+                                        trans.position.z));
                     vb2[1] = vb1[1] = trans.TransformPoint(
-                                 new Vector3(b2D.offset.x + b2D.size.x / 2 , b2D.offset.y - b2D.size.y / 2 ,
-                                     trans.position.z));
+                            new Vector3(b2D.offset.x + b2D.size.x / 2 , b2D.offset.y - b2D.size.y / 2 ,
+                                        trans.position.z));
                     vb2[2] = vb1[2] = trans.TransformPoint(
-                                 new Vector3(b2D.offset.x + b2D.size.x / 2 , b2D.offset.y + b2D.size.y / 2 ,
-                                     trans.position.z));
+                            new Vector3(b2D.offset.x + b2D.size.x / 2 , b2D.offset.y + b2D.size.y / 2 ,
+                                        trans.position.z));
                     vb2[3] = vb1[3] = trans.TransformPoint(
-                                 new Vector3(b2D.offset.x - b2D.size.x / 2 , b2D.offset.y + b2D.size.y / 2 ,
-                                     trans.position.z));
+                            new Vector3(b2D.offset.x - b2D.size.x / 2 , b2D.offset.y + b2D.size.y / 2 ,
+                                        trans.position.z));
                     Handles.color = new Color(c.r , c.g , c.b , a);
                     // Handles.DrawPolyLine(vb2);
                     if (volume)
