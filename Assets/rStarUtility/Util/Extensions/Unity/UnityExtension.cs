@@ -35,6 +35,11 @@ namespace rStarUtility.Util.Extensions.Unity
             return monoBehaviour.gameObject.activeSelf;
         }
 
+        public static bool IsActive(this Transform transform)
+        {
+            return transform.gameObject.activeSelf;
+        }
+
         public static void SetActive(this Transform transform , bool value)
         {
             transform.gameObject.SetActive(value);
