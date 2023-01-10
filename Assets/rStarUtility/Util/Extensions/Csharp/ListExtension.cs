@@ -1,8 +1,9 @@
 #region
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
+using Random = UnityEngine.Random;
 
 #endregion
 
@@ -10,7 +11,23 @@ namespace rStarUtility.Util.Extensions.Csharp
 {
     public static class ListExtension
     {
-    #region Public Variables
+    #region Public Methods
+
+        public static void AddIfNotContains<T>(this List<T> list , T t)
+        {
+            if (list.Contains(t) == false) list.Add(t);
+        }
+
+        /// <summary>
+        ///     https://stackoverflow.com/questions/222598/how-do-i-clone-a-generic-list-in-c
+        /// </summary>
+        /// <param name="listToClone"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static IList<T> Clone<T>(this IList<T> listToClone) where T : ICloneable
+        {
+            return listToClone.Select(item => (T)item.Clone()).ToList();
+        }
 
         /// <summary>
         ///     https://dotblogs.com.tw/rainmaker/2012/02/02/67456
@@ -23,19 +40,14 @@ namespace rStarUtility.Util.Extensions.Csharp
         public static bool CompareWith<T>(this List<T> list , List<T> list2 , bool completelyEqual = false)
         {
             var isListTheSame = completelyEqual
-                                    ? list.SequenceEqual(list2)
-                                    : !list.Except(list2).Any();
+                    ? list.SequenceEqual(list2)
+                    : !list.Except(list2).Any();
             return isListTheSame;
         }
 
         public static bool IsNullOrEmpty<T>(this IList<T> list)
         {
             return list == null || list.Count == 0;
-        }
-
-        public static void AddIfNotContains<T>(this List<T> list , T t)
-        {
-            if (list.Contains(t) == false) list.Add(t);
         }
 
         /// <summary>
