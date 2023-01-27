@@ -1,3 +1,7 @@
+[![](https://img.shields.io/github/v/release/L1247/rStarUtility)](https://github.com/L1247/rStarUtility/releases)
+[![](https://img.shields.io/github/release-date/L1247/rStarUtility)](https://github.com/L1247/rStarUtility/releases)
+![](https://img.shields.io/badge/unity-2020.1%20or%20later-green.svg)
+
 ## 說明
 
 包含DDD框架的實作以及相關的測試
