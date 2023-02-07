@@ -145,8 +145,6 @@ namespace rStarUtility.Util.Editor
         #if UNITY_EDITOR
             foreach (var ac in anim.runtimeAnimatorController.animationClips)
                 sprites.AddRange(GetSpritesFromClip(ac));
-
-            Debug.Log($"allsprites{sprites}");
         #endif
             return sprites;
         }
@@ -155,12 +153,12 @@ namespace rStarUtility.Util.Editor
         {
             var sprites = new List<Sprite>();
         #if UNITY_EDITOR
-            if (clip != null)
-                foreach (var binding in AnimationUtility.GetObjectReferenceCurveBindings(clip))
-                {
-                    var keyframes = AnimationUtility.GetObjectReferenceCurve(clip , binding);
-                    foreach (var frame in keyframes) sprites.Add((Sprite)frame.value);
-                }
+            if (clip is null) return sprites;
+            foreach (var binding in AnimationUtility.GetObjectReferenceCurveBindings(clip))
+            {
+                var keyframes = AnimationUtility.GetObjectReferenceCurve(clip , binding);
+                foreach (var frame in keyframes) sprites.Add((Sprite)frame.value);
+            }
 
         #endif
             return sprites;
@@ -171,6 +169,22 @@ namespace rStarUtility.Util.Editor
             return GetScriptableObjects<T>()
                    .Where(t => t.GetType().GetInterface(interfaceName) != null)
                    .ToList();
+        }
+
+        public static List<T> GetObjectsAtPath<T>(string path)
+        {
+            var      newpath     = path.Replace("Assets/" , "");
+            var      dataPath    = Application.dataPath;
+            var fileEntries = Directory.GetFiles(dataPath + "/" + newpath , "*.*" , SearchOption.AllDirectories);
+            var files = fileEntries.Select(fileName =>
+                                           {
+                                               string filePath                 = "Assets/" + fileName.Replace(dataPath + "/" , "");
+                                               string filePathWithCorrectSlash = filePath.Replace("\\" , "/");
+                                               return AssetDatabase.LoadAssetAtPath(filePathWithCorrectSlash , typeof(T));
+                                           })
+                                   .OfType<T>() //.Where(asset => asset != null)
+                                   .ToList();
+            return files;
         }
 
         public static List<T> GetScriptableObjects<T>() where T : ScriptableObject
