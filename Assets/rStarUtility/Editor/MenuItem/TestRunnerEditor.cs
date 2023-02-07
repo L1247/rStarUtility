@@ -22,7 +22,7 @@ namespace OOOne.Tools.Editor
             testRunnerApi.Execute(new ExecutionSettings(apiFilter));
         }
 
-        [MenuItem("Tools/RunPlayModeTest _F3")]
+        // [MenuItem("Tools/RunPlayModeTest _F3")]
         private static void RunPlayModeTestAll()
         {
             var testRunnerApi  = ScriptableObject.CreateInstance<TestRunnerApi>();
