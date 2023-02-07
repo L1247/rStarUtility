@@ -137,6 +137,13 @@ namespace rStarUtility.Util.Editor
             return ts;
         }
 
+        public static T GetObjectAtPath<T>(string path , SearchOption searchOption = SearchOption.TopDirectoryOnly)
+        where T : Object
+        {
+            var objectsAtPath = GetObjectsAtPath<T>(path , searchOption);
+            return objectsAtPath.Count == 0 ? null : objectsAtPath[0];
+        }
+
         public static List<T> GetObjectsAtPath<T>(string path , SearchOption searchOption = SearchOption.TopDirectoryOnly)
         where T : Object
         {
