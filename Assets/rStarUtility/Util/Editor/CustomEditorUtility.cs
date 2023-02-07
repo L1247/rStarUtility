@@ -138,19 +138,18 @@ namespace rStarUtility.Util.Editor
         }
 
         public static List<T> GetObjectsAtPath<T>(string path , SearchOption searchOption = SearchOption.TopDirectoryOnly)
+        where T : Object
         {
-            var newpath  = UnityPathUtility.GetPathWithoutAssetsPath(path);
-            var dataPath = UnityPathUtility.GetProjectPath();
-            Debug.Log($"{dataPath}");
-            var fileEntries = Directory.GetFiles(dataPath + ForwardSlash + newpath , "*.*" , searchOption);
+            var pathWithoutAssets = UnityPathUtility.GetPathWithoutAssetsPath(path);
+            var dataPath          = UnityPathUtility.GetProjectPath();
+            var fileEntries       = Directory.GetFiles(dataPath + ForwardSlash + pathWithoutAssets , "*.*" , searchOption);
             var files = fileEntries.Select(fileName =>
                                            {
-                                               Debug.Log($"name: {fileName}");
                                                var filePath = AssetsPathWithSlash
                                                             + fileName.Replace(dataPath + ForwardSlash , EmptyString);
-                                               Debug.Log($"{filePath}");
                                                var filePathWithForwardSlash = filePath.ReplaceStringForForwardSlash();
-                                               return AssetDatabase.LoadAssetAtPath(filePathWithForwardSlash , typeof(T));
+                                               var asset = AssetDatabase.LoadAssetAtPath(filePathWithForwardSlash , typeof(T));
+                                               return asset;
                                            })
                                    .OfType<T>()
                                    .ToList();
