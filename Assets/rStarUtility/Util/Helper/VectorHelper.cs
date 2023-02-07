@@ -27,7 +27,6 @@ namespace rStarUtility.Util.Helper
         public static bool IsCloseThePoint(Vector2 point1 , Vector2 point2 , float magnitude)
         {
             var distance = Distance(point1 , point2);
-            Debug.Log($"{distance} , {magnitude}");
             return distance <= magnitude;
         }
 
