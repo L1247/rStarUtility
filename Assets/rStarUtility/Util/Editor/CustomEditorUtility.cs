@@ -17,13 +17,66 @@ namespace rStarUtility.Util.Editor
     {
     #region Public Variables
 
-        public static IEnumerable<AnimationClip> GetAnimationClipByPath(string path , string containKeyWord)
+        public const           string AssetsPathWithSlash = UnityPathUtility.AssetsPathWithSlash;
+        public const           string ForwardSlash        = StringUtility.ForwardSlash;
+        public static readonly string EmptyString         = string.Empty;
+
+    #endregion
+
+    #region Public Methods
+
+        public static T CreateAsset<T>(string path , string soName) where T : ScriptableObject
         {
-            var assets = AssetDatabase.FindAssets("t:AnimationClip " , new[] { path });
-            var animationClipByPath = assets
-                                      .Select(guid => LoadAssetAtPath<AnimationClip>(AssetDatabase.GUIDToAssetPath(guid)))
-                                      .Where(clip => clip.name.Contains(containKeyWord));
-            return animationClipByPath;
+            var asset = ScriptableObject.CreateInstance<T>();
+            InternalCreateAsset(path , soName , asset);
+            InternalSaveAssets();
+            InternalFocusProjectWindow();
+            InternalSetSelectionActiveObject(asset);
+            return asset;
+        }
+
+        public static void CreateAsset<T>(T asset , string path) where T : Object
+        {
+        #if UNITY_EDITOR
+            AssetDatabase.CreateAsset(asset , path);
+        #endif
+        }
+
+        public static void CreateFileTypeIfNotExist<T>(string clipName , string folderPath)
+        {
+        #if UNITY_EDITOR
+            //檢查是否已存在同名檔案
+            //string ClipName = actorType + "_" + actorName + "_" + actorAct;
+            var ClipPath     = folderPath + ForwardSlash + clipName + ".anim";
+            var type         = typeof(T);
+            var getExistClip = AssetDatabase.LoadAssetAtPath(ClipPath , type);
+            if (getExistClip == null)
+            {
+                //產生動畫檔
+                // AnimationClip clip     = new AnimationClip();
+                var instance = Activator.CreateInstance<T>();
+                var obj      = instance as Object;
+
+                AssetDatabase.CreateAsset(obj , ClipPath);
+            }
+            else
+            {
+                Debug.Log("檔案 " + folderPath + ForwardSlash + clipName + ".anim 已經存在");
+            }
+        #endif
+        }
+
+        public static void DeleteAsset(string path)
+        {
+            InternalDeleteAsset(path);
+            InternalSaveAssets();
+        }
+
+        public static void DeleteAsset(Object obj)
+        {
+            var instanceID = obj.GetInstanceID();
+            var assetPath  = GetAssetPath(instanceID);
+            DeleteAsset(assetPath);
         }
 
     #if UNITY_EDITOR
@@ -52,55 +105,22 @@ namespace rStarUtility.Util.Editor
             return allStateNameByAnimatorPath;
         }
 
-        public static List<AnimationClip> LoadAllClipAtPath(string path)
+        public static IEnumerable<AnimationClip> GetAnimationClipByPath(string path , string containKeyWord)
         {
-            var animationClips = new List<AnimationClip>();
-
-        #if UNITY_EDITOR
-            var dataPath          = Application.dataPath + path.Replace("Assets" , "");
-            var allClipNameInPath = Directory.GetFiles(dataPath , "*.anim" , SearchOption.AllDirectories);
-            foreach (var clipPath in allClipNameInPath)
-            {
-                var assetPath     = "Assets" + clipPath.Replace(Application.dataPath , "").Replace('\\' , '/');
-                var animationClip = AssetDatabase.LoadAssetAtPath<AnimationClip>(assetPath);
-                animationClips.Add(animationClip);
-            }
-        #endif
-            return animationClips;
+            var assets = AssetDatabase.FindAssets("t:AnimationClip " , new[] { path });
+            var animationClipByPath = assets
+                                     .Select(guid => LoadAssetAtPath<AnimationClip>(AssetDatabase.GUIDToAssetPath(guid)))
+                                     .Where(clip => clip.name.Contains(containKeyWord));
+            return animationClipByPath;
         }
 
-        public static List<AnimatorOverrideController> LoadAllOverrideAtPath(string path)
+        public static string GetAssetPath(int instanceID)
         {
-            var animationClips = new List<AnimatorOverrideController>();
-
+            var path = EmptyString;
         #if UNITY_EDITOR
-            var dataPath = Application.dataPath + path.Replace("Assets" , "");
-            var overrideInPath =
-                Directory.GetFiles(dataPath , "*.overrideController" , SearchOption.AllDirectories);
-            foreach (var overridePath in overrideInPath)
-            {
-                var assetPath                  = "Assets" + overridePath.Replace(Application.dataPath , "").Replace('\\' , '/');
-                var animatorOverrideController = AssetDatabase.LoadAssetAtPath<AnimatorOverrideController>(assetPath);
-                animationClips.Add(animatorOverrideController);
-            }
+            path = AssetDatabase.GetAssetPath(instanceID);
         #endif
-            return animationClips;
-        }
-
-        public static List<Material> LoadAllMaterialAtPath(string path)
-        {
-            var animationClips = new List<Material>();
-        #if UNITY_EDITOR
-            var dataPath     = Application.dataPath + path.Replace("Assets" , "");
-            var allMatInPath = Directory.GetFiles(dataPath , "*.mat" , SearchOption.AllDirectories);
-            foreach (var matPath in allMatInPath)
-            {
-                var assetPath = "Assets" + matPath.Replace(Application.dataPath , "").Replace('\\' , '/');
-                var mateiral  = AssetDatabase.LoadAssetAtPath<Material>(assetPath);
-                animationClips.Add(mateiral);
-            }
-        #endif
-            return animationClips;
+            return path;
         }
 
         public static List<Object> GetAssets(string assetName)
@@ -115,6 +135,38 @@ namespace rStarUtility.Util.Editor
             }
         #endif
             return ts;
+        }
+
+        public static List<T> GetObjectsAtPath<T>(string path , SearchOption searchOption = SearchOption.TopDirectoryOnly)
+        {
+            var newpath  = UnityPathUtility.GetPathWithoutAssetsPath(path);
+            var dataPath = UnityPathUtility.GetProjectPath();
+            Debug.Log($"{dataPath}");
+            var fileEntries = Directory.GetFiles(dataPath + ForwardSlash + newpath , "*.*" , searchOption);
+            var files = fileEntries.Select(fileName =>
+                                           {
+                                               Debug.Log($"name: {fileName}");
+                                               var filePath = AssetsPathWithSlash
+                                                            + fileName.Replace(dataPath + ForwardSlash , EmptyString);
+                                               Debug.Log($"{filePath}");
+                                               var filePathWithForwardSlash = filePath.ReplaceStringForForwardSlash();
+                                               return AssetDatabase.LoadAssetAtPath(filePathWithForwardSlash , typeof(T));
+                                           })
+                                   .OfType<T>()
+                                   .ToList();
+            return files;
+        }
+
+        public static T GetScriptableObject<T>() where T : ScriptableObject
+        {
+            return GetScriptableObjects<T>().First();
+        }
+
+        public static List<T> GetScriptableObjectAndHaveType<T>(string interfaceName) where T : ScriptableObject
+        {
+            return GetScriptableObjects<T>()
+                  .Where(t => t.GetType().GetInterface(interfaceName) != null)
+                  .ToList();
         }
 
         public static List<ScriptableObject> GetScriptableObjects(Type type , string path)
@@ -139,12 +191,26 @@ namespace rStarUtility.Util.Editor
             return ts;
         }
 
+        public static List<T> GetScriptableObjects<T>() where T : ScriptableObject
+        {
+            var ts   = new List<T>();
+            var type = typeof(T);
+        #if UNITY_EDITOR
+            var guids2 = AssetDatabase.FindAssets($"t:{type}");
+            foreach (var guid2 in guids2)
+            {
+                var assetPath = AssetDatabase.GUIDToAssetPath(guid2);
+                ts.Add((T)AssetDatabase.LoadAssetAtPath(assetPath , type));
+            }
+        #endif
+            return ts;
+        }
+
         public static List<Sprite> GetSpritesFromAnimator(AnimatorOverrideController anim)
         {
             var sprites = new List<Sprite>();
         #if UNITY_EDITOR
-            foreach (var ac in anim.runtimeAnimatorController.animationClips)
-                sprites.AddRange(GetSpritesFromClip(ac));
+            foreach (var ac in anim.runtimeAnimatorController.animationClips) sprites.AddRange(GetSpritesFromClip(ac));
         #endif
             return sprites;
         }
@@ -164,77 +230,6 @@ namespace rStarUtility.Util.Editor
             return sprites;
         }
 
-        public static List<T> GetScriptableObjectAndHaveType<T>(string interfaceName) where T : ScriptableObject
-        {
-            return GetScriptableObjects<T>()
-                   .Where(t => t.GetType().GetInterface(interfaceName) != null)
-                   .ToList();
-        }
-
-        public static List<T> GetObjectsAtPath<T>(string path)
-        {
-            var      newpath     = path.Replace("Assets/" , "");
-            var      dataPath    = Application.dataPath;
-            var fileEntries = Directory.GetFiles(dataPath + "/" + newpath , "*.*" , SearchOption.AllDirectories);
-            var files = fileEntries.Select(fileName =>
-                                           {
-                                               string filePath                 = "Assets/" + fileName.Replace(dataPath + "/" , "");
-                                               string filePathWithCorrectSlash = filePath.Replace("\\" , "/");
-                                               return AssetDatabase.LoadAssetAtPath(filePathWithCorrectSlash , typeof(T));
-                                           })
-                                   .OfType<T>() //.Where(asset => asset != null)
-                                   .ToList();
-            return files;
-        }
-
-        public static List<T> GetScriptableObjects<T>() where T : ScriptableObject
-        {
-            var ts   = new List<T>();
-            var type = typeof(T);
-        #if UNITY_EDITOR
-            var guids2 = AssetDatabase.FindAssets($"t:{type}");
-            foreach (var guid2 in guids2)
-            {
-                var assetPath = AssetDatabase.GUIDToAssetPath(guid2);
-                ts.Add((T)AssetDatabase.LoadAssetAtPath(assetPath , type));
-            }
-        #endif
-            return ts;
-        }
-
-        public static string GetAssetPath(int instanceID)
-        {
-            var path = string.Empty;
-        #if UNITY_EDITOR
-            path = AssetDatabase.GetAssetPath(instanceID);
-        #endif
-            return path;
-        }
-
-        public static T CreateAsset<T>(string path , string soName) where T : ScriptableObject
-        {
-            var asset = ScriptableObject.CreateInstance<T>();
-            InternalCreateAsset(path , soName , asset);
-            InternalSaveAssets();
-            InternalFocusProjectWindow();
-            InternalSetSelectionActiveObject(asset);
-            return asset;
-        }
-
-        public static T GetScriptableObject<T>() where T : ScriptableObject
-        {
-            return GetScriptableObjects<T>().First();
-        }
-
-        public static T LoadAssetAtPath<T>(string path) where T : Object
-        {
-            var t = default(T);
-        #if UNITY_EDITOR
-            t = AssetDatabase.LoadAssetAtPath<T>(path);
-        #endif
-            return t;
-        }
-
         public static Type GetType(string typeName , Type typeOfExistAssembly)
         {
             // var allTypesOfAssembly = typeOfExistAssembly.Assembly.GetTypes().ToList();
@@ -250,48 +245,64 @@ namespace rStarUtility.Util.Editor
             return null;
         }
 
-        public static void CreateAsset<T>(T asset , string path) where T : Object
+        public static List<AnimationClip> LoadAllClipAtPath(string path)
         {
-        #if UNITY_EDITOR
-            AssetDatabase.CreateAsset(asset , path);
-        #endif
-        }
+            var animationClips = new List<AnimationClip>();
 
-        public static void CreateFileTypeIfNotExist<T>(string clipName , string folderPath)
-        {
         #if UNITY_EDITOR
-            //檢查是否已存在同名檔案
-            //string ClipName = actorType + "_" + actorName + "_" + actorAct;
-            var ClipPath     = folderPath + "/" + clipName + ".anim";
-            var type         = typeof(T);
-            var getExistClip = AssetDatabase.LoadAssetAtPath(ClipPath , type);
-            if (getExistClip == null)
+            var dataPath          = Application.dataPath + path.Replace("Assets" , "");
+            var allClipNameInPath = Directory.GetFiles(dataPath , "*.anim" , SearchOption.AllDirectories);
+            foreach (var clipPath in allClipNameInPath)
             {
-                //產生動畫檔
-                // AnimationClip clip     = new AnimationClip();
-                var instance = Activator.CreateInstance<T>();
-                var obj      = instance as Object;
-
-                AssetDatabase.CreateAsset(obj , ClipPath);
-            }
-            else
-            {
-                Debug.Log("檔案 " + folderPath + "/" + clipName + ".anim 已經存在");
+                var assetPath     = "Assets" + clipPath.Replace(Application.dataPath , "").Replace('\\' , '/');
+                var animationClip = AssetDatabase.LoadAssetAtPath<AnimationClip>(assetPath);
+                animationClips.Add(animationClip);
             }
         #endif
+            return animationClips;
         }
 
-        public static void DeleteAsset(string path)
+        public static List<Material> LoadAllMaterialAtPath(string path)
         {
-            InternalDeleteAsset(path);
-            InternalSaveAssets();
+            var animationClips = new List<Material>();
+        #if UNITY_EDITOR
+            var dataPath     = Application.dataPath + path.Replace("Assets" , "");
+            var allMatInPath = Directory.GetFiles(dataPath , "*.mat" , SearchOption.AllDirectories);
+            foreach (var matPath in allMatInPath)
+            {
+                var assetPath = "Assets" + matPath.Replace(Application.dataPath , "").Replace('\\' , '/');
+                var mateiral  = AssetDatabase.LoadAssetAtPath<Material>(assetPath);
+                animationClips.Add(mateiral);
+            }
+        #endif
+            return animationClips;
         }
 
-        public static void DeleteAsset(Object obj)
+        public static List<AnimatorOverrideController> LoadAllOverrideAtPath(string path)
         {
-            var instanceID = obj.GetInstanceID();
-            var assetPath  = GetAssetPath(instanceID);
-            DeleteAsset(assetPath);
+            var animationClips = new List<AnimatorOverrideController>();
+
+        #if UNITY_EDITOR
+            var dataPath = Application.dataPath + path.Replace("Assets" , "");
+            var overrideInPath =
+                    Directory.GetFiles(dataPath , "*.overrideController" , SearchOption.AllDirectories);
+            foreach (var overridePath in overrideInPath)
+            {
+                var assetPath                  = "Assets" + overridePath.Replace(Application.dataPath , "").Replace('\\' , '/');
+                var animatorOverrideController = AssetDatabase.LoadAssetAtPath<AnimatorOverrideController>(assetPath);
+                animationClips.Add(animatorOverrideController);
+            }
+        #endif
+            return animationClips;
+        }
+
+        public static T LoadAssetAtPath<T>(string path) where T : Object
+        {
+            var t = default(T);
+        #if UNITY_EDITOR
+            t = AssetDatabase.LoadAssetAtPath<T>(path);
+        #endif
+            return t;
         }
 
         public static void PingObject(Object instance)
@@ -306,14 +317,12 @@ namespace rStarUtility.Util.Editor
             InternalSaveAssets();
         }
 
-
         public static void SelectObject(Object instance)
         {
         #if UNITY_EDITOR
             InternalSetSelectionActiveObject(instance);
         #endif
         }
-
 
         public static void SetDirty(Object obj)
         {
@@ -362,7 +371,6 @@ namespace rStarUtility.Util.Editor
             AssetDatabase.SaveAssetIfDirty(obj);
         #endif
         }
-
 
         private static void InternalSaveAssets()
         {

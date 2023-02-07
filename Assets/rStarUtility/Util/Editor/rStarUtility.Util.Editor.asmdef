@@ -1,7 +1,9 @@
 {
   "name": "rStarUtility.Util.Editor",
   "rootNamespace": "rStarUtility.Util.Editor",
-  "references": [],
+  "references": [
+    "rStarUtility.Util.Runtime"
+  ],
   "includePlatforms": [
     "Editor"
   ],

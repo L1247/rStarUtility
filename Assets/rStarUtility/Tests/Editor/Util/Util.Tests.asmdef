@@ -2,8 +2,10 @@
     "name": "Util.Tests",
     "rootNamespace": "",
     "references": [
-        "UnityEditor.TestRunner",
-        "rStarUtility.Util.Runtime"
+      "UnityEditor.TestRunner",
+      "rStarUtility.Util.Runtime",
+      "rStar.Editor",
+      "rStarUtility.Util.Editor"
     ],
     "includePlatforms": [
         "Editor"
