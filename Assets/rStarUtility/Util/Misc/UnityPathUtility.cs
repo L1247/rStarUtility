@@ -1,5 +1,7 @@
 #region
 
+using System.Linq;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 #endregion
@@ -17,6 +19,28 @@ namespace rStarUtility.Util
 
     #region Public Methods
 
+        public static string GetDataPathWithoutAssets()
+        {
+            return Application.dataPath.Replace("/Assets" , string.Empty);
+        }
+
+        public static string GetPackageAssetPath(string packageDisplayName)
+        {
+            var packageInfo = GetPackageInfo(packageDisplayName);
+            return packageInfo.assetPath;
+        }
+
+        public static PackageInfo GetPackageInfo(string packageDisplayName)
+        {
+            var packageInfo = PackageInfo.GetAllRegisteredPackages().First(info => info.displayName == packageDisplayName);
+            return packageInfo;
+        }
+
+        public static string GetPackageName(string packageDisplayName)
+        {
+            return GetPackageAssetPath(packageDisplayName).Replace("Packages/" , EmptyString);
+        }
+
         public static string GetPathWithoutAssetsPath(string path)
         {
             var newpath = path.Replace(AssetsPathWithSlash , EmptyString);
@@ -27,6 +51,11 @@ namespace rStarUtility.Util
         {
             var dataPath = Application.dataPath;
             return dataPath;
+        }
+
+        public static string ResolvingAbsolutePath(string packageDisplayName)
+        {
+            return GetPackageInfo(packageDisplayName).resolvedPath.ReplaceStringForForwardSlash();
         }
 
     #endregion
