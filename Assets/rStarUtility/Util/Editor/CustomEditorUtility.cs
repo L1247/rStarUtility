@@ -144,10 +144,17 @@ namespace rStarUtility.Util.Editor
             return objectsAtPath.Count == 0 ? null : objectsAtPath[0];
         }
 
-        public static List<T> GetObjectsAtPath<T>(string path , SearchOption searchOption = SearchOption.TopDirectoryOnly)
+        /// <summary>
+        ///     under project search
+        /// </summary>
+        /// <param name="pathOfProject"></param>
+        /// <param name="searchOption"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static List<T> GetObjectsAtPath<T>(string pathOfProject , SearchOption searchOption = SearchOption.TopDirectoryOnly)
         where T : Object
         {
-            var pathWithoutAssets = UnityPathUtility.GetPathWithoutAssetsPath(path);
+            var pathWithoutAssets = UnityPathUtility.GetPathWithoutAssetsPath(pathOfProject);
             var dataPath          = UnityPathUtility.GetProjectPath();
             var fileEntries       = Directory.GetFiles(dataPath + ForwardSlash + pathWithoutAssets , "*.*" , searchOption);
             var files = fileEntries.Select(fileName =>
@@ -163,6 +170,14 @@ namespace rStarUtility.Util.Editor
             return files;
         }
 
+        /// <summary>
+        ///     under package search
+        /// </summary>
+        /// <param name="packageDisplayName"></param>
+        /// <param name="childPath"></param>
+        /// <param name="searchOption"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public static List<T> GetObjectsAtPathFromPackage<T>(
                 string packageDisplayName , string childPath , SearchOption searchOption = SearchOption.TopDirectoryOnly)
         where T : Object
