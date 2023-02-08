@@ -163,6 +163,18 @@ namespace rStarUtility.Util.Editor
             return files;
         }
 
+        public static List<T> GetObjectsAtPathFromPackage<T>(
+                string packageDisplayName , string childPath , SearchOption searchOption = SearchOption.TopDirectoryOnly)
+        where T : Object
+        {
+            var dataPath    = UnityPathUtility.GetPackageAssetPath(packageDisplayName) + StringUtility.ForwardSlash + childPath;
+            var fileEntries = Directory.GetFiles(dataPath , "*.*" , searchOption);
+            var files = fileEntries.Select(fileName => AssetDatabase.LoadAssetAtPath(fileName , typeof(T)))
+                                   .OfType<T>()
+                                   .ToList();
+            return files;
+        }
+
         public static T GetScriptableObject<T>() where T : ScriptableObject
         {
             return GetScriptableObjects<T>().First();

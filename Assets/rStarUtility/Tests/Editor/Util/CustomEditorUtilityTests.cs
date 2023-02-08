@@ -39,5 +39,16 @@ public class CustomEditorUtilityTests
         Assert.AreEqual(expectedOverriderControllerCount , animatorOverrideControllers.Count);
     }
 
+    [Test]
+    [TestCase(SearchOption.TopDirectoryOnly , 6 , "Editor/Assets/")]
+    [TestCase(SearchOption.AllDirectories , 29 , "Editor")]
+    public void GetObjectsAtPathFromPackage(SearchOption searchOption , int expectedOverriderControllerCount , string childPath)
+    {
+        var animatorOverrideControllers =
+                CustomEditorUtility.GetObjectsAtPathFromPackage<Texture2D>(
+                        "2D Sprite" , childPath , searchOption);
+        Assert.AreEqual(expectedOverriderControllerCount , animatorOverrideControllers.Count);
+    }
+
 #endregion
 }
