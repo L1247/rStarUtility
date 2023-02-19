@@ -31,6 +31,21 @@ namespace rStarUtility.Util
 
         public Optional(bool enabled , T value)
         {
+            Set(enabled , value);
+        }
+
+        public Optional()
+        {
+            enabled = false;
+            value   = default;
+        }
+
+    #endregion
+
+    #region Public Methods
+
+        public void Set(bool enabled , T value)
+        {
             this.enabled = enabled;
             this.value   = value;
         }
