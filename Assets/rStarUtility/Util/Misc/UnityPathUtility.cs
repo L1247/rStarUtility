@@ -1,8 +1,10 @@
 #region
 
 using System.Linq;
-using UnityEditor.PackageManager;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor.PackageManager;
+#endif
 
 #endregion
 
@@ -12,8 +14,13 @@ namespace rStarUtility.Util
     {
     #region Public Variables
 
-        public const           string AssetsPathWithSlash = "Assets/";
-        public static readonly string EmptyString         = string.Empty;
+        public const string AssetsPathWithSlash = "Assets/";
+
+    #endregion
+
+    #region Private Variables
+
+        private static readonly string EmptyString = string.Empty;
 
     #endregion
 
@@ -21,20 +28,27 @@ namespace rStarUtility.Util
 
         public static string GetDataPathWithoutAssets()
         {
-            return Application.dataPath.Replace("/Assets" , string.Empty);
+            return Application.dataPath.Replace("/Assets" , EmptyString);
         }
 
         public static string GetPackageAssetPath(string packageDisplayName)
         {
+            var packageInfoAssetPath = EmptyString;
+        #if UNITY_EDITOR
             var packageInfo = GetPackageInfo(packageDisplayName);
-            return packageInfo.assetPath;
+            packageInfoAssetPath = packageInfo.assetPath;
+        #endif
+            return packageInfoAssetPath;
         }
 
+    #if UNITY_EDITOR
         public static PackageInfo GetPackageInfo(string packageDisplayName)
         {
-            var packageInfo = PackageInfo.GetAllRegisteredPackages().First(info => info.displayName == packageDisplayName);
+            var packageInfo = PackageInfo.GetAllRegisteredPackages()
+                                         .First(info => info.displayName == packageDisplayName);
             return packageInfo;
         }
+    #endif
 
         public static string GetPackageName(string packageDisplayName)
         {
@@ -55,7 +69,11 @@ namespace rStarUtility.Util
 
         public static string ResolvingAbsolutePath(string packageDisplayName)
         {
-            return GetPackageInfo(packageDisplayName).resolvedPath.ReplaceStringForForwardSlash();
+            var replaceStringForForwardSlash = EmptyString;
+        #if UNITY_EDITOR
+            replaceStringForForwardSlash = GetPackageInfo(packageDisplayName).resolvedPath.ReplaceStringForForwardSlash();
+        #endif
+            return replaceStringForForwardSlash;
         }
 
     #endregion
