@@ -14,7 +14,8 @@ internal class GenericRepositoryTests : SimpleTest
 
     private class TestObj { }
 
-    private GenericRepository<TestObj> repository;
+    private          GenericRepository<TestObj> repository;
+    private readonly string                     id = "id";
 
 #endregion
 
@@ -31,36 +32,6 @@ internal class GenericRepositoryTests : SimpleTest
 #region Test Methods
 
     [Test]
-    public void AddOrSet_Flot()
-    {
-        var repo   = new GenericRepository<float>();
-        var result = repo.AddOrSet(id , 1f , 10f);
-        var value  = repo.FindById(id);
-        Assert.AreEqual(10f , value ,  "value is not equal");
-        Assert.AreEqual(10f , result , "result is not equal");
-
-        result = repo.AddOrSet(id , -1f , 10f);
-        value  = repo.FindById(id);
-        Assert.AreEqual(9f , value ,  "value is not equal");
-        Assert.AreEqual(9f , result , "result is not equal");
-    }
-
-    [Test]
-    public void AddOrSet_Int()
-    {
-        var repo   = new GenericRepository<int>();
-        var result = repo.AddOrSet(id , 1 , 10);
-        var value  = repo.FindById(id);
-        Assert.AreEqual(10 , value ,  "value is not equal");
-        Assert.AreEqual(10 , result , "result is not equal");
-
-        result = repo.AddOrSet(id , 1 , 10);
-        value  = repo.FindById(id);
-        Assert.AreEqual(11 , value ,  "value is not equal");
-        Assert.AreEqual(11 , result , "result is not equal");
-    }
-
-    [Test]
     public void Add()
     {
         var repo = new GenericRepository<int>();
@@ -72,6 +43,60 @@ internal class GenericRepositoryTests : SimpleTest
         Assert.AreEqual(11 , value , "value is not equal");
     }
 
+    [Test]
+    public void AddOrSet_Flot()
+    {
+        var repo   = new GenericRepository<float>();
+        var result = repo.AddOrSet(id , 1f , 10f);
+        var value  = repo.FindById(id);
+        Assert.AreEqual(10f , value , "value is not equal");
+        Assert.AreEqual(10f , result , "result is not equal");
+
+        result = repo.AddOrSet(id , -1f , 10f);
+        value  = repo.FindById(id);
+        Assert.AreEqual(9f , value , "value is not equal");
+        Assert.AreEqual(9f , result , "result is not equal");
+    }
+
+    [Test]
+    public void AddOrSet_Int()
+    {
+        var repo   = new GenericRepository<int>();
+        var result = repo.AddOrSet(id , 1 , 10);
+        var value  = repo.FindById(id);
+        Assert.AreEqual(10 , value , "value is not equal");
+        Assert.AreEqual(10 , result , "result is not equal");
+
+        result = repo.AddOrSet(id , 1 , 10);
+        value  = repo.FindById(id);
+        Assert.AreEqual(11 , value , "value is not equal");
+        Assert.AreEqual(11 , result , "result is not equal");
+    }
+
+    [Test]
+    [TestCase(null)]
+    [TestCase("")]
+    public void Contain_Error_With_Invalid_Id(string id)
+    {
+        var exceptionMessage = "id is NullOrEmpty.";
+        ShouldExceptionThrown<ArgumentException>(() => repository.ContainsId(id) , exceptionMessage);
+    }
+
+    [Test]
+    public void Contain_With_No_Exist()
+    {
+        ShouldContainIs(false);
+    }
+
+    [Test]
+    public void Contain_With_Success()
+    {
+        ShouldContainIs(false);
+
+        SaveWithNewTestObj();
+
+        ShouldContainIs(true);
+    }
 
     [Test]
     public void DeleteAll()
@@ -82,6 +107,45 @@ internal class GenericRepositoryTests : SimpleTest
         repository.DeleteAll();
 
         ShouldCount(0);
+    }
+
+    [Test]
+    public void DeleteById_With_Fail()
+    {
+        var success = repository.DeleteById(id);
+
+        Assert.AreEqual(false , success , "success is not equal");
+        ShouldContainIs(false);
+    }
+
+    [Test]
+    public void DeleteById_With_Success()
+    {
+        SaveWithNewTestObj();
+        ShouldContainIs(true);
+
+        var success = repository.DeleteById(id);
+
+        Assert.AreEqual(true , success , "success is not equal");
+        ShouldContainIs(false);
+    }
+
+    [Test]
+    public void FindById_With_Empty_Repository()
+    {
+        Assert.IsNull(FindById() , "return is not null");
+    }
+
+    [Test]
+    public void FindById_With_Success()
+    {
+        ShouldContainIs(false);
+        var testObj = SaveWithNewTestObj();
+
+        var foundObj = FindById();
+
+        Assert.NotNull(foundObj , "entity is null");
+        Assert.AreEqual(testObj , foundObj , "obj is not equal");
     }
 
     [Test]
@@ -110,10 +174,56 @@ internal class GenericRepositoryTests : SimpleTest
     }
 
     [Test]
-    public void Save_With_Success()
+    public void GetEntity_With_Exist()
+    {
+        ShouldContainIs(false);
+        var testObj = SaveWithNewTestObj();
+
+        var (exist , aggregateRoot) = repository.GetEntity(id);
+
+        Assert.AreEqual(true , exist , "exist is not equal");
+        Assert.AreEqual(testObj , aggregateRoot , "aggregate is not equal");
+    }
+
+    [Test]
+    public void GetEntity_With_NoExist()
+    {
+        ShouldContainIs(false);
+
+        var (exist , aggregateRoot) = repository.GetEntity(id);
+
+        Assert.AreEqual(false , exist , "exist is not equal");
+        Assert.AreEqual(null , aggregateRoot , "aggregate is not equal");
+    }
+
+    [Test]
+    public void GetKeys()
     {
         SaveWithNewTestObj();
-        ShouldContainIs(true);
+        var keys  = repository.Keys.ToList();
+        var count = keys.Count;
+        Assert.AreEqual(1 , count , "count is not equal");
+        Assert.AreEqual(id , keys[0] , "key is not equal");
+    }
+
+    [Test]
+    public void GetValueByKey()
+    {
+        var testObj = SaveWithNewTestObj();
+        var obj     = repository[id];
+
+        Assert.NotNull(obj , "obj is null");
+        Assert.AreEqual(obj , testObj , "obj is not equal");
+    }
+
+    [Test]
+    public void GetValues()
+    {
+        SaveWithNewTestObj();
+        repository["sadsa"] = new TestObj();
+        var keys  = repository.Values.ToList();
+        var count = keys.Count;
+        Assert.AreEqual(2 , count , "count is not equal");
     }
 
     [Test]
@@ -128,100 +238,10 @@ internal class GenericRepositoryTests : SimpleTest
     }
 
     [Test]
-    public void DeleteById_With_Success()
+    public void Save_With_Success()
     {
         SaveWithNewTestObj();
         ShouldContainIs(true);
-
-        var success = repository.DeleteById(id);
-
-        Assert.AreEqual(true , success , "success is not equal");
-        ShouldContainIs(false);
-    }
-
-    [Test]
-    public void DeleteById_With_Fail()
-    {
-        var success = repository.DeleteById(id);
-
-        Assert.AreEqual(false , success , "success is not equal");
-        ShouldContainIs(false);
-    }
-
-    [Test]
-    public void Contain_With_Success()
-    {
-        ShouldContainIs(false);
-
-        SaveWithNewTestObj();
-
-        ShouldContainIs(true);
-    }
-
-    [Test]
-    public void Contain_With_No_Exist()
-    {
-        ShouldContainIs(false);
-    }
-
-    [Test]
-    [TestCase(null)]
-    [TestCase("")]
-    public void Contain_Error_With_Invalid_Id(string id)
-    {
-        var exceptionMessage = "id is NullOrEmpty.";
-        ShouldExceptionThrown<ArgumentException>(() => repository.ContainsId(id) , exceptionMessage);
-    }
-
-    [Test]
-    public void FindById_With_Empty_Repository()
-    {
-        Assert.IsNull(FindById() , "return is not null");
-    }
-
-    [Test]
-    public void FindById_With_Success()
-    {
-        ShouldContainIs(false);
-        var testObj = SaveWithNewTestObj();
-
-        var foundObj = FindById();
-
-        Assert.NotNull(foundObj , "entity is null");
-        Assert.AreEqual(testObj , foundObj , "obj is not equal");
-    }
-
-    [Test]
-    public void GetEntity_With_Exist()
-    {
-        ShouldContainIs(false);
-        var testObj = SaveWithNewTestObj();
-
-        var (exist , aggregateRoot) = repository.GetEntity(id);
-
-        Assert.AreEqual(true ,    exist ,         "exist is not equal");
-        Assert.AreEqual(testObj , aggregateRoot , "aggregate is not equal");
-    }
-
-    [Test]
-    public void GetEntity_With_NoExist()
-    {
-        ShouldContainIs(false);
-
-        var (exist , aggregateRoot) = repository.GetEntity(id);
-
-        Assert.AreEqual(false , exist ,         "exist is not equal");
-        Assert.AreEqual(null ,  aggregateRoot , "aggregate is not equal");
-    }
-
-    [Test]
-    public void GetValueByKey()
-    {
-        var testObj = SaveWithNewTestObj();
-        var obj     = repository[id];
-
-        Assert.NotNull(obj , "obj is null");
-        Assert.AreEqual(obj , testObj , "obj is not equal");
     }
 
     [Test]
@@ -234,26 +254,6 @@ internal class GenericRepositoryTests : SimpleTest
 
         Assert.NotNull(obj , "obj is null");
         Assert.AreEqual(obj , testObj1 , "obj is not equal");
-    }
-
-    [Test]
-    public void GetKeys()
-    {
-        SaveWithNewTestObj();
-        var keys  = repository.Keys.ToList();
-        var count = keys.Count;
-        Assert.AreEqual(1 ,  count ,   "count is not equal");
-        Assert.AreEqual(id , keys[0] , "key is not equal");
-    }
-
-    [Test]
-    public void GetValues()
-    {
-        SaveWithNewTestObj();
-        repository["sadsa"] = new TestObj();
-        var keys  = repository.Values.ToList();
-        var count = keys.Count;
-        Assert.AreEqual(2 , count , "count is not equal");
     }
 
 #endregion

@@ -11,7 +11,8 @@ internal class AggregateTests : SimpleTest
 {
 #region Private Variables
 
-    private AggregateRootImpl aggregateRoot;
+    private          AggregateRootImpl aggregateRoot;
+    private readonly string            id = "id";
 
 #endregion
 
@@ -29,22 +30,19 @@ internal class AggregateTests : SimpleTest
 #region Test Methods
 
     [Test]
-    public void GetId()
-    {
-        Assert.AreEqual(id , aggregateRoot.GetId() , "id is not equal");
-    }
-
-    [Test]
-    public void GetDomainEvents()
-    {
-        Assert.AreEqual(0 , aggregateRoot.GetDomainEvents().Count , "count is not equal");
-    }
-
-    [Test]
     public void AddDomainEvent()
     {
         aggregateRoot.AddDomainEvent(new DomainEventImpl());
         Assert.AreEqual(1 , aggregateRoot.GetDomainEvents().Count , "count is not equal");
+    }
+
+    [Test]
+    public void ClearDomainEvent()
+    {
+        aggregateRoot.AddDomainEvent(new DomainEventImpl());
+        Assert.AreEqual(1 , aggregateRoot.GetDomainEvents().Count , "count is not equal");
+        aggregateRoot.ClearDomainEvents();
+        Assert.AreEqual(0 , aggregateRoot.GetDomainEvents().Count , "count is not equal");
     }
 
     [Test]
@@ -68,18 +66,21 @@ internal class AggregateTests : SimpleTest
         aggregateRoot.AddDomainEvent(domainEventImpl1);
         aggregateRoot.AddDomainEvent(domainEventImpl2);
         var findDomainEvents = aggregateRoot.FindDomainEvents<DomainEventImpl>().ToList();
-        Assert.AreEqual(2 ,                findDomainEvents.Count , "count is not equal");
-        Assert.AreEqual(domainEventImpl1 , findDomainEvents[0] ,    "domainEvent is not equal");
-        Assert.AreEqual(domainEventImpl2 , findDomainEvents[1] ,    "domainEvent is not equal");
+        Assert.AreEqual(2 , findDomainEvents.Count , "count is not equal");
+        Assert.AreEqual(domainEventImpl1 , findDomainEvents[0] , "domainEvent is not equal");
+        Assert.AreEqual(domainEventImpl2 , findDomainEvents[1] , "domainEvent is not equal");
     }
 
     [Test]
-    public void ClearDomainEvent()
+    public void GetDomainEvents()
     {
-        aggregateRoot.AddDomainEvent(new DomainEventImpl());
-        Assert.AreEqual(1 , aggregateRoot.GetDomainEvents().Count , "count is not equal");
-        aggregateRoot.ClearDomainEvents();
         Assert.AreEqual(0 , aggregateRoot.GetDomainEvents().Count , "count is not equal");
+    }
+
+    [Test]
+    public void GetId()
+    {
+        Assert.AreEqual(id , aggregateRoot.GetId() , "id is not equal");
     }
 
 #endregion
