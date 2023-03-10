@@ -40,6 +40,12 @@ namespace rStarUtility.Util
             value   = default;
         }
 
+        public Optional(T value)
+        {
+            enabled    = false;
+            this.value = value;
+        }
+
     #endregion
 
     #region Public Methods
