@@ -65,8 +65,7 @@ namespace rStarUtility.Util.Component
 
         private void OnEnable()
         {
-            if (trans == null)
-                trans = transform;
+            if (trans == null) trans = transform;
         }
 
         // triggers
@@ -111,14 +110,10 @@ namespace rStarUtility.Util.Component
                     if (Selection.activeGameObject.GetComponent<Collider2D>() != null)
                     {
                         var show_coll = Selection.activeGameObject.AddComponent<Show_2D_Collider>();
-                        if (show_coll.GetComponent<BoxCollider2D>() != null)
-                            show_coll.Collider_Type = _2D_Collider_Type.Box;
-                        if (show_coll.GetComponent<CircleCollider2D>() != null)
-                            show_coll.Collider_Type = _2D_Collider_Type.Circle;
-                        if (show_coll.GetComponent<EdgeCollider2D>() != null)
-                            show_coll.Collider_Type = _2D_Collider_Type.Edge;
-                        if (show_coll.GetComponent<PolygonCollider2D>() != null)
-                            show_coll.Collider_Type = _2D_Collider_Type.Polygon;
+                        if (show_coll.GetComponent<BoxCollider2D>() != null) show_coll.Collider_Type = _2D_Collider_Type.Box;
+                        if (show_coll.GetComponent<CircleCollider2D>() != null) show_coll.Collider_Type = _2D_Collider_Type.Circle;
+                        if (show_coll.GetComponent<EdgeCollider2D>() != null) show_coll.Collider_Type = _2D_Collider_Type.Edge;
+                        if (show_coll.GetComponent<PolygonCollider2D>() != null) show_coll.Collider_Type = _2D_Collider_Type.Polygon;
                     }
                     else
                     {
@@ -134,22 +129,17 @@ namespace rStarUtility.Util.Component
                             var show_coll = item.AddComponent<Show_2D_Collider>();
                             //Collider2D col2D = item.GetComponent<Collider2D> ();
 
-                            if (item.GetComponent<BoxCollider2D>() != null)
-                                show_coll.Collider_Type = _2D_Collider_Type.Box;
-                            if (item.GetComponent<CircleCollider2D>() != null)
-                                show_coll.Collider_Type = _2D_Collider_Type.Circle;
-                            if (item.GetComponent<EdgeCollider2D>() != null)
-                                show_coll.Collider_Type = _2D_Collider_Type.Edge;
-                            if (item.GetComponent<PolygonCollider2D>() != null)
-                                show_coll.Collider_Type = _2D_Collider_Type.Polygon;
+                            if (item.GetComponent<BoxCollider2D>() != null) show_coll.Collider_Type     = _2D_Collider_Type.Box;
+                            if (item.GetComponent<CircleCollider2D>() != null) show_coll.Collider_Type  = _2D_Collider_Type.Circle;
+                            if (item.GetComponent<EdgeCollider2D>() != null) show_coll.Collider_Type    = _2D_Collider_Type.Edge;
+                            if (item.GetComponent<PolygonCollider2D>() != null) show_coll.Collider_Type = _2D_Collider_Type.Polygon;
                         }
                         else
                         {
                             k++;
                         }
 
-                    if (k > 0)
-                        Debug.Log(k + " of your selected gameobjects does not have any 2D Collider");
+                    if (k > 0) Debug.Log(k + " of your selected gameobjects does not have any 2D Collider");
                 }
             }
             else
@@ -158,14 +148,14 @@ namespace rStarUtility.Util.Component
             }
         }
 
+        [DrawGizmo(GizmoType.Active)]
         private void OnDrawGizmos()
         {
             if (!show || !enabled) return;
 
             // color region
-            var c = static_color;
-            if (in_collision && color_in_collision)
-                c = collision_color;
+            var c                                     = static_color;
+            if (in_collision && color_in_collision) c = collision_color;
 
             var a = volume ? c.a / 4 : c.a;
 
@@ -174,8 +164,7 @@ namespace rStarUtility.Util.Component
                 // Draw box
                 case _2D_Collider_Type.Box :
                     var b2D = GetComponent<BoxCollider2D>();
-                    if (b2D == null)
-                        return;
+                    if (b2D == null) return;
                     var vb1 = new Vector3[4];
                     var vb2 = new Vector3[5];
                     vb2[0] = vb2[4] = vb1[0] = trans.TransformPoint(
@@ -209,8 +198,7 @@ namespace rStarUtility.Util.Component
                 // Draw Circle
                 case _2D_Collider_Type.Circle :
                     var c2D = GetComponent<CircleCollider2D>();
-                    if (c2D == null)
-                        return;
+                    if (c2D == null) return;
                     var c_radius = c2D.radius * transform.lossyScale.x;
                     var c_offset = transform.TransformPoint(c2D.offset);
                     Handles.color = new Color(c.r , c.g , c.b , a);
@@ -221,11 +209,9 @@ namespace rStarUtility.Util.Component
                 // Draw Edge
                 case _2D_Collider_Type.Edge :
                     var e2D = GetComponent<EdgeCollider2D>();
-                    if (e2D == null)
-                        return;
-                    var ve = new Vector3[e2D.points.Length];
-                    for (var i = 0 ; i < ve.Length ; i++)
-                        ve[i] = trans.TransformPoint(e2D.points[i]);
+                    if (e2D == null) return;
+                    var ve                                      = new Vector3[e2D.points.Length];
+                    for (var i = 0 ; i < ve.Length ; i++) ve[i] = trans.TransformPoint(e2D.points[i]);
                     Handles.color = new Color(c.r , c.g , c.b , a);
                     Handles.DrawPolyLine(ve);
                     break;
@@ -233,12 +219,10 @@ namespace rStarUtility.Util.Component
                 // Draw Polygon
                 case _2D_Collider_Type.Polygon :
                     var p2D = GetComponent<PolygonCollider2D>();
-                    if (p2D == null)
-                        return;
-                    var vp1 = new Vector3[p2D.points.Length];
-                    var vp2 = new Vector3[p2D.points.Length + 1];
-                    for (var i = 0 ; i < vp1.Length ; i++)
-                        vp2[i] = vp1[i] = trans.TransformPoint(p2D.points[i]);
+                    if (p2D == null) return;
+                    var vp1                                       = new Vector3[p2D.points.Length];
+                    var vp2                                       = new Vector3[p2D.points.Length + 1];
+                    for (var i = 0 ; i < vp1.Length ; i++) vp2[i] = vp1[i] = trans.TransformPoint(p2D.points[i]);
                     vp2[vp1.Length] = vp2[0];
                     Handles.color   = new Color(c.r , c.g , c.b , a);
                     if (volume) Handles.DrawAAConvexPolygon(vp1);
