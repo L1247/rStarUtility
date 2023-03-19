@@ -6,7 +6,7 @@ using UnityEngine;
 
 #endregion
 
-namespace OOOne.Tools.Editor
+namespace rStar.Tools.Editor
 {
     public class TestRunnerEditor
     {

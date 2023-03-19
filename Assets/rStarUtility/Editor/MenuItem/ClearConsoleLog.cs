@@ -5,7 +5,7 @@ using UnityEditor;
 
 #endregion
 
-namespace OOOne.Tools.Editor
+namespace rStar.Tools.Editor
 {
     public static class ClearConsoleLog
     {

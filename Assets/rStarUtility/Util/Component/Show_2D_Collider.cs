@@ -148,7 +148,7 @@ namespace rStarUtility.Util.Component
             }
         }
 
-        [DrawGizmo(GizmoType.Active)]
+        [DrawGizmo(GizmoType.NotInSelectionHierarchy)]
         private void OnDrawGizmos()
         {
             if (!show || !enabled) return;
