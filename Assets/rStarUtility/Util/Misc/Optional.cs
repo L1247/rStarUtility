@@ -29,7 +29,7 @@ namespace rStarUtility.Util
 
     #region Constructor
 
-        public Optional(bool enabled , T value)
+        public Optional(bool enabled , T value = default)
         {
             Set(enabled , value);
         }
