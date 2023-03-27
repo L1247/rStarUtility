@@ -50,7 +50,7 @@ namespace rStarUtility.Util
 
     #region Public Methods
 
-        public void Set(bool enabled , T value)
+        public void Set(bool enabled , T value = default)
         {
             this.enabled = enabled;
             this.value   = value;
