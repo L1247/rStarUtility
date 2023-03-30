@@ -23,7 +23,7 @@ namespace rStarUtility.Generic.Implement.Derived
         [Inject]
         private ITimeProvider timeProvider;
 
-        private readonly GenericRepository<Timer> timers = new GenericRepository<Timer>();
+        private readonly Repository<Timer> timers = new Repository<Timer>();
 
     #endregion
 
@@ -78,7 +78,6 @@ namespace rStarUtility.Generic.Implement.Derived
             RegisterOnceTimer(guid , duration , callback);
             return guid;
         }
-
 
         public void Tick()
         {

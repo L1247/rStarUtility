@@ -14,8 +14,8 @@ internal class GenericRepositoryTests : SimpleTest
 
     private class TestObj { }
 
-    private          GenericRepository<TestObj> repository;
-    private readonly string                     id = "id";
+    private          Repository<TestObj> repository;
+    private readonly string              id = "id";
 
 #endregion
 
@@ -24,7 +24,7 @@ internal class GenericRepositoryTests : SimpleTest
     [SetUp]
     public void SetUp()
     {
-        repository = new GenericRepository<TestObj>();
+        repository = new Repository<TestObj>();
     }
 
 #endregion
@@ -34,7 +34,7 @@ internal class GenericRepositoryTests : SimpleTest
     [Test]
     public void Add()
     {
-        var repo = new GenericRepository<int>();
+        var repo = new Repository<int>();
         repo.Save(id , 10);
 
         var succeed = repo.Add(id , 1);
@@ -46,7 +46,7 @@ internal class GenericRepositoryTests : SimpleTest
     [Test]
     public void AddOrSet_Flot()
     {
-        var repo   = new GenericRepository<float>();
+        var repo   = new Repository<float>();
         var result = repo.AddOrSet(id , 1f , 10f);
         var value  = repo.FindById(id);
         Assert.AreEqual(10f , value , "value is not equal");
@@ -61,7 +61,7 @@ internal class GenericRepositoryTests : SimpleTest
     [Test]
     public void AddOrSet_Int()
     {
-        var repo   = new GenericRepository<int>();
+        var repo   = new Repository<int>();
         var result = repo.AddOrSet(id , 1 , 10);
         var value  = repo.FindById(id);
         Assert.AreEqual(10 , value , "value is not equal");

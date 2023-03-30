@@ -8,7 +8,7 @@ using rStarUtility.Util;
 
 namespace rStarUtility.Generic.Infrastructure
 {
-    public class GenericRepository<T> : IRepository<T>
+    public class Repository<T> : IRepository<T>
     {
     #region Public Variables
 
@@ -99,7 +99,6 @@ namespace rStarUtility.Generic.Infrastructure
         {
             return entities.Values;
         }
-
 
         public (bool exist , T entity) GetEntity(string id)
         {
