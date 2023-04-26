@@ -27,6 +27,11 @@ namespace rStarUtility.Generic.Infrastructure
 
     #region Public Methods
 
+        public bool Contains(Predicate<T> predicate)
+        {
+            return contents.Find(predicate) == null;
+        }
+
         public T FindContent(Predicate<T> predicate)
         {
             return contents.Find(predicate);
