@@ -27,6 +27,11 @@ namespace rStarUtility.Generic.Infrastructure
 
     #region Public Methods
 
+        public void Add(T obj)
+        {
+            contents.Add(obj);
+        }
+
         public (bool contains , T obj) FindContent(Predicate<T> predicate)
         {
             var content  = contents.Find(predicate);
