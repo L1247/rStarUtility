@@ -32,6 +32,12 @@ namespace rStarUtility.Generic.Infrastructure
             contents.Add(obj);
         }
 
+        public (bool found , List<T> foundContents) FindAll(Predicate<T> predicate)
+        {
+            var foundContents = contents.FindAll(predicate);
+            return (foundContents.Count > 0 , foundContents);
+        }
+
         public (bool contains , T obj) FindContent(Predicate<T> predicate)
         {
             var content  = contents.Find(predicate);
