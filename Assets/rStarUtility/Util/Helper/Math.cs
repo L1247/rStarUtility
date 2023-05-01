@@ -29,7 +29,7 @@ namespace rStarUtility.Util.Helper
         /// <returns></returns>
         public static float Clamp_0_To_Max(float current)
         {
-            return Mathf.Clamp(current , 0 , int.MaxValue);
+            return Mathf.Clamp(current , 0 , float.MaxValue);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace rStarUtility.Util.Helper
         /// <returns></returns>
         public static int Clamp_0_To_Max(int current)
         {
-            return (int)Mathf.Clamp(current , 0 , float.MaxValue);
+            return Mathf.Clamp(current , 0 , int.MaxValue);
         }
 
         public static int Clamp_0_To_Max(int current , int max)
