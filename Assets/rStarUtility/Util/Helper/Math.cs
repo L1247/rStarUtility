@@ -32,6 +32,16 @@ namespace rStarUtility.Util.Helper
             return Mathf.Clamp(current , 0 , float.MaxValue);
         }
 
+        /// <summary>
+        ///     max will be float.MaxValue
+        /// </summary>
+        /// <param name="current"></param>
+        /// <returns></returns>
+        public static int Clamp_0_To_Max(int current)
+        {
+            return (int)Mathf.Clamp(current , 0 , float.MaxValue);
+        }
+
         public static int Clamp_0_To_Max(int current , int max)
         {
             return Mathf.Clamp(current , 0 , max);
