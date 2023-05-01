@@ -45,6 +45,10 @@ namespace rStarUtility.Util
             this.chance = chance;
         }
 
+        public RandomizerRuntime()
+        {
+            
+        }
     #endregion
     }
 }
