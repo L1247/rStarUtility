@@ -47,6 +47,13 @@ namespace rStarUtility.Util.Helper
             return Mathf.Clamp(current , 0 , max);
         }
 
+        public static bool Equal(float a , float b , float precision = 0.01f)
+        {
+            var diff          = Abs(a) - Abs(b);
+            var isInTolerance = precision > Abs(diff);
+            return isInTolerance;
+        }
+
         public static float GetRoundPercent(float current , float max , int digits = 3)
         {
             Assert.IsTrue(max >= 0 , $"Max {max} is less than zero.");
