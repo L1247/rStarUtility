@@ -2,6 +2,7 @@
 
 using NUnit.Framework;
 using rStarUtility.Util;
+using UnityEngine;
 
 #endregion
 
@@ -38,8 +39,9 @@ namespace rStarUtility.Generic.TestFrameWork
 
     #region Protected Methods
 
-        protected void ShouldLog(string logMessage)
+        protected void ShouldLog(string logMessage , LogType logType = LogType.Log)
         {
+            Assert.AreEqual(MyDebug.logType , logType);
             Assert.AreEqual(logMessage , logOut.GetString());
         }
 
