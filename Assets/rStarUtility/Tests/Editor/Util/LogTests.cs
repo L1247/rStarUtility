@@ -6,22 +6,19 @@ using rStarUtility.Util;
 
 #endregion
 
-namespace rStarUtility.Tests.Editor.Util
+public class LogTests : TestFixture_DI_Log
 {
-    public class LogTests : TestFixture_DI_Log
+#region Test Methods
+
+    [Test]
+    public void LogMessage()
     {
-    #region Test Methods
+        MyDebug.Log("123");
+        Assert.AreEqual("123" , logOut.GetString());
 
-        [Test]
-        public void LogMessage()
-        {
-            MyDebug.Log("123");
-            Assert.AreEqual("123" , logOut.GetString());
-
-            MyDebug.Log("456");
-            Assert.AreEqual("456" , logOut.GetString());
-        }
-
-    #endregion
+        MyDebug.Log("456");
+        Assert.AreEqual("456" , logOut.GetString());
     }
+
+#endregion
 }
