@@ -5,7 +5,8 @@
       "UnityEditor.TestRunner",
       "rStarUtility.Util.Runtime",
       "rStar.Editor",
-      "rStarUtility.Util.Editor"
+      "rStarUtility.Util.Editor",
+      "rStatUtility.TestFramework"
     ],
     "includePlatforms": [
         "Editor"
