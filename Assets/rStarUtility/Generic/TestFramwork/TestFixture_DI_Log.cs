@@ -1,6 +1,7 @@
 #region
 
 using NUnit.Framework;
+using rStarUtility.Generic.TestExtensions;
 using rStarUtility.Util;
 using UnityEngine;
 
@@ -41,14 +42,14 @@ namespace rStarUtility.Generic.TestFrameWork
 
         protected void ShouldLog(string logMessage)
         {
-            Assert.AreEqual(MyDebug.logType , LogType.Log);
-            Assert.AreEqual(logMessage , logOut.GetString());
+            MyDebug.logType.ShouldBe(LogType.Log);
+            logOut.GetString().ShouldBe(logMessage);
         }
 
         protected void ShouldLogError(string logMessage)
         {
-            Assert.AreEqual(MyDebug.logType , LogType.Error);
-            Assert.AreEqual(logMessage , logOut.GetString());
+            MyDebug.logType.ShouldBe(LogType.Error);
+            logOut.GetString().ShouldBe(logMessage);
         }
 
     #endregion
