@@ -7,7 +7,7 @@ using FluentAssertions.Primitives;
 
 namespace rStarUtility.Generic.TestExtensions
 {
-    internal static class AssertionExtensions
+    public static class AssertionExtensions
     {
     #region Public Methods
 
