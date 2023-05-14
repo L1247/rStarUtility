@@ -39,9 +39,15 @@ namespace rStarUtility.Generic.TestFrameWork
 
     #region Protected Methods
 
-        protected void ShouldLog(string logMessage , LogType logType = LogType.Log)
+        protected void ShouldLog(string logMessage)
         {
-            Assert.AreEqual(MyDebug.logType , logType);
+            Assert.AreEqual(MyDebug.logType , LogType.Log);
+            Assert.AreEqual(logMessage , logOut.GetString());
+        }
+
+        protected void ShouldLogError(string logMessage)
+        {
+            Assert.AreEqual(MyDebug.logType , LogType.Error);
             Assert.AreEqual(logMessage , logOut.GetString());
         }
 
