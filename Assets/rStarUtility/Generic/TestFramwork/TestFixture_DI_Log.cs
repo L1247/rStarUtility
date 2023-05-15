@@ -40,6 +40,18 @@ namespace rStarUtility.Generic.TestFrameWork
 
     #region Protected Methods
 
+        protected void ShouldContainLog(string logMessage)
+        {
+            MyDebug.logType.ShouldBe(LogType.Log);
+            logOut.GetString().Contains(logMessage).ShouldBe(true);
+        }
+
+        protected void ShouldContainLogError(string logMessage)
+        {
+            MyDebug.logType.ShouldBe(LogType.Error);
+            logOut.GetString().Contains(logMessage).ShouldBe(true);
+        }
+
         protected void ShouldLog(string logMessage)
         {
             MyDebug.logType.ShouldBe(LogType.Log);
