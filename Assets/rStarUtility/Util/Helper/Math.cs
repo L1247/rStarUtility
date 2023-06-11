@@ -47,6 +47,16 @@ namespace rStarUtility.Util.Helper
             return Mathf.Clamp(current , 0 , max);
         }
 
+        public static float Clamp_To_Min(float current , float min)
+        {
+            return Mathf.Clamp(current , min , current);
+        }
+
+        public static int Clamp_To_Min(int current , int min)
+        {
+            return Mathf.Clamp(current , min , 0);
+        }
+
         public static bool Equal(float a , float b , float precision = 0.01f)
         {
             var diff          = Abs(a) - Abs(b);
