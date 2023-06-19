@@ -55,13 +55,13 @@ namespace rStarUtility.Generic.TestFrameWork
         protected void ShouldLog(string logMessage)
         {
             MyDebug.logType.ShouldBe(LogType.Log);
-            logOut.GetString().ShouldBe(logMessage);
+            logOut.GetStringAndClear().ShouldBe(logMessage);
         }
 
         protected void ShouldLogError(string logMessage)
         {
             MyDebug.logType.ShouldBe(LogType.Error);
-            logOut.GetString().ShouldBe(logMessage);
+            logOut.GetStringAndClear().ShouldBe(logMessage);
         }
 
     #endregion

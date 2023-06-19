@@ -13,6 +13,12 @@ namespace rStarUtility.Util
         public string GetString()
         {
             var result = ToString().Trim();
+            return result;
+        }
+
+        public string GetStringAndClear()
+        {
+            var result = GetString();
             Clear();
             return result;
         }
