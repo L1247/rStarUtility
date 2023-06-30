@@ -34,6 +34,12 @@ namespace rStarUtility.Generic.TestExtensions
             return actualValue.Should().BeEquivalentTo(expected , because , becauseArgs);
         }
 
+        public static AndConstraint<ObjectAssertions> ShouldBeNull(
+                this object actualValue , string because = "" , params object[] becauseArgs)
+        {
+            return actualValue.Should().BeNull(because , becauseArgs);
+        }
+
         public static AndConstraint<ObjectAssertions> ShouldNotBe(
                 this object actualValue , object expected , string because = "" , params object[] becauseArgs)
         {
