@@ -1,3 +1,4 @@
 1.0.0 相依Zenject、UniRx、MessagePipe、UniTask
 1.0.1 add samples - UniRxExtension
 1.0.4 Add GenericRepository
+1.0.6 Added Ulid
