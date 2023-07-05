@@ -7,7 +7,8 @@
         "MessagePipe.Zenject",
         "rStatUtility.TestFramework",
         "rStarUtility.Generic.Implement",
-        "rStarUtility.Generic.Infrastructure"
+        "rStarUtility.Generic.Infrastructure",
+        "Ulid"
     ],
     "includePlatforms": [
         "Editor"
