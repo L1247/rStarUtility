@@ -122,7 +122,7 @@ public class TimerTests : DIUnitTestFixture
     {
         base.Setup();
         BindFromSubstitute<ITimeProvider>();
-        BindAsSingle<TimerSystem>();
+        Bind<TimerSystem>();
         timeProvider = Resolve<ITimeProvider>();
         timerSystem  = Resolve<TimerSystem>();
     }
