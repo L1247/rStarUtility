@@ -35,7 +35,7 @@ namespace rStarUtility.Generic.TestFrameWork
 
         protected void Bind<T>()
         {
-            Container.Bind<T>().AsSingle();
+            Container.Bind<T>().AsSingle().IfNotBound();
         }
 
         protected T BindAndResolve<T>()
@@ -46,7 +46,7 @@ namespace rStarUtility.Generic.TestFrameWork
 
         protected void BindFromSubstitute<T>() where T : class
         {
-            Container.Bind<T>().FromSubstitute();
+            Container.Bind<T>().FromSubstitute().IfNotBound();
         }
 
         protected T Resolve<T>()
