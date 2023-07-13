@@ -49,6 +49,12 @@ namespace rStarUtility.Generic.TestFrameWork
             Container.Bind<T>().FromSubstitute().IfNotBound();
         }
 
+        protected T BindMockAndResolve<T>() where T : class
+        {
+            BindFromSubstitute<T>();
+            return Resolve<T>();
+        }
+
         protected T Resolve<T>()
         {
             return Container.Resolve<T>();
