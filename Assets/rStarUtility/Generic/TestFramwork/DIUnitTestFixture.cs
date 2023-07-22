@@ -55,6 +55,11 @@ namespace rStarUtility.Generic.TestFrameWork
             return Resolve<T>();
         }
 
+        protected bool HasBinding<T>()
+        {
+            return Container.HasBinding<T>();
+        }
+
         protected T Resolve<T>()
         {
             return Container.Resolve<T>();
