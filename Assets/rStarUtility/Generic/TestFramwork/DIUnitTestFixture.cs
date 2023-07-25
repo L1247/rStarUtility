@@ -49,6 +49,11 @@ namespace rStarUtility.Generic.TestFrameWork
             Container.Bind<T>().FromSubstitute().IfNotBound();
         }
 
+        protected void BindInstance<TContract>(TContract instance)
+        {
+            Container.BindInstance(instance);
+        }
+
         protected T BindMockAndResolve<T>() where T : class
         {
             BindFromSubstitute<T>();
