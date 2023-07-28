@@ -1,6 +1,7 @@
 #region
 
 using NUnit.Framework;
+using rStarUtility.Util.Extensions.Csharp;
 using Zenject;
 
 #endregion
@@ -55,9 +56,10 @@ namespace rStarUtility.Generic.TestFrameWork
             Container.Bind<T>().FromSubstitute().IfNotBound();
         }
 
-        protected void BindInstance<TContract>(TContract instance)
+        protected void BindInstance<TContract>(TContract instance , string id = "")
         {
-            Container.BindInstance(instance);
+            if (id.IsNullOrEmpty() == false) Container.BindInstance(instance).WithId(id);
+            else Container.BindInstance(instance);
         }
 
         protected T BindMockAndResolve<T>() where T : class
