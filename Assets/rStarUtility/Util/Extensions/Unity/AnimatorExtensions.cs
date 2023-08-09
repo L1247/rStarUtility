@@ -16,6 +16,12 @@ namespace rStarUtility.Util.Extensions.Unity
             return clipName;
         }
 
+        public static float GetNormalizedTime(this Animator animator)
+        {
+            var normalizedTime = animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+            return normalizedTime;
+        }
+
         public static bool IsAnimationPlayEnding(this Animator animator , string animationName)
         {
             var isPlayingAnimation    = animator.IsPlayingAnimation(animationName);
