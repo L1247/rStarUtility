@@ -57,7 +57,14 @@ namespace rStarUtility.Generic.TestExtensions
             spriteRenderer.sortingOrder.ShouldBe(order);
         }
 
-        public static void ShouldTransformPositionPositionBe(
+        public static void ShouldTransformLocalPositionBe(
+                this Component component , float expectedX , float expectedY , float precision = 0.01f)
+        {
+            var position = component.transform.localPosition;
+            position.ShouldBe(expectedX , expectedY , precision);
+        }
+
+        public static void ShouldTransformPositionBe(
                 this Component component , float expectedX , float expectedY , float precision = 0.01f)
         {
             var position = component.transform.position;
