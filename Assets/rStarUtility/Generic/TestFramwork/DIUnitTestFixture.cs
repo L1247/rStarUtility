@@ -39,6 +39,11 @@ namespace rStarUtility.Generic.TestFrameWork
             Container.Bind<T>().AsSingle().IfNotBound();
         }
 
+        protected void Bind_ComponentOnNewGameObject<T>() where T : class
+        {
+            Container.Bind<T>().FromNewComponentOnNewGameObject().AsSingle().IfNotBound();
+        }
+
         protected T Bind_ComponentOnNewGameObject_And_Resolve<T>() where T : class
         {
             Container.Bind<T>().FromNewComponentOnNewGameObject().AsSingle().IfNotBound();
