@@ -65,6 +65,12 @@ namespace rStarUtility.Generic.TestExtensions
         }
 
         public static void ShouldTransformPositionBe(
+                this GameObject gameObject , float expectedX , float expectedY , float precision = 0.01f)
+        {
+            gameObject.transform.ShouldTransformPositionBe(expectedX , expectedY);
+        }
+
+        public static void ShouldTransformPositionBe(
                 this Component component , float expectedX , float expectedY , float precision = 0.01f)
         {
             var position = component.transform.position;
