@@ -1,6 +1,7 @@
 #region
 
 using FluentAssertions;
+using FluentAssertions.Numeric;
 using FluentAssertions.Primitives;
 
 #endregion
@@ -23,9 +24,10 @@ namespace rStarUtility.Generic.TestExtensions
             return actualValue.Should().Be(expected , because , becauseArgs);
         }
 
-        public static void ShouldBe(this float actualValue , float expected , string because = "" , params object[] becauseArgs)
+        public static AndConstraint<NumericAssertions<float>> ShouldBe(
+                this float actualValue , float expected , string because = "" , params object[] becauseArgs)
         {
-            actualValue.Should().BeApproximately(expected , 0.01f , because , becauseArgs);
+            return actualValue.Should().BeApproximately(expected , 0.01f , because , becauseArgs);
         }
 
         public static AndConstraint<ObjectAssertions> ShouldBeEquivalentTo(
