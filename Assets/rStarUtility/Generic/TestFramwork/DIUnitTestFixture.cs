@@ -73,6 +73,11 @@ namespace rStarUtility.Generic.TestFrameWork
             else Container.BindInstance(instance);
         }
 
+        protected void BindInterfacesTo<T>() where T : class
+        {
+            Container.BindInterfacesTo<T>().AsSingle().IfNotBound();
+        }
+
         protected T BindMockAndResolve<T>() where T : class
         {
             BindFromSubstitute<T>();
