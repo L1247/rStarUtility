@@ -37,7 +37,8 @@ namespace rStarUtility.Generic.TestFrameWork
         [OneTimeSetUp]
         public virtual void OneTimeSetUp()
         {
-            MyDebug.logEnabled = false;
+            MyDebug.logEnabled      = false;
+            MyDebug.logErrorEnabled = false;
         }
 
     #endregion

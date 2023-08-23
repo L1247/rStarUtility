@@ -12,6 +12,7 @@ namespace rStarUtility.Util
     #region Public Variables
 
         public static bool    logEnabled;
+        public static bool    logErrorEnabled;
         public static LogType logType;
 
     #endregion
@@ -36,7 +37,7 @@ namespace rStarUtility.Util
         {
             logErrorTextWriter?.WriteLine(message);
             logType = LogType.Error;
-            if (logEnabled) Debug.LogError(message);
+            if (logErrorEnabled) Debug.LogError(message);
         }
 
         public static void SetOut(TextWriter log , MyStringWriter logError)
