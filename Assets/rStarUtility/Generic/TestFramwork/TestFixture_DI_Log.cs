@@ -13,6 +13,8 @@ namespace rStarUtility.Generic.TestFrameWork
     {
     #region Protected Variables
 
+        protected MyStringWriter logErrorOut;
+
         protected MyStringWriter logOut;
 
     #endregion
@@ -23,7 +25,9 @@ namespace rStarUtility.Generic.TestFrameWork
         public override void Setup()
         {
             base.Setup();
-            logOut = Given_A_Logger();
+            logOut      = new MyStringWriter();
+            logErrorOut = new MyStringWriter();
+            MyDebug.SetOut(logOut , logErrorOut);
         }
 
     #endregion
@@ -43,7 +47,7 @@ namespace rStarUtility.Generic.TestFrameWork
         protected void ShouldContainLogError(string logMessage , bool contain = true)
         {
             MyDebug.logType.ShouldBe(LogType.Error);
-            logOut.GetString().Contains(logMessage).ShouldBe(contain);
+            logErrorOut.GetString().Contains(logMessage).ShouldBe(contain);
         }
 
         protected void ShouldContainsLog(string logMessage , bool contain = true)
@@ -61,18 +65,7 @@ namespace rStarUtility.Generic.TestFrameWork
         protected void ShouldLogError(string logMessage)
         {
             MyDebug.logType.ShouldBe(LogType.Error);
-            logOut.GetStringAndClear().ShouldBe(logMessage);
-        }
-
-    #endregion
-
-    #region Private Methods
-
-        private MyStringWriter Given_A_Logger()
-        {
-            var logOut = new MyStringWriter();
-            MyDebug.SetOut(logOut);
-            return logOut;
+            logErrorOut.GetStringAndClear().ShouldBe(logMessage);
         }
 
     #endregion

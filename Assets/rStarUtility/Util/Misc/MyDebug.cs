@@ -18,7 +18,8 @@ namespace rStarUtility.Util
 
     #region Private Variables
 
-        private static TextWriter textWriter;
+        private static TextWriter logTextWriter;
+        private static TextWriter logErrorTextWriter;
 
     #endregion
 
@@ -26,21 +27,22 @@ namespace rStarUtility.Util
 
         public static void Log(string message)
         {
-            textWriter?.WriteLine(message);
+            logTextWriter?.WriteLine(message);
             logType = LogType.Log;
             if (logEnabled) Debug.Log(message);
         }
 
         public static void LogError(string message)
         {
-            textWriter?.WriteLine(message);
+            logErrorTextWriter?.WriteLine(message);
             logType = LogType.Error;
             if (logEnabled) Debug.LogError(message);
         }
 
-        public static void SetOut(TextWriter textWriter)
+        public static void SetOut(TextWriter log , MyStringWriter logError)
         {
-            MyDebug.textWriter = textWriter;
+            logTextWriter      = log;
+            logErrorTextWriter = logError;
         }
 
     #endregion
