@@ -69,8 +69,8 @@ namespace rStarUtility.Generic.TestFrameWork
 
         protected void BindInstance<TContract>(TContract instance , string id = "")
         {
-            if (id.IsNullOrEmpty() == false) Container.BindInstance(instance).WithId(id);
-            else Container.BindInstance(instance);
+            if (id.IsNullOrEmpty() == false) Container.BindInstance(instance).WithId(id).IfNotBound();
+            else Container.BindInstance(instance).IfNotBound();
         }
 
         protected void BindInterfacesTo<T>() where T : class
