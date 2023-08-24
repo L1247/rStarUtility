@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using NUnit.Framework;
 using rStarUtility.Generic.Infrastructure;
+using rStarUtility.Generic.TestExtensions;
 using rStarUtility.Generic.TestFrameWork;
 
 #endregion
@@ -71,6 +72,15 @@ internal class GenericRepositoryTests : SimpleTest
         value  = repo.FindById(id);
         Assert.AreEqual(11 , value , "value is not equal");
         Assert.AreEqual(11 , result , "result is not equal");
+    }
+
+    [Test]
+    public void Check_Add_New_Value()
+    {
+        var genericRepository = new GenericRepository<TestObj>();
+        genericRepository.Contents.ToList().Add(new TestObj());
+        genericRepository.Contents.Count.ShouldBe(0);
+        genericRepository.Add(new TestObj());
     }
 
     [Test]

@@ -2,13 +2,14 @@
     "name": "rStarUtility.Generic.Tests",
     "rootNamespace": "rStarUtility.Generic.Tests",
     "references": [
-        "Zenject",
-        "MessagePipe",
-        "MessagePipe.Zenject",
-        "rStatUtility.TestFramework",
-        "rStarUtility.Generic.Implement",
-        "rStarUtility.Generic.Infrastructure",
-        "Ulid"
+      "Zenject",
+      "MessagePipe",
+      "MessagePipe.Zenject",
+      "Ulid",
+      "rStatUtility.TestFramework",
+      "rStarUtility.Generic.Implement",
+      "rStarUtility.Generic.Infrastructure",
+      "rStarUtility.Util.Runtime"
     ],
     "includePlatforms": [
         "Editor"
@@ -17,8 +18,9 @@
     "allowUnsafeCode": false,
     "overrideReferences": true,
     "precompiledReferences": [
-        "NSubstitute.dll",
-        "nunit.framework.dll"
+      "NSubstitute.dll",
+      "nunit.framework.dll",
+      "FluentAssertions.dll"
     ],
     "autoReferenced": false,
     "defineConstraints": [
