@@ -10,12 +10,19 @@ namespace rStarUtility.Util.Extensions.Csharp
     {
     #region Public Methods
 
-        public static void AddIfNotContainsKey<TKey , TValue>(
+        public static void AddOrSet<TKey , TValue>(
                 this Dictionary<TKey , TValue> dictionary ,
                 TKey                           key , TValue value)
         {
             if (dictionary.ContainsKey(key)) dictionary[key] = value;
             else dictionary.Add(key , value);
+        }
+
+        public static TValue GetOrReturn<TKey , TValue>(
+                this Dictionary<TKey , TValue> dictionary ,
+                TKey                           key , TValue value)
+        {
+            return dictionary.ContainsKey(key) ? dictionary[key] : value;
         }
 
     #endregion
