@@ -50,6 +50,13 @@ namespace rStarUtility.Util.Extensions.Csharp
             return list == null || list.Count == 0;
         }
 
+        public static T PickRandomValue<T>(this IList<T> ts)
+        {
+            var maxIndex    = ts.Count == 0 ? 0 : ts.Count - 1;
+            var randomIndex = RandomUtilities.GetRandomValue(0 , maxIndex);
+            return ts[randomIndex];
+        }
+
         /// <summary>
         ///     Shuffles the element order of the specified list.
         /// </summary>
