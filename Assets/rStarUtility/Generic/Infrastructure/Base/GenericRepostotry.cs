@@ -44,6 +44,11 @@ namespace rStarUtility.Generic.Infrastructure
             return (contains , content);
         }
 
+        public void Remove(T obj)
+        {
+            contents.Remove(obj);
+        }
+
         public void SetContents(List<T> list)
         {
             contents = list;
