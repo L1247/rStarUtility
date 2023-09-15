@@ -13,6 +13,8 @@ namespace rStarUtility.Generic.Infrastructure
     {
     #region Public Variables
 
+        public int Count => Contents.Count;
+
         public ReadOnlyCollection<T> Contents => contents.AsReadOnly();
 
     #endregion
