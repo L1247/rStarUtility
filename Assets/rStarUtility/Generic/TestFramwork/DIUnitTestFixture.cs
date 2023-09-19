@@ -75,12 +75,12 @@ namespace rStarUtility.Generic.TestFrameWork
 
         protected void Bind_InterfacesAndSelfTo_<T>() where T : class
         {
-            Container.BindInterfacesTo<T>().AsSingle().IfNotBound();
+            Container.BindInterfacesAndSelfTo<T>().AsSingle().IfNotBound();
         }
 
         protected void Bind_InterfacesAndSelfTo_From_NewGameObject<T>() where T : class
         {
-            Container.Bind<T>().FromNewComponentOnNewGameObject().AsSingle().IfNotBound();
+            Container.BindInterfacesAndSelfTo<T>().FromNewComponentOnNewGameObject().AsSingle().IfNotBound();
         }
 
         protected void Bind_InterfacesTo<T>() where T : class
