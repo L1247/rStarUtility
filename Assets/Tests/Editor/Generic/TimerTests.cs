@@ -121,7 +121,7 @@ public class TimerTests : DIUnitTestFixture
     public override void Setup()
     {
         base.Setup();
-        BindFromSubstitute<ITimeProvider>();
+        Bind_From_Substitute<ITimeProvider>();
         Bind<TimerSystem>();
         timeProvider = Resolve<ITimeProvider>();
         timerSystem  = Resolve<TimerSystem>();

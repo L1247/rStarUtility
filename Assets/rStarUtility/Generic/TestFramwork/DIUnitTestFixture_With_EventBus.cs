@@ -23,7 +23,7 @@ namespace rStarUtility.Generic.TestFrameWork
         public override void Setup()
         {
             base.Setup();
-            BindFromSubstitute<IDomainEventBus>();
+            Bind_From_Substitute<IDomainEventBus>();
             domainEventBus = Resolve<IDomainEventBus>();
         }
 
