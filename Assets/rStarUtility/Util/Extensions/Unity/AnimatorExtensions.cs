@@ -12,7 +12,9 @@ namespace rStarUtility.Util.Extensions.Unity
 
         public static string GetCurrentClipName(this Animator animator)
         {
-            var clipName = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+            var clip = animator.GetCurrentAnimatorClipInfo(0)[0].clip;
+            if (clip == null) return string.Empty;
+            var clipName = clip.name;
             return clipName;
         }
 
