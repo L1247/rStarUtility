@@ -64,7 +64,7 @@ namespace rStarUtility.Util.Helper
 
         public static int Clamp_To_Min(int current , int min)
         {
-            return Mathf.Clamp(current , min , 0);
+            return Mathf.Clamp(current , min , current);
         }
 
         public static bool Equal(float a , float b , float precision = 0.01f)
