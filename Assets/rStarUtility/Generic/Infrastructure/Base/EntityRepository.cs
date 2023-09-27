@@ -10,7 +10,7 @@ namespace rStarUtility.Generic.Infrastructure
     {
     #region Public Methods
 
-        public T FindById(string id)
+        public T Find(string id)
         {
             var (found , data) = FindContent(entity => entity.GetId() == id);
             Assert.IsTrue(found , $"{GetType()} can't find entity{typeof(T)} by id: {id}");
@@ -20,7 +20,7 @@ namespace rStarUtility.Generic.Infrastructure
         public bool Remove(string id)
         {
             var count  = Count;
-            var entity = FindById(id);
+            var entity = Find(id);
             Remove(entity);
             var removeSuccessful = count == Count - 1;
             Assert.IsTrue(removeSuccessful , $"{GetType()} - remove entity fail by id: {id}");
