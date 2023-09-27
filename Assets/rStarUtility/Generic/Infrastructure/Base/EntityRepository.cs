@@ -17,6 +17,16 @@ namespace rStarUtility.Generic.Infrastructure
             return data;
         }
 
+        public bool Remove(string id)
+        {
+            var count  = Count;
+            var entity = FindById(id);
+            Remove(entity);
+            var removeSuccessful = count == Count - 1;
+            Assert.IsTrue(removeSuccessful , $"{GetType()} - remove entity fail by id: {id}");
+            return true;
+        }
+
     #endregion
     }
 }
