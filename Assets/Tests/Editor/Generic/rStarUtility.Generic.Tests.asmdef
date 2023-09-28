@@ -20,7 +20,8 @@
     "precompiledReferences": [
       "NSubstitute.dll",
       "nunit.framework.dll",
-      "FluentAssertions.dll"
+      "FluentAssertions.dll",
+      "Zenject-usage.dll"
     ],
     "autoReferenced": false,
     "defineConstraints": [

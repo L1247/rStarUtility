@@ -1,17 +1,22 @@
+#region
+
 using System;
 using NUnit.Framework;
-using UnityEditor;
-using UnityEngine;
+using rStarUtility.Generic.TestExtensions;
 
-namespace rStarUtility.Generic.Tests.Tests.Editor.Generic
+#endregion
+
+public class UlidTests
 {
-    public class UlidTests
+#region Test Methods
+
+    [Test]
+    public void Random()
     {
-        [Test]
-        public void Random()
-        {
-            var ulid = Ulid.NewUlid().ToString();
-            Debug.Log($"{ulid}");
-        }
+        var uuid1 = Ulid.NewUlid().ToString();
+        var uuid2 = Ulid.NewUlid().ToString();
+        uuid1.ShouldNotBe(uuid2);
     }
+
+#endregion
 }

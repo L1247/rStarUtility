@@ -13,7 +13,7 @@ namespace rStarUtility.Generic.TestFrameWork
 
         protected string NewGuid()
         {
-            return Guid.NewGuid().ToString();
+            return Ulid.NewUlid().ToString();
         }
 
         protected Scenario Scenario(string annotation)

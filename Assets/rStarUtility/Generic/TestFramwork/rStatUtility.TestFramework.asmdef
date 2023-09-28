@@ -2,11 +2,12 @@
     "name": "rStatUtility.TestFramework",
     "rootNamespace": "rStatUtility.TestFramework",
     "references": [
-        "Zenject",
-        "MessagePipe",
-        "rStarUtility.Generic.Implement",
-        "rStarUtility.Generic.Infrastructure",
-        "rStarUtility.Util.Runtime"
+      "Zenject",
+      "MessagePipe",
+      "rStarUtility.Generic.Implement",
+      "rStarUtility.Generic.Infrastructure",
+      "rStarUtility.Util.Runtime",
+      "Ulid"
     ],
     "includePlatforms": [
         "Editor"
