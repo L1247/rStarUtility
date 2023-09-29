@@ -73,7 +73,7 @@ namespace rStarUtility.Generic.TestFrameWork
             else Container.BindInstance(instance).IfNotBound();
         }
 
-        protected void Bind_InterfacesAndSelfTo_<T>() where T : class
+        protected void Bind_InterfacesAndSelfTo<T>() where T : class
         {
             Container.BindInterfacesAndSelfTo<T>().AsSingle().IfNotBound();
         }
