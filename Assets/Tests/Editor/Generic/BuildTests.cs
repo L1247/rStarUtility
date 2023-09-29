@@ -30,6 +30,10 @@ public class BuildTests : DIUnitTestFixture
         var      builder = Instantiate<Builder>();
         BuildObj obj     = builder;
         obj.Test.ShouldBe(999);
+        buildParameter.GetTest().Returns(99);
+        var      builder2 = Instantiate<Builder>();
+        BuildObj obj2     = builder2;
+        obj2.Test.ShouldBe(99);
     }
 
 #endregion
