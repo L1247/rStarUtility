@@ -5,7 +5,6 @@ using NUnit.Framework;
 using rStarUtility.Generic.Infrastructure;
 using rStarUtility.Generic.TestExtensions;
 using rStarUtility.Generic.TestFrameWork;
-using UnityEngine;
 using Zenject;
 
 #endregion
@@ -77,7 +76,6 @@ internal class Builder : AbstractBuilder<BuildObj , Builder>
     [Inject]
     public Builder(BuildParameter buildParameter)
     {
-        Debug.Log($"{buildParameter.GetTest()}");
         this.buildParameter = buildParameter;
     }
 
