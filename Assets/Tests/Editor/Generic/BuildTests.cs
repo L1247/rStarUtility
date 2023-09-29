@@ -28,7 +28,7 @@ public class BuildTests : DIUnitTestFixture
     {
         var buildParameter = Bind_Mock_And_Resolve<BuildParameter>();
         buildParameter.GetTest().Returns(999);
-        var      builder = Container.Instantiate<Builder>();
+        var      builder = Instantiate<Builder>();
         BuildObj obj     = builder;
         obj.Test.ShouldBe(999);
     }
@@ -54,7 +54,7 @@ internal class BuildObj
 #endregion
 }
 
-internal interface BuildParameter
+public interface BuildParameter
 {
 #region Public Methods
 

@@ -99,6 +99,11 @@ namespace rStarUtility.Generic.TestFrameWork
             return Container.HasBinding<T>();
         }
 
+        protected T Instantiate<T>() where T : class
+        {
+            return Container.Instantiate<T>();
+        }
+
         protected T Resolve<T>()
         {
             return Container.Resolve<T>();
