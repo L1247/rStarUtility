@@ -91,7 +91,7 @@ namespace rStarUtility.Generic.Infrastructure
 
         private void RequiredId(string id)
         {
-            Contract.RequireString(id , $"id: {id}");
+            Contract.RequireString(id , "id");
         }
 
     #endregion

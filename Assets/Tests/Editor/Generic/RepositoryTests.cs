@@ -1,10 +1,10 @@
 #region
 
-using System;
 using System.Linq;
 using NUnit.Framework;
 using rStarUtility.Generic.Infrastructure;
 using rStarUtility.Generic.TestFrameWork;
+using rStarUtility.Util;
 
 #endregion
 
@@ -61,8 +61,8 @@ internal class RepositoryTests : SimpleTest
     [TestCase("")]
     public void Contain_Error_With_Invalid_Id(string id)
     {
-        var exceptionMessage = "id is NullOrEmpty.";
-        ShouldExceptionThrown<ArgumentException>(() => repository.Contains(id) , exceptionMessage);
+        var exceptionMessage = "id can not be empty or null";
+        ShouldExceptionThrown<PreconditionViolationException>(() => repository.Contains(id) , exceptionMessage);
     }
 
     [Test]
