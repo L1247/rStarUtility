@@ -183,7 +183,7 @@ internal class RepositoryTests : SimpleTest
     public void GetKeys()
     {
         SaveWithNewTestObj();
-        var keys  = repository.Keys.ToList();
+        var keys  = repository.Ids.ToList();
         var count = keys.Count;
         Assert.AreEqual(1 , count , "count is not equal");
         Assert.AreEqual(id , keys[0] , "key is not equal");
@@ -204,7 +204,7 @@ internal class RepositoryTests : SimpleTest
     {
         SaveWithNewTestObj();
         repository["sadsa"] = new TestObj(NewGuid());
-        var keys  = repository.Values.ToList();
+        var keys  = repository.Entities.ToList();
         var count = keys.Count;
         Assert.AreEqual(2 , count , "count is not equal");
     }

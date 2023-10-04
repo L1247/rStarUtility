@@ -11,19 +11,19 @@ namespace rStarUtility.Generic.Infrastructure
     {
     #region Public Variables
 
-        public T this[string key]
+        public T this[string id]
         {
-            get => Find(key).Value;
+            get => Find(id).Value;
             set
             {
-                RequiredId(key);
-                entities[key] = value;
+                RequiredId(id);
+                entities[id] = value;
             }
         }
 
-        public IEnumerable<string> Keys => entities.Keys;
+        public IEnumerable<string> Ids => entities.Keys;
 
-        public IEnumerable<T> Values => GetAll();
+        public IEnumerable<T> Entities => GetAll();
 
         public int Count => entities.Count;
 
@@ -72,7 +72,7 @@ namespace rStarUtility.Generic.Infrastructure
             return entities.Values;
         }
 
-        public virtual bool Remove(string id)
+        public bool Remove(string id)
         {
             if (Contains(id) == false) return false;
             entities.Remove(id);
@@ -80,7 +80,7 @@ namespace rStarUtility.Generic.Infrastructure
             return success;
         }
 
-        public virtual void RemoveAll()
+        public void RemoveAll()
         {
             entities.Clear();
         }
