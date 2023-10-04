@@ -7,7 +7,7 @@ using rStarUtility.Util;
 
 namespace rStarUtility.Generic.Infrastructure
 {
-    public class Repository<T> : IRepository<T> where T : Entity
+    public class Repository<T> : IRepository<T> where T : IEntity<string>
     {
     #region Public Variables
 
@@ -62,7 +62,7 @@ namespace rStarUtility.Generic.Infrastructure
         public Optional<T> Find(string id)
         {
             var contains         = Contains(id);
-            T   entity           = null;
+            var entity           = default(T);
             if (contains) entity = entities[id];
             return new Optional<T>(contains , entity);
         }
