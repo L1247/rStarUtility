@@ -1,6 +1,5 @@
 #region
 
-using System;
 using System.Collections.Generic;
 using rStarUtility.Util;
 
@@ -14,8 +13,12 @@ namespace rStarUtility.Generic.Infrastructure
 
         public T this[string key]
         {
-            get => entities[key];
-            set => entities[key] = value;
+            get => Find(key).Value;
+            set
+            {
+                RequiredId(key);
+                entities[key] = value;
+            }
         }
 
         public IEnumerable<string> Keys => entities.Keys;
@@ -52,8 +55,7 @@ namespace rStarUtility.Generic.Infrastructure
 
         public virtual bool Contains(string id)
         {
-            var isNullOrEmpty = string.IsNullOrEmpty(id);
-            if (isNullOrEmpty) throw new ArgumentException("id is NullOrEmpty.");
+            RequiredId(id);
             return entities.ContainsKey(id);
         }
 
