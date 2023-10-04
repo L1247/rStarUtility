@@ -4,3 +4,4 @@
 1.0.6 Added Ulid
 1.0.7 測試支持更多DI方法
 1.0.8 新增更多的擴充方法
+1.0.9 更新Repository，直接關聯Entity類別

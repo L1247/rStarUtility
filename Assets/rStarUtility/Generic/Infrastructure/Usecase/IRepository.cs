@@ -1,6 +1,7 @@
 #region
 
 using System.Collections.Generic;
+using rStarUtility.Util;
 
 #endregion
 
@@ -27,19 +28,17 @@ namespace rStarUtility.Generic.Infrastructure
 
         /// <summary>
         /// </summary>
+        /// <param name="newEntity"></param>
+        /// <param name="overrideValueIfContain"></param>
         /// <param name="id"></param>
-        /// <param name="add"></param>
         /// <returns>is add succeed.</returns>
-        bool Add(string id , T add);
+        bool Add(T newEntity , bool overrideValueIfContain = false);
 
-        T                       AddOrSet(string   id , T add , T set);
-        bool                    ContainsId(string id);
-        void                    DeleteAll();
-        bool                    DeleteById(string id);
-        T                       FindById(string   id);
-        IEnumerable<T>          GetAll();
-        (bool exist , T entity) GetEntity(string id);
-        bool                    Save(string      id , T entity);
+        bool           Contains(string id);
+        Optional<T>    Find(string     id);
+        IEnumerable<T> GetAll();
+        bool           Remove(string id);
+        void           RemoveAll();
 
     #endregion
     }

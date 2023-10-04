@@ -4,17 +4,17 @@
 
 namespace rStarUtility.Generic.Infrastructure
 {
-    public abstract class Entity<T> : IEntity<T>
+    public abstract class Entity : IEntity<string>
     {
     #region Protected Variables
 
-        protected readonly T id;
+        protected readonly string id;
 
     #endregion
 
     #region Constructor
 
-        protected Entity(T id)
+        protected Entity(string id)
         {
             this.id = id;
         }
@@ -23,7 +23,7 @@ namespace rStarUtility.Generic.Infrastructure
 
     #region Public Methods
 
-        public T GetId()
+        public string GetId()
         {
             return id;
         }

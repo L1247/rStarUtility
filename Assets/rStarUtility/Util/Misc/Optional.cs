@@ -12,7 +12,7 @@ namespace rStarUtility.Util
     {
     #region Public Variables
 
-        public bool Enabled => enabled;
+        public bool Present => present;
         public T    Value   => value;
 
     #endregion
@@ -20,7 +20,7 @@ namespace rStarUtility.Util
     #region Private Variables
 
         [SerializeField]
-        private bool enabled;
+        private bool present;
 
         [SerializeField]
         private T value;
@@ -36,13 +36,13 @@ namespace rStarUtility.Util
 
         public Optional()
         {
-            enabled = false;
+            present = false;
             value   = default;
         }
 
         public Optional(T value)
         {
-            enabled    = false;
+            present    = false;
             this.value = value;
         }
 
@@ -52,8 +52,8 @@ namespace rStarUtility.Util
 
         public void Set(bool enabled , T value = default)
         {
-            this.enabled = enabled;
-            this.value   = value;
+            present    = enabled;
+            this.value = value;
         }
 
     #endregion

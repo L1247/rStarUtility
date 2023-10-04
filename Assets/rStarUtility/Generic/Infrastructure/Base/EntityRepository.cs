@@ -6,7 +6,7 @@ using UnityEngine.Assertions;
 
 namespace rStarUtility.Generic.Infrastructure
 {
-    public class EntityRepository<T> : GenericRepository<T> where T : Entity<string>
+    public class EntityRepository<T> : GenericRepository<T> where T : Entity
     {
     #region Public Methods
 
