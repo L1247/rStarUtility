@@ -2,9 +2,9 @@ namespace rStarUtility.Generic.Infrastructure
 {
     public interface IEntity<T>
     {
-    #region Public Methods
+    #region Public Variables
 
-        T GetId();
+        T Id { get; }
 
     #endregion
     }

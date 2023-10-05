@@ -6,9 +6,9 @@ namespace rStarUtility.Generic.Infrastructure
 {
     public abstract class Entity : IEntity<string>
     {
-    #region Protected Variables
+    #region Public Variables
 
-        protected readonly string id;
+        public string Id { get; }
 
     #endregion
 
@@ -16,16 +16,7 @@ namespace rStarUtility.Generic.Infrastructure
 
         protected Entity(string id)
         {
-            this.id = id;
-        }
-
-    #endregion
-
-    #region Public Methods
-
-        public string GetId()
-        {
-            return id;
+            Id = id;
         }
 
     #endregion

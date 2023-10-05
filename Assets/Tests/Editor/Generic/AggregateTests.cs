@@ -80,7 +80,7 @@ internal class AggregateTests : SimpleTest
     [Test]
     public void GetId()
     {
-        Assert.AreEqual(id , aggregateRoot.GetId() , "id is not equal");
+        Assert.AreEqual(id , aggregateRoot.Id , "id is not equal");
     }
 
 #endregion

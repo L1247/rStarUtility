@@ -44,7 +44,7 @@ namespace rStarUtility.Generic.Infrastructure
         /// <returns>entity add is succeed or not</returns>
         public bool Add(T newEntity , bool overrideValueIfContain = false)
         {
-            var id = newEntity.GetId();
+            var id = newEntity.Id;
             RequiredId(id);
             var containsId = Contains(id);
             if (overrideValueIfContain == false && containsId) return false;

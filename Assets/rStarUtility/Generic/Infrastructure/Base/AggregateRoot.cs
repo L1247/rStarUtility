@@ -9,9 +9,13 @@ namespace rStarUtility.Generic.Infrastructure
 {
     public abstract class AggregateRoot : IAggregateRoot
     {
-    #region Private Variables
+    #region Public Variables
 
-        private readonly string id;
+        public string Id { get; }
+
+    #endregion
+
+    #region Private Variables
 
         private readonly List<DomainEvent> domainEvents = new List<DomainEvent>();
 
@@ -21,7 +25,7 @@ namespace rStarUtility.Generic.Infrastructure
 
         protected AggregateRoot(string id)
         {
-            this.id = id;
+            Id = id;
         }
 
     #endregion
@@ -53,11 +57,6 @@ namespace rStarUtility.Generic.Infrastructure
         public List<DomainEvent> GetDomainEvents()
         {
             return domainEvents;
-        }
-
-        public string GetId()
-        {
-            return id;
         }
 
     #endregion
