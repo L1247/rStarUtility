@@ -56,6 +56,12 @@ namespace rStarUtility.Util
             this.value = value;
         }
 
+        public void SetValue(T value)
+        {
+            present    = true;
+            this.value = value;
+        }
+
     #endregion
     }
 }
