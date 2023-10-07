@@ -2,6 +2,7 @@
 
 using NUnit.Framework;
 using rStarUtility.Util.Extensions.Csharp;
+using UnityEngine;
 using Zenject;
 
 #endregion
@@ -92,6 +93,21 @@ namespace rStarUtility.Generic.TestFrameWork
         {
             Bind_From_Substitute<T>();
             return Resolve<T>();
+        }
+
+        protected static T[] GetAllObjectsInScene<T>() where T : Object
+        {
+            return Object.FindObjectsOfType<T>();
+        }
+
+        protected static int GetCountOfObjectInScene<T>() where T : Object
+        {
+            return GetAllObjectsInScene<T>().Length;
+        }
+
+        protected static T GetObjectInScene<T>() where T : Object
+        {
+            return Object.FindObjectOfType<T>();
         }
 
         protected bool HasBinding<T>()
