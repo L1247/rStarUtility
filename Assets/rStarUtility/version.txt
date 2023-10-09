@@ -5,3 +5,4 @@
 1.0.7 測試支持更多DI方法
 1.0.8 新增更多的擴充方法
 1.0.9 更新Repository，直接關聯Entity類別
+1.0.10 移除Infrastructure asmdef，合併至Runtime內，取名為DDD資料夾
