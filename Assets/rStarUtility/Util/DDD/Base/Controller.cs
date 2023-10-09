@@ -39,7 +39,7 @@ namespace rStarUtility.Generic.Infrastructure
             return optional.Value;
         }
 
-        protected static void RequireId(string id)
+        protected void RequireId(string id)
         {
             Contract.RequireString(id);
         }
