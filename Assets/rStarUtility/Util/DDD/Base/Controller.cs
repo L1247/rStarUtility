@@ -9,10 +9,10 @@ namespace rStarUtility.Generic.Infrastructure
 {
     public class Controller<R , E> where R : Repository<E> where E : IEntity<string>
     {
-    #region Private Variables
+    #region Protected Variables
 
         [Inject]
-        private R repository;
+        protected R repository;
 
     #endregion
 
