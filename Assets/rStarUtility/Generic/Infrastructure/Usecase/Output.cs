@@ -7,6 +7,7 @@ namespace rStarUtility.Generic.Infrastructure
         ExitCode GetExitCode();
         string   GetMessage();
         Output   SetExitCode(ExitCode exitCode);
+        Output   SetId(string         id);
         Output   SetMessage(string    message);
 
     #endregion

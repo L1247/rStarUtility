@@ -10,6 +10,17 @@ namespace rStarUtility.Generic.Infrastructure
 
     #endregion
 
+    #region Constructor
+
+        public Result(ExitCode exitCode , string id , string message = "")
+        {
+            this.exitCode = exitCode;
+            this.message  = message;
+            this.id       = id;
+        }
+
+    #endregion
+
     #region Public Methods
 
         public ExitCode GetExitCode()
@@ -33,9 +44,10 @@ namespace rStarUtility.Generic.Infrastructure
             return this;
         }
 
-        public void SetId(string id)
+        public Output SetId(string id)
         {
             this.id = id;
+            return this;
         }
 
         public virtual Output SetMessage(string message)
