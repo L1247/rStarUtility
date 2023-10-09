@@ -1,3 +1,5 @@
+using rStarUtility.Util;
+
 namespace rStarUtility.Generic.Infrastructure
 {
     public class Result : Output
@@ -12,8 +14,9 @@ namespace rStarUtility.Generic.Infrastructure
 
     #region Constructor
 
-        public Result(ExitCode exitCode , string id , string message = "")
+        private Result(ExitCode exitCode , string id , string message = "")
         {
+            Contract.Require(exitCode != ExitCode.NONE , "can't set to ExitCode.NONE");
             this.exitCode = exitCode;
             this.message  = message;
             this.id       = id;
@@ -22,6 +25,11 @@ namespace rStarUtility.Generic.Infrastructure
     #endregion
 
     #region Public Methods
+
+        public static Result CreateInstance(ExitCode exitCode , string id , string message = "")
+        {
+            return new Result(exitCode , id , message);
+        }
 
         public ExitCode GetExitCode()
         {
