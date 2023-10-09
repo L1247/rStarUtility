@@ -1,4 +1,8 @@
+#region
+
 using rStarUtility.Util;
+
+#endregion
 
 namespace rStarUtility.Generic.Infrastructure
 {

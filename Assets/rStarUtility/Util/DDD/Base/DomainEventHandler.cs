@@ -1,7 +1,6 @@
 #region
 
 using System;
-using Zenject;
 
 #endregion
 
@@ -17,7 +16,6 @@ namespace rStarUtility.Generic.Infrastructure
 
     #region Constructor
 
-        [Inject]
         protected DomainEventHandler(IDomainEventBus domainEventBus)
         {
             this.domainEventBus = domainEventBus;

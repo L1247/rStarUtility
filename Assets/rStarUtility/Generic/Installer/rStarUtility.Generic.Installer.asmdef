@@ -6,7 +6,7 @@
         "MessagePipe",
         "MessagePipe.Zenject",
         "rStarUtility.Generic.Implement",
-        "rStarUtility.Generic.Infrastructure"
+        "rStarUtility.Util.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

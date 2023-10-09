@@ -5,7 +5,6 @@
       "Zenject",
       "MessagePipe",
       "rStarUtility.Generic.Implement",
-      "rStarUtility.Generic.Infrastructure",
       "rStarUtility.Util.Runtime",
       "Ulid"
     ],
