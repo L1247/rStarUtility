@@ -1,6 +1,7 @@
 #region
 
 using System;
+using rStarUtility.Util.Extensions.Csharp;
 
 #endregion
 
@@ -13,6 +14,10 @@ namespace rStarUtility.Util
         public static bool CHECK_CLASS_INVARIANT = true;
         public static bool CHECK_POST            = true;
         public static bool CHECK_PRE             = true;
+
+    #endregion
+
+    #region Public Methods
 
         public static void ClassInvariant(bool value , string annotation = "")
         {
@@ -32,7 +37,7 @@ namespace rStarUtility.Util
             if (CHECK_CLASS_INVARIANT == false) return;
             if (string.IsNullOrEmpty(str))
                 ThrowClassInvariantViolationException(
-                    $"{annotation} can not be empty or null");
+                        $"{annotation} can not be empty or null");
         }
 
         public static void Ensure(bool value , string annotation = "")
@@ -51,8 +56,7 @@ namespace rStarUtility.Util
         public static void EnsureString(string str , string annotation = "")
         {
             if (CHECK_POST == false) return;
-            if (string.IsNullOrEmpty(str))
-                ThrowPostConditionViolation($"{annotation} can not be empty or null");
+            if (string.IsNullOrEmpty(str)) ThrowPostConditionViolation($"{annotation} can not be empty or null");
         }
 
         public static void Require(bool value , string annotation = "")
@@ -75,11 +79,9 @@ namespace rStarUtility.Util
         public static void RequireString(string str , string annotation = "")
         {
             if (CHECK_PRE == false) return;
-            if (string.IsNullOrEmpty(str))
-            {
-                var notNullAnnotation = $"{annotation} can not be empty or null";
-                ThrowPreconditionViolationException(notNullAnnotation);
-            }
+            if (string.IsNullOrEmpty(str).IsFalse()) return;
+            var notNullAnnotation = $"{annotation} can not be empty or null";
+            ThrowPreconditionViolationException(notNullAnnotation);
         }
 
     #endregion
