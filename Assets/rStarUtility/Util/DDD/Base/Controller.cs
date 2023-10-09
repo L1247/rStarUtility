@@ -25,9 +25,16 @@ namespace rStarUtility.Generic.Infrastructure
             return contains;
         }
 
+        protected Optional<E> FindEntity(string id)
+        {
+            RequireId(id);
+            return repository.Find(id);
+        }
+
         protected E GetEntity(string id)
         {
-            var optional = repository.Find(id);
+            RequireId(id);
+            var optional = FindEntity(id);
             Contract.Require(optional.Present , $"can't find entity by id: {id}");
             return optional.Value;
         }
