@@ -3,7 +3,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
+using rStarUtility.Generic.Infrastructure;
+using rStarUtility.Util.Extensions.Csharp;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 #endregion
 
@@ -52,9 +55,25 @@ namespace rStarUtility.Generic.TestExtensions
             renderer.enabled.ShouldBe(expectedEnable);
         }
 
+        public static void ShouldFailure(this Output output)
+        {
+            output.GetExitCode().ShouldBe(ExitCode.FAILURE);
+        }
+
+        public static void ShouldID(this Output output , string id)
+        {
+            Assert.IsTrue(id.HasValue() , "id string is null or empty.");
+            output.GetId().ShouldBe(id);
+        }
+
         public static void ShouldSortingLayerBe(this SpriteRenderer spriteRenderer , int order)
         {
             spriteRenderer.sortingOrder.ShouldBe(order);
+        }
+
+        public static void ShouldSuccess(this Output output)
+        {
+            output.GetExitCode().ShouldBe(ExitCode.SUCCESS);
         }
 
         public static void ShouldTransformLocalPositionBe(
