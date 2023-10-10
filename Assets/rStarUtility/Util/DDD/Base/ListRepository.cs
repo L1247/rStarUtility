@@ -13,6 +13,8 @@ namespace rStarUtility.Generic.Infrastructure
     {
     #region Public Variables
 
+        public int AllEntityCount => Get_All().Count();
+
         public int Count => entities.Count;
 
     #endregion
