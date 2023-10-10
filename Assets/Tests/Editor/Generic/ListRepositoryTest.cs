@@ -81,8 +81,17 @@ public class ListRepositoryTest : DIUnitTestFixture
         repository.Get_All("2").Count().ShouldBe(0);
     }
 
+    [Test(Description = "取得所有Entity")]
+    public void _05_Get_All()
+    {
+        repository.Add(Create_Entity("1")).ShouldTrue();
+        repository.Add(Create_Entity("1")).ShouldTrue();
+        repository.Add(Create_Entity("2")).ShouldTrue();
+        repository.Get_All().Count().ShouldBe(3);
+    }
+
     [Test(Description = "使用ID，移除Entities")]
-    public void _05_Remove()
+    public void _06_Remove()
     {
         repository.Add(Create_Entity("1")).ShouldTrue();
         repository.Add(Create_Entity("1")).ShouldTrue();
@@ -91,7 +100,7 @@ public class ListRepositoryTest : DIUnitTestFixture
     }
 
     [Test(Description = "是否存在Entity")]
-    public void _06_Contains()
+    public void _07_Contains()
     {
         repository.Add(Create_Entity("1"));
         repository.Contains("1").ShouldTrue();

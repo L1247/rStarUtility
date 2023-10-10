@@ -52,6 +52,11 @@ namespace rStarUtility.Generic.Infrastructure
             return Contains(id).IsFalse() ? Enumerable.Empty<T>() : entities[id];
         }
 
+        public IEnumerable<T> Get_All()
+        {
+            return entities.Values.SelectMany(ts => ts);
+        }
+
         public bool Remove(string id)
         {
             RequiredId(id);
