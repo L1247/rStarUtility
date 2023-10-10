@@ -90,6 +90,14 @@ public class ListRepositoryTest : DIUnitTestFixture
         repository.Count.ShouldBe(0);
     }
 
+    [Test(Description = "是否存在Entity")]
+    public void _06_Contains()
+    {
+        repository.Add(Create_Entity("1"));
+        repository.Contains("1").ShouldTrue();
+        repository.Contains("0").ShouldFalse();
+    }
+
 #endregion
 
 #region Private Methods
