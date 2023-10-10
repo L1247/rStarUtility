@@ -23,8 +23,17 @@ internal class RepositoryTests : SimpleTest
 
     private class TestObjRepository : Repository<TestObj> { }
 
-    private          TestObjRepository repository;
-    private readonly string            id = "id";
+    private class TestObjRepository_OverrideValue : Repository<TestObj>
+    {
+    #region Protected Variables
+
+        protected override bool overrideValue => true;
+
+    #endregion
+    }
+
+    private          Repository<TestObj> repository;
+    private readonly string              id = "id";
 
 #endregion
 
@@ -57,6 +66,25 @@ internal class RepositoryTests : SimpleTest
     }
 
     [Test]
+    public void Add_With_Same_Id_And_Another_Entity()
+    {
+        repository = new TestObjRepository_OverrideValue();
+        AddWithNewTestObj();
+        ShouldContainIs(true);
+        var testObj = new TestObj(id);
+        repository.Add(testObj);
+        var foundObj = FindById();
+        Assert.AreEqual(testObj , foundObj , "obj is not equal");
+    }
+
+    [Test]
+    public void Add_With_Success()
+    {
+        AddWithNewTestObj();
+        ShouldContainIs(true);
+    }
+
+    [Test]
     [TestCase(null)]
     [TestCase("")]
     public void Contain_Error_With_Invalid_Id(string id)
@@ -76,7 +104,7 @@ internal class RepositoryTests : SimpleTest
     {
         ShouldContainIs(false);
 
-        SaveWithNewTestObj();
+        AddWithNewTestObj();
 
         ShouldContainIs(true);
     }
@@ -84,7 +112,7 @@ internal class RepositoryTests : SimpleTest
     [Test]
     public void DeleteAll()
     {
-        SaveWithNewTestObj();
+        AddWithNewTestObj();
         ShouldCount(1);
 
         repository.RemoveAll();
@@ -104,7 +132,7 @@ internal class RepositoryTests : SimpleTest
     [Test]
     public void DeleteById_With_Success()
     {
-        SaveWithNewTestObj();
+        AddWithNewTestObj();
         ShouldContainIs(true);
 
         var success = repository.Remove(id);
@@ -123,7 +151,7 @@ internal class RepositoryTests : SimpleTest
     public void FindById_With_Success()
     {
         ShouldContainIs(false);
-        var testObj = SaveWithNewTestObj();
+        var testObj = AddWithNewTestObj();
 
         var foundObj = FindById();
 
@@ -151,7 +179,7 @@ internal class RepositoryTests : SimpleTest
     {
         ShouldCount(0);
 
-        SaveWithNewTestObj();
+        AddWithNewTestObj();
 
         ShouldCount(1);
     }
@@ -160,7 +188,7 @@ internal class RepositoryTests : SimpleTest
     public void GetEntity_With_Exist()
     {
         ShouldContainIs(false);
-        var testObj = SaveWithNewTestObj();
+        var testObj = AddWithNewTestObj();
 
         var optional = repository.Find(id);
 
@@ -182,7 +210,7 @@ internal class RepositoryTests : SimpleTest
     [Test]
     public void GetKeys()
     {
-        SaveWithNewTestObj();
+        AddWithNewTestObj();
         var keys  = repository.Ids.ToList();
         var count = keys.Count;
         Assert.AreEqual(1 , count , "count is not equal");
@@ -192,7 +220,7 @@ internal class RepositoryTests : SimpleTest
     [Test]
     public void GetValueByKey()
     {
-        var testObj = SaveWithNewTestObj();
+        var testObj = AddWithNewTestObj();
         var obj     = repository[id];
 
         Assert.NotNull(obj , "obj is null");
@@ -202,7 +230,7 @@ internal class RepositoryTests : SimpleTest
     [Test]
     public void GetValues()
     {
-        SaveWithNewTestObj();
+        AddWithNewTestObj();
         repository["sadsa"] = new TestObj(NewGuid());
         var keys  = repository.Entities.ToList();
         var count = keys.Count;
@@ -210,30 +238,9 @@ internal class RepositoryTests : SimpleTest
     }
 
     [Test]
-    public void Save_With_Same_Id_And_Another_Entity()
-    {
-        SaveWithNewTestObj();
-        ShouldContainIs(true);
-        var testObj = new TestObj(id);
-        repository.Add(testObj);
-        var foundObj = FindById();
-        Assert.AreNotEqual(testObj , foundObj , "obj is equal");
-        repository.Add(testObj , true);
-        foundObj = FindById();
-        Assert.AreEqual(testObj , foundObj , "obj is not equal");
-    }
-
-    [Test]
-    public void Save_With_Success()
-    {
-        SaveWithNewTestObj();
-        ShouldContainIs(true);
-    }
-
-    [Test]
     public void SetValueByKey()
     {
-        SaveWithNewTestObj();
+        AddWithNewTestObj();
         var testObj1 = new TestObj(id);
         repository[id] = testObj1;
         var obj = repository[id];
@@ -246,17 +253,17 @@ internal class RepositoryTests : SimpleTest
 
 #region Private Methods
 
+    private TestObj AddWithNewTestObj()
+    {
+        var testObj = new TestObj(id);
+        repository.Add(testObj);
+        return testObj;
+    }
+
     private TestObj FindById()
     {
         var optional = repository.Find(id);
         var testObj  = optional.Value;
-        return testObj;
-    }
-
-    private TestObj SaveWithNewTestObj()
-    {
-        var testObj = new TestObj(id);
-        repository.Add(testObj);
         return testObj;
     }
 

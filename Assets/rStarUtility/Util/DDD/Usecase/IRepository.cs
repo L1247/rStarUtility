@@ -19,8 +19,7 @@ namespace rStarUtility.Generic.Infrastructure
         T this[string id] { get; set; }
         IEnumerable<string> Ids      { get; }
         IEnumerable<T>      Entities { get; }
-
-        int Count { get; }
+        int                 Count    { get; }
 
     #endregion
 
@@ -29,10 +28,9 @@ namespace rStarUtility.Generic.Infrastructure
         /// <summary>
         /// </summary>
         /// <param name="newEntity"></param>
-        /// <param name="overrideValueIfContain"></param>
         /// <param name="id"></param>
         /// <returns>is add succeed.</returns>
-        bool Add(T newEntity , bool overrideValueIfContain = false);
+        bool Add(T newEntity);
 
         bool           Contains(string id);
         Optional<T>    Find(string     id);

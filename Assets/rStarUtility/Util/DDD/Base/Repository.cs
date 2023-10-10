@@ -2,6 +2,7 @@
 
 using System.Collections.Generic;
 using rStarUtility.Util;
+using rStarUtility.Util.Extensions.Csharp;
 
 #endregion
 
@@ -32,6 +33,7 @@ namespace rStarUtility.Generic.Infrastructure
     #region Protected Variables
 
         protected readonly Dictionary<string , T> entities = new Dictionary<string , T>();
+        protected virtual  bool                   overrideValue => false;
 
     #endregion
 
@@ -40,14 +42,13 @@ namespace rStarUtility.Generic.Infrastructure
         /// <summary>
         /// </summary>
         /// <param name="newEntity"></param>
-        /// <param name="overrideValueIfContain"></param>
         /// <returns>entity add is succeed or not</returns>
-        public bool Add(T newEntity , bool overrideValueIfContain = false)
+        public bool Add(T newEntity)
         {
             var id = newEntity.Id;
             RequiredId(id);
             var containsId = Contains(id);
-            if (overrideValueIfContain == false && containsId) return false;
+            if (overrideValue.IsFalse() && containsId) return false;
             if (containsId) entities[id] = newEntity;
             else entities.Add(id , newEntity);
             return Contains(id);
