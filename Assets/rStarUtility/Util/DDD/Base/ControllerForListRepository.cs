@@ -32,6 +32,11 @@ namespace rStarUtility.Generic.Infrastructure
             return repository.Get_All(id);
         }
 
+        protected void RequireContains(string id)
+        {
+            Contract.Require(Contains(id) , $"entity is {id} no exist.");
+        }
+
         protected void RequireId(string id)
         {
             Contract.RequireString(id);
