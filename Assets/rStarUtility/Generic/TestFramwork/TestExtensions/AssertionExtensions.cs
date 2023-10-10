@@ -42,6 +42,12 @@ namespace rStarUtility.Generic.TestExtensions
             return actualValue.Should().BeNull(because , becauseArgs);
         }
 
+        public static AndConstraint<BooleanAssertions> ShouldFalse(
+                this bool actualValue , string because = "" , params object[] becauseArgs)
+        {
+            return actualValue.ShouldBe(false , because , becauseArgs);
+        }
+
         public static AndConstraint<ObjectAssertions> ShouldNotBe(
                 this object actualValue , object expected , string because = "" , params object[] becauseArgs)
         {
@@ -52,6 +58,12 @@ namespace rStarUtility.Generic.TestExtensions
                 this object actualValue , string because = "" , params object[] becauseArgs)
         {
             return actualValue.Should().NotBeNull(because , becauseArgs);
+        }
+
+        public static AndConstraint<BooleanAssertions> ShouldTrue(
+                this bool actualValue , string because = "" , params object[] becauseArgs)
+        {
+            return actualValue.ShouldBe(true , because , becauseArgs);
         }
 
     #endregion

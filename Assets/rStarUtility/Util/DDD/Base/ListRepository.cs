@@ -1,7 +1,9 @@
 #region
 
 using System.Collections.Generic;
+using System.Linq;
 using rStarUtility.Util;
+using rStarUtility.Util.Extensions.Csharp;
 
 #endregion
 
@@ -42,6 +44,19 @@ namespace rStarUtility.Generic.Infrastructure
         {
             RequiredId(id);
             return entities.ContainsKey(id);
+        }
+
+        public IEnumerable<T> Get_All(string id)
+        {
+            RequiredId(id);
+            return Contains(id).IsFalse() ? Enumerable.Empty<T>() : entities[id];
+        }
+
+        public bool Remove(string id)
+        {
+            RequiredId(id);
+            entities.Remove(id);
+            return Contains(id).IsFalse();
         }
 
     #endregion
