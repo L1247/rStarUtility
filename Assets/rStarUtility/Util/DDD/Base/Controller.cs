@@ -7,7 +7,7 @@ using Zenject;
 
 namespace rStarUtility.Generic.Infrastructure
 {
-    public class Controller<E , R> where R : Repository<E> where E : IEntity<string>
+    public class Controller<E , R> where R : IRepository<E> where E : IEntity<string>
     {
     #region Protected Variables
 

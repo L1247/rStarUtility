@@ -54,7 +54,7 @@ namespace rStarUtility.Generic.Infrastructure
             return Contains(id);
         }
 
-        public virtual bool Contains(string id)
+        public bool Contains(string id)
         {
             RequiredId(id);
             return entities.ContainsKey(id);

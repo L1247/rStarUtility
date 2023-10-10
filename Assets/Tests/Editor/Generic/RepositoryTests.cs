@@ -32,8 +32,8 @@ internal class RepositoryTests : SimpleTest
     #endregion
     }
 
-    private          Repository<TestObj> repository;
-    private readonly string              id = "id";
+    private          IRepository<TestObj> repository;
+    private readonly string               id = "id";
 
 #endregion
 
@@ -49,7 +49,7 @@ internal class RepositoryTests : SimpleTest
 
 #region Test Methods
 
-    [Test]
+    [Test(Description = "新增Entity")]
     public void Add()
     {
         var repo    = new Repository<TestObj>();
