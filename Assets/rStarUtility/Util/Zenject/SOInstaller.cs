@@ -12,6 +12,11 @@ namespace rStarUtility.Util.Zenject
     {
     #region Protected Variables
 
+        /// <summary>
+        ///     override the resourcePath for this SOInstaller is required.
+        ///     Here is example
+        ///     protected new static string resourcePath => "XXXSettings";
+        /// </summary>
         protected static string resourcePath => "";
 
     #endregion
