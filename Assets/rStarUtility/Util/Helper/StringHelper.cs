@@ -2,6 +2,7 @@
 
 using System.Linq;
 using System.Text.RegularExpressions;
+using rStarUtility.Util.Extensions.Csharp;
 
 #endregion
 
@@ -14,10 +15,15 @@ namespace rStarUtility.Util.Helper
         public static int CompareString(string x , string y)
         {
             var order = 0;
+
             if (x.Length > y.Length)
             {
                 order = 1;
-                return GetNumOrder(x , y , order);
+                var xStarWithNumber = IsStarWithNumber(x);
+                var yStarWithNumber = IsStarWithNumber(y);
+                if (xStarWithNumber && yStarWithNumber) return GetNumOrder(x , y , order);
+
+                return order;
             }
 
             if (x.Length == y.Length) return GetNumOrder(x , y , order);
@@ -39,7 +45,18 @@ namespace rStarUtility.Util.Helper
             var yNumeric = int.Parse(Regex.Match(y , @"\d+").Value);
             if (xNumeric > yNumeric) order      = 1;
             else if (xNumeric < yNumeric) order = -1;
+            // Debug.Log($"{x} ,{xNumeric} , {y} , {yNumeric} , {order}");
             return order;
+        }
+
+        private static bool IsStarWithNumber(string str)
+        {
+            var isDigit = str.Any(char.IsDigit);
+            if (isDigit.IsFalse()) return false;
+            if (str.Length == 0) return false;
+            var firstChar = str[..1];
+            var tryParse  = int.TryParse(firstChar , out _);
+            return tryParse;
         }
 
     #endregion
