@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using rStarUtility.Generic.TestExtensions;
 using rStarUtility.Util.Helper;
-using UnityEngine;
 
 #endregion
 
@@ -42,10 +41,12 @@ public class StringHelperTests
         strings.Add("20");
         strings.Add("10");
         strings.Add("-5");
+        strings.Add("5");
         strings.Sort(new MyCompare());
         // strings.ForEach(s => Debug.Log($"{s}"));
         var i = 0;
         strings[i++].ShouldBe("-5");
+        strings[i++].ShouldBe("5");
         strings[i++].ShouldBe("10");
         strings[i++].ShouldBe("20");
         strings[i++].ShouldBe("Test");
@@ -60,13 +61,18 @@ public class StringHelperTests
     [Test]
     public void _02_CompareString_2()
     {
-        var strings = new List<string> { "02_肉蟲","14_快蟲" , "01_幼肉蟲" , "木頭人" , "04_盾肉蟲" };
+        var strings = new List<string>
+        {
+            "03_針肉蟲" , "14_快蟲" , "02_肉蟲" , "01_幼肉蟲" ,
+            "木頭人" , "04_盾肉蟲"
+        };
         strings.Sort(new MyCompare());
-        strings.ForEach(s => Debug.Log($"{s}"));
+        // strings.ForEach(s => Debug.Log($"{s}"));
         var i = 0;
         strings[i++].ShouldBe("木頭人");
         strings[i++].ShouldBe("01_幼肉蟲");
         strings[i++].ShouldBe("02_肉蟲");
+        strings[i++].ShouldBe("03_針肉蟲");
         strings[i++].ShouldBe("04_盾肉蟲");
         strings[i++].ShouldBe("14_快蟲");
     }

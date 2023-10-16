@@ -3,6 +3,7 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 using rStarUtility.Util.Extensions.Csharp;
+using UnityEngine;
 
 #endregion
 
@@ -14,19 +15,30 @@ namespace rStarUtility.Util.Helper
 
         public static int CompareString(string x , string y)
         {
-            var order = 0;
+            var order     = 0;
+            var xIsInt    = int.TryParse(x , out var xInt);
+            var yIsInt    = int.TryParse(y , out var yInt);
+            var yIsNotInt = yIsInt.IsFalse();
+            if (xIsInt && yIsNotInt) return -1;
 
+            var xStarWithNumber = IsStarWithNumber(x);
+            var yStarWithNumber = IsStarWithNumber(y);
+            if (xStarWithNumber && yStarWithNumber) return GetNumOrder(x , y , order);
             if (x.Length > y.Length)
             {
                 order = 1;
-                var xStarWithNumber = IsStarWithNumber(x);
-                var yStarWithNumber = IsStarWithNumber(y);
-                if (xStarWithNumber && yStarWithNumber) return GetNumOrder(x , y , order);
 
                 return order;
             }
 
             if (x.Length == y.Length) return GetNumOrder(x , y , order);
+
+            if (xIsInt && yIsInt)
+            {
+                var compareInt = CompareInt(xInt , yInt);
+                Debug.Log($"{x} , {y} , {compareInt}");
+                return compareInt;
+            }
 
             return -1;
         }
@@ -34,6 +46,13 @@ namespace rStarUtility.Util.Helper
     #endregion
 
     #region Private Methods
+
+        private static int CompareInt(int xInt , int yInt)
+        {
+            if (xInt > yInt) return 1;
+            if (xInt < yInt) return -1;
+            return 0;
+        }
 
         private static int GetNumOrder(string x , string y , int order)
         {
