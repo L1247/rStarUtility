@@ -17,6 +17,11 @@ namespace rStarUtility.Util.Helper
             return Mathf.Abs(value);
         }
 
+        public static float Abs(int value)
+        {
+            return Mathf.Abs(value);
+        }
+
         public static float Clamp(float value , float min , float max)
         {
             return Mathf.Clamp(value , min , max);
