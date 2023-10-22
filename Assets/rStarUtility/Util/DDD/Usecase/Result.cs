@@ -30,9 +30,19 @@ namespace rStarUtility.Generic.Infrastructure
 
     #region Public Methods
 
+        public static Result CreateFailure(string id , string message = "")
+        {
+            return new Result(id , ExitCode.FAILURE , message);
+        }
+
         public static Result CreateInstance(string id , ExitCode exitCode , string message = "")
         {
             return new Result(id , exitCode , message);
+        }
+
+        public static Result CreateSuccess(string id , string message = "")
+        {
+            return new Result(id , ExitCode.SUCCESS , message);
         }
 
         public ExitCode GetExitCode()
