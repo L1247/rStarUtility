@@ -17,7 +17,7 @@ namespace rStarUtility.Util.Helper
             return Mathf.Abs(value);
         }
 
-        public static float Abs(int value)
+        public static int Abs(int value)
         {
             return Mathf.Abs(value);
         }
