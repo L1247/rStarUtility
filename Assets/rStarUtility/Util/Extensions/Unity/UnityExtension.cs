@@ -25,6 +25,26 @@ namespace rStarUtility.Util.Extensions.Unity
             return gameObject.activeSelf;
         }
 
+        public static Vector2 Position2(this MonoBehaviour monoBehaviour)
+        {
+            return monoBehaviour.transform.position;
+        }
+
+        public static Vector2 Position2(this GameObject gameObject)
+        {
+            return gameObject.transform.position;
+        }
+
+        public static Vector3 Position3(this MonoBehaviour monoBehaviour)
+        {
+            return monoBehaviour.transform.position;
+        }
+
+        public static Vector3 Position3(this GameObject gameObject)
+        {
+            return gameObject.transform.position;
+        }
+
         public static void SetActive(this MonoBehaviour monoBehaviour , bool value)
         {
             monoBehaviour.gameObject.SetActive(value);
