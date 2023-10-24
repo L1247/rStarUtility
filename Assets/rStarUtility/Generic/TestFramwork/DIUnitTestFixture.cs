@@ -33,6 +33,15 @@ namespace rStarUtility.Generic.TestFrameWork
 
     #endregion
 
+    #region Public Methods
+
+        public static int GetCountOfObjectInScene<T>() where T : Object
+        {
+            return GetAllObjectsInScene<T>().Length;
+        }
+
+    #endregion
+
     #region Protected Methods
 
         protected void Bind<T>()
@@ -99,11 +108,6 @@ namespace rStarUtility.Generic.TestFrameWork
         protected static T[] GetAllObjectsInScene<T>() where T : Object
         {
             return Object.FindObjectsOfType<T>();
-        }
-
-        protected static int GetCountOfObjectInScene<T>() where T : Object
-        {
-            return GetAllObjectsInScene<T>().Length;
         }
 
         protected static T GetObjectInScene<T>() where T : Object

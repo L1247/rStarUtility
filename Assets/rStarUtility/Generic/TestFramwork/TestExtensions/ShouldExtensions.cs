@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
 using rStarUtility.Generic.Infrastructure;
+using rStarUtility.Generic.TestFrameWork;
 using rStarUtility.Util.Extensions.Csharp;
+using rStarUtility.Util.Extensions.Unity;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -29,6 +31,21 @@ namespace rStarUtility.Generic.TestExtensions
         public static void CountShouldBe<T>(this IEnumerable<T> objects , int expectedCount)
         {
             objects.Count().ShouldBe(expectedCount);
+        }
+
+        public static void ShouldActive(this GameObject gameObject)
+        {
+            gameObject.IsActive().ShouldTrue();
+        }
+
+        public static void ShouldActive(this Transform transform)
+        {
+            transform.IsActive().ShouldTrue();
+        }
+
+        public static void ShouldActive(this MonoBehaviour monoBehaviour)
+        {
+            monoBehaviour.IsActive().ShouldTrue();
         }
 
         public static void ShouldBe(
@@ -64,6 +81,26 @@ namespace rStarUtility.Generic.TestExtensions
         {
             Assert.IsTrue(id.HasValue() , "id string is null or empty.");
             output.GetId().ShouldBe(id);
+        }
+
+        public static void ShouldInactive(this GameObject gameObject)
+        {
+            gameObject.IsActive().ShouldFalse();
+        }
+
+        public static void ShouldInactive(this Transform transform)
+        {
+            transform.IsActive().ShouldFalse();
+        }
+
+        public static void ShouldInactive(this MonoBehaviour monoBehaviour)
+        {
+            monoBehaviour.IsActive().ShouldFalse();
+        }
+
+        public static void ShouldSceneObjectCount<T>(int shouldCountBe) where T : Object
+        {
+            DIUnitTestFixture.GetCountOfObjectInScene<T>().ShouldBe(shouldCountBe);
         }
 
         public static void ShouldSortingLayerBe(this SpriteRenderer spriteRenderer , int order)

@@ -7,3 +7,4 @@
 1.0.9 更新Repository，直接關聯Entity類別
 1.0.10 移除 Infrastructure asmdef，合併至Runtime內，取名為DDD資料夾
 1.0.11 新增 ContainerExtensions
+1.0.12 新增 GameObject相關Extensions

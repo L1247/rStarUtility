@@ -20,6 +20,11 @@ namespace rStarUtility.Util.Extensions.Unity
             return transform.gameObject.activeSelf;
         }
 
+        public static bool IsActive(this GameObject gameObject)
+        {
+            return gameObject.activeSelf;
+        }
+
         public static void SetActive(this MonoBehaviour monoBehaviour , bool value)
         {
             monoBehaviour.gameObject.SetActive(value);
