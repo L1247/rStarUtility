@@ -8,28 +8,15 @@ namespace rStarUtility.Util
 {
     public static class UnityUtility
     {
-    #region Public Variables
+    #region Public Methods
 
-        public static bool ToggleActive(this MonoBehaviour monoBehaviour)
+        public static Sprite CreateSprite(int width , int height)
         {
-            var gameObject   = monoBehaviour.gameObject;
-            var toggleActive = !gameObject.activeInHierarchy;
-            gameObject.SetActive(toggleActive);
-            return toggleActive;
-        }
-
-        public static bool ToggleActive(this GameObject gameObject)
-        {
-            var toggleActive = !gameObject.activeInHierarchy;
-            gameObject.SetActive(toggleActive);
-            return toggleActive;
-        }
-
-        public static Sprite CreateSprite()
-        {
-            var texture = new Texture2D(32 , 32);
-            var sprite = Sprite.Create(texture , new Rect(0 , 0 , 32 , 32)
-              , new Vector2(16 , 16));
+            Contract.Require(width > 0 , $"width[{width}] <=0 ");
+            Contract.Require(height > 0 , $"height[{width}] <=0 ");
+            var texture = new Texture2D(width , height);
+            var sprite = Sprite.Create(texture , new Rect(0 , 0 , width , height) ,
+                                       new Vector2(width / 2f , height / 2f));
             return sprite;
         }
 
