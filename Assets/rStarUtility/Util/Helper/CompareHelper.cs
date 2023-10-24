@@ -3,13 +3,12 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 using rStarUtility.Util.Extensions.Csharp;
-using UnityEngine;
 
 #endregion
 
 namespace rStarUtility.Util.Helper
 {
-    public static class StringHelper
+    public static class CompareHelper
     {
     #region Public Methods
 
@@ -21,8 +20,8 @@ namespace rStarUtility.Util.Helper
             var yIsNotInt = yIsInt.IsFalse();
             if (xIsInt && yIsNotInt) return -1;
 
-            var xStarWithNumber = IsStarWithNumber(x);
-            var yStarWithNumber = IsStarWithNumber(y);
+            var xStarWithNumber = IsStartWithNumber(x);
+            var yStarWithNumber = IsStartWithNumber(y);
             if (xStarWithNumber && yStarWithNumber) return GetNumOrder(x , y , order);
             if (x.Length > y.Length)
             {
@@ -36,7 +35,7 @@ namespace rStarUtility.Util.Helper
             if (xIsInt && yIsInt)
             {
                 var compareInt = CompareInt(xInt , yInt);
-                Debug.Log($"{x} , {y} , {compareInt}");
+                // Debug.Log($"{x} , {y} , {compareInt}");
                 return compareInt;
             }
 
@@ -68,7 +67,7 @@ namespace rStarUtility.Util.Helper
             return order;
         }
 
-        private static bool IsStarWithNumber(string str)
+        private static bool IsStartWithNumber(string str)
         {
             var isDigit = str.Any(char.IsDigit);
             if (isDigit.IsFalse()) return false;

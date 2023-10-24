@@ -7,7 +7,7 @@ using rStarUtility.Util.Helper;
 
 #endregion
 
-public class StringHelperTests
+public class CompareHelperTests
 {
 #region Private Variables
 
@@ -17,7 +17,7 @@ public class StringHelperTests
 
         public int Compare(string x , string y)
         {
-            return StringHelper.CompareString(x , y);
+            return CompareHelper.CompareString(x , y);
         }
 
     #endregion
