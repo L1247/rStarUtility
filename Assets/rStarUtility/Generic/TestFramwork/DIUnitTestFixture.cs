@@ -37,12 +37,14 @@ namespace rStarUtility.Generic.TestFrameWork
 
         protected void Bind<T>()
         {
+            if (HasBinding<T>()) return;
+
             Container.Bind_IfNotBound<T>();
         }
 
         protected T Bind_And_Resolve<T>()
         {
-            return Container.Bind_And_Resolve<T>();
+            return HasBinding<T>() ? Resolve<T>() : Container.Bind_And_Resolve<T>();
         }
 
         protected T Bind_And_Resolve_From_Substitute<T>() where T : class
@@ -73,6 +75,7 @@ namespace rStarUtility.Generic.TestFrameWork
 
         protected void Bind_InterfacesAndSelfTo<T>() where T : class
         {
+            if (HasBinding<T>()) return;
             Container.Bind_InterfacesAndSelfTo<T>();
         }
 
@@ -83,6 +86,7 @@ namespace rStarUtility.Generic.TestFrameWork
 
         protected void Bind_InterfacesTo<T>() where T : class
         {
+            if (HasBinding<T>()) return;
             Container.Bind_InterfacesTo<T>();
         }
 
