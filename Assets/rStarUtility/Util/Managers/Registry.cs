@@ -1,6 +1,7 @@
 #region
 
 using System.Collections.Generic;
+using System.Linq;
 
 #endregion
 
@@ -11,6 +12,8 @@ namespace rStarUtility.Util.Managers
     #region Public Variables
 
         public IEnumerable<T> All => objs;
+
+        public int Count => All.Count();
 
     #endregion
 
