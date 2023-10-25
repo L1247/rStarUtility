@@ -25,6 +25,8 @@ namespace rStarUtility.Util.Managers
 
     #region Constructor
 
+        public Registry() { }
+
         public Registry(IEnumerable<T> ts)
         {
             objs.AddRange(ts);
