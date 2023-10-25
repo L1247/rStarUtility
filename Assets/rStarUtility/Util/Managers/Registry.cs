@@ -17,9 +17,18 @@ namespace rStarUtility.Util.Managers
 
     #endregion
 
-    #region Private Variables
+    #region Protected Variables
 
-        private readonly List<T> objs = new List<T>();
+        protected readonly List<T> objs = new List<T>();
+
+    #endregion
+
+    #region Constructor
+
+        public Registry(IEnumerable<T> ts)
+        {
+            objs.AddRange(ts);
+        }
 
     #endregion
 
