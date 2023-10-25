@@ -2,7 +2,6 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 using Zenject;
 
 #endregion
@@ -27,10 +26,7 @@ namespace rStarUtility.Util.Managers
 
     #region Constructor
 
-        public Registry()
-        {
-            Debug.Log("Registry");
-        }
+        public Registry() { }
 
         [Inject]
         public Registry(IEnumerable<T> ts)
