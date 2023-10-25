@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using rStarUtility.Util;
 using rStarUtility.Util.Extensions.Csharp;
+using Zenject;
 
 #endregion
 
@@ -34,6 +35,18 @@ namespace rStarUtility.Generic.Infrastructure
 
         protected readonly Dictionary<string , T> entities = new Dictionary<string , T>();
         protected virtual  bool                   overrideValue => false;
+
+    #endregion
+
+    #region Constructor
+
+        public Repository() { }
+
+        [Inject]
+        public Repository(IEnumerable<T> ts)
+        {
+            ts.ForEach(entity => Add(entity));
+        }
 
     #endregion
 

@@ -1,14 +1,17 @@
 #region
 
+using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using rStarUtility.Generic.Infrastructure;
 using rStarUtility.Generic.TestFrameWork;
 using rStarUtility.Util;
+using Zenject;
+using TestObj_1 = TestObj;
 
 #endregion
 
-internal class RepositoryTests : SimpleTest
+internal class RepositoryTests : DIUnitTestFixture
 {
 #region Private Variables
 
@@ -21,7 +24,17 @@ internal class RepositoryTests : SimpleTest
     #endregion
     }
 
-    private class TestObjRepository : Repository<TestObj> { }
+    private class TestObjRepository : Repository<TestObj>
+    {
+    #region Constructor
+
+        public TestObjRepository() { }
+
+        [Inject]
+        public TestObjRepository(IEnumerable<TestObj> ts) : base(ts) { }
+
+    #endregion
+    }
 
     private class TestObjRepository_OverrideValue : Repository<TestObj>
     {
@@ -132,13 +145,13 @@ internal class RepositoryTests : SimpleTest
     [Test]
     public void DeleteById_With_Success()
     {
-        AddWithNewTestObj();
-        ShouldContainIs(true);
+        Container.Bind<TestObj>().AsSingle().WithArguments(id);
+        Bind<TestObjRepository>();
 
-        var success = repository.Remove(id);
+        var success = Resolve<TestObjRepository>().Remove(id);
 
         Assert.AreEqual(true , success , "success is not equal");
-        ShouldContainIs(false);
+        Assert.AreEqual(false , Resolve<TestObjRepository>().Contains(id) , "contain is not equal");
     }
 
     [Test]
