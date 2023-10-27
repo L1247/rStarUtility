@@ -8,6 +8,13 @@ namespace rStarUtility.Generic.Infrastructure
 {
     public class Result : Output
     {
+    #region Public Variables
+
+        public bool IsFailure => GetExitCode() == ExitCode.FAILURE;
+        public bool IsSuccess => GetExitCode() == ExitCode.SUCCESS;
+
+    #endregion
+
     #region Private Variables
 
         private ExitCode exitCode;
@@ -30,19 +37,14 @@ namespace rStarUtility.Generic.Infrastructure
 
     #region Public Methods
 
-        public static Result CreateFailure(string id , string message = "")
-        {
-            return new Result(id , ExitCode.FAILURE , message);
-        }
-
         public static Result CreateInstance(string id , ExitCode exitCode , string message = "")
         {
             return new Result(id , exitCode , message);
         }
 
-        public static Result CreateSuccess(string id , string message = "")
+        public static Result Failure(string id , string message = "")
         {
-            return new Result(id , ExitCode.SUCCESS , message);
+            return new Result(id , ExitCode.FAILURE , message);
         }
 
         public ExitCode GetExitCode()
@@ -76,6 +78,11 @@ namespace rStarUtility.Generic.Infrastructure
         {
             this.message = message;
             return this;
+        }
+
+        public static Result Success(string id , string message = "")
+        {
+            return new Result(id , ExitCode.SUCCESS , message);
         }
 
     #endregion
