@@ -2,6 +2,13 @@ namespace rStarUtility.Generic.Infrastructure
 {
     public interface Output
     {
+    #region Public Variables
+
+        bool IsFailure { get; }
+        bool IsSuccess { get; }
+
+    #endregion
+
     #region Public Methods
 
         ExitCode GetExitCode();
