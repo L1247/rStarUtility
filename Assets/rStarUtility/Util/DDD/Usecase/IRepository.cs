@@ -32,8 +32,16 @@ namespace rStarUtility.Generic.Infrastructure
         /// <returns>is add succeed.</returns>
         bool Add(T newEntity);
 
-        bool           Contains(string id);
-        Optional<T>    Find(string     id);
+        bool        Contains(string id);
+        Optional<T> Find(string     id);
+
+        /// <summary>
+        ///     找不到的話應錯誤
+        /// </summary>
+        /// <param name="id"></param>
+        /// <exception cref="KeyNotFoundException">Entity exist by default , else throw KeyNotFoundException.</exception>
+        T Get(string id);
+
         IEnumerable<T> GetAll();
         bool           Remove(string id);
         void           RemoveAll();

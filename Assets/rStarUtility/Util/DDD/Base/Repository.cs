@@ -81,6 +81,13 @@ namespace rStarUtility.Generic.Infrastructure
             return new Optional<T>(contains , entity);
         }
 
+        public T Get(string id)
+        {
+            var optional = Find(id);
+            if (optional.Present.IsFalse()) throw new KeyNotFoundException($"出錯了，{GetType().Name} - 找不到Id[{id}]的物件.");
+            return optional.Value;
+        }
+
         public IEnumerable<T> GetAll()
         {
             return entities.Values;

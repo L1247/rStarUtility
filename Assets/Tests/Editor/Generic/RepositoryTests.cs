@@ -6,6 +6,7 @@ using NUnit.Framework;
 using rStarUtility.Generic.Infrastructure;
 using rStarUtility.Generic.TestFrameWork;
 using rStarUtility.Util;
+using rStarUtility.Util.Extensions.Csharp;
 using Zenject;
 using TestObj_1 = TestObj;
 
@@ -74,7 +75,7 @@ internal class RepositoryTests : DIUnitTestFixture
         var entity = new TestObj("TestObjNew");
         succeed = repo.Add(entity);
         Assert.AreEqual(true , succeed , "succeed is not equal");
-        var value = repo.Find("TestObjNew").Value;
+        var value = repo.Get("TestObjNew");
         Assert.AreEqual(entity , value , "value is not equal");
     }
 
@@ -170,6 +171,27 @@ internal class RepositoryTests : DIUnitTestFixture
 
         Assert.NotNull(foundObj , "entity is null");
         Assert.AreEqual(testObj , foundObj , "obj is not equal");
+    }
+
+    [Test(Description = "取得物件，預設情境是一定會拿到，沒有拿到應出錯")]
+    [TestCase(true , Description = "物件存在")]
+    [TestCase(false , Description = "物件不存在，丟出錯誤")]
+    public void Get_Entity(bool exist)
+    {
+        if (exist) Container.Bind<TestObj>().AsSingle().WithArguments(id);
+        repository = Bind_And_Resolve<TestObjRepository>();
+
+        if (exist.IsFalse())
+        {
+            ShouldExceptionThrown<KeyNotFoundException>(
+                    () => repository.Get(id) , $"出錯了，{nameof(TestObjRepository)} - 找不到Id[{id}]的物件.");
+        }
+        else
+        {
+            var foundObj = repository.Get(id);
+            ShouldContainIs(true);
+            Assert.NotNull(foundObj , "entity is null");
+        }
     }
 
     [Test]
