@@ -1,5 +1,6 @@
 #region
 
+using rStarUtility.Util.Extensions.Csharp;
 using UnityEngine;
 
 #endregion
@@ -92,6 +93,20 @@ namespace rStarUtility.Util.Extensions.Unity
         public static Vector3 ToVector3(this Vector2 vector2)
         {
             return vector2;
+        }
+
+        public static bool TryGetComponentInParent<T>(this Behaviour behaviour , out T t)
+        {
+            var componentInParent = behaviour.GetComponentInParent<T>();
+            t = componentInParent;
+            return componentInParent.IsNotNull();
+        }
+
+        public static bool TryGetComponentInParent<T>(this GameObject gameObject , out T t)
+        {
+            var componentInParent = gameObject.GetComponentInParent<T>();
+            t = componentInParent;
+            return componentInParent.IsNotNull();
         }
 
     #endregion
