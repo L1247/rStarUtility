@@ -10,6 +10,17 @@ namespace rStarUtility.Util.Helper
     {
     #region Public Methods
 
+        public static int GetAnimationFrameOfCurrentClip(Animator animator)
+        {
+            var clipInfo                 = animator.GetCurrentAnimatorClipInfo(0)[0];
+            var currentAnimatorStateInfo = animator.GetCurrentAnimatorStateInfo(0);
+            var clip                     = clipInfo.clip;
+            var clipFrameRate            = clip.frameRate;
+            var normalizedTime           = currentAnimatorStateInfo.normalizedTime;
+            var currentFrame             = (int)(clip.length * (normalizedTime % 1) * clipFrameRate) + 1;
+            return currentFrame;
+        }
+
         public static float GetDeltaTime(float deltaTimeOfTest)
         {
             return IsRuntime() ? GetDeltaTime() : deltaTimeOfTest;
