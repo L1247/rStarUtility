@@ -10,6 +10,17 @@ namespace rStarUtility.Util.Extensions.Unity
     {
     #region Public Methods
 
+        public static int GetAnimationFrameOfCurrentClip(this Animator animator)
+        {
+            var clipInfo                 = animator.GetCurrentAnimatorClipInfo(0)[0];
+            var currentAnimatorStateInfo = animator.GetCurrentAnimatorStateInfo(0);
+            var clip                     = clipInfo.clip;
+            var clipFrameRate            = clip.frameRate;
+            var normalizedTime           = currentAnimatorStateInfo.normalizedTime;
+            var currentFrame             = (int)(clip.length * (normalizedTime % 1) * clipFrameRate) + 1;
+            return currentFrame;
+        }
+
         public static string GetCurrentClipName(this Animator animator)
         {
             var clipInfos = animator.GetCurrentAnimatorClipInfo(0);
