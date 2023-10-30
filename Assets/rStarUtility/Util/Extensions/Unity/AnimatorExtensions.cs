@@ -17,8 +17,12 @@ namespace rStarUtility.Util.Extensions.Unity
             var clip                     = clipInfo.clip;
             var clipFrameRate            = clip.frameRate;
             var normalizedTime           = currentAnimatorStateInfo.normalizedTime;
-            var currentFrame             = (int)(clip.length * (normalizedTime % 1) * clipFrameRate) + 1;
-            return currentFrame;
+            var frameTime                = clip.length * (normalizedTime % 1);
+            var currentFrame             = (int)(frameTime * clipFrameRate) + 1;
+            var frame                    = frameTime * clipFrameRate;
+            return (int)frame + 1;
+
+            // return currentFrame;
         }
 
         public static string GetCurrentClipName(this Animator animator)
