@@ -25,5 +25,18 @@ public class UnityExtensionTests : DIUnitTestFixture
         foundCollider.ShouldBe(collider2D);
     }
 
+    [Test]
+    public void _02_TryGetComponentInChildren()
+    {
+        var gameObject = new GameObject();
+        var collider2D = gameObject.AddComponent<BoxCollider2D>();
+        var found      = collider2D.TryGetComponentInChildren<BoxCollider2D>(out var foundCollider);
+        found.ShouldBe(true);
+        foundCollider.ShouldBe(collider2D);
+        found = gameObject.TryGetComponentInChildren(out foundCollider);
+        found.ShouldBe(true);
+        foundCollider.ShouldBe(collider2D);
+    }
+
 #endregion
 }

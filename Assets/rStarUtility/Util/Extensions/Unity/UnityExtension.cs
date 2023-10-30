@@ -95,6 +95,20 @@ namespace rStarUtility.Util.Extensions.Unity
             return vector2;
         }
 
+        public static bool TryGetComponentInChildren<T>(this GameObject gameObject , out T t)
+        {
+            var componentInParent = gameObject.GetComponentInChildren<T>();
+            t = componentInParent;
+            return componentInParent.IsNotNull();
+        }
+
+        public static bool TryGetComponentInChildren<T>(this Behaviour behaviour , out T t)
+        {
+            var componentInParent = behaviour.GetComponentInChildren<T>();
+            t = componentInParent;
+            return componentInParent.IsNotNull();
+        }
+
         public static bool TryGetComponentInParent<T>(this Behaviour behaviour , out T t)
         {
             var componentInParent = behaviour.GetComponentInParent<T>();
