@@ -10,6 +10,7 @@ namespace rStarUtility.Util.Extensions.Unity
     {
     #region Public Methods
 
+        // todo: 演算法不太對，待調整與寫單元測試
         public static int GetAnimationFrameOfCurrentClip(this Animator animator)
         {
             var clipInfo                 = animator.GetCurrentAnimatorClipInfo(0)[0];
@@ -19,7 +20,7 @@ namespace rStarUtility.Util.Extensions.Unity
             var normalizedTime           = currentAnimatorStateInfo.normalizedTime;
             var frameTime                = clip.length * (normalizedTime % 1);
             var frame                    = frameTime * clipFrameRate;
-            return Mathf.RoundToInt(frame);
+            return (int)frame + 1;
         }
 
         public static string GetCurrentClipName(this Animator animator)
