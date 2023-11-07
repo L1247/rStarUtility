@@ -5,6 +5,7 @@
 1.0.7 測試支持更多DI方法
 1.0.8 新增更多的擴充方法
 1.0.9 更新Repository，直接關聯Entity類別
-1.0.10 移除 Infrastructure asmdef，合併至Runtime內，取名為DDD資料夾
-1.0.11 新增 ContainerExtensions
-1.0.12 新增 GameObject相關Extensions
+1.0.10 移除Infrastructure asmdef，合併至Runtime內，取名為DDD資料夾
+1.0.11 新增ContainerExtensions
+1.0.12 新增GameObject相關Extensions
+1.0.13 新增Action Extension、修正ObjectExtension檢查，將Unity的物件納入，新增元件AutoDestroyWhenAnimationEnd
