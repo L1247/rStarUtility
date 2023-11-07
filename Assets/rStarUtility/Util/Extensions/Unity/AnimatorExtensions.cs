@@ -1,5 +1,6 @@
 #region
 
+using rStarUtility.Util.Extensions.Csharp;
 using UnityEngine;
 
 #endregion
@@ -23,8 +24,14 @@ namespace rStarUtility.Util.Extensions.Unity
             return (int)frame + 1;
         }
 
+        /// <summary>
+        ///     if invalid case return string.Empty.
+        /// </summary>
+        /// <param name="animator"></param>
+        /// <returns>if invalid case return string.Empty.</returns>
         public static string GetCurrentClipName(this Animator animator)
         {
+            if (animator.IsRuntimeAnimatorNull()) return string.Empty;
             var clipInfos = animator.GetCurrentAnimatorClipInfo(0);
             if (clipInfos.Length == 0) return string.Empty;
             var clip = clipInfos[0].clip;
@@ -35,6 +42,7 @@ namespace rStarUtility.Util.Extensions.Unity
 
         public static float GetNormalizedTime(this Animator animator)
         {
+            if (animator.IsRuntimeAnimatorNull()) return 0f;
             var normalizedTime = animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
             return normalizedTime;
         }
@@ -49,6 +57,7 @@ namespace rStarUtility.Util.Extensions.Unity
 
         public static bool IsPlayEnding(this Animator animator)
         {
+            if (animator.IsRuntimeAnimatorNull()) return false;
             var animationPlayEnding = animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1;
             return animationPlayEnding;
         }
@@ -57,6 +66,11 @@ namespace rStarUtility.Util.Extensions.Unity
         {
             var isPlayingAnimation = GetCurrentClipName(animator) == animationName;
             return isPlayingAnimation;
+        }
+
+        public static bool IsRuntimeAnimatorNull(this Animator animator)
+        {
+            return animator.runtimeAnimatorController.IsNull();
         }
 
     #endregion
