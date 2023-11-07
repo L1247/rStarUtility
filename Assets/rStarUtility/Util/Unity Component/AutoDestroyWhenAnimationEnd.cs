@@ -25,7 +25,7 @@ namespace rStarUtility.Util.Component
 
         private void Awake()
         {
-            animator ??= GetComponent<Animator>();
+            animator = animator.AssignWithGetComponent<Animator>(gameObject);
             Assert.IsNotNull(animator , "Invalid case , cause the animator is null or empty.");
             Assert.IsTrue(animationName.HasValue() , "animationName string is null or empty.");
         }

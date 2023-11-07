@@ -11,6 +11,11 @@ namespace rStarUtility.Util.Extensions.Unity
     {
     #region Public Methods
 
+        public static T AssignWithGetComponent<T>(this Behaviour monoBehaviour , GameObject componentInGameObject)
+        {
+            return monoBehaviour.IsNull() ? componentInGameObject.GetComponent<T>() : default;
+        }
+
         public static bool IsActive(this MonoBehaviour monoBehaviour)
         {
             return monoBehaviour.gameObject.activeSelf;
