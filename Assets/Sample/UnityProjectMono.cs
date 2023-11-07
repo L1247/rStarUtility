@@ -1,5 +1,6 @@
 #region
 
+using rStarUtility.Util;
 using rStarUtility.Util.Unity;
 using UnityEngine;
 
@@ -12,10 +13,10 @@ namespace Sample
     #region Private Variables
 
         [SerializeField]
-        private int fps;
+        private Optional<int> fps;
 
         [SerializeField]
-        private int vSyncCount;
+        private Optional<int> vSyncCount;
 
     #endregion
 
@@ -23,7 +24,9 @@ namespace Sample
 
         private void Awake()
         {
-            UnityProject.New().WithFPS(fps).WithVSync(vSyncCount).ApplySettings();
+            var unityProject = UnityProject.New();
+            if (fps.Present) unityProject.WithFPS(fps.Value).ApplySettings();
+            if (vSyncCount.Present) unityProject.WithVSync(vSyncCount.Value).ApplySettings();
             Debug.Log($"vSyncCount: {QualitySettings.vSyncCount}");
         }
 
