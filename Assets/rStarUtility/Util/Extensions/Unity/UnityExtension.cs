@@ -11,9 +11,9 @@ namespace rStarUtility.Util.Extensions.Unity
     {
     #region Public Methods
 
-        public static T AssignWithGetComponent<T>(this Behaviour monoBehaviour , GameObject componentInGameObject)
+        public static T AssignWithGetComponent<T>(this Behaviour monoBehaviour , GameObject componentInGameObject) where T : Behaviour
         {
-            return monoBehaviour.IsNull() ? componentInGameObject.GetComponent<T>() : default;
+            return monoBehaviour.IsNull() ? componentInGameObject.GetComponent<T>() : (T)monoBehaviour;
         }
 
         public static bool IsActive(this MonoBehaviour monoBehaviour)
