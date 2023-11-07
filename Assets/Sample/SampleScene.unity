@@ -643,8 +643,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1839800905}
   - component: {fileID: 1839800904}
+  - component: {fileID: 1839800906}
   m_Layer: 0
-  m_Name: TestMono
+  m_Name: ActionMono
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -662,7 +663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 065052c0523d412daa6c6529196acaab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  newObj: {fileID: 1839800906}
 --- !u!4 &1839800905
 Transform:
   m_ObjectHideFlags: 0
@@ -678,3 +679,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1839800906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839800903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e26f43205894743b7bd98e88ff1254f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -5,23 +5,22 @@ using UnityEngine;
 
 #endregion
 
-namespace Sample
+namespace Sample.ActionExtension
 {
-    public class TestMono : MonoBehaviour
+    public class ActionMono : MonoBehaviour
     {
     #region Private Variables
 
         [SerializeField]
-        private Animator animator;
+        private NewObj newObj;
 
     #endregion
 
     #region Unity events
 
-        private void Start()
+        private void Update()
         {
-            Debug.Log($"{animator.IsNull()}");
-            Debug.Log($"{animator == null}");
+            newObj.Opt(_ => _.Function());
         }
 
     #endregion
