@@ -26,6 +26,7 @@ namespace rStarUtility.Util.Unity
 
         private UnityProject()
         {
+            // 【C#】那些因語系而產生的轉換BUG: https://teafatesanya.blog.fc2.com/blog-entry-85.html
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
         }
 
