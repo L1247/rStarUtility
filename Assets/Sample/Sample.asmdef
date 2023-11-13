@@ -2,10 +2,8 @@
     "name": "Sample",
     "rootNamespace": "",
     "references": [
-        "rStarUtility.Util.Runtime",
         "Zenject",
-        "rStarUtility.Generic.Installer",
-        "rStarUtility.Generic.Infrastructure"
+        "rStarUtility.Util.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
