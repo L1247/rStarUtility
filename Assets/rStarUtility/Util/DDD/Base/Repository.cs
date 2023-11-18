@@ -41,6 +41,8 @@ namespace rStarUtility.Generic.Infrastructure
 
     #region Constructor
 
+        public Repository() { }
+
         [Inject]
         public Repository(List<T> entities)
         {
