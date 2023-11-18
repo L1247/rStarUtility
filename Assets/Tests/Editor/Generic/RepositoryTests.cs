@@ -29,7 +29,7 @@ internal class RepositoryTests : DIUnitTestFixture
     {
     #region Constructor
 
-        public TestObjRepository(List<TestObj> ts) : base(ts) { }
+        public TestObjRepository(List<TestObj> entities) : base(entities) { }
 
     #endregion
     }
@@ -44,7 +44,7 @@ internal class RepositoryTests : DIUnitTestFixture
 
     #region Constructor
 
-        public TestObjRepository_OverrideValue(List<TestObj> ts) : base(ts) { }
+        public TestObjRepository_OverrideValue(List<TestObj> entities) : base(entities) { }
 
     #endregion
     }

@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using rStarUtility.Util;
 using rStarUtility.Util.Extensions.Csharp;
+using UnityEngine;
 
 #endregion
 
@@ -39,9 +40,18 @@ namespace rStarUtility.Generic.Infrastructure
 
     #region Constructor
 
-        protected Repository(List<T> ts)
+        protected Repository(List<T> entities)
         {
-            ts.ForEach(entity => Add(entity));
+            foreach (var entity in entities)
+            {
+                if (entity.Id.HasValue().IsFalse())
+                {
+                    Debug.LogError($"發生錯誤，資料有問題；從[{GetType().Name}]，資料為[{entity.Id}]");
+                    continue;
+                }
+
+                Add(entity);
+            }
         }
 
     #endregion
