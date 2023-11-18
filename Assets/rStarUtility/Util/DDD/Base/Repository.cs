@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using rStarUtility.Util;
 using rStarUtility.Util.Extensions.Csharp;
 using UnityEngine;
+using Zenject;
 
 #endregion
 
@@ -42,6 +43,7 @@ namespace rStarUtility.Generic.Infrastructure
 
         public Repository() { }
 
+        [Inject]
         protected Repository(List<T> entities)
         {
             foreach (var entity in entities)
