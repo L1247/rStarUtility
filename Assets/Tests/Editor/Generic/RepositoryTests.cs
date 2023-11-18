@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using rStarUtility.Generic.Infrastructure;
+using rStarUtility.Generic.TestExtensions;
 using rStarUtility.Generic.TestFrameWork;
 using rStarUtility.Util;
 using rStarUtility.Util.Extensions.Csharp;
-using Zenject;
 using TestObj_1 = TestObj;
 
 #endregion
@@ -29,10 +29,7 @@ internal class RepositoryTests : DIUnitTestFixture
     {
     #region Constructor
 
-        public TestObjRepository() { }
-
-        [Inject]
-        public TestObjRepository(IEnumerable<TestObj> ts) : base(ts) { }
+        public TestObjRepository(List<TestObj> ts) : base(ts) { }
 
     #endregion
     }
@@ -42,6 +39,12 @@ internal class RepositoryTests : DIUnitTestFixture
     #region Protected Variables
 
         protected override bool overrideValue => true;
+
+    #endregion
+
+    #region Constructor
+
+        public TestObjRepository_OverrideValue(List<TestObj> ts) : base(ts) { }
 
     #endregion
     }
@@ -56,7 +59,7 @@ internal class RepositoryTests : DIUnitTestFixture
     [SetUp]
     public void SetUp()
     {
-        repository = new TestObjRepository();
+        repository = new TestObjRepository(new List<TestObj>());
     }
 
 #endregion
@@ -66,7 +69,7 @@ internal class RepositoryTests : DIUnitTestFixture
     [Test(Description = "新增Entity")]
     public void Add()
     {
-        var repo    = new Repository<TestObj>();
+        var repo    = Bind_And_Resolve<TestObjRepository>();
         var testObj = new TestObj("TestObj");
         repo.Add(testObj);
 
@@ -82,7 +85,7 @@ internal class RepositoryTests : DIUnitTestFixture
     [Test]
     public void Add_With_Same_Id_And_Another_Entity()
     {
-        repository = new TestObjRepository_OverrideValue();
+        repository = Bind_And_Resolve<TestObjRepository_OverrideValue>();
         AddWithNewTestObj();
         ShouldContainIs(true);
         var testObj = new TestObj(id);
@@ -96,6 +99,15 @@ internal class RepositoryTests : DIUnitTestFixture
     {
         AddWithNewTestObj();
         ShouldContainIs(true);
+    }
+
+    [Test]
+    public void Bind_Entities_And_Resolve()
+    {
+        Bind_Instance(new List<TestObj>() { new TestObj(id) });
+        Bind<TestObjRepository>();
+
+        Resolve<TestObjRepository>().Count.ShouldBe(1);
     }
 
     [Test]

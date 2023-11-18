@@ -3,7 +3,6 @@
 using System.Collections.Generic;
 using rStarUtility.Util;
 using rStarUtility.Util.Extensions.Csharp;
-using Zenject;
 
 #endregion
 
@@ -40,10 +39,7 @@ namespace rStarUtility.Generic.Infrastructure
 
     #region Constructor
 
-        public Repository() { }
-
-        [Inject]
-        public Repository(IEnumerable<T> ts)
+        protected Repository(List<T> ts)
         {
             ts.ForEach(entity => Add(entity));
         }
