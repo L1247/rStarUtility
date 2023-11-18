@@ -42,7 +42,7 @@ namespace rStarUtility.Generic.Infrastructure
     #region Constructor
 
         [Inject]
-        protected Repository(List<T> entities)
+        public Repository(List<T> entities)
         {
             foreach (var entity in entities)
             {
