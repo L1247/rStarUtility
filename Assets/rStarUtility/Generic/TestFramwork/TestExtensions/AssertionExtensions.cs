@@ -25,9 +25,15 @@ namespace rStarUtility.Generic.TestExtensions
         }
 
         public static AndConstraint<NumericAssertions<float>> ShouldBe(
+                this float actualValue , float expected , float precision , string because = "" , params object[] becauseArgs)
+        {
+            return actualValue.Should().BeApproximately(expected , precision , because , becauseArgs);
+        }
+
+        public static AndConstraint<NumericAssertions<float>> ShouldBe(
                 this float actualValue , float expected , string because = "" , params object[] becauseArgs)
         {
-            return actualValue.Should().BeApproximately(expected , 0.01f , because , becauseArgs);
+            return actualValue.ShouldBe(0.01f , expected , because , becauseArgs);
         }
 
         public static AndConstraint<ObjectAssertions> ShouldBeEquivalentTo(
