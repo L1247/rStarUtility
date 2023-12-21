@@ -33,7 +33,7 @@ namespace rStarUtility.Generic.TestExtensions
         public static AndConstraint<NumericAssertions<float>> ShouldBe(
                 this float actualValue , float expected , string because = "" , params object[] becauseArgs)
         {
-            return actualValue.ShouldBe(0.01f , expected , because , becauseArgs);
+            return actualValue.ShouldBe(expected , 0.01f , because , becauseArgs);
         }
 
         public static AndConstraint<ObjectAssertions> ShouldBeEquivalentTo(
