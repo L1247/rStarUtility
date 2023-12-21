@@ -16,7 +16,7 @@ namespace rStarUtility.Generic.TestFrameWork
             return Ulid.NewUlid().ToString();
         }
 
-        protected Scenario Scenario(string annotation)
+        protected Scenario Scenario(string annotation = "")
         {
             return new Scenario();
         }
