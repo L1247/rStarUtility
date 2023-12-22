@@ -38,6 +38,15 @@ namespace rStarUtility.Util
 
     #endregion
 
+    #region Constructor
+
+        public RandomizerRuntime(int chance)
+        {
+            SetChance(chance);
+        }
+
+    #endregion
+
     #region Public Methods
 
         public void SetChance(int chance)
@@ -45,10 +54,6 @@ namespace rStarUtility.Util
             this.chance = chance;
         }
 
-        public RandomizerRuntime()
-        {
-            
-        }
     #endregion
     }
 }
