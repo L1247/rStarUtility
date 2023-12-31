@@ -18,6 +18,16 @@ namespace rStarUtility.Util.Extensions.Csharp
             else dictionary.Add(key , value);
         }
 
+        public static TValue GetOrAdd<TKey , TValue>(
+                this Dictionary<TKey , TValue> dictionary ,
+                TKey                           key , TValue value)
+        {
+            var contains = dictionary.ContainsKey(key);
+            if (contains) return dictionary[key];
+            dictionary.Add(key , value);
+            return value;
+        }
+
         public static TValue GetOrReturn<TKey , TValue>(
                 this Dictionary<TKey , TValue> dictionary ,
                 TKey                           key , TValue value)
