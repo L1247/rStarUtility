@@ -21,6 +21,25 @@ namespace rStarUtility.Util
         public static bool UseFake;
         public static int  NextRandomIndex;
 
+    #endregion
+
+    #region Public Methods
+
+        public static T GetRandomData<T>(List<T> datas)
+        {
+            var datasCount = datas.Count;
+            Assert.AreNotEqual(0 , datasCount , "count can not be zero");
+            if (datasCount == 0) return default;
+
+            var randomIndex = UseFake ? NextRandomIndex : Random.Range(0 , datasCount);
+            return datas[randomIndex];
+        }
+
+        public static int GetRandomIntValue()
+        {
+            return GetRandomValue(-1 , 1);
+        }
+
         /// <summary>
         ///     Return a random integer number between min [inclusive] and max [inclusive] (Read Only)
         /// </summary>
@@ -33,9 +52,16 @@ namespace rStarUtility.Util
             return GetRPNGResult(randomValue , rate);
         }
 
-        public static bool GetRPNGResult(int randomValue , int rate)
+        /// <summary>
+        ///     Return a random float number between min [inclusive] and max [inclusive] (Read Only)
+        /// </summary>
+        /// <param name="rate"></param>
+        /// <param name="max"></param>
+        /// <returns></returns>
+        public static bool GetRandomResult(float rate , float max)
         {
-            return randomValue <= rate;
+            var randomValue = GetRandomValue(max);
+            return GetRPNGResult(randomValue , rate);
         }
 
         /// <summary>
@@ -46,6 +72,21 @@ namespace rStarUtility.Util
         public static int GetRandomValue(int max)
         {
             return GetRandomValue(1 , max);
+        }
+
+        /// <summary>
+        ///     start from 1 to max (include)
+        /// </summary>
+        /// <param name="max">include</param>
+        /// <returns></returns>
+        public static float GetRandomValue(float max)
+        {
+            return GetRandomValue(1 , max);
+        }
+
+        public static float GetRandomValue()
+        {
+            return GetRandomValue(-1f , 1f);
         }
 
         /// <summary>
@@ -62,14 +103,18 @@ namespace rStarUtility.Util
             return randomValue;
         }
 
-        public static T GetRandomData<T>(List<T> datas)
+        /// <summary>
+        ///     return min to max
+        /// </summary>
+        /// <param name="min">include</param>
+        /// <param name="max">include</param>
+        public static float GetRandomValue(float min , float max)
         {
-            var datasCount = datas.Count;
-            Assert.AreNotEqual(0 , datasCount , "count can not be zero");
-            if (datasCount == 0) return default;
-
-            var randomIndex = UseFake ? NextRandomIndex : Random.Range(0 , datasCount);
-            return datas[randomIndex];
+            if (UseFake) return NextRandomIndex;
+            var minValue    = min >= max ? max : min;
+            var maxValue    = max;
+            var randomValue = Random.Range(minValue , maxValue);
+            return randomValue;
         }
 
         /// <summary>
@@ -83,15 +128,13 @@ namespace rStarUtility.Util
         public static T GetRoundTableValue<T>(List<RoundTable<T>> roundTables , int weightValue = DefaultValue)
         {
             var totalWeight = roundTables.Sum(table => table.Weight);
-            if (roundTables == null)
-                throw new Exception("roundTables count is null");
-            if (roundTables.Count == 0)
-                throw new Exception("roundTables count is 0");
+            if (roundTables == null) throw new Exception("roundTables count is null");
+            if (roundTables.Count == 0) throw new Exception("roundTables count is 0");
             if (weightValue <= 0 && weightValue != DefaultValue)
                 throw new Exception($"Wrong weight value small than min value, {weightValue}");
             if (weightValue > totalWeight)
                 throw new Exception(
-                    $"Wrong weight value big than max value, {weightValue} , Total weight is {totalWeight}");
+                        $"Wrong weight value big than max value, {weightValue} , Total weight is {totalWeight}");
             // Is normal path or unit test path
             var randomWeightValue = weightValue == DefaultValue ? GetRandomValue(totalWeight) : weightValue;
             T   result            = default;
@@ -102,8 +145,8 @@ namespace rStarUtility.Util
                 var weight         = roundTable.Weight;
                 var subtractResult = randomWeightValue - weight;
                 if (Log)
-                    Debug.Log($"index: {index} , weight : {weight} , value : {roundTable.Value} " +
-                              $"totalWeight : {randomWeightValue} , Subtract result : {subtractResult}");
+                    Debug.Log($"index: {index} , weight : {weight} , value : {roundTable.Value} "
+                            + $"totalWeight : {randomWeightValue} , Subtract result : {subtractResult}");
                 randomWeightValue = subtractResult;
                 if (randomWeightValue <= 0)
                 {
@@ -113,6 +156,16 @@ namespace rStarUtility.Util
             }
 
             return result;
+        }
+
+        public static bool GetRPNGResult(int randomValue , int rate)
+        {
+            return randomValue <= rate;
+        }
+
+        public static bool GetRPNGResult(float randomValue , float rate)
+        {
+            return randomValue <= rate;
         }
 
     #endregion
