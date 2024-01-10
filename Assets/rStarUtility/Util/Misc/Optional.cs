@@ -42,7 +42,7 @@ namespace rStarUtility.Util
 
         public Optional(T value)
         {
-            present    = false;
+            present    = true;
             this.value = value;
         }
 
