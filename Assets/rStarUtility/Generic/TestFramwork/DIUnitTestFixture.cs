@@ -98,10 +98,16 @@ namespace rStarUtility.Generic.TestFrameWork
             Container.Bind_InterfacesTo<T>();
         }
 
-        protected T Bind_InterfacesTo_And_Resolve<T>() where T : class
+        /// <summary>
+        ///     Binding type of T , Resolve type of R
+        /// </summary>
+        /// <typeparam name="T">Implement class</typeparam>
+        /// <typeparam name="R">Contract type</typeparam>
+        /// <returns></returns>
+        protected R Bind_InterfacesTo_And_Resolve<T , R>() where T : class where R : class
         {
             Bind_InterfacesTo<T>();
-            return Resolve<T>();
+            return Resolve<R>();
         }
 
         protected T Bind_Mock_And_Resolve<T>() where T : class
