@@ -30,6 +30,7 @@ namespace rStarUtility.Util.Extensions.Zenject
 
         public static void Bind_IfNotBound<T>(this DiContainer container)
         {
+            if (container.HasBinding<T>()) return;
             container.Bind<T>().AsSingle().IfNotBound();
         }
 
