@@ -15,9 +15,10 @@ namespace rStarUtility.Util.Extensions.DDD
             Contract.Require(exitCode == ExitCode.FAILURE , $"exitCode[{exitCode}] is not ExitCode.FAILURE");
         }
 
-        public static void RequireFailure(this Output output)
+        public static Output RequireFailure(this Output output)
         {
             output.GetExitCode().RequireFailure();
+            return output;
         }
 
         public static void RequireSuccess(this ExitCode exitCode)
@@ -25,9 +26,10 @@ namespace rStarUtility.Util.Extensions.DDD
             Contract.Require(exitCode == ExitCode.SUCCESS , $"exitCode[{exitCode}] is not ExitCode.SUCCESS");
         }
 
-        public static void RequireSuccess(this Output output)
+        public static Output RequireSuccess(this Output output)
         {
             output.GetExitCode().RequireSuccess();
+            return output;
         }
 
     #endregion

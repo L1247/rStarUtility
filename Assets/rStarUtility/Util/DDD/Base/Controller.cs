@@ -25,6 +25,11 @@ namespace rStarUtility.Generic.Infrastructure
             return contains;
         }
 
+        protected void EnsureContains(string id , bool contain = true)
+        {
+            Contract.Ensure(Contains(id) == contain , $"entity is {id} no exist.");
+        }
+
         protected Optional<E> FindEntity(string id)
         {
             RequireId(id);
@@ -39,9 +44,9 @@ namespace rStarUtility.Generic.Infrastructure
             return optional.Value;
         }
 
-        protected void RequireContains(string id)
+        protected void RequireContains(string id , bool contain = true)
         {
-            Contract.Require(Contains(id) , $"entity is {id} no exist.");
+            Contract.Require(Contains(id) == contain , $"entity is {id} no exist.");
         }
 
         protected void RequireId(string id)
