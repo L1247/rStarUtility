@@ -33,6 +33,11 @@ namespace rStarUtility.Util.Helper
             Destroy(monoBehaviour.gameObject);
         }
 
+        public static void Destroy(Transform transform)
+        {
+            Destroy(transform.gameObject);
+        }
+
         public static void SetTimeScale(float timeScale)
         {
             Time.timeScale = timeScale;
