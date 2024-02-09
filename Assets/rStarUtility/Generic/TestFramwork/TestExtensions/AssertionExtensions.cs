@@ -3,6 +3,7 @@
 using FluentAssertions;
 using FluentAssertions.Numeric;
 using FluentAssertions.Primitives;
+using rStarUtility.Util.Extensions.Csharp;
 
 #endregion
 
@@ -42,10 +43,11 @@ namespace rStarUtility.Generic.TestExtensions
             return actualValue.Should().BeEquivalentTo(expected , because , becauseArgs);
         }
 
-        public static AndConstraint<ObjectAssertions> ShouldBeNull(
+        public static AndConstraint<BooleanAssertions> ShouldBeNull(
                 this object actualValue , string because = "" , params object[] becauseArgs)
         {
-            return actualValue.Should().BeNull(because , becauseArgs);
+            return actualValue.IsNull().ShouldTrue(because , becauseArgs);
+            // return actualValue.Should().BeNull(because , becauseArgs);
         }
 
         public static AndConstraint<BooleanAssertions> ShouldFalse(
@@ -60,10 +62,11 @@ namespace rStarUtility.Generic.TestExtensions
             return actualValue.Should().NotBe(expected , because , becauseArgs);
         }
 
-        public static AndConstraint<ObjectAssertions> ShouldNotBeNull(
+        public static AndConstraint<BooleanAssertions> ShouldNotBeNull(
                 this object actualValue , string because = "" , params object[] becauseArgs)
         {
-            return actualValue.Should().NotBeNull(because , becauseArgs);
+            return actualValue.IsNotNull().ShouldTrue(because , becauseArgs);
+            // return actualValue.Should().NotBeNull(because , becauseArgs);
         }
 
         public static AndConstraint<BooleanAssertions> ShouldTrue(
