@@ -1,7 +1,8 @@
 #region
 
-using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
+using rStarUtility.Util.Extensions.Csharp;
 using UnityEngine;
 
 #endregion
@@ -18,12 +19,13 @@ namespace rStarUtility.Util.Helper
         /// <param name="position">Center position</param>
         /// <param name="size">cast size</param>
         /// <returns></returns>
-        public static IEnumerable BoxCastAll<T>(Vector2 position , Vector2 size)
+        public static IEnumerable<T> BoxCastAll<T>(Vector2 position , Vector2 size)
         {
             var collider2Ds =
                     Physics2D.BoxCastAll(position , size , 0 ,
                                          Vector2.zero , 0)
-                             .Where(hit2D => hit2D.collider.TryGetComponent<T>(out _));
+                             .Select(hit2D => hit2D.collider.GetComponent<T>())
+                             .Where(damageable => damageable.IsNotNull());
             return collider2Ds;
         }
 
@@ -33,11 +35,12 @@ namespace rStarUtility.Util.Helper
         /// <param name="position">Center position</param>
         /// <param name="size">cast size</param>
         /// <returns></returns>
-        public static IEnumerable OverlapBoxAll<T>(Vector2 position , Vector2 size)
+        public static IEnumerable<T> OverlapBoxAll<T>(Vector2 position , Vector2 size)
         {
             var collider2Ds =
                     Physics2D.OverlapBoxAll(position , size , 0)
-                             .Where(collider2D => collider2D.TryGetComponent<T>(out _));
+                             .Select(collider2D => collider2D.GetComponent<T>())
+                             .Where(damageable => damageable.IsNotNull());
             return collider2Ds;
         }
 
