@@ -10,4 +10,5 @@
 1.0.12 新增GameObject相關Extensions
 1.0.13 新增Action Extension、修正ObjectExtension檢查，將Unity的物件納入，新增元件AutoDestroyWhenAnimationEnd
 1.0.14 新增UnityProject類別，用於初始化Unity專案的細節
+1.0.15 新增一些Helper，GUIDHelper、CastHelper
 
