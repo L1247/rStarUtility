@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using rStarUtility.Util.Extensions.Csharp;
 using UnityEditor;
 using UnityEditor.Animations;
 using UnityEngine;
@@ -336,6 +337,16 @@ namespace rStarUtility.Util.Editor
             t = AssetDatabase.LoadAssetAtPath<T>(path);
         #endif
             return t;
+        }
+
+        public static void OpenAsset(string assetPath , bool selectAsset = false)
+        {
+            var asset = AssetDatabase.LoadMainAssetAtPath(assetPath);
+            if (asset.IsNull()) return;
+            var prefabType = PrefabUtility.GetPrefabType(asset);
+            if (prefabType == PrefabType.Prefab) AssetDatabase.OpenAsset(asset);
+            if (selectAsset.IsFalse()) return;
+            Selection.activeObject = asset;
         }
 
         public static void PingObject(Object instance)

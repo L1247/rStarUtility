@@ -3,7 +3,8 @@
     "rootNamespace": "",
     "references": [
         "Zenject",
-        "rStarUtility.Util.Runtime"
+        "rStarUtility.Util.Runtime",
+        "rStarUtility.Util.Editor"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

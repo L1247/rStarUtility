@@ -1,6 +1,7 @@
 #region
 
 using rStarUtility.Util.Component;
+using rStarUtility.Util.Editor;
 using UnityEngine;
 
 #endregion
@@ -29,6 +30,16 @@ public class SampleBehaviourScript : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space)) Instantiate(collider , Random.insideUnitSphere , Quaternion.identity , transform);
+    }
+
+#endregion
+
+#region Private Methods
+
+    [ContextMenu("OpenPrefab")]
+    private void OpenPrefab()
+    {
+        CustomEditorUtility.OpenAsset("Assets/Sample/Prefabs/GameObject.prefab" , true);
     }
 
 #endregion
