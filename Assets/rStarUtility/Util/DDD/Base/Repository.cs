@@ -2,6 +2,7 @@
 
 using System.Collections.Generic;
 using rStarUtility.Util;
+using rStarUtility.Util.DDD.UseCase;
 using rStarUtility.Util.Extensions.Csharp;
 using UnityEngine;
 using Zenject;

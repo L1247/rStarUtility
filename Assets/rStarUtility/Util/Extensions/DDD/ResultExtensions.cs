@@ -1,6 +1,6 @@
 #region
 
-using rStarUtility.Generic.Infrastructure;
+using rStarUtility.Util.DDD.UseCase;
 
 #endregion
 

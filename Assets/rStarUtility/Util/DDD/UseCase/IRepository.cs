@@ -1,11 +1,10 @@
 #region
 
 using System.Collections.Generic;
-using rStarUtility.Util;
 
 #endregion
 
-namespace rStarUtility.Generic.Infrastructure
+namespace rStarUtility.Util.DDD.UseCase
 {
     /// <summary>
     ///     未來可實作Peer儲存用

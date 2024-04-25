@@ -1,4 +1,4 @@
-namespace rStarUtility.Generic.Infrastructure
+namespace rStarUtility.Util.DDD.UseCase
 {
     public enum ExitCode
     {

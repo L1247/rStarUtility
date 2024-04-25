@@ -3,8 +3,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using rStarUtility.Generic.Infrastructure;
 using rStarUtility.Generic.TestFrameWork;
+using rStarUtility.Util.DDD.UseCase;
 using rStarUtility.Util.Extensions.Csharp;
 using rStarUtility.Util.Extensions.Unity;
 using UnityEngine;

@@ -7,6 +7,7 @@ using rStarUtility.Generic.Infrastructure;
 using rStarUtility.Generic.TestExtensions;
 using rStarUtility.Generic.TestFrameWork;
 using rStarUtility.Util;
+using rStarUtility.Util.DDD.UseCase;
 using rStarUtility.Util.Extensions.Csharp;
 using TestObj_1 = TestObj;
 
@@ -163,7 +164,7 @@ internal class RepositoryTests : DIUnitTestFixture
 
         var success = Resolve<TestObjRepository>().Remove(id);
 
-        Assert.AreEqual(true , success , "success is not equal");
+        Assert.AreEqual(true ,  success ,                                   "success is not equal");
         Assert.AreEqual(false , Resolve<TestObjRepository>().Contains(id) , "contain is not equal");
     }
 
@@ -186,7 +187,7 @@ internal class RepositoryTests : DIUnitTestFixture
     }
 
     [Test(Description = "取得物件，預設情境是一定會拿到，沒有拿到應出錯")]
-    [TestCase(true , Description = "物件存在")]
+    [TestCase(true ,  Description = "物件存在")]
     [TestCase(false , Description = "物件不存在，丟出錯誤")]
     public void Get_Entity(bool exist)
     {
@@ -239,8 +240,8 @@ internal class RepositoryTests : DIUnitTestFixture
 
         var optional = repository.Find(id);
 
-        Assert.AreEqual(true , optional.Present , "exist is not equal");
-        Assert.AreEqual(testObj , optional.Value , "aggregate is not equal");
+        Assert.AreEqual(true ,    optional.Present , "exist is not equal");
+        Assert.AreEqual(testObj , optional.Value ,   "aggregate is not equal");
     }
 
     [Test]
@@ -251,7 +252,7 @@ internal class RepositoryTests : DIUnitTestFixture
         var optional = repository.Find(id);
 
         Assert.AreEqual(false , optional.Present , "exist is not equal");
-        Assert.AreEqual(null , optional.Value , "aggregate is not equal");
+        Assert.AreEqual(null ,  optional.Value ,   "aggregate is not equal");
     }
 
     [Test]
@@ -260,7 +261,7 @@ internal class RepositoryTests : DIUnitTestFixture
         AddWithNewTestObj();
         var keys  = repository.Ids.ToList();
         var count = keys.Count;
-        Assert.AreEqual(1 , count , "count is not equal");
+        Assert.AreEqual(1 ,  count ,   "count is not equal");
         Assert.AreEqual(id , keys[0] , "key is not equal");
     }
 

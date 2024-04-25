@@ -1,12 +1,10 @@
 #region
 
-using rStarUtility.Util;
-
 #endregion
 
-namespace rStarUtility.Generic.Infrastructure
+namespace rStarUtility.Util.DDD.UseCase
 {
-    public class Result : Output
+    public class CqrsOutput : Output
     {
     #region Public Variables
 
@@ -25,7 +23,7 @@ namespace rStarUtility.Generic.Infrastructure
 
     #region Constructor
 
-        protected Result(string id , ExitCode exitCode , string message = "")
+        protected CqrsOutput(string id , ExitCode exitCode , string message = "")
         {
             Contract.Require(exitCode != ExitCode.NONE , "can't set to ExitCode.NONE");
             this.exitCode = exitCode;
@@ -37,14 +35,14 @@ namespace rStarUtility.Generic.Infrastructure
 
     #region Public Methods
 
-        public static Result CreateInstance(string id , ExitCode exitCode , string message = "")
+        public static CqrsOutput CreateInstance(string id , ExitCode exitCode , string message = "")
         {
-            return new Result(id , exitCode , message);
+            return new CqrsOutput(id , exitCode , message);
         }
 
-        public static Result Failure(string id , string message = "")
+        public static CqrsOutput Failure(string id , string message = "")
         {
-            return new Result(id , ExitCode.FAILURE , message);
+            return new CqrsOutput(id , ExitCode.FAILURE , message);
         }
 
         public ExitCode GetExitCode()
@@ -80,9 +78,9 @@ namespace rStarUtility.Generic.Infrastructure
             return this;
         }
 
-        public static Result Success(string id , string message = "")
+        public static CqrsOutput Success(string id , string message = "")
         {
-            return new Result(id , ExitCode.SUCCESS , message);
+            return new CqrsOutput(id , ExitCode.SUCCESS , message);
         }
 
     #endregion

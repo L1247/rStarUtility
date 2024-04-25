@@ -1,4 +1,8 @@
-namespace rStarUtility.Generic.Infrastructure
+#region
+
+#endregion
+
+namespace rStarUtility.Util.DDD.UseCase
 {
     public interface Output
     {

@@ -1,6 +1,7 @@
 #region
 
 using rStarUtility.Util;
+using rStarUtility.Util.DDD.UseCase;
 using Zenject;
 
 #endregion
