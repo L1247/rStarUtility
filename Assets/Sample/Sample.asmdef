@@ -2,9 +2,10 @@
     "name": "Sample",
     "rootNamespace": "",
     "references": [
-        "Zenject",
-        "rStarUtility.Util.Runtime",
-        "rStarUtility.Util.Editor"
+      "Zenject",
+      "rStarUtility.Util.Runtime",
+      "rStarUtility.Util.Editor",
+      "rStarUtility.Generic.Implement"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -10,7 +10,7 @@ using System;
 
 namespace rStarUtility.Util.DDD.UseCase
 {
-    public class CqrsOutput<T> : Output where T : CqrsOutput<T>
+    public class CqrsOutput : Output
     {
     #region Public Variables
 
@@ -19,17 +19,17 @@ namespace rStarUtility.Util.DDD.UseCase
 
     #endregion
 
-    #region Private Variables
+    #region Protected Variables
 
-        private ExitCode exitCode;
-        private string   message;
-        private string   id;
+        protected ExitCode exitCode;
+        protected string   id;
+        protected string   message;
 
     #endregion
 
     #region Constructor
 
-        public CqrsOutput()
+        protected CqrsOutput()
         {
             exitCode = ExitCode.SUCCESS;
             message  = string.Empty;
@@ -40,12 +40,12 @@ namespace rStarUtility.Util.DDD.UseCase
 
     #region Public Methods
 
-        public static T Create()
+        public static CqrsOutput Create()
         {
-            return Activator.CreateInstance<T>();
+            return new CqrsOutput();
         }
 
-        public T Fail()
+        public CqrsOutput Fail()
         {
             SetExitCode(ExitCode.FAILURE);
             return Self();
@@ -66,25 +66,82 @@ namespace rStarUtility.Util.DDD.UseCase
             return message;
         }
 
-        public T SetExitCode(ExitCode exitCode)
+        public CqrsOutput SetExitCode(ExitCode exitCode)
         {
             this.exitCode = exitCode;
             return Self();
         }
 
-        public T SetId(string id)
+        public CqrsOutput SetId(string id)
         {
             this.id = id;
             return Self();
         }
 
-        public T SetMessage(string message)
+        public CqrsOutput SetMessage(string message)
         {
             this.message = message;
             return Self();
         }
 
-        public T Succeed()
+        public CqrsOutput Succeed()
+        {
+            SetExitCode(ExitCode.SUCCESS);
+            return Self();
+        }
+
+    #endregion
+
+    #region Private Methods
+
+        private CqrsOutput Self()
+        {
+            return this;
+        }
+
+    #endregion
+    }
+
+    public class CqrsOutput<T> : CqrsOutput where T : CqrsOutput<T>
+    {
+    #region Constructor
+
+        protected CqrsOutput() { }
+
+    #endregion
+
+    #region Public Methods
+
+        public new static T Create()
+        {
+            return Activator.CreateInstance<T>();
+        }
+
+        public new T Fail()
+        {
+            SetExitCode(ExitCode.FAILURE);
+            return Self();
+        }
+
+        public new T SetExitCode(ExitCode exitCode)
+        {
+            this.exitCode = exitCode;
+            return Self();
+        }
+
+        public new T SetId(string id)
+        {
+            this.id = id;
+            return Self();
+        }
+
+        public new T SetMessage(string message)
+        {
+            this.message = message;
+            return Self();
+        }
+
+        public new T Succeed()
         {
             SetExitCode(ExitCode.SUCCESS);
             return Self();
