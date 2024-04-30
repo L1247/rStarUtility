@@ -2,9 +2,15 @@
 
 #endregion
 
+#region
+
+using System;
+
+#endregion
+
 namespace rStarUtility.Util.DDD.UseCase
 {
-    public class CqrsOutput : Output
+    public class CqrsOutput<T> : Output where T : CqrsOutput<T>
     {
     #region Public Variables
 
@@ -23,26 +29,26 @@ namespace rStarUtility.Util.DDD.UseCase
 
     #region Constructor
 
-        protected CqrsOutput(string id , ExitCode exitCode , string message = "")
+        public CqrsOutput()
         {
-            Contract.Require(exitCode != ExitCode.NONE , "can't set to ExitCode.NONE");
-            this.exitCode = exitCode;
-            this.message  = message;
-            this.id       = id;
+            exitCode = ExitCode.SUCCESS;
+            message  = string.Empty;
+            id       = string.Empty;
         }
 
     #endregion
 
     #region Public Methods
 
-        public static CqrsOutput CreateInstance(string id , ExitCode exitCode , string message = "")
+        public static T Create()
         {
-            return new CqrsOutput(id , exitCode , message);
+            return Activator.CreateInstance<T>();
         }
 
-        public static CqrsOutput Failure(string id , string message = "")
+        public T Fail()
         {
-            return new CqrsOutput(id , ExitCode.FAILURE , message);
+            SetExitCode(ExitCode.FAILURE);
+            return Self();
         }
 
         public ExitCode GetExitCode()
@@ -60,27 +66,37 @@ namespace rStarUtility.Util.DDD.UseCase
             return message;
         }
 
-        public Output SetExitCode(ExitCode exitCode)
+        public T SetExitCode(ExitCode exitCode)
         {
             this.exitCode = exitCode;
-            return this;
+            return Self();
         }
 
-        public Output SetId(string id)
+        public T SetId(string id)
         {
             this.id = id;
-            return this;
+            return Self();
         }
 
-        public virtual Output SetMessage(string message)
+        public T SetMessage(string message)
         {
             this.message = message;
-            return this;
+            return Self();
         }
 
-        public static CqrsOutput Success(string id , string message = "")
+        public T Succeed()
         {
-            return new CqrsOutput(id , ExitCode.SUCCESS , message);
+            SetExitCode(ExitCode.SUCCESS);
+            return Self();
+        }
+
+    #endregion
+
+    #region Private Methods
+
+        private T Self()
+        {
+            return (T)this;
         }
 
     #endregion

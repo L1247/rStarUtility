@@ -18,10 +18,11 @@ namespace rStarUtility.Util.DDD.UseCase
         ExitCode GetExitCode();
         string   GetId();
         string   GetMessage();
-        Output   SetExitCode(ExitCode exitCode);
-        Output   SetId(string         id);
-        Output   SetMessage(string    message);
 
     #endregion
+
+        // Output   SetExitCode(ExitCode exitCode);
+        // Output   SetId(string         id);
+        // Output   SetMessage(string    message);
     }
 }
