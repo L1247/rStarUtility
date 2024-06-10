@@ -19,19 +19,6 @@ namespace rStarUtility.Generic.TestFrameWork
 
     #endregion
 
-    #region Setup/Teardown Methods
-
-        [SetUp]
-        public override void Setup()
-        {
-            base.Setup();
-            logOut      = new MyStringWriter();
-            logErrorOut = new MyStringWriter();
-            MyDebug.SetOut(logOut , logErrorOut);
-        }
-
-    #endregion
-
     #region Public Methods
 
         [OneTimeSetUp]
@@ -44,6 +31,13 @@ namespace rStarUtility.Generic.TestFrameWork
     #endregion
 
     #region Protected Methods
+
+        protected override void SetUp()
+        {
+            logOut      = new MyStringWriter();
+            logErrorOut = new MyStringWriter();
+            MyDebug.SetOut(logOut , logErrorOut);
+        }
 
         protected void ShouldContainLogError(string logMessage , bool contain = true)
         {
