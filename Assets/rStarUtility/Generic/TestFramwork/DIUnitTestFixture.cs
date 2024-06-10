@@ -20,15 +20,17 @@ namespace rStarUtility.Generic.TestFrameWork
     #region Setup/Teardown Methods
 
         [SetUp]
-        public virtual void Setup()
+        public void Setup()
         {
             Container = new DiContainer(StaticContext.Container);
+            SetUp();
         }
 
         [TearDown]
-        public virtual void Teardown()
+        public void Teardown()
         {
             StaticContext.Clear();
+            TearDown();
         }
 
     #endregion
@@ -116,6 +118,13 @@ namespace rStarUtility.Generic.TestFrameWork
             return Resolve<T>();
         }
 
+        protected static void Bind_SubContainer_Requireds(DiContainer container)
+        {
+            container.Bind<TickableManager>().AsSingle().MoveIntoDirectSubContainers();
+            container.Bind<InitializableManager>().AsSingle().MoveIntoDirectSubContainers();
+            container.Bind<DisposableManager>().AsSingle().MoveIntoDirectSubContainers();
+        }
+
         protected static T[] GetAllObjectsInScene<T>() where T : Object
         {
             return Object.FindObjectsOfType<T>();
@@ -140,6 +149,10 @@ namespace rStarUtility.Generic.TestFrameWork
         {
             return Container.Resolve<T>();
         }
+
+        protected virtual void SetUp() { }
+
+        protected virtual void TearDown() { }
 
     #endregion
     }
