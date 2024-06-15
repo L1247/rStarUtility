@@ -22,6 +22,12 @@ namespace rStarUtility.Util.Extensions.Unity
             return vector2;
         }
 
+        public static Vector3 MultiplyY(this Vector3 vector3 , float value)
+        {
+            vector3.z *= value;
+            return vector3;
+        }
+
         public static Vector2 SetX(this Vector2 vector2 , float x)
         {
             vector2.x = x;

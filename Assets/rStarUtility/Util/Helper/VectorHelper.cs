@@ -30,30 +30,6 @@ namespace rStarUtility.Util.Helper
             return distance <= magnitude;
         }
 
-        public static Vector2 MultiplyX(this Vector2 vector2 , float x)
-        {
-            vector2.x *= x;
-            return vector2;
-        }
-
-        public static Vector2 MultiplyY(this Vector2 vector2 , float y)
-        {
-            vector2.y *= y;
-            return vector2;
-        }
-
-        public static Vector2 SetX(this Vector2 vector2 , float x)
-        {
-            vector2.x = x;
-            return vector2;
-        }
-
-        public static Vector2 SetY(this Vector2 vector2 , float y)
-        {
-            vector2.y = y;
-            return vector2;
-        }
-
     #endregion
     }
 }
