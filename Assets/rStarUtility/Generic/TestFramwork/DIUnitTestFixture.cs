@@ -1,6 +1,8 @@
 #region
 
+using NSubstitute;
 using NUnit.Framework;
+using rStarUtility.Generic.Infrastructure;
 using rStarUtility.Util.Extensions.Zenject;
 using UnityEngine;
 using Zenject;
@@ -133,6 +135,11 @@ namespace rStarUtility.Generic.TestFrameWork
         protected static T GetObjectInScene<T>() where T : Object
         {
             return Object.FindObjectOfType<T>();
+        }
+
+        protected void Given_Passed_Time(float time)
+        {
+            Bind_Mock_And_Resolve<ITimeProvider>().GetDeltaTime().Returns(time);
         }
 
         protected bool HasBinding<T>()
