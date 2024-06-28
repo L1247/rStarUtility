@@ -74,7 +74,8 @@ namespace rStarUtility.Generic.TestExtensions
 
         public static void ShouldFailure(this Output output)
         {
-            output.GetExitCode().ShouldBe(ExitCode.FAILURE);
+            var message = output.GetMessage();
+            output.GetExitCode().ShouldBe(ExitCode.FAILURE , $"Output exit code is Success, Cause {message}.");
         }
 
         public static void ShouldID(this Output output , string id)
@@ -110,7 +111,8 @@ namespace rStarUtility.Generic.TestExtensions
 
         public static void ShouldSuccess(this Output output)
         {
-            output.GetExitCode().ShouldBe(ExitCode.SUCCESS);
+            var message = output.GetMessage();
+            output.GetExitCode().ShouldBe(ExitCode.SUCCESS , $"Output exit code is Failure , Cause {message}.");
         }
 
         public static void ShouldTransformLocalPositionBe(
