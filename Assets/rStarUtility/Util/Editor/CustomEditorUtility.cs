@@ -375,10 +375,11 @@ namespace rStarUtility.Util.Editor
         #endif
         }
 
-        public static void SetDirtyAndSave(Object obj , string name)
+        public static void SetDirtyAndSave(Object obj)
         {
         #if UNITY_EDITOR
-            Undo.RegisterCompleteObjectUndo(obj , name);
+            var typeName = obj.GetType().Name;
+            Undo.RegisterCompleteObjectUndo(obj , typeName);
             SetDirty(obj);
             InternalSaveAsset(obj);
         #endif
