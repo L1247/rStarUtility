@@ -72,10 +72,11 @@ namespace rStarUtility.Generic.TestExtensions
             renderer.enabled.ShouldBe(expectedEnable);
         }
 
-        public static void ShouldFailure(this Output output)
+        public static Output ShouldFailure(this Output output)
         {
             var message = output.GetMessage();
             output.GetExitCode().ShouldBe(ExitCode.FAILURE , $"Output exit code is Success, Cause {message}.");
+            return output;
         }
 
         public static void ShouldID(this Output output , string id)
@@ -99,6 +100,12 @@ namespace rStarUtility.Generic.TestExtensions
             monoBehaviour.IsActive().ShouldFalse();
         }
 
+        public static void ShouldMessage(this Output output , string expectedMessage)
+        {
+            var message = output.GetMessage();
+            message.ShouldBe(expectedMessage , "message is not equal.");
+        }
+
         public static void ShouldSceneObjectCount<T>(int shouldCountBe) where T : Object
         {
             DIUnitTestFixture.GetCountOfObjectInScene<T>().ShouldBe(shouldCountBe);
@@ -109,10 +116,11 @@ namespace rStarUtility.Generic.TestExtensions
             spriteRenderer.sortingOrder.ShouldBe(order);
         }
 
-        public static void ShouldSuccess(this Output output)
+        public static Output ShouldSuccess(this Output output)
         {
             var message = output.GetMessage();
             output.GetExitCode().ShouldBe(ExitCode.SUCCESS , $"Output exit code is Failure , Cause {message}.");
+            return output;
         }
 
         public static void ShouldTransformLocalPositionBe(
