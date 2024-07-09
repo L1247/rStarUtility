@@ -22,14 +22,14 @@ namespace rStarUtility.Generic.TestFrameWork
     #region Setup/Teardown Methods
 
         [SetUp]
-        private void Setup()
+        protected void Setup()
         {
             Container = new DiContainer(StaticContext.Container);
             SetUp();
         }
 
         [TearDown]
-        private void Teardown()
+        protected void Teardown()
         {
             StaticContext.Clear();
             TearDown();
