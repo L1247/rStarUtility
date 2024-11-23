@@ -57,7 +57,7 @@ namespace rStarUtility.Util.Extensions.CSharp
             return ts[randomIndex];
         }
 
-        public static List<T> Remove<T>(this List<T> ts , T t)
+        public static List<T> RemoveElement<T>(this List<T> ts , T t)
         {
             ts.Remove(t);
             return ts;

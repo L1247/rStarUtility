@@ -10,11 +10,32 @@ namespace rStarUtility.Util.Extensions.CSharp
 {
     public static class EnumExtension
     {
-    #region Public Methods
+    #region Nested Types
 
-        public static List<T> GetValues<T>(this T obj) where T : Enum
+        public class Enum<T> where T : struct , IConvertible
         {
-            return Enum.GetValues(typeof(T)).Cast<T>().ToList();
+        #region Public Variables
+
+            public static int Count
+            {
+                get
+                {
+                    if (!typeof(T).IsEnum) throw new ArgumentException("T must be an enumerated type");
+                    return Enum.GetNames(typeof(T)).Length;
+                }
+            }
+
+        #endregion
+
+        #region Public Methods
+
+            public static List<T> GetValues()
+            {
+                if (!typeof(T).IsEnum) throw new ArgumentException("T must be an enumerated type");
+                return Enum.GetValues(typeof(T)).Cast<T>().ToList();
+            }
+
+        #endregion
         }
 
     #endregion
