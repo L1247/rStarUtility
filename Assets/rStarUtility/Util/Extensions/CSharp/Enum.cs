@@ -2,7 +2,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 
 #endregion
 
@@ -10,6 +12,18 @@ namespace rStarUtility.Util.Extensions.CSharp
 {
     public static class EnumExtension
     {
+    #region Public Methods
+
+        public static string GetDescription(this Enum value)
+        {
+            var fieldInfo = value.GetType().GetField(value.ToString());
+            if (fieldInfo == null) return null;
+            var attribute = (DescriptionAttribute)fieldInfo.GetCustomAttribute(typeof(DescriptionAttribute));
+            return attribute.Description;
+        }
+
+    #endregion
+
     #region Nested Types
 
         public class Enum<T> where T : struct , IConvertible
