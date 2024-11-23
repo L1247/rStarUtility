@@ -10,6 +10,9 @@ using System.Reflection;
 
 namespace rStarUtility.Util.Extensions.CSharp
 {
+    /// <summary>
+    ///     https://stackoverflow.com/questions/15388072/how-to-add-extension-methods-to-enums
+    /// </summary>
     public static class EnumExtension
     {
     #region Public Methods
