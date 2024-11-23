@@ -17,7 +17,7 @@ namespace rStarUtility.Util.Extensions.CSharp
         public static string GetDescription(this Enum value)
         {
             var fieldInfo = value.GetType().GetField(value.ToString());
-            if (fieldInfo == null) return null;
+            if (fieldInfo == null) return string.Empty;
             var attribute = (DescriptionAttribute)fieldInfo.GetCustomAttribute(typeof(DescriptionAttribute));
             return attribute.Description;
         }
