@@ -3,7 +3,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using rStarUtility.Util;
-using rStarUtility.Util.Extensions.Csharp;
+using rStarUtility.Util.Extensions.CSharp;
 
 #endregion
 

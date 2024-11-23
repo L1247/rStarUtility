@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 #endregion
 
-namespace rStarUtility.Util.Extensions.Csharp
+namespace rStarUtility.Util.Extensions.CSharp
 {
     public static class DictionaryExtension
     {

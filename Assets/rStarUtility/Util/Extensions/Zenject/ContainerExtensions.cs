@@ -1,6 +1,6 @@
 #region
 
-using rStarUtility.Util.Extensions.Csharp;
+using rStarUtility.Util.Extensions.CSharp;
 using Zenject;
 
 #endregion

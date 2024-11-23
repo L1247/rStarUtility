@@ -3,7 +3,7 @@
 using FluentAssertions;
 using FluentAssertions.Numeric;
 using FluentAssertions.Primitives;
-using rStarUtility.Util.Extensions.Csharp;
+using rStarUtility.Util.Extensions.CSharp;
 
 #endregion
 

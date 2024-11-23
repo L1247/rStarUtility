@@ -2,7 +2,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using rStarUtility.Util.Extensions.Csharp;
+using rStarUtility.Util.Extensions.CSharp;
 using UnityEngine;
 
 #endregion

@@ -2,7 +2,7 @@
 
 using System.Linq;
 using System.Text.RegularExpressions;
-using rStarUtility.Util.Extensions.Csharp;
+using rStarUtility.Util.Extensions.CSharp;
 
 #endregion
 

@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 #endregion
 
-namespace rStarUtility.Util.Extensions.Csharp
+namespace rStarUtility.Util.Extensions.CSharp
 {
     public static class ListExtension
     {
@@ -40,8 +40,8 @@ namespace rStarUtility.Util.Extensions.Csharp
         public static bool CompareWith<T>(this List<T> list , List<T> list2 , bool completelyEqual = false)
         {
             var isListTheSame = completelyEqual
-                    ? list.SequenceEqual(list2)
-                    : !list.Except(list2).Any();
+                                        ? list.SequenceEqual(list2)
+                                        : !list.Except(list2).Any();
             return isListTheSame;
         }
 
@@ -55,6 +55,12 @@ namespace rStarUtility.Util.Extensions.Csharp
             var maxIndex    = ts.Count == 0 ? 0 : ts.Count - 1;
             var randomIndex = RandomUtilities.GetRandomValue(0 , maxIndex);
             return ts[randomIndex];
+        }
+
+        public static List<T> Remove<T>(this List<T> ts , T t)
+        {
+            ts.Remove(t);
+            return ts;
         }
 
         /// <summary>

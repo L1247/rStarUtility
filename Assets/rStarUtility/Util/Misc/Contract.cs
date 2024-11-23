@@ -1,7 +1,7 @@
 #region
 
 using System;
-using rStarUtility.Util.Extensions.Csharp;
+using rStarUtility.Util.Extensions.CSharp;
 
 #endregion
 

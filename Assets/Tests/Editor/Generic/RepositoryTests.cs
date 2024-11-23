@@ -8,7 +8,7 @@ using rStarUtility.Generic.TestExtensions;
 using rStarUtility.Generic.TestFrameWork;
 using rStarUtility.Util;
 using rStarUtility.Util.DDD.UseCase;
-using rStarUtility.Util.Extensions.Csharp;
+using rStarUtility.Util.Extensions.CSharp;
 using TestObj_1 = TestObj;
 
 #endregion
