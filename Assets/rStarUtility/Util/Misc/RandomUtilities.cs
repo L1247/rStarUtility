@@ -166,6 +166,21 @@ namespace rStarUtility.Util
             return randomValue <= rate;
         }
 
+        public static List<T> GetUniqueRoundTableValue<T>(List<RoundTable<T>> roundTables , int uniqueNumber)
+        {
+            Contract.Require(uniqueNumber >= 0 , $"uniqueNumber[{uniqueNumber}] need grater or equal than 0.");
+            var resultList = new List<T>();
+            for (var i = 0 ; i < uniqueNumber ; i++)
+            {
+                var randomRoundTableValue = GetRoundTableValue(roundTables);
+                resultList.Add(randomRoundTableValue);
+                var itemToRemove = roundTables.Find(data => data.Value.Equals(randomRoundTableValue));
+                roundTables.Remove(itemToRemove);
+            }
+
+            return resultList;
+        }
+
     #endregion
     }
 
