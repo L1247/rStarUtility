@@ -121,7 +121,7 @@ namespace rStarUtility.Util
         ///     計算圓桌數值
         /// </summary>
         /// <param name="roundTables"></param>
-        /// <param name="weightValue">Weight不可為0，不可大於TotalWeight</param>
+        /// <param name="weightValue">可指定Weight，Weight不可為0，不可大於TotalWeight</param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         /// <exception cref="Exception">輸入值違反時會丟Exception</exception>
@@ -148,11 +148,9 @@ namespace rStarUtility.Util
                     Debug.Log($"index: {index} , weight : {weight} , value : {roundTable.Value} "
                             + $"totalWeight : {randomWeightValue} , Subtract result : {subtractResult}");
                 randomWeightValue = subtractResult;
-                if (randomWeightValue <= 0)
-                {
-                    result = roundTable.Value;
-                    break;
-                }
+                if (randomWeightValue > 0) continue;
+                result = roundTable.Value;
+                break;
             }
 
             return result;
@@ -176,8 +174,19 @@ namespace rStarUtility.Util
     {
     #region Public Variables
 
-        public int Weight;
-        public T   Value;
+        public int Weight { get; private set; }
+        public T   Value  { get; private set; }
+
+    #endregion
+
+    #region Constructor
+
+        public RoundTable(int weight , T value)
+        {
+            Contract.Require(weight >= 0 , "weight need to grater or equal than 0.");
+            Weight = weight;
+            Value  = value;
+        }
 
     #endregion
 
@@ -186,6 +195,11 @@ namespace rStarUtility.Util
         public void AddWeight(int weight)
         {
             Weight += weight;
+        }
+
+        public void SetValue(T newValue)
+        {
+            Value = newValue;
         }
 
     #endregion
