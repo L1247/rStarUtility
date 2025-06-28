@@ -24,6 +24,11 @@ namespace rStarUtility.Util.Extensions.Unity
             monoBehaviour.SetActive(true);
         }
 
+        public static void Activate(this GameObject gameObject)
+        {
+            gameObject.SetActive(true);
+        }
+
         public static void Activate(this Behaviour behaviour)
         {
             behaviour.SetActive(true);
@@ -38,6 +43,11 @@ namespace rStarUtility.Util.Extensions.Unity
         where T : Behaviour
         {
             return monoBehaviour.IsNull() ? componentInGameObject.GetComponent<T>() : (T)monoBehaviour;
+        }
+
+        public static void Deactivate(this GameObject gameObject)
+        {
+            gameObject.SetActive(false);
         }
 
         /// <summary>
