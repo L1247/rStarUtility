@@ -2,6 +2,13 @@
 
 #endregion
 
+#region
+
+using rStarUtility.Util.Extensions.CSharp;
+using UnityEngine;
+
+#endregion
+
 namespace rStarUtility.Util.Extensions.Unity
 {
     public static class UnityExtension
