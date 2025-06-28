@@ -1,8 +1,5 @@
 #region
 
-using rStarUtility.Util.Extensions.CSharp;
-using UnityEngine;
-
 #endregion
 
 namespace rStarUtility.Util.Extensions.Unity
@@ -11,10 +8,48 @@ namespace rStarUtility.Util.Extensions.Unity
     {
     #region Public Methods
 
+        /// <summary>
+        ///     https://www.youtube.com/shorts/IHEGj3ncgpw?feature=share
+        /// </summary>
+        /// <param name="monoBehaviour"></param>
+        public static void Activate(this MonoBehaviour monoBehaviour)
+        {
+            monoBehaviour.SetActive(true);
+        }
+
+        public static void Activate(this Behaviour behaviour)
+        {
+            behaviour.SetActive(true);
+        }
+
+        public static void Activate(this Transform transform)
+        {
+            transform.SetActive(true);
+        }
+
         public static T AssignWithGetComponentIfNull<T>(this Behaviour monoBehaviour , GameObject componentInGameObject)
         where T : Behaviour
         {
             return monoBehaviour.IsNull() ? componentInGameObject.GetComponent<T>() : (T)monoBehaviour;
+        }
+
+        /// <summary>
+        ///     https://www.youtube.com/shorts/IHEGj3ncgpw?feature=share
+        /// </summary>
+        /// <param name="monoBehaviour"></param>
+        public static void Deactivate(this MonoBehaviour monoBehaviour)
+        {
+            monoBehaviour.SetActive(false);
+        }
+
+        public static void Deactivate(this Behaviour behaviour)
+        {
+            behaviour.SetActive(false);
+        }
+
+        public static void Deactivate(this Transform transform)
+        {
+            transform.SetActive(false);
         }
 
         public static bool IsActive(this MonoBehaviour monoBehaviour)
